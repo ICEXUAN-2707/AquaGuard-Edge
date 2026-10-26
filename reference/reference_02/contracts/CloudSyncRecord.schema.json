@@ -1,0 +1,82 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "message_id": {
+      "type": "string"
+    },
+    "transition_id": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "sync_status": {
+      "type": "string"
+    },
+    "attempts": {
+      "type": "integer"
+    },
+    "next_retry_at": {
+      "type": [
+        "string",
+        "number",
+        "integer",
+        "boolean",
+        "object",
+        "array",
+        "null"
+      ]
+    },
+    "last_error": {
+      "type": [
+        "string",
+        "number",
+        "integer",
+        "boolean",
+        "object",
+        "array",
+        "null"
+      ]
+    },
+    "transport_receipt": {
+      "type": [
+        "string",
+        "number",
+        "integer",
+        "boolean",
+        "object",
+        "array",
+        "null"
+      ]
+    },
+    "business_receipt": {
+      "type": [
+        "string",
+        "number",
+        "integer",
+        "boolean",
+        "object",
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "message_id",
+    "transition_id",
+    "destination",
+    "sync_status",
+    "attempts",
+    "next_retry_at",
+    "last_error",
+    "transport_receipt",
+    "business_receipt"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CloudSyncRecord"
+}

@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "details": {
+      "type": "object",
+      "properties": {
+        "expected_version": {
+          "type": "integer"
+        },
+        "actual_version": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "expected_version",
+        "actual_version"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "code",
+    "message",
+    "request_id",
+    "details"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ApiError"
+}

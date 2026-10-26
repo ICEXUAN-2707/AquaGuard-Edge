@@ -1,0 +1,142 @@
+{
+  "SensorObservation": {
+    "schema_version": "1.0",
+    "observation_id": "obs-1",
+    "device_id": "home01",
+    "sensor_type": "presence",
+    "boot_id": "boot1",
+    "seq": 1,
+    "uptime_ms": 1000,
+    "event_time": null,
+    "received_at": "2026-10-26T14:00:01+08:00",
+    "time_basis": "RECEIVED_FALLBACK",
+    "value": {
+      "present": true,
+      "moving": false,
+      "still": true
+    },
+    "quality": "valid",
+    "source": "simulation"
+  },
+  "AlignedWindow": {
+    "schema_version": "1.0",
+    "window_id": "home01-20261026T140030",
+    "device_id": "home01",
+    "window_start": "2026-10-26T14:00:00+08:00",
+    "window_end": "2026-10-26T14:00:30+08:00",
+    "published_at": "2026-10-26T14:00:32+08:00",
+    "alignment_config_version": "align-v1",
+    "sensor_summary": {
+      "presence": {
+        "state": "present",
+        "age_sec": 2,
+        "coverage_ratio": 0.93
+      }
+    },
+    "quality_flags": [],
+    "source_observation_ids": [
+      "obs-1"
+    ]
+  },
+  "FeatureWindow": {
+    "schema_version": "1.0",
+    "window_id": "home01-20261026T140030",
+    "device_id": "home01",
+    "feature_version": "feature-v1",
+    "features": {
+      "flow_mean_lpm": 0.1,
+      "flow_max_lpm": 0.2,
+      "flow_active_ratio": 0.9,
+      "flow_streak_sec": 45.0,
+      "flow_change_count": 0,
+      "water_contact": false,
+      "water_contact_sec": 0.0,
+      "presence_state": "present",
+      "presence_occupied_ratio": 0.9,
+      "presence_transition_count": 0,
+      "absence_after_flow_sec": 0.0,
+      "data_coverage_ratio": 0.95
+    },
+    "missing_mask": {
+      "flow": false,
+      "water": false,
+      "presence": false
+    },
+    "state_checkpoint_ref": "checkpoint-1"
+  },
+  "SituationAssessment": {
+    "schema_version": "1.0",
+    "assessment_id": "assess-1",
+    "window_id": "home01-20261026T140030",
+    "device_id": "home01",
+    "situation": "ATTENDED_FLOW",
+    "inference_mode": "rules",
+    "model_version": "rules-v1",
+    "model_score": null,
+    "data_quality": "VALID",
+    "reason_codes": [
+      "FLOW_DETECTED",
+      "PRESENCE_DETECTED"
+    ]
+  },
+  "SafetySignal": {
+    "schema_version": "1.0",
+    "signal_id": "sig-1",
+    "device_id": "home01",
+    "signal_type": "WATER_CONTACT",
+    "observed_at": "2026-10-26T14:00:10+08:00",
+    "value": true,
+    "quality": "VALID",
+    "observation_refs": [
+      "obs-1"
+    ]
+  },
+  "SafetyEvent": {
+    "schema_version": "1.0",
+    "event_id": "evt-1",
+    "device_id": "home01",
+    "event_type": "WATER_CONTACT",
+    "lifecycle": "OPEN",
+    "ack_status": "UNACKNOWLEDGED",
+    "physical_status": "ACTIVE",
+    "escalation_level": "L2",
+    "version": 1,
+    "created_at": "2026-10-26T14:00:10+08:00"
+  },
+  "EventTransition": {
+    "schema_version": "1.0",
+    "transition_id": "tr-1",
+    "event_id": "evt-1",
+    "event_version": 1,
+    "transition_type": "CREATED",
+    "occurred_at": "2026-10-26T14:00:10+08:00",
+    "actor": "system",
+    "reason_codes": [
+      "WATER_DETECTED"
+    ],
+    "evidence_refs": [
+      "sig-1"
+    ]
+  },
+  "CloudSyncRecord": {
+    "schema_version": "1.0",
+    "message_id": "msg-tr-1",
+    "transition_id": "tr-1",
+    "destination": "huawei_iotda",
+    "sync_status": "PENDING",
+    "attempts": 0,
+    "next_retry_at": null,
+    "last_error": null,
+    "transport_receipt": null,
+    "business_receipt": null
+  },
+  "ApiError": {
+    "code": "VERSION_CONFLICT",
+    "message": "event version is stale",
+    "request_id": "req-1",
+    "details": {
+      "expected_version": 2,
+      "actual_version": 3
+    }
+  }
+}

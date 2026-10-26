@@ -1,0 +1,15 @@
+{
+  "reference_file_count": 32,
+  "reference_hash_changes": [],
+  "reports_present": [
+    "REPO_AUDIT.md",
+    "GAP_ANALYSIS.md",
+    "CONTRACT_COMPLIANCE.md",
+    "DEPENDENCY_RISKS.md",
+    "DEVELOPMENT_PLAN.md",
+    "IOTDA_INTEGRATION_PLAN.md"
+  ],
+  "lock_format_valid": true,
+  "readme_links_valid": true,
+  "business_modules_created": false
+}

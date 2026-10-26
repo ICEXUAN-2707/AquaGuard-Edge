@@ -1,0 +1,162 @@
+[
+  {
+    "path": "reference/reference_01/01_业务基线与冻结决议_V0.5.docx",
+    "bytes": 41321,
+    "sha256": "547345d745787cb8b5796a09e467482b15b66ecb5769fac1c031fa565416c867"
+  },
+  {
+    "path": "reference/reference_01/02_PRD_产品需求文档_V0.5.docx",
+    "bytes": 40680,
+    "sha256": "6b6051fed741c0d2a9a6c67f6e8a4e2e7d31a2cda2106a373572b44fe18d0a15"
+  },
+  {
+    "path": "reference/reference_01/03_Architecture_Contracts_V1.docx",
+    "bytes": 41538,
+    "sha256": "b4e80adc3b51603ca6b03ab1ad9224e42ad30eb787c904917c704805f77e9f6a"
+  },
+  {
+    "path": "reference/reference_01/04_Spec_模块工程规格与Issue_V0.5.docx",
+    "bytes": 40823,
+    "sha256": "26d68fd2b7a385fd53d82c14ab15b48b0f57090f0b9733d2a0002b8d6f47aa0b"
+  },
+  {
+    "path": "reference/reference_01/contracts_example.json",
+    "bytes": 1363,
+    "sha256": "f87eb74969f8801ea3529945850b86a28efc78343669be3d8322d090121dcf2f"
+  },
+  {
+    "path": "reference/reference_01/README.md",
+    "bytes": 1145,
+    "sha256": "23fe79bdac810f2ce6a478236b6eeb68b91dd72581245b392b3f418490b74551"
+  },
+  {
+    "path": "reference/reference_02/00_Contracts_V1.1_深化规范.md",
+    "bytes": 7973,
+    "sha256": "f26d6081464f94e76e38ffcd46be7eed33224facf256967e7c0ea4b5ad786f2c"
+  },
+  {
+    "path": "reference/reference_02/01_Contracts_V1.1_字段接口与自动化测试.docx",
+    "bytes": 40195,
+    "sha256": "89f0b6127fd2bd1df63e8fe87ff3dc75dd170e6f32f97de415dacf5b17c0da0e"
+  },
+  {
+    "path": "reference/reference_02/02_M1-M4_详细业务基线.docx",
+    "bytes": 40525,
+    "sha256": "7a5d4918e40dbf74aec2ac011f6715bf54ef8665d91fbce99cffa01761cabf2a"
+  },
+  {
+    "path": "reference/reference_02/03_M5-M8_详细业务基线.docx",
+    "bytes": 40676,
+    "sha256": "33e0eff49547355f217ed7831bc17a0abdf7e81042d815f9810d884e362ebff0"
+  },
+  {
+    "path": "reference/reference_02/contracts/AlignedWindow.schema.json",
+    "bytes": 1625,
+    "sha256": "23cee0e1d7804da6c1e31981dfe82754b7b749b4c39830483468cb728f2323f8"
+  },
+  {
+    "path": "reference/reference_02/contracts/ApiError.schema.json",
+    "bytes": 714,
+    "sha256": "e487181257387ade40f22b9d0b0c3a53cfbb190323bdd0e0ff357cca4d84eb18"
+  },
+  {
+    "path": "reference/reference_02/contracts/CloudSyncRecord.schema.json",
+    "bytes": 1413,
+    "sha256": "25be8543501ce16829420d395c48f798fadc0c97db9bcebe9800f44b39a51524"
+  },
+  {
+    "path": "reference/reference_02/contracts/EventTransition.schema.json",
+    "bytes": 927,
+    "sha256": "e1ef3123d1b7db47445875e3f4330df8e37654f17ac8b95062a325d9d49225a7"
+  },
+  {
+    "path": "reference/reference_02/contracts/examples.json",
+    "bytes": 3556,
+    "sha256": "f31041f14cd98d3bfa8229a5acb34e134739d892af38e71b3e28e31d6cad1f31"
+  },
+  {
+    "path": "reference/reference_02/contracts/FeatureWindow.schema.json",
+    "bytes": 2298,
+    "sha256": "c12150560f4cfa3d9817af26a90fb8c63371f4e75559e59a6219b3ed3a0bb15c"
+  },
+  {
+    "path": "reference/reference_02/contracts/SafetyEvent.schema.json",
+    "bytes": 879,
+    "sha256": "64d5465797e233d46df2db8d1018dfec7d5fde75ff77b4e7511d1e28b55b6a22"
+  },
+  {
+    "path": "reference/reference_02/contracts/SafetySignal.schema.json",
+    "bytes": 782,
+    "sha256": "a3faed3e2322b7a8033feee3db215734feeb03b5deddf2b6b469b3ff32ef506f"
+  },
+  {
+    "path": "reference/reference_02/contracts/SensorObservation.schema.json",
+    "bytes": 1479,
+    "sha256": "ccdc6e70a607ca3953ac85a10c908d12f657c2701ec4bdb8acb535616c500192"
+  },
+  {
+    "path": "reference/reference_02/contracts/SituationAssessment.schema.json",
+    "bytes": 1077,
+    "sha256": "a542ae5761f2064e1e2d072367a42481334ead9904eab37256734d9ad0f99a6f"
+  },
+  {
+    "path": "reference/reference_02/modules/M1_感知采集.md",
+    "bytes": 4433,
+    "sha256": "642c715f5d3d1aa6734d13c976febfbefe41a222f7cbe16ce3026b5f9c9d4de7"
+  },
+  {
+    "path": "reference/reference_02/modules/M2_消息通信与标准化.md",
+    "bytes": 4382,
+    "sha256": "063b5c06f3dd02f2509e68e8de41af3c86c4eeb855d997ce382abd24b5edb013"
+  },
+  {
+    "path": "reference/reference_02/modules/M3_时序对齐与质量治理.md",
+    "bytes": 4409,
+    "sha256": "5806148a15d31d6511675e5d4e72c470a02158871a586dc2d4423a98fdd23d36"
+  },
+  {
+    "path": "reference/reference_02/modules/M4_特征融合与状态记忆.md",
+    "bytes": 4408,
+    "sha256": "544e445e6ba9400c29ecb6130d436649d32f3262e689c1dc616f0db3883356b2"
+  },
+  {
+    "path": "reference/reference_02/modules/M5_轻量AI情境识别.md",
+    "bytes": 4397,
+    "sha256": "b5d4c64f967f514161e443b8adb208dc2e4d8b32638cb61545a84a744350e94a"
+  },
+  {
+    "path": "reference/reference_02/modules/M6_情境决策与事件状态机.md",
+    "bytes": 4561,
+    "sha256": "17e4cd51a42813668d25aeda8e37e5506a01d4799046b388ad4bf3a5baa19b06"
+  },
+  {
+    "path": "reference/reference_02/modules/M7_事件持久化与华为云协同.md",
+    "bytes": 4475,
+    "sha256": "0008a274ae2a77f544aa81fa5bc6278cad69d495cd8edca8c2e0f61aa4bfcbf9"
+  },
+  {
+    "path": "reference/reference_02/modules/M8_用户产品与实验平台.md",
+    "bytes": 4444,
+    "sha256": "6ed1616bab37a90ce3710c6455c672d98bbbf0283e3fbc9e2b4266bbc2278c52"
+  },
+  {
+    "path": "reference/reference_02/README.md",
+    "bytes": 912,
+    "sha256": "753ee4269db32f1dc8558dec5dba99eeb16d86023cee1bf533fc06c25cfc0d36"
+  },
+  {
+    "path": "reference/reference_02/tests/BEHAVIOR_TEST_MATRIX.md",
+    "bytes": 1598,
+    "sha256": "a124f3ebe86f7dbd1897974db4ba0526f81b8126da7720c83f7801d41089cf65"
+  },
+  {
+    "path": "reference/reference_02/tests/test_json_schema_contracts.py",
+    "bytes": 1473,
+    "sha256": "c33797e37e824611d58b600ad3a9f09b1ffab186cea242a9ef1afe9b05b6ad8d"
+  },
+  {
+    "path": "reference/task_LoTDA_WaterMonitor.txt",
+    "bytes": 1974,
+    "sha256": "cdbc791d74b99db726b94e274af343b61efbc65deaceb37aea4c9d1c677dc7f2"
+  }
+]

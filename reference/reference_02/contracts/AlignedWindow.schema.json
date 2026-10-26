@@ -1,0 +1,82 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "window_id": {
+      "type": "string"
+    },
+    "device_id": {
+      "type": "string"
+    },
+    "window_start": {
+      "type": "string"
+    },
+    "window_end": {
+      "type": "string"
+    },
+    "published_at": {
+      "type": "string"
+    },
+    "alignment_config_version": {
+      "type": "string"
+    },
+    "sensor_summary": {
+      "type": "object",
+      "properties": {
+        "presence": {
+          "type": "object",
+          "properties": {
+            "state": {
+              "type": "string"
+            },
+            "age_sec": {
+              "type": "integer"
+            },
+            "coverage_ratio": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "state",
+            "age_sec",
+            "coverage_ratio"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "presence"
+      ],
+      "additionalProperties": false
+    },
+    "quality_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_observation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "window_id",
+    "device_id",
+    "window_start",
+    "window_end",
+    "published_at",
+    "alignment_config_version",
+    "sensor_summary",
+    "quality_flags",
+    "source_observation_ids"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AlignedWindow"
+}

@@ -1,0 +1,57 @@
+{
+  "SensorObservation": {
+    "schema_version": "1.0",
+    "observation_id": "obs-001",
+    "device_id": "home01",
+    "boot_id": "boot-001",
+    "sensor_type": "presence",
+    "seq": 1,
+    "uptime_ms": 1000,
+    "event_time": null,
+    "received_at": "2026-10-26T12:00:01+08:00",
+    "value": {
+      "present": true
+    },
+    "quality": "valid",
+    "source": "simulation"
+  },
+  "SituationAssessment": {
+    "schema_version": "1.0",
+    "assessment_id": "as-001",
+    "window_id": "w-001",
+    "device_id": "home01",
+    "situation": "ATTENDED_FLOW",
+    "inference_mode": "rules",
+    "model_score": null,
+    "model_version": "rules-v1",
+    "data_quality": "VALID",
+    "reason_codes": [
+      "FLOW_DETECTED",
+      "PRESENCE_DETECTED"
+    ]
+  },
+  "SafetyEvent": {
+    "event_id": "evt-001",
+    "device_id": "home01",
+    "event_type": "WATER_CONTACT",
+    "lifecycle": "OPEN",
+    "ack_status": "ACKNOWLEDGED",
+    "physical_status": "ACTIVE",
+    "escalation_level": "L2",
+    "version": 2
+  },
+  "EventTransition": {
+    "transition_id": "tr-002",
+    "event_id": "evt-001",
+    "event_version": 2,
+    "transition_type": "USER_ACKNOWLEDGED",
+    "actor": "local_user"
+  },
+  "CloudSyncRecord": {
+    "message_id": "msg-tr-002",
+    "transition_id": "tr-002",
+    "destination": "huawei_iotda",
+    "sync_status": "PENDING",
+    "attempts": 0
+  }
+}

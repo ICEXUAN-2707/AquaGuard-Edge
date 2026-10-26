@@ -1,0 +1,571 @@
+{
+  "AlignedWindow": {
+    "required": [
+      "schema_version",
+      "window_id",
+      "device_id",
+      "window_start",
+      "window_end",
+      "published_at",
+      "alignment_config_version",
+      "sensor_summary",
+      "quality_flags",
+      "source_observation_ids"
+    ],
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "window_id": {
+        "type": "string"
+      },
+      "device_id": {
+        "type": "string"
+      },
+      "window_start": {
+        "type": "string"
+      },
+      "window_end": {
+        "type": "string"
+      },
+      "published_at": {
+        "type": "string"
+      },
+      "alignment_config_version": {
+        "type": "string"
+      },
+      "sensor_summary": {
+        "type": "object",
+        "properties": {
+          "presence": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "type": "string"
+              },
+              "age_sec": {
+                "type": "integer"
+              },
+              "coverage_ratio": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "state",
+              "age_sec",
+              "coverage_ratio"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "presence"
+        ],
+        "additionalProperties": false
+      },
+      "quality_flags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "source_observation_ids": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "ApiError": {
+    "required": [
+      "code",
+      "message",
+      "request_id",
+      "details"
+    ],
+    "properties": {
+      "code": {
+        "type": "string"
+      },
+      "message": {
+        "type": "string"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "details": {
+        "type": "object",
+        "properties": {
+          "expected_version": {
+            "type": "integer"
+          },
+          "actual_version": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "expected_version",
+          "actual_version"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "CloudSyncRecord": {
+    "required": [
+      "schema_version",
+      "message_id",
+      "transition_id",
+      "destination",
+      "sync_status",
+      "attempts",
+      "next_retry_at",
+      "last_error",
+      "transport_receipt",
+      "business_receipt"
+    ],
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "message_id": {
+        "type": "string"
+      },
+      "transition_id": {
+        "type": "string"
+      },
+      "destination": {
+        "type": "string"
+      },
+      "sync_status": {
+        "type": "string"
+      },
+      "attempts": {
+        "type": "integer"
+      },
+      "next_retry_at": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "object",
+          "array",
+          "null"
+        ]
+      },
+      "last_error": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "object",
+          "array",
+          "null"
+        ]
+      },
+      "transport_receipt": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "object",
+          "array",
+          "null"
+        ]
+      },
+      "business_receipt": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "object",
+          "array",
+          "null"
+        ]
+      }
+    }
+  },
+  "EventTransition": {
+    "required": [
+      "schema_version",
+      "transition_id",
+      "event_id",
+      "event_version",
+      "transition_type",
+      "occurred_at",
+      "actor",
+      "reason_codes",
+      "evidence_refs"
+    ],
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "transition_id": {
+        "type": "string"
+      },
+      "event_id": {
+        "type": "string"
+      },
+      "event_version": {
+        "type": "integer"
+      },
+      "transition_type": {
+        "type": "string"
+      },
+      "occurred_at": {
+        "type": "string"
+      },
+      "actor": {
+        "type": "string"
+      },
+      "reason_codes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "evidence_refs": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "FeatureWindow": {
+    "required": [
+      "schema_version",
+      "window_id",
+      "device_id",
+      "feature_version",
+      "features",
+      "missing_mask",
+      "state_checkpoint_ref"
+    ],
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "window_id": {
+        "type": "string"
+      },
+      "device_id": {
+        "type": "string"
+      },
+      "feature_version": {
+        "type": "string"
+      },
+      "features": {
+        "type": "object",
+        "properties": {
+          "flow_mean_lpm": {
+            "type": "number"
+          },
+          "flow_max_lpm": {
+            "type": "number"
+          },
+          "flow_active_ratio": {
+            "type": "number"
+          },
+          "flow_streak_sec": {
+            "type": "number"
+          },
+          "flow_change_count": {
+            "type": "integer"
+          },
+          "water_contact": {
+            "type": "boolean"
+          },
+          "water_contact_sec": {
+            "type": "number"
+          },
+          "presence_state": {
+            "type": "string"
+          },
+          "presence_occupied_ratio": {
+            "type": "number"
+          },
+          "presence_transition_count": {
+            "type": "integer"
+          },
+          "absence_after_flow_sec": {
+            "type": "number"
+          },
+          "data_coverage_ratio": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "flow_mean_lpm",
+          "flow_max_lpm",
+          "flow_active_ratio",
+          "flow_streak_sec",
+          "flow_change_count",
+          "water_contact",
+          "water_contact_sec",
+          "presence_state",
+          "presence_occupied_ratio",
+          "presence_transition_count",
+          "absence_after_flow_sec",
+          "data_coverage_ratio"
+        ],
+        "additionalProperties": false
+      },
+      "missing_mask": {
+        "type": "object",
+        "properties": {
+          "flow": {
+            "type": "boolean"
+          },
+          "water": {
+            "type": "boolean"
+          },
+          "presence": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "flow",
+          "water",
+          "presence"
+        ],
+        "additionalProperties": false
+      },
+      "state_checkpoint_ref": {
+        "type": "string"
+      }
+    }
+  },
+  "SafetyEvent": {
+    "required": [
+      "schema_version",
+      "event_id",
+      "device_id",
+      "event_type",
+      "lifecycle",
+      "ack_status",
+      "physical_status",
+      "escalation_level",
+      "version",
+      "created_at"
+    ],
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "event_id": {
+        "type": "string"
+      },
+      "device_id": {
+        "type": "string"
+      },
+      "event_type": {
+        "type": "string"
+      },
+      "lifecycle": {
+        "type": "string"
+      },
+      "ack_status": {
+        "type": "string"
+      },
+      "physical_status": {
+        "type": "string"
+      },
+      "escalation_level": {
+        "type": "string"
+      },
+      "version": {
+        "type": "integer"
+      },
+      "created_at": {
+        "type": "string"
+      }
+    }
+  },
+  "SafetySignal": {
+    "required": [
+      "schema_version",
+      "signal_id",
+      "device_id",
+      "signal_type",
+      "observed_at",
+      "value",
+      "quality",
+      "observation_refs"
+    ],
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "signal_id": {
+        "type": "string"
+      },
+      "device_id": {
+        "type": "string"
+      },
+      "signal_type": {
+        "type": "string"
+      },
+      "observed_at": {
+        "type": "string"
+      },
+      "value": {
+        "type": "boolean"
+      },
+      "quality": {
+        "type": "string"
+      },
+      "observation_refs": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "SensorObservation": {
+    "required": [
+      "schema_version",
+      "observation_id",
+      "device_id",
+      "sensor_type",
+      "boot_id",
+      "seq",
+      "uptime_ms",
+      "received_at",
+      "time_basis",
+      "value",
+      "quality",
+      "source"
+    ],
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "observation_id": {
+        "type": "string"
+      },
+      "device_id": {
+        "type": "string"
+      },
+      "sensor_type": {
+        "type": "string"
+      },
+      "boot_id": {
+        "type": "string"
+      },
+      "seq": {
+        "type": "integer"
+      },
+      "uptime_ms": {
+        "type": "integer"
+      },
+      "event_time": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "object",
+          "array",
+          "null"
+        ]
+      },
+      "received_at": {
+        "type": "string"
+      },
+      "time_basis": {
+        "type": "string"
+      },
+      "value": {
+        "type": "object",
+        "properties": {
+          "present": {
+            "type": "boolean"
+          },
+          "moving": {
+            "type": "boolean"
+          },
+          "still": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "present",
+          "moving",
+          "still"
+        ],
+        "additionalProperties": false
+      },
+      "quality": {
+        "type": "string"
+      },
+      "source": {
+        "type": "string"
+      }
+    }
+  },
+  "SituationAssessment": {
+    "required": [
+      "schema_version",
+      "assessment_id",
+      "window_id",
+      "device_id",
+      "situation",
+      "inference_mode",
+      "model_version",
+      "model_score",
+      "data_quality",
+      "reason_codes"
+    ],
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "assessment_id": {
+        "type": "string"
+      },
+      "window_id": {
+        "type": "string"
+      },
+      "device_id": {
+        "type": "string"
+      },
+      "situation": {
+        "type": "string"
+      },
+      "inference_mode": {
+        "type": "string"
+      },
+      "model_version": {
+        "type": "string"
+      },
+      "model_score": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "object",
+          "array",
+          "null"
+        ]
+      },
+      "data_quality": {
+        "type": "string"
+      },
+      "reason_codes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

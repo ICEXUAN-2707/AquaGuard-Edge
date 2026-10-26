@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "transition_id": {
+      "type": "string"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "event_version": {
+      "type": "integer"
+    },
+    "transition_type": {
+      "type": "string"
+    },
+    "occurred_at": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "string"
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "transition_id",
+    "event_id",
+    "event_version",
+    "transition_type",
+    "occurred_at",
+    "actor",
+    "reason_codes",
+    "evidence_refs"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EventTransition"
+}

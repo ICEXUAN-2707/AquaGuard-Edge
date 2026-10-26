@@ -1,0 +1,4 @@
+# Preserve reference bytes exactly.
+reference/** -text
+*.md text eol=lf
+*.py text eol=lf

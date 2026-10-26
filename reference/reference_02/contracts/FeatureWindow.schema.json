@@ -1,0 +1,108 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "window_id": {
+      "type": "string"
+    },
+    "device_id": {
+      "type": "string"
+    },
+    "feature_version": {
+      "type": "string"
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "flow_mean_lpm": {
+          "type": "number"
+        },
+        "flow_max_lpm": {
+          "type": "number"
+        },
+        "flow_active_ratio": {
+          "type": "number"
+        },
+        "flow_streak_sec": {
+          "type": "number"
+        },
+        "flow_change_count": {
+          "type": "integer"
+        },
+        "water_contact": {
+          "type": "boolean"
+        },
+        "water_contact_sec": {
+          "type": "number"
+        },
+        "presence_state": {
+          "type": "string"
+        },
+        "presence_occupied_ratio": {
+          "type": "number"
+        },
+        "presence_transition_count": {
+          "type": "integer"
+        },
+        "absence_after_flow_sec": {
+          "type": "number"
+        },
+        "data_coverage_ratio": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "flow_mean_lpm",
+        "flow_max_lpm",
+        "flow_active_ratio",
+        "flow_streak_sec",
+        "flow_change_count",
+        "water_contact",
+        "water_contact_sec",
+        "presence_state",
+        "presence_occupied_ratio",
+        "presence_transition_count",
+        "absence_after_flow_sec",
+        "data_coverage_ratio"
+      ],
+      "additionalProperties": false
+    },
+    "missing_mask": {
+      "type": "object",
+      "properties": {
+        "flow": {
+          "type": "boolean"
+        },
+        "water": {
+          "type": "boolean"
+        },
+        "presence": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "flow",
+        "water",
+        "presence"
+      ],
+      "additionalProperties": false
+    },
+    "state_checkpoint_ref": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "window_id",
+    "device_id",
+    "feature_version",
+    "features",
+    "missing_mask",
+    "state_checkpoint_ref"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FeatureWindow"
+}

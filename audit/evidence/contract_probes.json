@@ -1,0 +1,382 @@
+[
+  {
+    "probe": "flow payload rejected",
+    "schema": "SensorObservation",
+    "accepted": false,
+    "errors": [
+      "'present' is a required property",
+      "'moving' is a required property",
+      "'still' is a required property",
+      "Additional properties are not allowed ('calibration_id', 'estimated_lpm', 'interval_ms', 'pulse_count' were unexpected)"
+    ],
+    "input": {
+      "schema_version": "1.0",
+      "observation_id": "obs-1",
+      "device_id": "home01",
+      "sensor_type": "flow",
+      "boot_id": "boot1",
+      "seq": 1,
+      "uptime_ms": 1000,
+      "event_time": null,
+      "received_at": "2026-10-26T14:00:01+08:00",
+      "time_basis": "RECEIVED_FALLBACK",
+      "value": {
+        "pulse_count": 10,
+        "interval_ms": 1000,
+        "estimated_lpm": 1.0,
+        "calibration_id": "test"
+      },
+      "quality": "valid",
+      "source": "simulation"
+    }
+  },
+  {
+    "probe": "water payload rejected",
+    "schema": "SensorObservation",
+    "accepted": false,
+    "errors": [
+      "'present' is a required property",
+      "'moving' is a required property",
+      "'still' is a required property",
+      "Additional properties are not allowed ('wet' was unexpected)"
+    ],
+    "input": {
+      "schema_version": "1.0",
+      "observation_id": "obs-1",
+      "device_id": "home01",
+      "sensor_type": "water",
+      "boot_id": "boot1",
+      "seq": 1,
+      "uptime_ms": 1000,
+      "event_time": null,
+      "received_at": "2026-10-26T14:00:01+08:00",
+      "time_basis": "RECEIVED_FALLBACK",
+      "value": {
+        "wet": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    }
+  },
+  {
+    "probe": "unknown presence null rejected",
+    "schema": "SensorObservation",
+    "accepted": false,
+    "errors": [
+      "None is not of type 'boolean'"
+    ],
+    "input": {
+      "schema_version": "1.0",
+      "observation_id": "obs-1",
+      "device_id": "home01",
+      "sensor_type": "presence",
+      "boot_id": "boot1",
+      "seq": 1,
+      "uptime_ms": 1000,
+      "event_time": null,
+      "received_at": "2026-10-26T14:00:01+08:00",
+      "time_basis": "RECEIVED_FALLBACK",
+      "value": {
+        "present": null,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    }
+  },
+  {
+    "probe": "unknown feature null rejected",
+    "schema": "FeatureWindow",
+    "accepted": false,
+    "errors": [
+      "None is not of type 'boolean'"
+    ],
+    "input": {
+      "schema_version": "1.0",
+      "window_id": "home01-20261026T140030",
+      "device_id": "home01",
+      "feature_version": "feature-v1",
+      "features": {
+        "flow_mean_lpm": 0.1,
+        "flow_max_lpm": 0.2,
+        "flow_active_ratio": 0.9,
+        "flow_streak_sec": 45.0,
+        "flow_change_count": 0,
+        "water_contact": null,
+        "water_contact_sec": 0.0,
+        "presence_state": "present",
+        "presence_occupied_ratio": 0.9,
+        "presence_transition_count": 0,
+        "absence_after_flow_sec": 0.0,
+        "data_coverage_ratio": 0.95
+      },
+      "missing_mask": {
+        "flow": false,
+        "water": true,
+        "presence": false
+      },
+      "state_checkpoint_ref": "checkpoint-1"
+    }
+  },
+  {
+    "probe": "invalid lifecycle accepted",
+    "schema": "SafetyEvent",
+    "accepted": true,
+    "errors": [],
+    "input": {
+      "schema_version": "1.0",
+      "event_id": "evt-1",
+      "device_id": "home01",
+      "event_type": "WATER_CONTACT",
+      "lifecycle": "BANANA",
+      "ack_status": "UNACKNOWLEDGED",
+      "physical_status": "ACTIVE",
+      "escalation_level": "L2",
+      "version": 1,
+      "created_at": "2026-10-26T14:00:10+08:00"
+    }
+  },
+  {
+    "probe": "invalid source accepted",
+    "schema": "SensorObservation",
+    "accepted": true,
+    "errors": [],
+    "input": {
+      "schema_version": "1.0",
+      "observation_id": "obs-1",
+      "device_id": "home01",
+      "sensor_type": "presence",
+      "boot_id": "boot1",
+      "seq": 1,
+      "uptime_ms": 1000,
+      "event_time": null,
+      "received_at": "2026-10-26T14:00:01+08:00",
+      "time_basis": "RECEIVED_FALLBACK",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "BANANA"
+    }
+  },
+  {
+    "probe": "untrusted DEVICE_SYNCED accepted",
+    "schema": "SensorObservation",
+    "accepted": true,
+    "errors": [],
+    "input": {
+      "schema_version": "1.0",
+      "observation_id": "obs-1",
+      "device_id": "home01",
+      "sensor_type": "presence",
+      "boot_id": "boot1",
+      "seq": 1,
+      "uptime_ms": 1000,
+      "event_time": null,
+      "received_at": "2026-10-26T14:00:01+08:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    }
+  },
+  {
+    "probe": "bad received_at accepted",
+    "schema": "SensorObservation",
+    "accepted": true,
+    "errors": [],
+    "input": {
+      "schema_version": "1.0",
+      "observation_id": "obs-1",
+      "device_id": "home01",
+      "sensor_type": "presence",
+      "boot_id": "boot1",
+      "seq": 1,
+      "uptime_ms": 1000,
+      "event_time": null,
+      "received_at": "yesterday",
+      "time_basis": "RECEIVED_FALLBACK",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    }
+  },
+  {
+    "probe": "invalid coverage accepted",
+    "schema": "FeatureWindow",
+    "accepted": true,
+    "errors": [],
+    "input": {
+      "schema_version": "1.0",
+      "window_id": "home01-20261026T140030",
+      "device_id": "home01",
+      "feature_version": "feature-v1",
+      "features": {
+        "flow_mean_lpm": 0.1,
+        "flow_max_lpm": 0.2,
+        "flow_active_ratio": 0.9,
+        "flow_streak_sec": 45.0,
+        "flow_change_count": 0,
+        "water_contact": false,
+        "water_contact_sec": 0.0,
+        "presence_state": "present",
+        "presence_occupied_ratio": 0.9,
+        "presence_transition_count": 0,
+        "absence_after_flow_sec": 0.0,
+        "data_coverage_ratio": 2
+      },
+      "missing_mask": {
+        "flow": false,
+        "water": false,
+        "presence": false
+      },
+      "state_checkpoint_ref": "checkpoint-1"
+    }
+  },
+  {
+    "probe": "negative attempts accepted",
+    "schema": "CloudSyncRecord",
+    "accepted": true,
+    "errors": [],
+    "input": {
+      "schema_version": "1.0",
+      "message_id": "msg-tr-1",
+      "transition_id": "tr-1",
+      "destination": "huawei_iotda",
+      "sync_status": "PENDING",
+      "attempts": -1,
+      "next_retry_at": null,
+      "last_error": null,
+      "transport_receipt": null,
+      "business_receipt": null
+    }
+  },
+  {
+    "probe": "rule model score accepted",
+    "schema": "SituationAssessment",
+    "accepted": true,
+    "errors": [],
+    "input": {
+      "schema_version": "1.0",
+      "assessment_id": "assess-1",
+      "window_id": "home01-20261026T140030",
+      "device_id": "home01",
+      "situation": "ATTENDED_FLOW",
+      "inference_mode": "rules",
+      "model_version": "rules-v1",
+      "model_score": 0.99,
+      "data_quality": "VALID",
+      "reason_codes": [
+        "FLOW_DETECTED",
+        "PRESENCE_DETECTED"
+      ]
+    }
+  },
+  {
+    "probe": "flow summary rejected",
+    "schema": "AlignedWindow",
+    "accepted": false,
+    "errors": [
+      "Additional properties are not allowed ('flow' was unexpected)"
+    ],
+    "input": {
+      "schema_version": "1.0",
+      "window_id": "home01-20261026T140030",
+      "device_id": "home01",
+      "window_start": "2026-10-26T14:00:00+08:00",
+      "window_end": "2026-10-26T14:00:30+08:00",
+      "published_at": "2026-10-26T14:00:32+08:00",
+      "alignment_config_version": "align-v1",
+      "sensor_summary": {
+        "presence": {
+          "state": "present",
+          "age_sec": 2,
+          "coverage_ratio": 0.93
+        },
+        "flow": {
+          "state": "active",
+          "age_sec": 1,
+          "coverage_ratio": 1.0
+        }
+      },
+      "quality_flags": [],
+      "source_observation_ids": [
+        "obs-1"
+      ]
+    }
+  },
+  {
+    "probe": "generic ApiError rejected",
+    "schema": "ApiError",
+    "accepted": false,
+    "errors": [
+      "'expected_version' is a required property",
+      "'actual_version' is a required property"
+    ],
+    "input": {
+      "code": "NOT_FOUND",
+      "message": "event version is stale",
+      "request_id": "req-1",
+      "details": {}
+    }
+  },
+  {
+    "probe": "V0.5 example against V1.1 schema",
+    "schema": "SensorObservation",
+    "accepted": false,
+    "errors": [
+      "'moving' is a required property",
+      "'still' is a required property",
+      "'time_basis' is a required property"
+    ]
+  },
+  {
+    "probe": "V0.5 example against V1.1 schema",
+    "schema": "SituationAssessment",
+    "accepted": true,
+    "errors": []
+  },
+  {
+    "probe": "V0.5 example against V1.1 schema",
+    "schema": "SafetyEvent",
+    "accepted": false,
+    "errors": [
+      "'schema_version' is a required property",
+      "'created_at' is a required property"
+    ]
+  },
+  {
+    "probe": "V0.5 example against V1.1 schema",
+    "schema": "EventTransition",
+    "accepted": false,
+    "errors": [
+      "'schema_version' is a required property",
+      "'occurred_at' is a required property",
+      "'reason_codes' is a required property",
+      "'evidence_refs' is a required property"
+    ]
+  },
+  {
+    "probe": "V0.5 example against V1.1 schema",
+    "schema": "CloudSyncRecord",
+    "accepted": false,
+    "errors": [
+      "'schema_version' is a required property",
+      "'next_retry_at' is a required property",
+      "'last_error' is a required property",
+      "'transport_receipt' is a required property",
+      "'business_receipt' is a required property"
+    ]
+  }
+]

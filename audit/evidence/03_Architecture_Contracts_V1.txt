@@ -1,0 +1,139 @@
+1: SOURCE: reference/reference_01/03_Architecture_Contracts_V1.docx
+2: 03｜系统架构与接口契约
+3: Architecture & Contracts V1.0 · 所有工作线共同遵守
+4: 1. 运行架构与数据控制面
+5: ESP32/模拟器 → Mosquitto → Python Adapter → SensorObservation；数据进入两条处理路径：（A）水接触/关键故障快速校验 → M6；（B）M3 对齐 → M4 特征 → M5 情境 → M6。M6 唯一事务写入 SQLite safety_events + event_transitions + outbox_messages。M7 云适配异步投递 IoTDA。M8 只读查询并通过受控 API 请求 M6 确认。
+6: 2. 契约共通约束
+7: 所有 DTO 携带 schema_version；采样、窗口、情境、事件和 transition 必须有稳定 ID，供追溯。
+8: 时间采用带时区 ISO 8601 或明确单调时间映射；received_at 由边缘系统产生；未知时间不能伪装准确。
+9: 质量/缺失与业务布尔值严格分离；unknown ≠ false。
+10: 业务组件不得依赖传感器具体 GPIO 或模型内部类型；经 DTO/Adapter 交换。
+11: 真实 hardware 与 simulation 在输入、记录和外发策略上必须可区分。
+12: 3. 核心 DTO 定义
+13: DTO
+14: 关键字段
+15: 约束
+16: SensorObservation
+17: schema_version, observation_id, device_id, boot_id, sensor_type, seq, uptime_ms, event_time?, received_at, value, quality, source
+18: 按(device,boot,sensor,seq)幂等；event_time 可空
+19: AlignedWindow
+20: window_id, device_id, start, end, finalized_at, config_version, samples, sensor_health, late_count
+21: 窗口正式发布不可无记录回写
+22: FeatureWindow
+23: window_id, feature_version, features, missing_mask, state_checkpoint_ref
+24: 与训练模型特征版本一致
+25: SituationAssessment
+26: assessment_id, window_id, situation, inference_mode, model_version, model_score?, data_quality, reasons
+27: 情境枚举不含 WATER_CONTACT/ SENSOR_FAULT
+28: SafetySignal
+29: signal_id, device_id, kind, observed_at, valid, reason_codes
+30: 快速水接触以原始有效观测判定
+31: SafetyEvent
+32: event_id, device_id, type, lifecycle, ack_status, physical_status, escalation_level, version
+33: 独立字段；同一类型同设备唯一活动事件
+34: EventTransition
+35: transition_id, event_id, event_version, type, actor, occurred_at, payload
+36: 不可变，不覆盖旧记录
+37: CloudSyncRecord
+38: message_id, transition_id, destination, sync_status, attempts, last_error?, transport_receipt?
+39: 同步状态针对 transition 而非整个事件
+40: 4. 重要枚举
+41: 字段
+42: 枚举 / 含义
+43: situation
+44: IDLE / ATTENDED_FLOW / POSSIBLE_UNATTENDED_FLOW / UNKNOWN
+45: data_quality
+46: VALID / DEGRADED / UNAVAILABLE
+47: lifecycle
+48: OPEN / RESOLVED / CLOSED
+49: ack_status
+50: UNACKNOWLEDGED / ACKNOWLEDGED
+51: physical_status
+52: ACTIVE / CLEARED / UNKNOWN
+53: severity
+54: L0 / L1 / L2 / L3
+55: sync_status
+56: PENDING / SENDING / RETRY_WAIT / ACCEPTED / FAILED；ACCEPTED 的确认层级须明确
+57: source
+58: hardware / simulation / replay
+59: 5. 时间窗口契约
+60: 初始 W=30s、S=5s、L=2s；采用 (window_end-W, window_end] 的事件时间窗口。
+61: 由水位线或处理时限驱动发布；时间戳不可信时降低质量或转接收时间策略并显式标注。
+62: 晚到数据保留原记录及 late 标记，不静默改变已触发事件。
+63: 跨窗口持续时间单独管理并能恢复，信号断开不能凭空延续流水。
+64: 离线回放重用同一算法及截止规则，分开记录实际到达时间与事件时间。
+65: 6. 事件状态机与事务
+66: 事件
+67: 允许更新
+68: 不允许
+69: 检测疑似异常
+70: 创建 OPEN 或更新已有活动事件
+71: 每个窗口创建新事件
+72: 人工确认
+73: ack_status=ACKNOWLEDGED + transition
+74: 直接 RESOLVED
+75: 水接触恢复
+76: 满足防抖条件后 physical_status=CLEARED
+77: 仅凭用户点击恢复
+78: 事件关闭
+79: 经恢复条件与关闭策略转为 CLOSED
+80: 断云导致强行关闭
+81: 云同步
+82: 独立 Outbox 状态变更
+83: 修改业务 lifecycle
+84: 任何持久化业务转换必须在同一 SQLite 事务内更新 safety_events、插入 event_transitions、插入 outbox_messages；重复 transition_id 幂等拒绝。
+85: 7. MQTT 契约与适配
+86: 设备对外具体 Topic 待 Gate0 与现有开源基线比对；统一由 MQTT Adapter 将兼容原合包/新分包形式转换成 SensorObservation。消息无法解析进入隔离日志，不默认为正常观测。
+87: 8. 建议 REST 接口（尚待代码化）
+88: 方法
+89: 路径
+90: 返回/约束
+91: GET
+92: /api/devices/{id}/live
+93: 最新状态、时间与数据质量
+94: GET
+95: /api/devices/{id}/assessment
+96: 情境+模型版本
+97: GET
+98: /api/events
+99: 可筛选事件
+100: GET
+101: /api/events/{id}
+102: 事件与变更时间线
+103: POST
+104: /api/events/{id}/ack
+105: 幂等确认，权限校验，事务写入
+106: GET
+107: /api/sync/status
+108: 本地 Outbox 统计和云适配状态
+109: GET
+110: /api/experiments/{id}
+111: 实验元数据和导出引用
+112: 统一错误：400 参数无效；401/403 无权限；404 不存在；409 版本冲突或非法状态转移；503 依赖不可用。具体响应 Schema 由 API Spec 完善。
+113: 9. 数据存储与安全边界
+114: 介质
+115: 权威数据
+116: 注意
+117: JSONL/CSV
+118: 采样、标签、特征、实验清单
+119: 带 trial_id，不作为业务在线主库
+120: SQLite
+121: 事件、事件变更、Outbox
+122: 本地唯一业务写入点
+123: MongoDB 可选
+124: 原开源仓库展示用投影/旧兼容
+125: 不得双主写同一事件
+126: 华为 IoTDA
+127: 设备属性与上传消息
+128: 不等同联系人送达/业务落库
+129: 本地 MQTT 在受控网络使用；生产部署必须追加身份验证、传输安全、设备凭据管理和隐私评估。
+130: 10. 契约测试清单
+131: CT-01 unknown presence 不会转成 false。
+132: CT-02 同一 observation_id 和 seq 不重复入窗口。
+133: CT-03 有人在场+水接触 → 情境与安全提醒并存。
+134: CT-04 快速与周期双路径同事故障只生成一个活动事件。
+135: CT-05 已确认但物理 ACTIVE 保持 OPEN。
+136: CT-06 事件状态和 Outbox 事务要么全部成功，要么全部回滚。
+137: CT-07 断云期间本地事件持久；恢复后按 transition_id 重试。
+138: CT-08 云传输 ACK 不映射为联系人送达。
+139: CT-09 试验回放不触发真实联系人接口。

@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "device_id": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "lifecycle": {
+      "type": "string"
+    },
+    "ack_status": {
+      "type": "string"
+    },
+    "physical_status": {
+      "type": "string"
+    },
+    "escalation_level": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer"
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "device_id",
+    "event_type",
+    "lifecycle",
+    "ack_status",
+    "physical_status",
+    "escalation_level",
+    "version",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SafetyEvent"
+}

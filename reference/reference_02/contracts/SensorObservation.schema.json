@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "observation_id": {
+      "type": "string"
+    },
+    "device_id": {
+      "type": "string"
+    },
+    "sensor_type": {
+      "type": "string"
+    },
+    "boot_id": {
+      "type": "string"
+    },
+    "seq": {
+      "type": "integer"
+    },
+    "uptime_ms": {
+      "type": "integer"
+    },
+    "event_time": {
+      "type": [
+        "string",
+        "number",
+        "integer",
+        "boolean",
+        "object",
+        "array",
+        "null"
+      ]
+    },
+    "received_at": {
+      "type": "string"
+    },
+    "time_basis": {
+      "type": "string"
+    },
+    "value": {
+      "type": "object",
+      "properties": {
+        "present": {
+          "type": "boolean"
+        },
+        "moving": {
+          "type": "boolean"
+        },
+        "still": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "present",
+        "moving",
+        "still"
+      ],
+      "additionalProperties": false
+    },
+    "quality": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "observation_id",
+    "device_id",
+    "sensor_type",
+    "boot_id",
+    "seq",
+    "uptime_ms",
+    "received_at",
+    "time_basis",
+    "value",
+    "quality",
+    "source"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SensorObservation"
+}
