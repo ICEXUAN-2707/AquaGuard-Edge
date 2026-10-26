@@ -1,4 +1,4 @@
 # Preserve reference bytes exactly.
-reference/** -text
+reference/** -text whitespace=cr-at-eol
 *.md text eol=lf
 *.py text eol=lf
