@@ -1,6 +1,10 @@
 # 水知安开发 Issue 与验收计划
 
-本计划为 INFERRED 实施提案，依据 V0.5 Spec 第84–123段、V1.1 §1–8、M1–M8 §7–9 和 `tests/BEHAVIOR_TEST_MATRIX.md`。本轮只创建审计资产，没有实现以下业务 Issue；此处编号是仓库内规划编号，并非已创建的 GitHub Issue 编号。
+> 2026-10-27 契约技术修订更新：I-002 已产生 V1.2 候选规范、`schema_version=1.1` Schema、DTO、七路由模型及正反测试。A/B/C 会签、业务行为、真实 HTTP/SQLite/MQTT/IoTDA 验收仍待完成。开发放行以 `../contracts/CONTRACT_ACCEPTANCE.md` 的 C0–C5 为准；下列原 I-002 文字是初版规划，不代表本次结果。
+
+> 2026-10-26 进度更新：I-001 的自建本地 API/前端基线与候选上游核查已落地；进程级启动测试 3 项通过，前端 `npm ci`/构建通过。I-002 的待审裁决稿见 [CONTRACT_REVIEW_DRAFT.md](../contracts/CONTRACT_REVIEW_DRAFT.md)。以下 D0 制定的 Issue 内容及“D0 已执行命令”段落保留为当时的规划记录。
+
+以下 Issue 卡片是 D0 的实施提案，依据 V0.5 Spec 第84–123段、V1.1 §1–8、M1–M8 §7–9 和 `tests/BEHAVIOR_TEST_MATRIX.md`。当前 I-002 候选合同与测试已新增，其他业务 Issue 仍须按 `CONTRACT_ACCEPTANCE.md` 验收；编号是仓库内规划编号，并非已创建的 GitHub Issue 编号。
 
 ## 执行顺序与依赖
 
@@ -44,7 +48,7 @@ INFERRED：采用里程碑退出条件排期，不预先承诺未经确认的比
 
 ### I-002 P0 契约联合评审与 DTO
 
-主责A/B/C，依赖I-001。先审CONTRACT_COMPLIANCE CC01–05、来源追踪、模块字段差异和错误封装。未经联合裁决不修改reference。评审通过后允许新增`contracts/`、`edge/contracts/`、`tests/contracts/`并记录权威来源与哈希，避免产生两套各自演进合同。输入既有Schema与样例，输出可校验DTO和S01–S12 fixture；成功覆盖三类载荷与null，失败覆盖非法枚举、无时区、伪可信时间、规则分数、越界数值。验收提案：`python -m pytest tests/contracts -q`，同时保留原19项测试。保存review记录、正反fixture和日志；回滚DTO变更及引用，不能单独回滚某一方合同。覆盖CT01/13，依据V1.1 §7。
+主责 A/B/C，依赖 I-001。已形成 V1.2 候选规范、`schema_version=1.1` 的 9 份 Schema/样例、Pydantic DTO、七路由模型和 S01 联合引用样例；覆盖三类载荷、null、非法枚举、无时区、规则分数与越界数值。当前仅完成 C1/C2 静态技术验证。退出 I-002 仍需三方逐项会签 D1–D5、记录文件哈希与旧 1.0 兼容决议、补齐 S01–S12 行为 fixture，并证明实际入口使用统一 DTO；验收命令和证据按 `CONTRACT_ACCEPTANCE.md`。回滚需同步规范、Schema、样例、DTO 与消费者，不得只回退其中一层。覆盖 CT01/13，依据 V1.2 候选 §6。
 
 ### I-003 P0 MQTT 到标准观测
 

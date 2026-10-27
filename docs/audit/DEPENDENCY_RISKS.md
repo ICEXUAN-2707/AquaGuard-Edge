@@ -1,5 +1,7 @@
 # 水知安依赖与协作风险
 
+> 本文保留 D0 当时的审计事实。2026-10-26 后续开发找到了一个高度吻合的上游候选源并核查其提交与许可文件；最新结论见 [UPSTREAM_REVIEW.md](../project/UPSTREAM_REVIEW.md)。
+
 状态等级沿用 REPO_AUDIT。风险优先级和缓解措施均为 INFERRED 建议；事实核查逐条注明 VERIFIED 或 UNVERIFIED。
 
 ## 许可与版本

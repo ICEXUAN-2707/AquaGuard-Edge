@@ -1,0 +1,16 @@
+:root { font-family: Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; color: #153347; background: #f1f7f6; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; }
+.shell { width: min(880px, calc(100% - 40px)); margin: 0 auto; padding: 48px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 700; color: #0b5462; }
+.brand-mark { font-size: 32px; color: #009da4; line-height: 1; }
+.brand-en { margin-left: 8px; font-size: 11px; letter-spacing: .19em; font-weight: 700; color: #57919b; }
+.card { margin-top: 76px; border-radius: 24px; padding: clamp(30px, 6vw, 64px); background: #fff; box-shadow: 0 18px 60px rgba(14, 65, 78, .08); }
+.eyebrow { margin: 0; color: #008d96; letter-spacing: .14em; font-size: 12px; font-weight: 700; }
+h1 { margin: 18px 0; font-size: clamp(32px, 5vw, 48px); letter-spacing: -.04em; }
+.lead { max-width: 620px; color: #58717c; font-size: 16px; line-height: 1.8; }
+.status { display: flex; align-items: center; gap: 12px; margin-top: 38px; padding: 17px 20px; border-radius: 12px; font-size: 15px; font-weight: 600; background: #edf4f4; color: #4b6871; }
+.status-connected { background: #e5f7f1; color: #0a735a; }
+.status-unavailable { background: #fff1e7; color: #ae5520; }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; flex: none; }
+.footer { margin-top: 30px; color: #728991; font-size: 12px; }

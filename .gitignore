@@ -1,4 +1,6 @@
 .venv/
+.venv-app/
+.upstream-review/
 __pycache__/
 .pytest_cache/
 .env
@@ -9,3 +11,4 @@ __pycache__/
 *.sqlite
 *.sqlite3
 node_modules/
+web/dist/

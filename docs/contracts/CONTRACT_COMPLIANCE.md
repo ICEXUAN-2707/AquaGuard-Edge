@@ -1,5 +1,7 @@
 # Contracts V1.1 符合性审计
 
+> 本文记录 2026-10-26 对历史 `schema_version=1.0` 的审计探针，不是当前 `1.1` 候选 Schema 的现状报告。修订及验收状态见 `reference/reference_02/00_Contracts_V1.2_修订候选.md` 与 `CONTRACT_ACCEPTANCE.md`；原探针证据保留用于回归对比。
+
 本报告保留全部冻结资料原样。VERIFIED 表示静态文件事实或实际探针行为；不表示生产实现通过。规范内部冲突需 A/B/C 各一名评审共同裁决，依据 `reference/reference_02/00_Contracts_V1.1_深化规范.md` §7。
 
 ## 阻塞级冲突

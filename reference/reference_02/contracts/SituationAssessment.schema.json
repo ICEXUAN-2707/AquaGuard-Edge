@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "1.1"
     },
     "assessment_id": {
       "type": "string"
@@ -14,34 +14,27 @@
       "type": "string"
     },
     "situation": {
-      "type": "string"
+      "enum": ["IDLE", "ATTENDED_FLOW", "POSSIBLE_UNATTENDED_FLOW", "UNKNOWN"]
     },
     "inference_mode": {
-      "type": "string"
+      "enum": ["rules", "ml", "fallback"]
     },
     "model_version": {
       "type": "string"
     },
     "model_score": {
-      "type": [
-        "string",
-        "number",
-        "integer",
-        "boolean",
-        "object",
-        "array",
-        "null"
-      ]
+      "type": ["number", "null"]
     },
     "data_quality": {
-      "type": "string"
+      "enum": ["VALID", "DEGRADED", "UNAVAILABLE"]
     },
     "reason_codes": {
       "type": "array",
       "items": {
         "type": "string"
       }
-    }
+    },
+    "origin": {"enum": ["hardware", "simulation", "mixed", "unknown"]}
   },
   "required": [
     "schema_version",
@@ -53,9 +46,13 @@
     "model_version",
     "model_score",
     "data_quality",
-    "reason_codes"
+    "reason_codes",
+    "origin"
   ],
   "additionalProperties": false,
+  "allOf": [
+    {"if": {"properties": {"inference_mode": {"const": "rules"}}}, "then": {"properties": {"model_score": {"type": "null"}}}}
+  ],
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "SituationAssessment"
 }

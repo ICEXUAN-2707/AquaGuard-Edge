@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "1.1"
     },
     "signal_id": {
       "type": "string"
@@ -14,20 +14,21 @@
       "type": "string"
     },
     "observed_at": {
-      "type": "string"
+      "type": "string", "format": "date-time", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
     },
     "value": {
       "type": "boolean"
     },
     "quality": {
-      "type": "string"
+      "enum": ["VALID", "INVALID", "UNKNOWN", "STALE"]
     },
     "observation_refs": {
       "type": "array",
       "items": {
-        "type": "string"
-      }
-    }
+        "type": "string", "minLength": 1
+      }, "minItems": 1, "uniqueItems": true
+    },
+    "origin": {"enum": ["hardware", "simulation", "mixed", "unknown"]}
   },
   "required": [
     "schema_version",
@@ -37,7 +38,8 @@
     "observed_at",
     "value",
     "quality",
-    "observation_refs"
+    "observation_refs",
+    "origin"
   ],
   "additionalProperties": false,
   "$schema": "https://json-schema.org/draft/2020-12/schema",

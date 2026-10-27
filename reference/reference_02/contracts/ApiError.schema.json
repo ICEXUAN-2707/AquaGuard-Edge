@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "code": {
-      "type": "string"
+      "enum": ["BAD_REQUEST", "UNAUTHORIZED", "NOT_FOUND", "SERVICE_UNAVAILABLE", "VERSION_CONFLICT", "IDEMPOTENCY_CONFLICT"]
     },
     "message": {
       "type": "string"
@@ -11,20 +11,7 @@
       "type": "string"
     },
     "details": {
-      "type": "object",
-      "properties": {
-        "expected_version": {
-          "type": "integer"
-        },
-        "actual_version": {
-          "type": "integer"
-        }
-      },
-      "required": [
-        "expected_version",
-        "actual_version"
-      ],
-      "additionalProperties": false
+      "type": "object"
     }
   },
   "required": [
@@ -34,6 +21,20 @@
     "details"
   ],
   "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {"properties": {"code": {"const": "VERSION_CONFLICT"}}},
+      "then": {"properties": {"details": {"$ref": "#/$defs/versionDetails"}}},
+      "else": {"properties": {"details": {"maxProperties": 0}}}
+    }
+  ],
+  "$defs": {
+    "versionDetails": {
+      "type": "object",
+      "properties": {"expected_version": {"type": "integer", "minimum": 0}, "actual_version": {"type": "integer", "minimum": 0}},
+      "required": ["expected_version", "actual_version"], "additionalProperties": false
+    }
+  },
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ApiError"
 }

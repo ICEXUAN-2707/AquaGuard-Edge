@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "1.1"
     },
     "window_id": {
       "type": "string"
@@ -11,13 +11,13 @@
       "type": "string"
     },
     "window_start": {
-      "type": "string"
+      "type": "string", "format": "date-time", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
     },
     "window_end": {
-      "type": "string"
+      "type": "string", "format": "date-time", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
     },
     "published_at": {
-      "type": "string"
+      "type": "string", "format": "date-time", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
     },
     "alignment_config_version": {
       "type": "string"
@@ -25,32 +25,14 @@
     "sensor_summary": {
       "type": "object",
       "properties": {
-        "presence": {
-          "type": "object",
-          "properties": {
-            "state": {
-              "type": "string"
-            },
-            "age_sec": {
-              "type": "integer"
-            },
-            "coverage_ratio": {
-              "type": "number"
-            }
-          },
-          "required": [
-            "state",
-            "age_sec",
-            "coverage_ratio"
-          ],
-          "additionalProperties": false
-        }
+        "flow": {"$ref": "#/$defs/flowSummary"},
+        "water": {"$ref": "#/$defs/waterSummary"},
+        "presence": {"$ref": "#/$defs/presenceSummary"}
       },
-      "required": [
-        "presence"
-      ],
+      "required": ["flow", "water", "presence"],
       "additionalProperties": false
     },
+    "origin": {"enum": ["hardware", "simulation", "mixed", "unknown"]},
     "quality_flags": {
       "type": "array",
       "items": {
@@ -73,10 +55,28 @@
     "published_at",
     "alignment_config_version",
     "sensor_summary",
+    "origin",
     "quality_flags",
     "source_observation_ids"
   ],
   "additionalProperties": false,
+  "$defs": {
+    "flowSummary": {
+      "type": "object",
+      "properties": {"state": {"enum": ["active", "inactive", "unknown"]}, "age_sec": {"type": ["number", "null"], "minimum": 0}, "coverage_ratio": {"type": "number", "minimum": 0, "maximum": 1}},
+      "required": ["state", "age_sec", "coverage_ratio"], "additionalProperties": false
+    },
+    "waterSummary": {
+      "type": "object",
+      "properties": {"state": {"enum": ["wet", "dry", "unknown"]}, "age_sec": {"type": ["number", "null"], "minimum": 0}, "coverage_ratio": {"type": "number", "minimum": 0, "maximum": 1}},
+      "required": ["state", "age_sec", "coverage_ratio"], "additionalProperties": false
+    },
+    "presenceSummary": {
+      "type": "object",
+      "properties": {"state": {"enum": ["present", "absent", "unknown"]}, "age_sec": {"type": ["number", "null"], "minimum": 0}, "coverage_ratio": {"type": "number", "minimum": 0, "maximum": 1}},
+      "required": ["state", "age_sec", "coverage_ratio"], "additionalProperties": false
+    }
+  },
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "AlignedWindow"
 }

@@ -1,0 +1,36 @@
+{
+  "scenario_id": "S01_SIMULATED_WATER_CONTACT",
+  "purpose": "Additional source observations for the joined examples.json objects; feature numerics are illustrative, not a calculation oracle.",
+  "additional_observations": [
+    {
+      "schema_version": "1.1",
+      "observation_id": "obs-flow-1",
+      "device_id": "home01",
+      "sensor_type": "flow",
+      "boot_id": "boot1",
+      "seq": 1,
+      "uptime_ms": 1000,
+      "event_time": null,
+      "received_at": "2026-10-26T14:00:28+08:00",
+      "time_basis": "RECEIVED_FALLBACK",
+      "value": {"pulse_count": 1, "interval_ms": 1000, "estimated_lpm": 0.2, "calibration_id": "cal-v1"},
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "obs-presence-1",
+      "device_id": "home01",
+      "sensor_type": "presence",
+      "boot_id": "boot1",
+      "seq": 1,
+      "uptime_ms": 1000,
+      "event_time": null,
+      "received_at": "2026-10-26T14:00:28+08:00",
+      "time_basis": "RECEIVED_FALLBACK",
+      "value": {"present": true, "moving": false, "still": true},
+      "quality": "valid",
+      "source": "simulation"
+    }
+  ]
+}

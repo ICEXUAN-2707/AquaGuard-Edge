@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "1.1"
     },
     "window_id": {
       "type": "string"
@@ -17,40 +17,40 @@
       "type": "object",
       "properties": {
         "flow_mean_lpm": {
-          "type": "number"
+          "type": ["number", "null"], "minimum": 0
         },
         "flow_max_lpm": {
-          "type": "number"
+          "type": ["number", "null"], "minimum": 0
         },
         "flow_active_ratio": {
-          "type": "number"
+          "type": ["number", "null"], "minimum": 0, "maximum": 1
         },
         "flow_streak_sec": {
-          "type": "number"
+          "type": ["number", "null"], "minimum": 0
         },
         "flow_change_count": {
-          "type": "integer"
+          "type": ["integer", "null"], "minimum": 0
         },
         "water_contact": {
-          "type": "boolean"
+          "type": ["boolean", "null"]
         },
         "water_contact_sec": {
-          "type": "number"
+          "type": ["number", "null"], "minimum": 0
         },
         "presence_state": {
-          "type": "string"
+          "enum": ["present", "absent", "unknown"]
         },
         "presence_occupied_ratio": {
-          "type": "number"
+          "type": ["number", "null"], "minimum": 0, "maximum": 1
         },
         "presence_transition_count": {
-          "type": "integer"
+          "type": ["integer", "null"], "minimum": 0
         },
         "absence_after_flow_sec": {
-          "type": "number"
+          "type": ["number", "null"], "minimum": 0
         },
         "data_coverage_ratio": {
-          "type": "number"
+          "type": "number", "minimum": 0, "maximum": 1
         }
       },
       "required": [
@@ -90,8 +90,9 @@
       "additionalProperties": false
     },
     "state_checkpoint_ref": {
-      "type": "string"
-    }
+      "type": "string", "minLength": 1
+    },
+    "origin": {"enum": ["hardware", "simulation", "mixed", "unknown"]}
   },
   "required": [
     "schema_version",
@@ -101,6 +102,7 @@
     "features",
     "missing_mask",
     "state_checkpoint_ref"
+    ,"origin"
   ],
   "additionalProperties": false,
   "$schema": "https://json-schema.org/draft/2020-12/schema",
