@@ -9,9 +9,10 @@
 |项目入口|[README](../README.md)、[开发路线](project/DEVELOPMENT_PLAN.md)|本地 API/前端运行方法、Issue 顺序；I-001 基线已建立。|
 |审计基线|[仓库审计](audit/REPO_AUDIT.md)、[能力差距](audit/GAP_ANALYSIS.md)、[依赖与协作风险](audit/DEPENDENCY_RISKS.md)|原始资料、实现差距、硬件/云端缺口。作为现状依据；不是任务实施说明。|
 |契约评审|[当前状态与双线对接](contracts/STATUS.md)、[V1.2 修订候选](../reference/reference_02/00_Contracts_V1.2_修订候选.md)、[验收门槛](contracts/CONTRACT_ACCEPTANCE.md)、[联合评审报告](contracts/CONTRACT_JOINT_REVIEW_REPORT.md)、[历史合规探针](contracts/CONTRACT_COMPLIANCE.md)|候选规范及机器文件已修订，静态测试通过；D1–D5 仍待 A/B/C 会签。评审报告和早期建议稿是问题与决策背景，不代表正式批准。|
-|Spike 派工|[Spike 总则与 A 任务单](spikes/A_任务单.md)、[B 任务单](spikes/B_任务单.md)、[组长分发话术](spikes/组长分发话术.md)|零基础成员的执行说明、验收要求和可复制消息。|
+|Spike 派工|[Spike 总则与 A 任务单](spikes/A_任务单.md)、[B 任务单](spikes/B_任务单.md)、[SP-06 编码计划](spikes/SP-06_编码计划.md)、[组长分发话术](spikes/组长分发话术.md)|零基础成员的执行说明、SP-06 阶段计划、验收要求和可复制消息。|
+|C 部分实操|[SP-06 原型说明](../spikes/SP-06/README.md)、[人工测试操作指南](../spikes/SP-06/MANUAL_TEST_GUIDE.md)、[测试数据集](../spikes/SP-06/data/manual_cases.json)、[进度报告](../spikes/SP-06/REPORT.md)|运行 SQLite/Mock 原型、按步骤人工检查状态，并记录证据。|
 |Spike 管理材料|[团队分工手册](spikes/Technical_Spike_团队分工手册.docx)、[Issue 模板](spikes/templates/SPIKE_ISSUE_TEMPLATE.md)、[报告模板](spikes/templates/SPIKE_REPORT_TEMPLATE.md)、[任务跟踪表](spikes/SPIKE_TRACKER.csv)|六项 Spike 的原始分工和记录工具。原手册早于 SP-06 由 C 负责的最新决定；以任务单和跟踪表为准。|
-|技术选型与云接入|[I-001 上游与运行栈](project/UPSTREAM_REVIEW.md)、[IoTDA 集成计划](integration/IOTDA_INTEGRATION_PLAN.md)|候选上游许可结论、已验证运行栈、真实云端前置条件。SP-05/06 由 C 负责。|
+|技术选型与云接入|[I-001 上游与运行栈](project/UPSTREAM_REVIEW.md)、[IoTDA 集成计划](integration/IOTDA_INTEGRATION_PLAN.md)、[IoTDA 人工对接操作指南](integration/IoTDA_人工对接操作指南.md)|候选上游许可结论、已验证运行栈、控制台操作步骤和真实云端前置条件。SP-05/06 由 C 负责。|
 
 ## 两条线当前要做什么
 

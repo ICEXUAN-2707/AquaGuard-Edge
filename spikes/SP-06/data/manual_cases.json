@@ -1,0 +1,103 @@
+{
+  "open": {
+    "event_id": "manual-event-1",
+    "expected_version": 0,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-open-1",
+    "transition_id": "manual-transition-1",
+    "message_id": "manual-message-1",
+    "payload": {"action": "open", "source": "simulation", "trial": "prototype_only"}
+  },
+  "replay_open": {
+    "event_id": "manual-event-1",
+    "expected_version": 0,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-open-1",
+    "transition_id": "ignored-on-replay",
+    "message_id": "ignored-on-replay",
+    "payload": {"action": "open", "source": "simulation", "trial": "prototype_only"}
+  },
+  "same_key_different_payload": {
+    "event_id": "manual-event-1",
+    "expected_version": 1,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-open-1",
+    "transition_id": "manual-transition-conflict",
+    "message_id": "manual-message-conflict",
+    "payload": {"action": "close", "source": "simulation", "trial": "prototype_only"}
+  },
+  "same_key_different_state": {
+    "event_id": "manual-event-1",
+    "expected_version": 0,
+    "new_state": "CLOSED",
+    "idempotency_key": "manual-open-1",
+    "transition_id": "manual-transition-state-conflict",
+    "message_id": "manual-message-state-conflict",
+    "payload": {"action": "open", "source": "simulation", "trial": "prototype_only"}
+  },
+  "stale_version": {
+    "event_id": "manual-event-1",
+    "expected_version": 0,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-stale-1",
+    "transition_id": "manual-transition-stale",
+    "message_id": "manual-message-stale",
+    "payload": {"action": "stale", "trial": "prototype_only"}
+  },
+  "update": {
+    "event_id": "manual-event-1",
+    "expected_version": 1,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-update-1",
+    "transition_id": "manual-transition-2",
+    "message_id": "manual-message-2",
+    "payload": {"action": "record_update", "trial": "prototype_only"}
+  },
+  "retry_event": {
+    "event_id": "manual-event-retry",
+    "expected_version": 0,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-retry-1",
+    "transition_id": "manual-transition-retry",
+    "message_id": "manual-message-retry",
+    "payload": {"action": "open", "trial": "prototype_only"}
+  },
+  "restart_event": {
+    "event_id": "manual-event-restart",
+    "expected_version": 0,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-restart-1",
+    "transition_id": "manual-transition-restart",
+    "message_id": "manual-message-restart",
+    "payload": {"action": "open", "trial": "prototype_only"}
+  },
+  "failed_event": {
+    "event_id": "manual-event-failed",
+    "expected_version": 0,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-failed-1",
+    "transition_id": "manual-transition-failed",
+    "message_id": "manual-message-failed",
+    "payload": {"action": "open", "trial": "prototype_only"}
+  },
+  "rollback_new_event": {
+    "event_id": "manual-event-rollback",
+    "expected_version": 0,
+    "new_state": "OPEN",
+    "idempotency_key": "manual-rollback-1",
+    "transition_id": "manual-transition-rollback",
+    "message_id": "manual-message-rollback",
+    "payload": {"action": "open", "trial": "prototype_only"},
+    "fault_at": "outbox"
+  },
+  "rollback_existing_event": {
+    "event_id": "manual-event-1",
+    "expected_version": 1,
+    "new_state": "CLOSED",
+    "idempotency_key": "manual-rollback-update-1",
+    "transition_id": "manual-transition-rollback-update",
+    "message_id": "manual-message-rollback-update",
+    "payload": {"action": "rollback_update", "trial": "prototype_only"},
+    "fault_at": "outbox"
+  }
+}
