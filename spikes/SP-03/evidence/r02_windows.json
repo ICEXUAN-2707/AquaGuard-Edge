@@ -1,0 +1,43 @@
+{
+  "config": {
+    "width": 30,
+    "lateness": 2,
+    "ttl": 10,
+    "flow_threshold": 0.1
+  },
+  "windows": [
+    {
+      "schema_version": "1.1",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r02-471357e59a8e",
+      "device_id": "demo",
+      "window_start": "2026-10-29T00:00:00Z",
+      "window_end": "2026-10-29T00:00:30Z",
+      "published_at": "2026-10-29T00:00:32Z",
+      "alignment_config_version": "sp03-r02-471357e59a8e",
+      "sensor_summary": {
+        "flow": {
+          "state": "unknown",
+          "age_sec": null,
+          "coverage_ratio": 0.0
+        },
+        "water": {
+          "state": "unknown",
+          "age_sec": null,
+          "coverage_ratio": 0.16666666666666666
+        },
+        "presence": {
+          "state": "unknown",
+          "age_sec": null,
+          "coverage_ratio": 0.0
+        }
+      },
+      "origin": "simulation",
+      "quality_flags": [],
+      "source_observation_ids": [
+        "water-a-1",
+        "water-a-2"
+      ]
+    }
+  ],
+  "audit": []
+}
