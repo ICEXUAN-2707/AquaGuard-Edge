@@ -1,0 +1,69 @@
+{
+  "files": {
+    "sent": "C:\\Users\\38571\\Desktop\\竞赛\\交付\\spikes\\SP-02\\evidence\\sent_shuffle.jsonl",
+    "received": "C:\\Users\\38571\\Desktop\\竞赛\\交付\\spikes\\SP-02\\evidence\\raw_shuffle.jsonl"
+  },
+  "sent_count": 100,
+  "sent_unique_observations": 100,
+  "sent_buffered": 0,
+  "duplicate_injections_declared": 0,
+  "received_count": 100,
+  "received_parsed": 100,
+  "non_observation_messages": 0,
+  "parse_errors": 0,
+  "missing": 0,
+  "missing_ids_sample": [],
+  "unexpected": 0,
+  "duplicate_by_observation_id": 0,
+  "duplicate_excess_messages": 0,
+  "duplicate_by_d1_key": 0,
+  "order_inversions": 42,
+  "order_inversion_examples": [
+    {
+      "boot_id": "5fd6",
+      "from_seq": 7,
+      "to_seq": 1
+    },
+    {
+      "boot_id": "5fd6",
+      "from_seq": 8,
+      "to_seq": 5
+    },
+    {
+      "boot_id": "5fd6",
+      "from_seq": 6,
+      "to_seq": 2
+    },
+    {
+      "boot_id": "5fd6",
+      "from_seq": 10,
+      "to_seq": 4
+    },
+    {
+      "boot_id": "5fd6",
+      "from_seq": 20,
+      "to_seq": 15
+    }
+  ],
+  "latency_ms": {
+    "n": 100,
+    "min": 0.0,
+    "median": 4.0,
+    "max": 8.0
+  },
+  "boot_segments": [
+    {
+      "boot_id": "5fd6",
+      "received": 100,
+      "seq_min": 1,
+      "seq_max": 100,
+      "first_seq": 7,
+      "last_seq": 97
+    }
+  ],
+  "sensor_type_counts": {
+    "flow": 34,
+    "presence": 33,
+    "water": 33
+  }
+}

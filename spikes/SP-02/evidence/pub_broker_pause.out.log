@@ -1,0 +1,32 @@
+[pub] 已连接 127.0.0.1:18830
+[pub] boot_id=d336 场景=normal 故障模式=none 条数=60
+[pub] 连接断开 Unspecified error（之后的消息进缓冲）
+[pub] 离线，缓冲 water seq=29
+[pub] 离线，缓冲 presence seq=30
+[pub] 离线，缓冲 flow seq=31
+[pub] 离线，缓冲 water seq=32
+[pub] 离线，缓冲 presence seq=33
+[pub] 离线，缓冲 flow seq=34
+[pub] 离线，缓冲 water seq=35
+[pub] 离线，缓冲 presence seq=36
+[pub] 离线，缓冲 flow seq=37
+[pub] 离线，缓冲 water seq=38
+[pub] 离线，缓冲 presence seq=39
+[pub] 离线，缓冲 flow seq=40
+[pub] 离线，缓冲 water seq=41
+[pub] 离线，缓冲 presence seq=42
+[pub] 离线，缓冲 flow seq=43
+[pub] 离线，缓冲 water seq=44
+[pub] 离线，缓冲 presence seq=45
+[pub] 离线，缓冲 flow seq=46
+[pub] 离线，缓冲 water seq=47
+[pub] 离线，缓冲 presence seq=48
+[pub] 离线，缓冲 flow seq=49
+[pub] 离线，缓冲 water seq=50
+[pub] 离线，缓冲 presence seq=51
+[pub] 离线，缓冲 flow seq=52
+[pub] 离线，缓冲 water seq=53
+[pub] 已连接 127.0.0.1:18830
+[pub] 开始补发缓冲 25 条
+[pub] 连接断开 Normal disconnection（之后的消息进缓冲）
+[pub] 完成：发出记录 60 条 -> C:\Users\38571\Desktop\竞赛\交付\spikes\SP-02\evidence\sent_broker_pause.jsonl

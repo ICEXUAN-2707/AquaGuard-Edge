@@ -1,0 +1,66 @@
+{
+  "spike": "SP-02",
+  "purpose": "验证 MQTT 最小管道在重复、乱序、断连、重启下能否说明数据来自哪台设备、何时产生、是否重复",
+  "assumptions_to_confirm": [
+    {
+      "id": "A-01",
+      "item": "主题命名",
+      "value": "aquaguard/<device_id>/observation 与 aquaguard/<device_id>/status",
+      "status": "待组长/契约线确认",
+      "impact": "只改 --topic-prefix 与订阅通配符即可切换"
+    },
+    {
+      "id": "A-02",
+      "item": "seq 语义",
+      "value": "同一 boot_id 内、所有 sensor_type 共用一条递增序列",
+      "status": "待确认",
+      "impact": "若要求每 sensor_type 各自独立 seq，需改 publisher 计数方式"
+    },
+    {
+      "id": "A-03",
+      "item": "time_basis 其余枚举",
+      "value": "本次模拟只用 RECEIVED_FALLBACK（event_time=null）",
+      "status": "另两个时间基准枚举名待确认",
+      "impact": "确认后才能在硬件上使用真实设备时钟"
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "baseline",
+      "fault": "none",
+      "count": 100,
+      "rate": 20,
+      "expected": "发出=收到，无重复、无跳号、延迟稳定"
+    },
+    {
+      "name": "dup",
+      "fault": "dup",
+      "count": 100,
+      "rate": 20,
+      "expected": "多出 5 条 observation_id 重复的消息，统计脚本能数出来"
+    },
+    {
+      "name": "shuffle",
+      "fault": "shuffle",
+      "count": 100,
+      "rate": 20,
+      "shuffle_window": 10,
+      "expected": "到达顺序与 seq 顺序不一致，统计脚本能数出乱序次数"
+    },
+    {
+      "name": "restart",
+      "fault": "restart",
+      "count": 100,
+      "rate": 20,
+      "expected": "出现两个 boot_id 段，第二段 seq 从 1 开始，且不被误判为同一轮重复"
+    },
+    {
+      "name": "broker_pause",
+      "fault": "none",
+      "count": 60,
+      "rate": 5,
+      "expected": "Broker 停机期间发布端进入缓冲；恢复后补发；统计能说明丢了多少/补了多少"
+    }
+  ],
+  "note": "全部数据 source=simulation、time_basis=RECEIVED_FALLBACK、event_time=null，不得冒充真实硬件时钟精度"
+}

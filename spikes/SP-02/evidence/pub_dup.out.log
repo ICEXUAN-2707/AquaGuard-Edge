@@ -1,0 +1,5 @@
+[pub] 已连接 127.0.0.1:18830
+[pub] boot_id=f981 场景=normal 故障模式=dup 条数=100
+[pub] 注入重复：重发 5 条（observation_id 与 seq 完全相同）
+[pub] 连接断开 Normal disconnection（之后的消息进缓冲）
+[pub] 完成：发出记录 105 条 -> C:\Users\38571\Desktop\竞赛\交付\spikes\SP-02\evidence\sent_dup.jsonl

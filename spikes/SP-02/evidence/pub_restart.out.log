@@ -1,0 +1,8 @@
+[pub] 已连接 127.0.0.1:18830
+[pub] boot_id=8fd2 场景=normal 故障模式=restart 条数=100
+[pub] === 模拟发布端重启：断开、换 boot_id、seq 归零 ===
+[pub] 连接断开 Normal disconnection（之后的消息进缓冲）
+[pub] 已连接 127.0.0.1:18830
+[pub] 新 boot_id=9c31
+[pub] 连接断开 Normal disconnection（之后的消息进缓冲）
+[pub] 完成：发出记录 100 条 -> C:\Users\38571\Desktop\竞赛\交付\spikes\SP-02\evidence\sent_restart.jsonl
