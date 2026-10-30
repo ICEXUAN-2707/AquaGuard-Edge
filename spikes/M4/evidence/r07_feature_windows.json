@@ -1,0 +1,56 @@
+[
+  {
+    "schema_version": "1.1",
+    "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+    "device_id": "demo",
+    "feature_version": "m4-r06-v1",
+    "features": {
+      "flow_mean_lpm": 6.0,
+      "flow_max_lpm": 6.0,
+      "flow_active_ratio": 1.0,
+      "flow_streak_sec": 35.0,
+      "flow_change_count": 0,
+      "water_contact": true,
+      "water_contact_sec": 0.0,
+      "presence_state": "present",
+      "presence_occupied_ratio": 1.0,
+      "presence_transition_count": 0,
+      "absence_after_flow_sec": 0.0,
+      "data_coverage_ratio": 0.9444444444444445
+    },
+    "missing_mask": {
+      "flow": false,
+      "water": false,
+      "presence": false
+    },
+    "state_checkpoint_ref": "D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\spikes\\M4\\evidence\\checkpoints\\80e1b23150ef14fa20dec1cd9e5c24a37475dd58064933ba351ba870666d41d5.json",
+    "origin": "simulation"
+  },
+  {
+    "schema_version": "1.1",
+    "window_id": "demo:2026-10-29T00:00:35+00:00:sp03-r05-v1-f5dfabf0c6d4",
+    "device_id": "demo",
+    "feature_version": "m4-r06-v1",
+    "features": {
+      "flow_mean_lpm": 6.0,
+      "flow_max_lpm": 6.0,
+      "flow_active_ratio": 1.0,
+      "flow_streak_sec": null,
+      "flow_change_count": 0,
+      "water_contact": true,
+      "water_contact_sec": 5.0,
+      "presence_state": "present",
+      "presence_occupied_ratio": 1.0,
+      "presence_transition_count": 0,
+      "absence_after_flow_sec": null,
+      "data_coverage_ratio": 0.888888888888889
+    },
+    "missing_mask": {
+      "flow": false,
+      "water": false,
+      "presence": false
+    },
+    "state_checkpoint_ref": "D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\spikes\\M4\\evidence\\checkpoints\\d54d7f0b97f487e77ee75404693381a37976f07ce4d4747d8e91df3093016308.json",
+    "origin": "simulation"
+  }
+]
