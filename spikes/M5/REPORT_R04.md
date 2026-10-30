@@ -1,0 +1,25 @@
+﻿# M5-R04｜端到端矩阵与配置修复
+
+日期：2026-10-29。synthetic / prototype_only。M5整体PARTIAL。
+
+## 本轮内容
+新增test_matrix.py，从实际原始观测经M3、M4快照与M5完整计算，检查全缺失、仅flow缺失、presence缺失、water缺失、无流水但其他源缺失和证据完整六种组合；逐项精确核对情境、质量、排序后的原因码及来源。
+
+## Review发现与修复
+配置入口此前只校验数字，未知policy和额外字段会被接受却未改变实际行为，导致误以为配置生效。已严格核对配置键集合，拒绝未支持的evaluation_policy/flow_threshold_policy、空版本、字符串数值、布尔阈值、越界比例及非有限值。
+
+## 交叉检验
+- 缺失矩阵用手写情境/质量/原因预期，不从引擎生成预期。
+- 同场景分别wet/dry，四种情境输出不随water改变。
+- 5种实际离开时长×5/10/15三阈值共15个管线结果，以独立duration>=threshold参考核对；正式默认仍为10秒，对照配置不改变批准默认值。
+- 专项独立运行与全模块回归日志：evidence/r04_isolated_tests.txt、r04_tests.txt。实际结果以日志为准。
+
+运行：
+```powershell
+.\.venv-app\Scripts\python.exe -m pytest spikes/M5/tests/test_matrix.py -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/M5/tests spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+```
+
+## 限制与下一步
+未完成真实trial指标、基线比较、全部时钟/boot故障矩阵或独立Reviewer验收。新配置校验是允许集合与范围检查，不证明所有业务组合合理，例如极端宽松门槛仍只适合实验。
+下一轮对照即时与10秒时序规则，报告误触发/拒判和阈值影响；模拟期只讨论构造场景一致性，不声称真实家庭准确率。随后补恢复一致与最终阶段review。

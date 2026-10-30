@@ -1,0 +1,34 @@
+[
+  {
+    "schema_version": "1.1",
+    "assessment_id": "6f898e94e9c240d060bf9f6cf66fca391165b4148fb7259b509519e96ed17377",
+    "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+    "device_id": "demo",
+    "situation": "ATTENDED_FLOW",
+    "inference_mode": "rules",
+    "model_version": "m5-r03-v1:4a349b2956d52486",
+    "model_score": null,
+    "data_quality": "DEGRADED",
+    "reason_codes": [
+      "PRESENCE_DETECTED",
+      "PRESENCE_EVIDENCE_DEGRADED"
+    ],
+    "origin": "simulation"
+  },
+  {
+    "schema_version": "1.1",
+    "assessment_id": "5d0448a335de2ea70076f8e8eecec9ec0e0df2e86287ca8d1830da6a77a3f093",
+    "window_id": "demo:2026-10-29T00:00:35+00:00:sp03-r05-v1-f5dfabf0c6d4",
+    "device_id": "demo",
+    "situation": "UNKNOWN",
+    "inference_mode": "rules",
+    "model_version": "m5-r03-v1:4a349b2956d52486",
+    "model_score": null,
+    "data_quality": "DEGRADED",
+    "reason_codes": [
+      "FLOW_UNKNOWN",
+      "PRESENCE_EVIDENCE_DEGRADED"
+    ],
+    "origin": "simulation"
+  }
+]

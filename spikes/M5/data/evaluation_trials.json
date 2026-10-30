@@ -1,0 +1,10 @@
+﻿[
+{"trial_id":"synthetic-idle","operation":"全程停止流水","candidate_target":false,"parameters":{"idle":true}},
+{"trial_id":"synthetic-attended","operation":"全程检出人员且流水","candidate_target":false,"parameters":{"attended":true}},
+{"trial_id":"synthetic-transient5","operation":"短暂离开5秒后将返回，观察窗结束于返回前","candidate_target":false,"parameters":{"leave":25}},
+{"trial_id":"synthetic-transient9_9","operation":"短暂离开9.9秒后将返回，观察窗结束于返回前","candidate_target":false,"parameters":{"leave":20.1}},
+{"trial_id":"synthetic-left10","operation":"操作者离开且持续流水，窗尾已10秒","candidate_target":true,"parameters":{"leave":20}},
+{"trial_id":"synthetic-left20","operation":"操作者离开且持续流水，窗尾已20秒","candidate_target":true,"parameters":{"leave":10}},
+{"trial_id":"synthetic-missing","operation":"操作者离开但presence传感器断流","candidate_target":true,"parameters":{"missing_presence":true}},
+{"trial_id":"synthetic-hidden-person","operation":"人员实际静止在场，但传感器表现与离开20秒完全相同","candidate_target":false,"parameters":{"leave":10}}
+]

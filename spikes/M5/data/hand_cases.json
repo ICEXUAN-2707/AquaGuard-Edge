@@ -1,0 +1,17 @@
+﻿[
+{"name":"all_missing","flow":"unknown","presence":"unknown","flow_coverage":0,"presence_coverage":0,"absence_sec":null,"idle_sec":null,"expected":"UNKNOWN","reason":"FLOW_UNKNOWN"},
+{"name":"flow_missing","flow":"unknown","presence":"present","flow_coverage":0,"presence_coverage":1,"absence_sec":null,"idle_sec":null,"expected":"UNKNOWN","reason":"FLOW_UNKNOWN"},
+{"name":"presence_missing","flow":"active","presence":"unknown","flow_coverage":1,"presence_coverage":0,"absence_sec":null,"idle_sec":0,"expected":"UNKNOWN","reason":"PRESENCE_UNKNOWN"},
+{"name":"idle_confirmed","flow":"inactive","presence":"unknown","flow_coverage":1,"presence_coverage":0,"absence_sec":null,"idle_sec":5,"expected":"IDLE","reason":"IDLE_CONFIRMED"},
+{"name":"idle_too_short","flow":"inactive","presence":"present","flow_coverage":1,"presence_coverage":1,"absence_sec":0,"idle_sec":4.9,"expected":"UNKNOWN","reason":"IDLE_NOT_CONFIRMED"},
+{"name":"attended","flow":"active","presence":"present","flow_coverage":1,"presence_coverage":1,"absence_sec":0,"idle_sec":0,"expected":"ATTENDED_FLOW","reason":"PRESENCE_DETECTED"},
+{"name":"absent_9_9","flow":"active","presence":"absent","flow_coverage":1,"presence_coverage":1,"absence_sec":9.9,"idle_sec":0,"expected":"UNKNOWN","reason":"DURATION_NOT_REACHED"},
+{"name":"absent_exact_10","flow":"active","presence":"absent","flow_coverage":1,"presence_coverage":1,"absence_sec":10,"idle_sec":0,"expected":"POSSIBLE_UNATTENDED_FLOW","reason":"UNATTENDED_DURATION_REACHED"},
+{"name":"absent_over_10","flow":"active","presence":"absent","flow_coverage":1,"presence_coverage":1,"absence_sec":20,"idle_sec":0,"expected":"POSSIBLE_UNATTENDED_FLOW","reason":"UNATTENDED_DURATION_REACHED"},
+{"name":"absent_duration_unknown","flow":"active","presence":"absent","flow_coverage":1,"presence_coverage":1,"absence_sec":null,"idle_sec":0,"expected":"UNKNOWN","reason":"DURATION_NOT_REACHED"},
+{"name":"flow_coverage_below","flow":"active","presence":"absent","flow_coverage":0.79,"presence_coverage":1,"absence_sec":10,"idle_sec":0,"expected":"UNKNOWN","reason":"FLOW_COVERAGE_LOW"},
+{"name":"presence_coverage_below","flow":"active","presence":"present","flow_coverage":1,"presence_coverage":0.79,"absence_sec":0,"idle_sec":0,"expected":"UNKNOWN","reason":"PRESENCE_COVERAGE_LOW"},
+{"name":"coverage_exact","flow":"active","presence":"absent","flow_coverage":0.8,"presence_coverage":0.8,"absence_sec":10,"idle_sec":0,"expected":"POSSIBLE_UNATTENDED_FLOW","reason":"UNATTENDED_DURATION_REACHED"},
+{"name":"wet_attended","flow":"active","presence":"present","flow_coverage":1,"presence_coverage":1,"absence_sec":0,"idle_sec":0,"water":"wet","expected":"ATTENDED_FLOW","reason":"PRESENCE_DETECTED"},
+{"name":"idle_evidence_missing","flow":"inactive","presence":"present","flow_coverage":1,"presence_coverage":1,"absence_sec":0,"idle_sec":null,"expected":"UNKNOWN","reason":"IDLE_NOT_CONFIRMED"}
+]
