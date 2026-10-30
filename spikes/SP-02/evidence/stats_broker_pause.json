@@ -1,0 +1,43 @@
+{
+  "files": {
+    "sent": "C:\\Users\\38571\\Desktop\\竞赛\\交付\\spikes\\SP-02\\evidence\\sent_broker_pause.jsonl",
+    "received": "C:\\Users\\38571\\Desktop\\竞赛\\交付\\spikes\\SP-02\\evidence\\raw_broker_pause.jsonl"
+  },
+  "sent_count": 60,
+  "sent_unique_observations": 60,
+  "sent_buffered": 25,
+  "duplicate_injections_declared": 0,
+  "received_count": 60,
+  "received_parsed": 60,
+  "non_observation_messages": 0,
+  "parse_errors": 0,
+  "missing": 0,
+  "missing_ids_sample": [],
+  "unexpected": 0,
+  "duplicate_by_observation_id": 0,
+  "duplicate_excess_messages": 0,
+  "duplicate_by_d1_key": 0,
+  "order_inversions": 0,
+  "order_inversion_examples": [],
+  "latency_ms": {
+    "n": 60,
+    "min": 0.0,
+    "median": 1.0,
+    "max": 19.0
+  },
+  "boot_segments": [
+    {
+      "boot_id": "d336",
+      "received": 60,
+      "seq_min": 1,
+      "seq_max": 60,
+      "first_seq": 1,
+      "last_seq": 60
+    }
+  ],
+  "sensor_type_counts": {
+    "flow": 20,
+    "water": 20,
+    "presence": 20
+  }
+}

@@ -1,0 +1,9 @@
+﻿recorded_at = 2026-10-30T12:38:22.5805865+08:00
+os = Microsoft Windows 11 家庭版 中文版
+python = Python 3.15.2
+python_path = C:\Users\38571\AppData\Local\Microsoft\WindowsApps\python.exe
+node = v24.21.0
+broker = aedes 0.51.3 via node broker.js (NOT mosquitto, no admin rights on this host)
+broker_port = 18830
+topic_prefix = aquaguard
+paho_mqtt = 2.1.0
