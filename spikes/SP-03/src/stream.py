@@ -1,4 +1,4 @@
-﻿"""Injected-clock adapter. Outputs returned to caller, never accumulated internally."""
+"""Injected-clock adapter. Outputs returned to caller, never accumulated internally."""
 from datetime import timedelta
 from copy import deepcopy
 from alignment import align
@@ -85,6 +85,3 @@ class Stream:
             self.rows.append(deepcopy(row))
         # Caller advances explicitly after all arrivals sharing this timestamp.
         return result
-
-
-

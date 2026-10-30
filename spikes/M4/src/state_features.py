@@ -1,4 +1,4 @@
-﻿"""R03 experimental window-local state features. No continuous checkpoints."""
+"""R03 experimental window-local state features. No continuous checkpoints."""
 from datetime import timedelta
 from pathlib import Path
 import sys
@@ -70,4 +70,3 @@ def state_features(window, rows, *, alignment_config):
     output['alignment_config_version']=w.alignment_config_version
     output['feature_version']='m4-r05-v1'
     return output
-

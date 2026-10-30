@@ -1,4 +1,4 @@
-﻿"""R02 basic flow features; no persistence or complete FeatureWindow output."""
+"""R02 basic flow features; no persistence or complete FeatureWindow output."""
 from datetime import timedelta
 import math
 import sys
@@ -50,4 +50,3 @@ def calculate(window, rows, *, threshold=0.1):
                 flow_active_ratio=math.fsum(d for d,(_,_,q) in zip(durations,spans) if q>threshold)/valid if valid else None,
                 flow_coverage_ratio=valid/width,valid_flow_sec=valid,
                 window_id=w.window_id,origin=origin,feature_version='m4-r02-v1')
-

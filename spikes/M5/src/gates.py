@@ -1,4 +1,4 @@
-﻿"""R02 trusted local checkpoint gate. Does not classify READY cases."""
+"""R02 trusted local checkpoint gate. Does not classify READY cases."""
 import json,math,sys
 from pathlib import Path
 from datetime import timedelta
@@ -57,4 +57,3 @@ def gate(payload,now,*,checkpoint_root,config=None):
     return dict(status='UNKNOWN' if reason else 'READY',reason=reason,data_quality=quality,
                 idle_sec=idle,window=window.model_dump(mode='json'),feature_window=fw.model_dump(mode='json'),config=config,
                 evaluated_at=now.isoformat())
-

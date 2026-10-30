@@ -1,4 +1,4 @@
-﻿"""Finite synthetic binary candidate comparison, no real-world accuracy claims."""
+"""Finite synthetic binary candidate comparison, no real-world accuracy claims."""
 import json,sys
 from pathlib import Path
 from datetime import timedelta
@@ -45,4 +45,3 @@ def evaluate(output):
 if __name__=='__main__':
     result=evaluate(BASE/'evidence/r05')
     print(json.dumps(result['metrics'],ensure_ascii=False))
-

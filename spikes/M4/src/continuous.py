@@ -1,4 +1,4 @@
-﻿"""R04 historical replay oracle for continuous features, not a persistent engine."""
+"""R04 historical replay oracle for continuous features, not a persistent engine."""
 from datetime import timedelta
 import math
 from edge.contracts.models import validate_raw_observation
@@ -67,5 +67,3 @@ def continuous_features(rows,end,*,ttl=10,lateness=2,threshold=0.1,ttl_by_source
     return dict(flow_streak_sec=streak(spans['flow'],terminals['flow'],True),
                 water_contact_sec=streak(spans['water'],terminals['water'],True),
                 absence_after_flow_sec=streak(intersection,pair,True))
-
-

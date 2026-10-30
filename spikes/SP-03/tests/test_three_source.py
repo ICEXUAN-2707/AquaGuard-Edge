@@ -1,4 +1,4 @@
-﻿import json
+import json
 from pathlib import Path
 from datetime import datetime,timedelta
 import sys
@@ -19,4 +19,3 @@ def test_three_source_golden_and_stream_equivalence():
         packets.extend(stream.push(row))
     packets.extend(stream.advance(ends[-1]+timedelta(seconds=2)))
     assert [w for p in packets for w in p['windows']]==batch['windows']
-

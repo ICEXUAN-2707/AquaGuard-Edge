@@ -1,4 +1,4 @@
-﻿import sys,json
+import sys,json
 from pathlib import Path
 sys.path.insert(0,str(Path('spikes/SP-03/tests').resolve()))
 sys.path.insert(0,str(Path('spikes/SP-03/src').resolve()))
@@ -20,4 +20,3 @@ s.advance(T+timedelta(seconds=32))
 packets=s.push(obs(30,32,seq=2))
 out['same_deadline_arrival_after_timer_audit']=packets[-1]['audit'][0]['code']
 print(json.dumps(out,indent=2))
-

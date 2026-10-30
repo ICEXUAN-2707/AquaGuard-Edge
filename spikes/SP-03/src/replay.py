@@ -1,4 +1,4 @@
-﻿"""Round 01: deterministic observation replay, not a window engine."""
+"""Round 01: deterministic observation replay, not a window engine."""
 import argparse
 import json
 import sys
@@ -35,4 +35,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

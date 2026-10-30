@@ -1,4 +1,4 @@
-﻿"""Finite deterministic SP-03 experiment. No hardware or wall clock."""
+"""Finite deterministic SP-03 experiment. No hardware or wall clock."""
 from datetime import datetime, timedelta
 import argparse
 import hashlib
@@ -114,6 +114,3 @@ if __name__ == "__main__":
     result=align(data["observations"], [datetime.fromisoformat(t) for t in data["window_ends"]], **data["config"])
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"published {len(result['windows'])} windows")
-
-
-
