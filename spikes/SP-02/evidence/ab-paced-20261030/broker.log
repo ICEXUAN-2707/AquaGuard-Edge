@@ -1,0 +1,49 @@
+1793320477: mosquitto version 2.1.2 starting
+1793320477: Config loaded from spikes/SP-02/evidence/ab-paced-20261030/broker.conf.
+1793320477: Bridge support available.
+1793320477: Persistence support available.
+1793320477: TLS support available.
+1793320477: TLS-PSK support available.
+1793320477: Websockets support available.
+1793320477: Opening ipv4 listen socket on port 18887.
+1793320477: mosquitto version 2.1.2 running
+1793320477: New connection from 127.0.0.1:57158 on port 18887.
+1793320477: New client connected from 127.0.0.1:57158 as sp02-subscribe (p4, c1, k30).
+1793320477: No will message specified.
+1793320477: Sending CONNACK to sp02-subscribe (0, 0)
+1793320477: Received SUBSCRIBE from sp02-subscribe
+1793320477: 	prototype/aquaguard/prototype01/observation (QoS 1)
+1793320477: sp02-subscribe 1 prototype/aquaguard/prototype01/observation
+1793320477: Sending SUBACK to sp02-subscribe
+1793320480: New connection from 127.0.0.1:57164 on port 18887.
+1793320480: New client connected from 127.0.0.1:57164 as sp02-publish (p4, c1, k30).
+1793320480: No will message specified.
+1793320480: Sending CONNACK to sp02-publish (0, 0)
+1793320480: Received PUBLISH from sp02-publish (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (417 bytes))
+1793320480: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (417 bytes))
+1793320480: Sending PUBACK to sp02-publish (m1, rc0)
+1793320480: Received PUBACK from sp02-subscribe (Mid: 1, RC:0)
+1793320480: Received PUBLISH from sp02-publish (d0, q1, r0, m2, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793320480: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m2, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793320480: Sending PUBACK to sp02-publish (m2, rc0)
+1793320480: Received PUBACK from sp02-subscribe (Mid: 2, RC:0)
+1793320481: Received PUBLISH from sp02-publish (d0, q1, r0, m3, 'prototype/aquaguard/prototype01/observation', ... (375 bytes))
+1793320481: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m3, 'prototype/aquaguard/prototype01/observation', ... (375 bytes))
+1793320481: Sending PUBACK to sp02-publish (m3, rc0)
+1793320481: Received PUBACK from sp02-subscribe (Mid: 3, RC:0)
+1793320481: Received PUBLISH from sp02-publish (d0, q1, r0, m4, 'prototype/aquaguard/prototype01/observation', ... (420 bytes))
+1793320481: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m4, 'prototype/aquaguard/prototype01/observation', ... (420 bytes))
+1793320481: Sending PUBACK to sp02-publish (m4, rc0)
+1793320481: Received PUBACK from sp02-subscribe (Mid: 4, RC:0)
+1793320482: Received PUBLISH from sp02-publish (d0, q1, r0, m5, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793320482: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m5, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793320482: Sending PUBACK to sp02-publish (m5, rc0)
+1793320482: Received PUBACK from sp02-subscribe (Mid: 5, RC:0)
+1793320482: Received PUBLISH from sp02-publish (d0, q1, r0, m6, 'prototype/aquaguard/prototype01/observation', ... (375 bytes))
+1793320482: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m6, 'prototype/aquaguard/prototype01/observation', ... (375 bytes))
+1793320482: Sending PUBACK to sp02-publish (m6, rc0)
+1793320482: Received PUBACK from sp02-subscribe (Mid: 6, RC:0)
+1793320483: Received DISCONNECT from sp02-publish
+1793320483: Client sp02-publish [127.0.0.1:57164] disconnected.
+1793320488: Received DISCONNECT from sp02-subscribe
+1793320488: Client sp02-subscribe [127.0.0.1:57158] disconnected.

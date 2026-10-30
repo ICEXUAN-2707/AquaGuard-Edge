@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "gates": [
+    {
+      "gate": 0,
+      "returncode": 0
+    },
+    {
+      "gate": 1,
+      "returncode": 0
+    },
+    {
+      "gate": 2,
+      "returncode": 0
+    }
+  ]
+}

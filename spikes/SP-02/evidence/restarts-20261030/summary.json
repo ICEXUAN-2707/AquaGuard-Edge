@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "scenario": "duplicate-order",
+      "expected": [
+        "new",
+        "out_of_order",
+        "duplicate"
+      ],
+      "actual": [
+        "new",
+        "out_of_order",
+        "duplicate"
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": "subscriber-and-publisher-restart",
+      "expected": [
+        "duplicate",
+        "new"
+      ],
+      "actual": [
+        "duplicate",
+        "new"
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": "broker-restart",
+      "expected": [
+        "duplicate",
+        "new"
+      ],
+      "actual": [
+        "duplicate",
+        "new"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "complete": true
+}

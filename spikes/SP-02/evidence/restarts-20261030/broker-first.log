@@ -1,0 +1,63 @@
+1793318756: mosquitto version 2.1.2 starting
+1793318756: Config loaded from spikes\SP-02\evidence\restarts-20261030\broker.conf.
+1793318756: Bridge support available.
+1793318756: Persistence support available.
+1793318756: TLS support available.
+1793318756: TLS-PSK support available.
+1793318756: Websockets support available.
+1793318756: Opening ipv4 listen socket on port 18884.
+1793318756: mosquitto version 2.1.2 running
+1793318757: New connection from 127.0.0.1:63283 on port 18884.
+1793318757: Client 127.0.0.1 [127.0.0.1:63283] disconnected: connection closed by client.
+1793318758: New connection from 127.0.0.1:63288 on port 18884.
+1793318758: New client connected from 127.0.0.1:63288 as sp02-subscribe (p4, c1, k30).
+1793318758: No will message specified.
+1793318758: Sending CONNACK to sp02-subscribe (0, 0)
+1793318758: Received SUBSCRIBE from sp02-subscribe
+1793318758: 	prototype/aquaguard/prototype01/observation (QoS 1)
+1793318758: sp02-subscribe 1 prototype/aquaguard/prototype01/observation
+1793318758: Sending SUBACK to sp02-subscribe
+1793318759: New connection from 127.0.0.1:63292 on port 18884.
+1793318759: New client connected from 127.0.0.1:63292 as sp02-publish (p4, c1, k30).
+1793318759: No will message specified.
+1793318759: Sending CONNACK to sp02-publish (0, 0)
+1793318759: Received PUBLISH from sp02-publish (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793318759: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793318759: Sending PUBACK to sp02-publish (m1, rc0)
+1793318759: Received PUBLISH from sp02-publish (d0, q1, r0, m2, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793318759: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m2, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793318759: Sending PUBACK to sp02-publish (m2, rc0)
+1793318759: Received PUBLISH from sp02-publish (d0, q1, r0, m3, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793318759: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m3, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793318759: Sending PUBACK to sp02-publish (m3, rc0)
+1793318759: Received DISCONNECT from sp02-publish
+1793318759: Client sp02-publish [127.0.0.1:63292] disconnected.
+1793318759: Received PUBACK from sp02-subscribe (Mid: 1, RC:0)
+1793318759: Received PUBACK from sp02-subscribe (Mid: 2, RC:0)
+1793318759: Received PUBACK from sp02-subscribe (Mid: 3, RC:0)
+1793318761: Received DISCONNECT from sp02-subscribe
+1793318761: Client sp02-subscribe [127.0.0.1:63288] disconnected.
+1793318762: New connection from 127.0.0.1:53429 on port 18884.
+1793318762: New client connected from 127.0.0.1:53429 as sp02-subscribe (p4, c1, k30).
+1793318762: No will message specified.
+1793318762: Sending CONNACK to sp02-subscribe (0, 0)
+1793318762: Received SUBSCRIBE from sp02-subscribe
+1793318762: 	prototype/aquaguard/prototype01/observation (QoS 1)
+1793318762: sp02-subscribe 1 prototype/aquaguard/prototype01/observation
+1793318762: Sending SUBACK to sp02-subscribe
+1793318763: New connection from 127.0.0.1:53436 on port 18884.
+1793318763: New client connected from 127.0.0.1:53436 as sp02-publish (p4, c1, k30).
+1793318763: No will message specified.
+1793318763: Sending CONNACK to sp02-publish (0, 0)
+1793318763: Received PUBLISH from sp02-publish (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793318763: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (337 bytes))
+1793318763: Sending PUBACK to sp02-publish (m1, rc0)
+1793318763: Received PUBLISH from sp02-publish (d0, q1, r0, m2, 'prototype/aquaguard/prototype01/observation', ... (334 bytes))
+1793318763: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m2, 'prototype/aquaguard/prototype01/observation', ... (334 bytes))
+1793318763: Sending PUBACK to sp02-publish (m2, rc0)
+1793318763: Received DISCONNECT from sp02-publish
+1793318763: Client sp02-publish [127.0.0.1:53436] disconnected.
+1793318763: Received PUBACK from sp02-subscribe (Mid: 1, RC:0)
+1793318763: Received PUBACK from sp02-subscribe (Mid: 2, RC:0)
+1793318765: Received DISCONNECT from sp02-subscribe
+1793318765: Client sp02-subscribe [127.0.0.1:53429] disconnected.

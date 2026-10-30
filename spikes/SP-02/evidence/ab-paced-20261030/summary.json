@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "sent_attempts": 6,
+  "sent_unique": 6,
+  "received": 6,
+  "accepted": 6,
+  "classifications": {
+    "new": 6
+  },
+  "missing": [],
+  "unexpected": [],
+  "content_mismatches": [],
+  "manifest_conflicts": [],
+  "unknown_classifications": []
+}
