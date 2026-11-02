@@ -6,8 +6,8 @@
 ## 一次运行
 在仓库根目录：
 ```powershell
-.\.venv-app\Scripts\python.exe spikes/M4/demo.py
-.\.venv-app\Scripts\python.exe -m pytest spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe spikes/SP-03-features/demo.py
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 演示结果：evidence/r07_feature_windows.json；实际检查点：evidence/checkpoints/。
 

@@ -5,10 +5,10 @@
 ## 一次演示和回归
 在仓库根目录运行：
 ```powershell
-.\.venv-app\Scripts\python.exe spikes/M4/demo.py
-.\.venv-app\Scripts\python.exe spikes/M5/demo.py
-.\.venv-app\Scripts\python.exe spikes/M5/evaluate.py
-.\.venv-app\Scripts\python.exe -m pytest spikes/M5/tests spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe spikes/SP-03-features/demo.py
+.\.venv-app\Scripts\python.exe spikes/SP-04/demo.py
+.\.venv-app\Scripts\python.exe spikes/SP-04/evaluate.py
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-04/tests spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 实际情境：evidence/r03_assessments.json；基线逐场景/指标：evidence/r05/comparison.json；最终回归：evidence/r06_tests.txt（171通过，包含既有检查）。
 

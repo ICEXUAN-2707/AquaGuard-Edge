@@ -44,7 +44,11 @@ A软件阶段最新入口：[收尾报告](spikes/A_软件阶段收尾报告.md)
 5. 六份报告和 D1–D5 决议都完成后，再批准正式模块实现与合同版本。
 
 ## M4 技术验证交付
-M4 离线模拟原型及各轮报告见 [M4交付入口](../spikes/M4/README.md)。十二特征、回放快照与候选DTO已演示；正式验收仍待独立复核、契约会签及硬件语义验证。
+M4 离线模拟原型及各轮报告见 [M4交付入口](../spikes/SP-03-features/README.md)。十二特征、回放快照与候选DTO已演示；正式验收仍待独立复核、契约会签及硬件语义验证。
 
 ## M5 规则验证交付
-[M5交付入口](../spikes/M5/README.md)：离线模拟规则六轮已收尾，默认10秒；SP-04整体PARTIAL，真实trial/ML/独立验收待完成。最终回归171项含既有检查，不等于项目完成率。
+[M5交付入口](../spikes/SP-04/README.md)：离线模拟规则六轮已收尾，默认10秒；SP-04整体PARTIAL，真实trial/ML/独立验收待完成。最终回归171项含既有检查，不等于项目完成率。
+
+## B section project map
+
+[Project map and next steps](project/B_PROJECT_MAP_AND_NEXT_STEPS.md)

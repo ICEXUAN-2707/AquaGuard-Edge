@@ -27,8 +27,8 @@ B1/B2使用同一质量门控；B0只要求flow证据，不要求人员，这是
 
 ## 重跑与输出
 ```powershell
-.\.venv-app\Scripts\python.exe spikes/M5/evaluate.py
-.\.venv-app\Scripts\python.exe -m pytest spikes/M5/tests spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe spikes/SP-04/evaluate.py
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-04/tests spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 逐场景输出/指标：evidence/r05/comparison.json；真实快照：evidence/r05/checkpoints/。
 

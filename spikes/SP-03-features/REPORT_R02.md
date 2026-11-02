@@ -16,8 +16,8 @@ src/basic_flow.py 实现 flow_mean_lpm、flow_max_lpm、flow_active_ratio，同�
 
 ## 运行
 ```powershell
-.\.venv-app\Scripts\python.exe -m pytest spikes/M4/tests/test_basic_flow.py -q -p no:cacheprovider
-.\.venv-app\Scripts\python.exe -m pytest spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-03-features/tests/test_basic_flow.py -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 测试数量包含既有契约/启动测试；多次一致仅支持已覆盖输入，不构成所有输入无误的证明。本轮均为同代理自检和交叉算法检查，独立 Reviewer 待指定。
 

@@ -16,5 +16,5 @@ R02先实现结构/版本/引用/时间门控和UNKNOWN，再R03实现情境分�
 
 运行：
 ```powershell
-.\.venv-app\Scripts\python.exe -m pytest spikes/M5/tests -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-04/tests -q -p no:cacheprovider
 ```

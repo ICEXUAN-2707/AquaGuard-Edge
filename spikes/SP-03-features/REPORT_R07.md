@@ -17,8 +17,8 @@
 
 ## 可复现命令
 ```powershell
-.\.venv-app\Scripts\python.exe spikes/M4/demo.py
-.\.venv-app\Scripts\python.exe -m pytest spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe spikes/SP-03-features/demo.py
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 
 ## 阶段Review与边界

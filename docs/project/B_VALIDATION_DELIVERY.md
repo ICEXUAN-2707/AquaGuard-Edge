@@ -11,15 +11,15 @@
 这些是对已完成多轮开发成果的按模块归档提交，不伪造每轮历史提交时间。A线与SP-02本地改动不属于本次提交。
 
 ## 验证
-推送前重跑171项通过，包含既有契约/启动检查；日志spikes/M5/evidence/prepush_tests.txt。源码、手写预期、实际输出和历史修复报告共同保留。Python缓存与虚拟环境由现有.gitignore排除；未修改正式公共契约。
+推送前重跑171项通过，包含既有契约/启动检查；日志spikes/SP-04/evidence/prepush_tests.txt。源码、手写预期、实际输出和历史修复报告共同保留。Python缓存与虚拟环境由现有.gitignore排除；未修改正式公共契约。
 
 ## 新环境重跑
 使用项目requirements-app.lock.txt提供的依赖环境。仓库根目录：
 ```powershell
-.\.venv-app\Scripts\python.exe spikes/M4/demo.py
-.\.venv-app\Scripts\python.exe spikes/M5/demo.py
-.\.venv-app\Scripts\python.exe spikes/M5/evaluate.py
-.\.venv-app\Scripts\python.exe -m pytest spikes/M5/tests spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe spikes/SP-03-features/demo.py
+.\.venv-app\Scripts\python.exe spikes/SP-04/demo.py
+.\.venv-app\Scripts\python.exe spikes/SP-04/evaluate.py
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-04/tests spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 已提交演示证据中的state_checkpoint_ref包含原机器绝对路径，这是历史输出；迁移目录后先重跑M4/demo.py，再运行M5/demo.py以重新生成路径。检查点JSON摘要依赖原始字节，勿手工改写。早期stage_review_reproduce.py记录修复前缺陷，不是当前可成功重跑的验收脚本；以当前tests和最终日志为准。
 
@@ -28,7 +28,7 @@
 
 ## 审阅入口
 - [M3](../../spikes/SP-03/REPORT.md)
-- [M4](../../spikes/M4/README.md)
-- [M5](../../spikes/M5/README.md)
+- [M4](../../spikes/SP-03-features/README.md)
+- [M5](../../spikes/SP-04/README.md)
 
 优先审查M3待裁决语义、M4历史/配置绑定及M5拒判与时序身份；正式放行仍走会签和独立复核。

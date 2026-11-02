@@ -6,8 +6,8 @@ BASE=Path(__file__).resolve().parent
 sys.path.insert(0,str(BASE/'src'))
 from rules import classify
 from checkpoint import restore
-root=BASE.parent/'M4/evidence/checkpoints'
-inputs=json.loads((BASE.parent/'M4/evidence/r07_feature_windows.json').read_text(encoding='utf-8'))
+root=BASE.parent/'SP-03-features/evidence/checkpoints'
+inputs=json.loads((BASE.parent/'SP-03-features/evidence/r07_feature_windows.json').read_text(encoding='utf-8'))
 results=[]
 for payload in inputs:
     restored=restore(payload['state_checkpoint_ref'])

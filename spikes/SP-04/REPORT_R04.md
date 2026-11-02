@@ -16,8 +16,8 @@
 
 运行：
 ```powershell
-.\.venv-app\Scripts\python.exe -m pytest spikes/M5/tests/test_matrix.py -q -p no:cacheprovider
-.\.venv-app\Scripts\python.exe -m pytest spikes/M5/tests spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-04/tests/test_matrix.py -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-04/tests spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 
 ## 限制与下一步

@@ -2,7 +2,7 @@
 import json,math,sys
 from pathlib import Path
 from datetime import timedelta
-sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'M4/src'))
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'SP-03-features/src'))
 from checkpoint import restore,FEATURE_VERSION
 from alignment import align
 from edge.contracts.models import FeatureWindow,AlignedWindow

@@ -16,7 +16,7 @@
 
 ## 实际执行结果
 
-执行：`.venv-app/Scripts/python.exe -m pytest spikes/SP-02/tests/unit spikes/SP-03/tests spikes/M4/tests spikes/M5/tests tests/contracts tests/smoke -q -p no:cacheprovider`。
+执行：`.venv-app/Scripts/python.exe -m pytest spikes/SP-02/tests/unit spikes/SP-03/tests spikes/SP-03-features/tests spikes/SP-04/tests tests/contracts tests/smoke -q -p no:cacheprovider`。
 
 结果：206 passed in 11.36s。
 

@@ -17,8 +17,8 @@ missing_mask 以本窗引用中是否有对应有效观测为准；不能只看�
 
 运行：
 ```powershell
-.\.venv-app\Scripts\python.exe -m pytest spikes/M4/tests/test_engine.py -q -p no:cacheprovider
-.\.venv-app\Scripts\python.exe -m pytest spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-03-features/tests/test_engine.py -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 
 ## Review 与边界

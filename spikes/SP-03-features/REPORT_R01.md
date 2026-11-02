@@ -12,7 +12,7 @@
 
 实际命令及日志：
 ```powershell
-.\.venv-app\Scripts\python.exe -m pytest spikes/M4/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
+.\.venv-app\Scripts\python.exe -m pytest spikes/SP-03-features/tests spikes/SP-03/tests tests/contracts tests/smoke -q -p no:cacheprovider
 ```
 结果见 evidence/r01_tests.txt。测试通过仅说明字典字段与四组算术一致，不代表已实现全部特征或 M4 行为验证通过。
 

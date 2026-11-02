@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(ROOT/'spikes/SP-03/src'))
-sys.path.insert(0,str(ROOT/'spikes/M4/src'))
+sys.path.insert(0,str(ROOT/'spikes/SP-03-features/src'))
 from edge.contracts.models import validate_raw_observation
 from replay import replay
 from alignment import align
