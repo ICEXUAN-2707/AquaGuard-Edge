@@ -1,5 +1,5 @@
 spike_id,task,owner,reviewer,status,issue_url,pr_url,evidence_path,dependency,next_handoff
-SP-01,三传感器采集与固件路线,A,待指定,NOT_STARTED,,,,,硬件到位后记录真实采样；结果交给契约线和SP-02
+SP-01,三传感器采集与固件路线,A,待指定,NOT_STARTED,,,docs/spikes/A_实物实验设计与执行方案.md,,硬件已购入且方案已准备；实物验证未开展；先核对型号手册与电气参数再逐源采集标定
 SP-02,MQTT时间与重启,A,待指定,PARTIAL,,,spikes/SP-02/evidence,,软件阶段收尾待独立评审；交B时间假设与消息样例；硬件联调未验收
 SP-03,滑动窗口与异步数据,B,待指定,PARTIAL,,,spikes/SP-03/evidence,,R06三源黄金与流式对照已记录；复核DECISION_TABLE的时间和boot及flow端点口径；待独立评审与实物验证
 SP-04,规则与轻量模型可行性,B,待指定,PARTIAL,,,spikes/SP-04/evidence,SP-03,M4-R07和M5-R06离线模拟已收尾；交M6规则与UNKNOWN结论；真实trial及独立验收未完成；ML未开展且须有数据再决定
