@@ -1,5 +1,11 @@
 # C-R05｜本地Mock Outbox阶段收尾
 
+## main合并兼容性复核（2026-11-03）
+
+PR目标调整为main后，将origin/main（f0b703d）合入C分支。保留main的A/B交接延迟导入与缺模块友好报错、条件测试保护、B文档及归档结构，同时保留C的R05进度与C0–C9复现章节。无冲突标记/未解决索引，格式检查通过。
+
+合并后执行C业务、SP-06、A的test_handoff_b/test_core、contracts与smoke：147 passed in 21.74s，退出0，临时目录为spikes/C-business/local/check-main-merge01。该范围含既有测试，不与128项累加；前端未修改，浏览器验收限制仍保留。
+
 日期：2026-11-03。限定Mock范围实现并回归收尾；真实IoTDA、生产可靠性、正式迁移与独立评审未验收。R04浏览器和持续在线调度待办继续保留。
 
 ## 交付与交叉自检

@@ -10,12 +10,15 @@ sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(ROOT/'spikes/SP-03/src'))
 sys.path.insert(0,str(ROOT/'spikes/SP-03-features/src'))
 from edge.contracts.models import validate_raw_observation
-from replay import replay
-from alignment import align
-from engine import compute
 
 
 def handoff(rows):
+    try:
+        from replay import replay
+        from alignment import align
+        from engine import compute
+    except ModuleNotFoundError as exc:
+        raise ValueError("B validation modules are not installed; merge the B-line PR before running A/B handoff") from exc
     # Replay is the common boundary: full DTO and unique observation identities.
     ordered = [r['observation'] for r in replay(rows)]
     groups = {}

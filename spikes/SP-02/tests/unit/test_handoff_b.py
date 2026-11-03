@@ -5,6 +5,8 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0,str(Path(__file__).parents[2]/'src'))
+pytestmark = pytest.mark.skipif(not (Path(__file__).resolve().parents[4]/"spikes/SP-03/src/replay.py").exists() or not (Path(__file__).resolve().parents[4]/"spikes/SP-03-features/src/engine.py").exists(), reason="B implementation is a separate PR; A/B integration is not claimed in A-only gate")
+
 from core import normalize,sample
 from handoff_b import handoff
 
