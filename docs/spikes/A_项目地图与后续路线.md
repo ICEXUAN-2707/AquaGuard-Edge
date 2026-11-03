@@ -98,9 +98,9 @@ flowchart LR
 |reference/reference_02/modules/M1_感知采集.md、M2_消息通信与标准化.md|A正式模块职责及边界；字段以候选修订优先|
 |同目录M3/M4/M5文档|B对齐、特征、推断目标及失败退化|
 |同目录M6/M7/M8文档|事件、云协同、页面目标|
-|spikes/SP-03/DECISION_TABLE.md、README.md及REPORT_R01–R06.md|B待确认语义、回放/窗口实现与历史证据|
-|spikes/SP-03-features/README.md及REPORT_R01–R06.md|特征原型、连续状态与实现限制|
-|spikes/SP-04/README.md、spikes/SP-06/README.md|B规则与C事务原型入口，以实际文件和报告确认状态|
+|spikes/SP-03/待确认口径表.md、README.md及REPORT_R01–R06.md|B待确认语义、回放/窗口实现与历史证据|
+|spikes/SP-03-features/阅读入口.md及REPORT_R01–R06.md|特征原型、连续状态与实现限制|
+|spikes/SP-04/阅读入口.md、spikes/SP-06/README.md|B规则与C事务原型入口，以实际文件和报告确认状态|
 |docs/integration/IOTDA_INTEGRATION_PLAN.md、IoTDA_人工对接操作指南.md|云映射、真实接入前置条件、人工配置与回执门槛|
 |docs/project/DEVELOPMENT_PLAN.md|I-001–I-013依赖、正式模块职责和验收提案，含历史状态|
 |docs/audit/REPO_AUDIT.md、GAP_ANALYSIS.md、DEPENDENCY_RISKS.md|早期资产、差距及依赖风险背景|
