@@ -112,7 +112,7 @@ Get-Content b-reproduce-tests.txt
 阅读顺序：[文档总入口](B部分_文档总入口.md)→[代码地图](B部分_代码地图.md)→本手册→模块最新收尾报告→逐轮细节。
 
 ## 11. 本次操作验证与临时目录排障
-2026-11-03已验证Python3.12.10、锁定包版本、pip check及两条演示。首次默认临时目录因C盘可用空间为0失败；尝试旧.pytest_cache又遇WinError5。改用D盘工作区全新独立目录后完整171 passed in 14.28s，日志见../../spikes/SP-04/evidence/reproduction_20261103.txt。未在空白机器重新联网安装，不能把已有环境验证说成全新安装实测。
+2026-11-03已验证Python3.12.10、锁定包版本、pip check及两条演示。首次默认临时目录因C盘可用空间为0失败；尝试旧.pytest_cache又遇WinError5。改用D盘工作区全新独立目录后完整171 passed in 14.28s，日志见spikes/SP-04/evidence/reproduction_20261103.txt（相对仓库根目录）。未在空白机器重新联网安装，不能把已有环境验证说成全新安装实测。
 
 遇相同问题先检查磁盘，不删除别人的临时文件；在有空间且可写的当前工作区创建唯一目录：
 ```powershell
