@@ -1,6 +1,30 @@
 # 水知安文档导航
 
-A部分入口：[A文档导航](spikes/A_文档导航.md)。本PR仅含A软件原型、证据与实物实验规划，SP-02为PARTIAL；B代码另行合入。
+软件安装与首次复现：[零基础软件安装与复现手册](project/零基础软件安装与复现手册.md)，包含软件版本、下载安装、PowerShell操作、A/B/C分支命令、预期结果和排错。
+
+A部分最新入口：[A文档导航](../spikes/docs/A/A_文档导航.md)，统一收录项目地图、代码算法导读、实物实验方案及零基础采集手册；实物参数待核验，未宣称已完成硬件实验。
+
+从0阅读A代码：[代码地图与算法导读](../spikes/docs/A/A_代码地图与算法导读.md)，逐文件说明调用链、算法及A/B/C职责，按2026-11-03实际目录核对。
+
+C部分业务与后续终端入口：[C业务、终端与云协同路线](../spikes/docs/C/C_PRODUCT_ROADMAP.md)，统一说明本地三页、IoTDA、远程后台、联系人通知的范围与先后关系；实现证据见[C阶段记录](../spikes/docs/C/C-business/README.md)。
+
+C-R04最新结论：[阶段收尾报告](../spikes/docs/C/C_R04_STAGE_REVIEW.md)，包含页面与真实B检查点桥接、自检修复、115项相关回归、前端3项状态测试，以及尚未完成的浏览器/在线调度/独立验收。
+
+C本地运行入口：[原型启动与演示](../spikes/docs/C/C-business/LOCAL_DEMO.md)，包含seed、独立8010服务、/c.html业务三页、受控ACK、timer过期、B历史工件导入、重启与排障；三页已构建但尚未浏览器验收，不连接真实云。
+
+新人执行入口：[新人分步推进手册](project/新人分步推进手册.md)。按S0–S8定位当前步骤，查看操作入口、完成判据、学习重点与排障方向；内含执行记录、提问模板及首轮分工建议。先按步骤操作，再查A/B专项地图。
+
+实物采集规划：[A零基础实验与数据采集手册](../spikes/docs/A/A_零基础实验与数据采集手册.md)，先确定实验与数据口径，设备参数到位后补接线和执行命令。
+
+当前进度统一入口：[项目统一进度表](project/PROJECT_STATUS.md)（2026-11-02静态核对更新）；六项Spike状态见[任务跟踪表](spikes/SPIKE_TRACKER.csv)。历史报告保留当时结论，验收仍以证据和评审记录为准。
+
+新成员建议先读 [A项目地图与后续路线](../spikes/docs/A/A_项目地图与后续路线.md)：按顺序理解A的文档/代码/证据，以及技术验证后如何进入正式开发。
+
+A/B新增 [第二轮交叉核对报告](project/AB_第二轮交叉核对.md)：内容完整性与异常边界修复、206项联合回归及真实日志重算。
+
+A/B当前分支交叉对接与修复：[交叉自检报告](project/AB_交叉自检报告.md)，含200项回归和真实MQTT→B窗口/特征证据及限制。
+
+A软件阶段最新入口：[收尾报告](../spikes/docs/A/A_软件阶段收尾报告.md)、[SP-02复现说明](../spikes/docs/A/SP-02/README.md)、[软硬件结合开发手册](../spikes/docs/A/A_软硬件结合开发手册.md)、[采购确认](../spikes/docs/A/A_采购确认.md)。软件证据已整理，SP-02整体PARTIAL，待独立评审及实物联调。
 
 当前工作分两条线并行：契约线已形成 V1.2 技术修订候选，待 A/B/C 会签后成为正式合同；Spike 线用独立小实验回答技术问题。候选 Schema/DTO 已在仓库中供审查和测试，业务模块的正式接口依赖仍以会签和 `contracts/CONTRACT_ACCEPTANCE.md` 的 C0–C2 放行为准。
 
@@ -11,9 +35,10 @@ A部分入口：[A文档导航](spikes/A_文档导航.md)。本PR仅含A软件�
 |项目入口|[README](../README.md)、[开发路线](project/DEVELOPMENT_PLAN.md)|本地 API/前端运行方法、Issue 顺序；I-001 基线已建立。|
 |审计基线|[仓库审计](audit/REPO_AUDIT.md)、[能力差距](audit/GAP_ANALYSIS.md)、[依赖与协作风险](audit/DEPENDENCY_RISKS.md)|原始资料、实现差距、硬件/云端缺口。作为现状依据；不是任务实施说明。|
 |契约评审|[当前状态与双线对接](contracts/STATUS.md)、[V1.2 修订候选](../reference/reference_02/00_Contracts_V1.2_修订候选.md)、[验收门槛](contracts/CONTRACT_ACCEPTANCE.md)、[联合评审报告](contracts/CONTRACT_JOINT_REVIEW_REPORT.md)、[历史合规探针](contracts/CONTRACT_COMPLIANCE.md)|候选规范及机器文件已修订，静态测试通过；D1–D5 仍待 A/B/C 会签。评审报告和早期建议稿是问题与决策背景，不代表正式批准。|
-|Spike 派工|[Spike 总则与 A 任务单](spikes/A_任务单.md)、[B 任务单](spikes/B_任务单.md)、[组长分发话术](spikes/组长分发话术.md)|零基础成员的执行说明、验收要求和可复制消息。|
+|Spike 派工|[Spike 总则与 A 任务单](../spikes/docs/A/A_任务单.md)、[B 任务单](../spikes/docs/B/B_任务单.md)、[SP-06 编码计划](../spikes/docs/C/SP-06_编码计划.md)、[组长分发话术](spikes/组长分发话术.md)|零基础成员的执行说明、SP-06 阶段计划、验收要求和可复制消息。|
+|C 部分实操|[SP-06 原型说明](../spikes/docs/C/SP-06/README.md)、[人工测试操作指南](../spikes/docs/C/SP-06/MANUAL_TEST_GUIDE.md)、[测试数据集](../spikes/SP-06/data/manual_cases.json)、[进度报告](../spikes/docs/C/SP-06/REPORT.md)|运行 SQLite/Mock 原型、按步骤人工检查状态，并记录证据。|
 |Spike 管理材料|[团队分工手册](spikes/Technical_Spike_团队分工手册.docx)、[Issue 模板](spikes/templates/SPIKE_ISSUE_TEMPLATE.md)、[报告模板](spikes/templates/SPIKE_REPORT_TEMPLATE.md)、[任务跟踪表](spikes/SPIKE_TRACKER.csv)|六项 Spike 的原始分工和记录工具。原手册早于 SP-06 由 C 负责的最新决定；以任务单和跟踪表为准。|
-|技术选型与云接入|[I-001 上游与运行栈](project/UPSTREAM_REVIEW.md)、[IoTDA 集成计划](integration/IOTDA_INTEGRATION_PLAN.md)|候选上游许可结论、已验证运行栈、真实云端前置条件。SP-05/06 由 C 负责。|
+|技术选型与云接入|[I-001 上游与运行栈](project/UPSTREAM_REVIEW.md)、[IoTDA 集成计划](integration/IOTDA_INTEGRATION_PLAN.md)、[IoTDA 人工对接操作指南](integration/IoTDA_人工对接操作指南.md)|候选上游许可结论、已验证运行栈、控制台操作步骤和真实云端前置条件。SP-05/06 由 C 负责。|
 
 ## 两条线当前要做什么
 
@@ -37,3 +62,16 @@ A部分入口：[A文档导航](spikes/A_文档导航.md)。本PR仅含A软件�
 3. A 把实际观测字段、时间戳和重启现象交给 B；B 把对字段质量和时间语义的疑问交回契约线。
 4. B 将窗口/模型的可行性结论交给 M6 Owner；SP-06 Owner 与 SP-05 对齐 Outbox 与云回执。
 5. 六份报告和 D1–D5 决议都完成后，再批准正式模块实现与合同版本。
+
+## M4 技术验证交付
+M4 离线模拟原型及各轮报告见 [M4交付入口](../spikes/docs/B/SP-03-features/阅读入口.md)。十二特征、回放快照与候选DTO已演示；正式验收仍待独立复核、契约会签及硬件语义验证。
+
+## M5 规则验证交付
+[M5交付入口](../spikes/docs/B/SP-04/阅读入口.md)：离线模拟规则六轮已收尾，默认10秒；SP-04整体PARTIAL，真实trial/ML/独立验收待完成。最终回归171项含既有检查，不等于项目完成率。
+
+## B部分阅读地图与后续路线
+[B部分项目地图](../spikes/docs/B/B部分_项目地图与后续路线.md)：下一阶段如何做、推荐阅读顺序、逐份报告用途、代码/证据位置及验收边界。
+
+## B部分统一入口
+
+[文档总入口](../spikes/docs/B/B部分_文档总入口.md) · [代码地图](../spikes/docs/B/B部分_代码地图.md) · [从零复现手册](../spikes/docs/B/B部分_从零复现手册.md)
