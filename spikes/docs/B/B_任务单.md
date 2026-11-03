@@ -4,12 +4,12 @@
 
 你负责 SP-03 和 SP-04，回答两个问题：不同时间到达的传感消息能否形成确定、可重复的窗口；规则或轻量模型是否比简单基线更有用。
 
-**先做 SP-03，确认窗口输出后再做 SP-04。** 开始阶段使用合成数据即可。当前可参考 [V1.2 候选规范](../../reference/reference_02/00_Contracts_V1.2_修订候选.md)，但 C0 会签仍待完成；Spike 数据标为 `prototype_only`，只能用于独立实验，不能据此认定正式合同已冻结。
+**先做 SP-03，确认窗口输出后再做 SP-04。** 开始阶段使用合成数据即可。当前可参考 [V1.2 候选规范](../../../reference/reference_02/00_Contracts_V1.2_修订候选.md)，但 C0 会签仍待完成；Spike 数据标为 `prototype_only`，只能用于独立实验，不能据此认定正式合同已冻结。
 
 ## 开始前先做
 
 1. 请组长给你分配 SP-03、SP-04 的 Issue、分支和 Reviewer。Owner 不能自己验收。
-2. 查看 [Spike Issue 模板](templates/SPIKE_ISSUE_TEMPLATE.md) 和 [Spike 报告模板](templates/SPIKE_REPORT_TEMPLATE.md)，分别建 `spikes/SP-03/`、`spikes/SP-04/`。
+2. 查看 [Spike Issue 模板](../../../docs/spikes/templates/SPIKE_ISSUE_TEMPLATE.md) 和 [Spike 报告模板](../../../docs/spikes/templates/SPIKE_REPORT_TEMPLATE.md)，分别建 `spikes/SP-03/`、`spikes/SP-04/`。
 3. 使用 A 提供的模拟消息时，保留 A 的原始文件；若 A 的文件未准备好，先自己造小型 CSV/JSONL，在文件名、README、报告或 sidecar 标明 `synthetic` 与 `prototype_only`。不要把原始合同没有的标记字段塞进 DTO 对象。
 4. 参数 W30 秒、S5 秒、L2 秒只是待验证起点，不是实测结论。每次运行保存输入文件、配置和结果。
 

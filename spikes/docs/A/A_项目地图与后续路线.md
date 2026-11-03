@@ -47,16 +47,16 @@ flowchart LR
 |[软件收尾报告](A_软件阶段收尾报告.md)|软件范围、证据、复现、B交接、未完成可靠性门槛|评审软件阶段的主入口|
 |[软硬件开发手册](A_软硬件结合开发手册.md)|环境、Broker和CLI部署、到货核验、联调与排障步骤|上手操作；硬件参数未确定|
 |[实物实验方案](A_实物实验设计与执行方案.md)|分阶段实物实验、次数、真值/指标、工作包及时间对接|当前执行主文档，尚非已完成实验报告|
-|[A/B第一轮自检](AB_交叉自检报告.md)|分支核对、flow区间重叠、boot隔离及真实交接|理解跨模块限制|
-|[A/B第二轮自检](AB_第二轮交叉核对.md)|内容一致性、manifest冲突、结构化失败与206项回归|复核修复及现有边界|
+|[A/B第一轮自检](../../../docs/project/AB_交叉自检报告.md)|分支核对、flow区间重叠、boot隔离及真实交接|理解跨模块限制|
+|[A/B第二轮自检](../../../docs/project/AB_第二轮交叉核对.md)|内容一致性、manifest冲突、结构化失败与206项回归|复核修复及现有边界|
 |[分批提交说明](A_分批提交说明.md)|三批提交范围、哈希、验证和限制|定位远端改动、安排Review|
-|[B任务单](B_任务单.md)|SP-03/04责任和交付|与B讨论数据接口|
-|[SP-06计划](SP-06_编码计划.md)|C的SQLite/Outbox原型计划|理解与正式事件存储的关系|
-|[跟踪表](SPIKE_TRACKER.csv)|六项Spike状态、负责人和证据路径|管理进度；不是验收替代品|
-|[组长分发话术](组长分发话术.md)|成员任务说明及协作提醒|分派工作|
-|[团队手册](Technical_Spike_团队分工手册.docx)|早期六项Spike组织方式|背景材料；最新职责以任务单/跟踪表为准|
-|[Issue模板](templates/SPIKE_ISSUE_TEMPLATE.md)|目标、范围、依赖和验收卡片|新建实验任务|
-|[报告模板](templates/SPIKE_REPORT_TEMPLATE.md)|环境、命令、输入/期望/实际、限制和交接|每轮真实执行后填写|
+|[B任务单](../B/B_任务单.md)|SP-03/04责任和交付|与B讨论数据接口|
+|[SP-06计划](../C/SP-06_编码计划.md)|C的SQLite/Outbox原型计划|理解与正式事件存储的关系|
+|[跟踪表](../../../docs/spikes/SPIKE_TRACKER.csv)|六项Spike状态、负责人和证据路径|管理进度；不是验收替代品|
+|[组长分发话术](../../../docs/spikes/组长分发话术.md)|成员任务说明及协作提醒|分派工作|
+|[团队手册](../../../docs/spikes/Technical_Spike_团队分工手册.docx)|早期六项Spike组织方式|背景材料；最新职责以任务单/跟踪表为准|
+|[Issue模板](../../../docs/spikes/templates/SPIKE_ISSUE_TEMPLATE.md)|目标、范围、依赖和验收卡片|新建实验任务|
+|[报告模板](../../../docs/spikes/templates/SPIKE_REPORT_TEMPLATE.md)|环境、命令、输入/期望/实际、限制和交接|每轮真实执行后填写|
 
 ## 4. 代码、协议与证据地图
 
@@ -64,9 +64,9 @@ flowchart LR
 
 |位置|内容|推荐阅读顺序|
 |---|---|---|
-|spikes/SP-02/README.md|软件复现命令、工具使用与限制|1|
-|spikes/SP-02/WIRE_PROTOCOL.md|实验线上格式、Topic、身份算法|2|
-|spikes/SP-02/TIME_ASSUMPTIONS.md|事件/接收时间、boot/seq、补发不等于历史测量|3|
+|spikes/docs/A/SP-02/README.md|软件复现命令、工具使用与限制|1|
+|spikes/docs/A/SP-02/WIRE_PROTOCOL.md|实验线上格式、Topic、身份算法|2|
+|spikes/docs/A/SP-02/TIME_ASSUMPTIONS.md|事件/接收时间、boot/seq、补发不等于历史测量|3|
 |spikes/SP-02/src/core.py|标准化、身份、SQLite接受/隔离与导出|4|
 |spikes/SP-02/src/ingress.py|持久化成功后确认，错误分类边界|5|
 |spikes/SP-02/src/cli.py|模拟生成、发布、订阅、导出、连接日志|6|
@@ -78,7 +78,7 @@ flowchart LR
 |spikes/SP-02/src/verify_release.py|统一软件门槛命令|12|
 |spikes/SP-02/tests/unit/|上述行为正反例，含真实SQLite只读错误|跟随相应代码读|
 |spikes/SP-02/config/|仅回环实验Broker配置|部署前读，不用于硬件LAN直连|
-|spikes/SP-02/REPORT.md|历史增量报告|查演进，不覆盖最新收尾结论|
+|spikes/docs/A/SP-02/REPORT.md|历史增量报告|查演进，不覆盖最新收尾结论|
 |spikes/SP-02/evidence/|发送/接收、连接日志、失败与成功summary、交接JSON|用收尾报告索引选择，不把所有文件都当成功证据|
 
 运行SQLite库被忽略，不在远端；需按脚本复现。历史100条突发日志仅证明通信；ab-paced数据才用于已有真实MQTT→B特征交接。原始received日志不能直接替代唯一accepted DTO。
@@ -98,9 +98,9 @@ flowchart LR
 |reference/reference_02/modules/M1_感知采集.md、M2_消息通信与标准化.md|A正式模块职责及边界；字段以候选修订优先|
 |同目录M3/M4/M5文档|B对齐、特征、推断目标及失败退化|
 |同目录M6/M7/M8文档|事件、云协同、页面目标|
-|spikes/SP-03/待确认口径表.md、README.md及REPORT_R01–R06.md|B待确认语义、回放/窗口实现与历史证据|
-|spikes/SP-03-features/阅读入口.md及REPORT_R01–R06.md|特征原型、连续状态与实现限制|
-|spikes/SP-04/阅读入口.md、spikes/SP-06/README.md|B规则与C事务原型入口，以实际文件和报告确认状态|
+|spikes/docs/B/SP-03/待确认口径表.md、README.md及REPORT_R01–R06.md|B待确认语义、回放/窗口实现与历史证据|
+|spikes/docs/B/SP-03-features/阅读入口.md及REPORT_R01–R06.md|特征原型、连续状态与实现限制|
+|spikes/docs/B/SP-04/阅读入口.md、spikes/docs/C/SP-06/README.md|B规则与C事务原型入口，以实际文件和报告确认状态|
 |docs/integration/IOTDA_INTEGRATION_PLAN.md、IoTDA_人工对接操作指南.md|云映射、真实接入前置条件、人工配置与回执门槛|
 |docs/project/DEVELOPMENT_PLAN.md|I-001–I-013依赖、正式模块职责和验收提案，含历史状态|
 |docs/audit/REPO_AUDIT.md、GAP_ANALYSIS.md、DEPENDENCY_RISKS.md|早期资产、差距及依赖风险背景|

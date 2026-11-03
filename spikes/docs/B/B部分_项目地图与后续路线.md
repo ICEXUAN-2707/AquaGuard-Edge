@@ -27,7 +27,7 @@ P0与硬件资料收集可并行，P1/P2不必等采购；正式部署/真实通
 - 接口：在各实际入口调用正式DTO；spikes之间目前有路径导入，不是可直接发布的包。统一依赖、配置与测试夹具。
 
 ## 4. 推荐阅读顺序（不要按目录全读）
-第一遍看全貌：本文→docs/project/B部分_分批交付说明.md→spikes/SP-04/R06_开发报告.md。先知道做成什么、没做到什么。
+第一遍看全貌：本文→spikes/docs/B/B部分_分批交付说明.md→spikes/docs/B/SP-04/R06_开发报告.md。先知道做成什么、没做到什么。
 第二遍看链路：SP-03/README.md与待确认口径表.md→M4/技术总结与敏捷计划.md与内部输入与计算口径.md→M5/R01_规则与接口约定.md。先理解时间、未知、特征，再理解规则。
 第三遍看最新验收：M3 R06_开发报告.md及R05修复→M4 R07_开发报告.md→M5 R06_开发报告.md→docs/contracts/CONTRACT_ACCEPTANCE.md。将模拟结果与正式门槛分开。
 第四遍亲自跑：M4/demo.py→M5/demo.py→M5/evaluate.py→全部回归；最后对照JSON和测试理解代码。
@@ -39,10 +39,10 @@ P0与硬件资料收集可并行，P1/P2不必等采购；正式部署/真实通
 |---|---|---|
 |README.md|项目介绍、运行环境与历史基线|首次接触项目|
 |docs/README.md|全项目文档导航及各线入口|找跨组资料|
-|docs/project/B部分_分批交付说明.md|B线分批提交、复现命令、历史路径和范围|组会交付/拉取分支后|
+|spikes/docs/B/B部分_分批交付说明.md|B线分批提交、复现命令、历史路径和范围|组会交付/拉取分支后|
 |docs/project/DEVELOPMENT_技术总结与敏捷计划.md|I-001至I-013依赖和验收提案，含历史状态|排正式实施任务，不能当实时进度表|
 |docs/project/UPSTREAM_REVIEW.md|运行栈和上游复用核查|工程化依赖选择|
-|docs/spikes/B_任务单.md|B负责SP-03/SP-04的目标、步骤与交付|理解原始任务|
+|spikes/docs/B/B_任务单.md|B负责SP-03/SP-04的目标、步骤与交付|理解原始任务|
 |docs/spikes/SPIKE_TRACKER.csv|Owner/Reviewer/依赖与状态记录|每轮同步进度|
 |docs/spikes/templates/SPIKE_ISSUE_TEMPLATE.md|实验任务模板|新建一轮任务|
 |docs/spikes/templates/SPIKE_REPORT_TEMPLATE.md|实验报告模板|结束留痕|
@@ -141,7 +141,7 @@ P0与硬件资料收集可并行，P1/P2不必等采购；正式部署/真实通
 
 ## 11. 跨组资料怎么接着读
 A线相关任务/软件收尾/实物实验文件见docs/spikes/A_*；AB_交叉自检报告.md与AB_第二轮交叉核对.md用于跨组信息对接。它们是其他工作线后来新增资料，本地图未重新审计其完成声明；联合计划前应逐项核对实际代码/日志，不能继承B线171项结果。
-C线与云：spikes/SP-06/README.md及REPORT.md、docs/spikes/SP-06_编码计划.md；docs/integration/IOTDA_INTEGRATION_技术总结与敏捷计划.md及IoTDA_人工对接操作指南.md。本次地图不代表重新验收这些模块。
+C线与云：spikes/docs/C/SP-06/README.md及REPORT.md、spikes/docs/C/SP-06_编码计划.md；docs/integration/IOTDA_INTEGRATION_技术总结与敏捷计划.md及IoTDA_人工对接操作指南.md。本次地图不代表重新验收这些模块。
 
 ## 12. 下一次最小任务建议
 先开一次P0口径复核：每组提前看本文、M3/待确认口径表.md、M4/R07_开发报告.md、M5/R06_开发报告.md；会后形成“决定/证据/Owner/下一步”表。随后只选一条模拟在线纵向链路做P1/P2小迭代，不同时重构所有模块。每轮继续代码自检、独立预期交叉检查和受影响回归，并新增真实报告。

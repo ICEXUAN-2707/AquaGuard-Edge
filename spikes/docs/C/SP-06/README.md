@@ -27,4 +27,4 @@ repository's existing pytest environment. Tests use temporary databases.
 
 See [`REPORT.md`](REPORT.md) for progress and evidence.
 For a step-by-step human walkthrough and deterministic JSON cases, see
-[`MANUAL_TEST_GUIDE.md`](MANUAL_TEST_GUIDE.md) and [`data/manual_cases.json`](data/manual_cases.json).
+[`MANUAL_TEST_GUIDE.md`](MANUAL_TEST_GUIDE.md) and [`data/manual_cases.json`](../../../SP-06/data/manual_cases.json).
