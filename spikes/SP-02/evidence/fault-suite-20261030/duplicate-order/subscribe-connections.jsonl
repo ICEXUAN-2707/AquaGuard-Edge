@@ -1,0 +1,9 @@
+{"event": "connected", "utc": "2026-10-30T00:13:03.512061+00:00", "monotonic": 173671.703, "reason": "Success"}
+{"event": "subscribed", "utc": "2026-10-30T00:13:03.513432+00:00", "monotonic": 173671.703, "reasons": ["Granted QoS 1"]}
+{"event": "disconnected", "utc": "2026-10-30T00:13:06.529746+00:00", "monotonic": 173674.734, "reason": "Normal disconnection"}
+{"event": "connected", "utc": "2026-10-30T00:13:11.706636+00:00", "monotonic": 173679.906, "reason": "Success"}
+{"event": "subscribed", "utc": "2026-10-30T00:13:11.707890+00:00", "monotonic": 173679.906, "reasons": ["Granted QoS 1"]}
+{"event": "disconnected", "utc": "2026-10-30T00:13:14.717747+00:00", "monotonic": 173682.921, "reason": "Normal disconnection"}
+{"event": "connected", "utc": "2026-10-30T00:13:16.326907+00:00", "monotonic": 173684.531, "reason": "Success"}
+{"event": "subscribed", "utc": "2026-10-30T00:13:16.327912+00:00", "monotonic": 173684.531, "reasons": ["Granted QoS 1"]}
+{"event": "disconnected", "utc": "2026-10-30T00:13:19.342550+00:00", "monotonic": 173687.546, "reason": "Normal disconnection"}

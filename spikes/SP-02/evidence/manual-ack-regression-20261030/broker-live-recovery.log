@@ -1,0 +1,31 @@
+1793319638: mosquitto version 2.1.2 starting
+1793319638: Config loaded from spikes\SP-02\evidence\manual-ack-regression-20261030\broker.conf.
+1793319638: Bridge support available.
+1793319638: Persistence support available.
+1793319638: TLS support available.
+1793319638: TLS-PSK support available.
+1793319638: Websockets support available.
+1793319638: Opening ipv4 listen socket on port 18884.
+1793319638: mosquitto version 2.1.2 running
+1793319638: New connection from 127.0.0.1:60633 on port 18884.
+1793319638: Client 127.0.0.1 [127.0.0.1:60633] disconnected: connection closed by client.
+1793319639: New connection from 127.0.0.1:60635 on port 18884.
+1793319639: New client connected from 127.0.0.1:60635 as sp02-subscribe (p4, c1, k30).
+1793319639: No will message specified.
+1793319639: Sending CONNACK to sp02-subscribe (0, 0)
+1793319639: Received SUBSCRIBE from sp02-subscribe
+1793319639: 	prototype/aquaguard/prototype01/observation (QoS 1)
+1793319639: sp02-subscribe 1 prototype/aquaguard/prototype01/observation
+1793319639: Sending SUBACK to sp02-subscribe
+1793319640: New connection from 127.0.0.1:60638 on port 18884.
+1793319640: New client connected from 127.0.0.1:60638 as sp02-publish (p4, c1, k30).
+1793319640: No will message specified.
+1793319640: Sending CONNACK to sp02-publish (0, 0)
+1793319640: Received PUBLISH from sp02-publish (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (339 bytes))
+1793319640: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (339 bytes))
+1793319640: Sending PUBACK to sp02-publish (m1, rc0)
+1793319640: Received DISCONNECT from sp02-publish
+1793319640: Client sp02-publish [127.0.0.1:60638] disconnected.
+1793319640: Received PUBACK from sp02-subscribe (Mid: 1, RC:0)
+1793319652: Received DISCONNECT from sp02-subscribe
+1793319652: Client sp02-subscribe [127.0.0.1:60635] disconnected.

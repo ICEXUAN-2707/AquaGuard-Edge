@@ -1,0 +1,2 @@
+{"event": "connected", "utc": "2026-10-30T00:19:24.565898+00:00", "monotonic": 174052.765, "reason": "Success"}
+{"event": "disconnected", "utc": "2026-10-30T00:19:24.595292+00:00", "monotonic": 174052.796, "reason": "Normal disconnection"}

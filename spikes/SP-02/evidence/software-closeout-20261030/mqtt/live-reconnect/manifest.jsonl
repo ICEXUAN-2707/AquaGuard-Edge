@@ -1,0 +1,1 @@
+{"schema_version": "1.1", "device_id": "prototype01", "sensor_type": "water", "boot_id": "boot-1", "seq": 99, "uptime_ms": 99000, "event_time": null, "time_basis": "RECEIVED_FALLBACK", "value": {"wet": false}, "quality": "valid", "source": "simulation", "observation_id": "ae7f1369bb7310eb04c88e6f4bd570ede77da03753eae0298f43f97ca332cb95"}

@@ -1,0 +1,3 @@
+{"event": "connected", "utc": "2026-10-30T00:16:06.594392+00:00", "monotonic": 173854.796, "reason": "Success"}
+{"event": "subscribed", "utc": "2026-10-30T00:16:06.597887+00:00", "monotonic": 173854.796, "reasons": ["Granted QoS 1"]}
+{"event": "disconnected", "utc": "2026-10-30T00:16:18.603992+00:00", "monotonic": 173866.796, "reason": "Normal disconnection"}
