@@ -1,7 +1,7 @@
-﻿spike_id,task,owner,reviewer,status,issue_url,pr_url,evidence_path,dependency,next_handoff
+spike_id,task,owner,reviewer,status,issue_url,pr_url,evidence_path,dependency,next_handoff
 SP-01,三传感器采集与固件路线,A,待指定,NOT_STARTED,,,,,硬件到位后记录真实采样；结果交给契约线和SP-02
 SP-02,MQTT时间与重启,A,待指定,NOT_STARTED,,,,,交给B的TIME_ASSUMPTIONS.md和消息样例
-SP-03,滑动窗口与异步数据,B,待指定,NOT_STARTED,,,,,交付黄金窗口供SP-04使用；时间问题回传A
-SP-04,规则与轻量模型可行性,B,待指定,NOT_STARTED,,,,SP-03,交给M6负责人规则/UNKNOWN结论与指标
+SP-03,滑动窗口与异步数据,B,待指定,PARTIAL,,,spikes/SP-03/evidence,,交付黄金窗口供SP-04使用；时间问题回传A
+SP-04,规则与轻量模型可行性,B,待指定,PARTIAL,,,spikes/SP-04/evidence,SP-03,交给M6负责人规则/UNKNOWN结论与指标
 SP-05,华为IoTDA独立接入,C（项目统筹负责人）,待指定,NOT_STARTED,,,,,与SP-06对齐云端回执层级
 SP-06,SQLite事务与Outbox,C（项目统筹负责人）,待指定,NOT_STARTED,,,,,Mock事务证据交给I-008；回执问题交给SP-05

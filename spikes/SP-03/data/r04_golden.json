@@ -1,0 +1,7 @@
+﻿[
+ {"name":"window_end_wet","event":30,"received":32,"end":30,"state":"wet","coverage":0.0,"refs":["water-a-1"]},
+ {"name":"ttl_exact_expired","event":20,"received":20,"end":30,"state":"unknown","coverage":0.3333333333333333,"refs":["water-a-1"]},
+ {"name":"before_left_boundary_still_covers","event":-5,"received":-5,"end":30,"state":"unknown","coverage":0.16666666666666666,"refs":["water-a-1"]},
+ {"name":"missed_deadline","event":29,"received":33,"end":30,"state":"unknown","coverage":0.0,"refs":[]},
+ {"name":"late_for_previous_but_valid_next","event":29,"received":33,"end":35,"state":"wet","coverage":0.2,"refs":["water-a-1"]}
+]

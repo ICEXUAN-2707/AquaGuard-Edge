@@ -1,0 +1,113 @@
+{
+  "config": {
+    "width": 30,
+    "lateness": 2,
+    "ttl": 10,
+    "flow_threshold": 0.1,
+    "ttl_by_source": {
+      "flow": 10,
+      "water": 10,
+      "presence": 10
+    }
+  },
+  "windows": [
+    {
+      "schema_version": "1.1",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "device_id": "demo",
+      "window_start": "2026-10-29T00:00:00Z",
+      "window_end": "2026-10-29T00:00:30Z",
+      "published_at": "2026-10-29T00:00:32Z",
+      "alignment_config_version": "sp03-r05-v1-f5dfabf0c6d4",
+      "sensor_summary": {
+        "flow": {
+          "state": "active",
+          "age_sec": 0.0,
+          "coverage_ratio": 1.0
+        },
+        "water": {
+          "state": "wet",
+          "age_sec": 0.0,
+          "coverage_ratio": 1.0
+        },
+        "presence": {
+          "state": "present",
+          "age_sec": 0.0,
+          "coverage_ratio": 0.8333333333333334
+        }
+      },
+      "origin": "simulation",
+      "quality_flags": [],
+      "source_observation_ids": [
+        "flow-10",
+        "flow-15",
+        "flow-20",
+        "flow-25",
+        "flow-30",
+        "flow-5",
+        "presence-0",
+        "presence-10",
+        "presence-15",
+        "presence-20",
+        "presence-25",
+        "presence-30",
+        "presence-5",
+        "water-0",
+        "water-10",
+        "water-15",
+        "water-20",
+        "water-25",
+        "water-30",
+        "water-5"
+      ]
+    },
+    {
+      "schema_version": "1.1",
+      "window_id": "demo:2026-10-29T00:00:35+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "device_id": "demo",
+      "window_start": "2026-10-29T00:00:05Z",
+      "window_end": "2026-10-29T00:00:35Z",
+      "published_at": "2026-10-29T00:00:37Z",
+      "alignment_config_version": "sp03-r05-v1-f5dfabf0c6d4",
+      "sensor_summary": {
+        "flow": {
+          "state": "unknown",
+          "age_sec": null,
+          "coverage_ratio": 0.8333333333333334
+        },
+        "water": {
+          "state": "wet",
+          "age_sec": 5.0,
+          "coverage_ratio": 1.0
+        },
+        "presence": {
+          "state": "present",
+          "age_sec": 5.0,
+          "coverage_ratio": 0.8333333333333334
+        }
+      },
+      "origin": "simulation",
+      "quality_flags": [],
+      "source_observation_ids": [
+        "flow-10",
+        "flow-15",
+        "flow-20",
+        "flow-25",
+        "flow-30",
+        "presence-10",
+        "presence-15",
+        "presence-20",
+        "presence-25",
+        "presence-30",
+        "presence-5",
+        "water-10",
+        "water-15",
+        "water-20",
+        "water-25",
+        "water-30",
+        "water-5"
+      ]
+    }
+  ],
+  "audit": []
+}
