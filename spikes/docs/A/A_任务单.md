@@ -1,5 +1,9 @@
 # A 组员任务单
 
+最新阅读入口见 [A文档导航](A_文档导航.md)；硬件已购入后的执行规划见 [零基础实验手册](A_零基础实验与数据采集手册.md)。参数未核验前不执行实物接线。
+
+采购清单、资料入口、开发阶段与验收矩阵见 [A 双线开发计划](A_双线开发计划.md)。该计划为待执行路线，实验状态以实际证据为准。
+
 ## 你负责什么
 
 你负责 SP-01 和 SP-02，回答两个问题：三种传感器的数据能不能稳定采到；消息经过 MQTT、进程重启和乱序后，能不能判断数据来自哪个设备、何时产生、是否重复。
@@ -9,7 +13,7 @@
 ## 开始前先做
 
 1. 请组长给你分配 SP-01 和 SP-02 的 Issue、分支及 Reviewer。Owner 不能自己验收自己的结果。
-2. 查看 [Spike Issue 模板](templates/SPIKE_ISSUE_TEMPLATE.md) 和 [Spike 报告模板](templates/SPIKE_REPORT_TEMPLATE.md)，每项工作都单独建目录：`spikes/SP-01/`、`spikes/SP-02/`。
+2. 查看 [Spike Issue 模板](../../../docs/spikes/templates/SPIKE_ISSUE_TEMPLATE.md) 和 [Spike 报告模板](../../../docs/spikes/templates/SPIKE_REPORT_TEMPLATE.md)，每项工作都单独建目录：`spikes/SP-01/`、`spikes/SP-02/`。
 3. 如果 Python 环境尚未准备好，在仓库根目录执行：
 
    ```powershell
@@ -18,7 +22,7 @@
    ```
 
 4. 在 README 里写清你的操作系统、Python 版本、Mosquitto 版本、固件工具版本；每条命令和运行结果都复制到 `evidence/`。Broker 地址或安装方式不清楚时先问组长，不要把 Broker 暴露到公网。
-5. 当前参考基线是 [V1.2 候选规范](../../reference/reference_02/00_Contracts_V1.2_修订候选.md)，但 A/B/C 尚未完成 C0 会签。可据此检查字段映射，不改 `reference/`、`edge/contracts/`、生产 API 或业务数据库。
+5. 当前参考基线是 [V1.2 候选规范](../../../reference/reference_02/00_Contracts_V1.2_修订候选.md)，但 A/B/C 尚未完成 C0 会签。可据此检查字段映射，不改 `reference/`、`edge/contracts/`、生产 API 或业务数据库。
 6. 把实验标记 `prototype_only` 写在文件名、README、报告或 sidecar 中，不要把该字段塞进正式 DTO JSON 对象，否则会因额外字段校验失败。
 
 ## 先记住这些词
@@ -39,7 +43,7 @@
 ### 按步骤完成
 
 1. 安装或启动一个本机 Mosquitto Broker；记录版本和启动命令。若组内已有 Broker，先找组长要连接地址，不能把账号密码写进 Git。
-2. 先看 [V1.2 候选规范 D1](../../reference/reference_02/00_Contracts_V1.2_修订候选.md)。如果用候选 DTO 外形，公共字段包括 `schema_version=1.1`、`observation_id`、`device_id`、`sensor_type`、`boot_id`、`seq`、`uptime_ms`、`event_time`、`received_at`、`time_basis`、`value`、`quality`、`source`。时间写带时区的 ISO 格式；模拟数据用 `source=simulation`，没有可信设备时钟时用 `time_basis=RECEIVED_FALLBACK` 且 `event_time=null`。
+2. 先看 [V1.2 候选规范 D1](../../../reference/reference_02/00_Contracts_V1.2_修订候选.md)。如果用候选 DTO 外形，公共字段包括 `schema_version=1.1`、`observation_id`、`device_id`、`sensor_type`、`boot_id`、`seq`、`uptime_ms`、`event_time`、`received_at`、`time_basis`、`value`、`quality`、`source`。时间写带时区的 ISO 格式；模拟数据用 `source=simulation`，没有可信设备时钟时用 `time_basis=RECEIVED_FALLBACK` 且 `event_time=null`。
 3. `value` 按传感器类型填写：flow 用 `pulse_count`、`interval_ms`、`estimated_lpm`、`calibration_id`；water 用 `wet`；presence 用 `present`、`moving`、`still`。未知用 `null`，不能猜成 false。实验文件或 README 标 `prototype_only`；不要把标记字段加进 DTO 对象。
 4. 先连续发送 100 条消息，订阅端保存一份原始 JSONL 日志；统计发出数、收到数、重复数和时间差。
 5. 再分别注入重复 seq、乱序 seq、Broker 暂停/恢复，以及发布程序重启。重启后更换 `boot_id` 并重置 seq，验证日志能区分“新一轮启动”和“同一轮重复消息”。
