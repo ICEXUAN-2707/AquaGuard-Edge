@@ -55,3 +55,7 @@ M4 离线模拟原型及各轮报告见 [M4交付入口](../spikes/SP-03-feature
 [B部分项目地图](project/B_PROJECT_MAP_AND_NEXT_STEPS.md)：下一阶段如何做、推荐阅读顺序、逐份报告用途、代码/证据位置及验收边界。
 
 [B部分文档自检](project/B_DOCUMENT_AUDIT.md)：2026-11-03核对文档收录、链接及共享入口。
+
+## B部分统一入口
+
+[文档总入口](project/B_DOCUMENT_INDEX.md) · [代码地图](project/B_CODE_MAP.md) · [从零复现手册](project/B_REPRODUCTION_GUIDE.md)
