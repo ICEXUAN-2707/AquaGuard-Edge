@@ -49,6 +49,7 @@ M4 离线模拟原型及各轮报告见 [M4交付入口](../spikes/SP-03-feature
 ## M5 规则验证交付
 [M5交付入口](../spikes/SP-04/README.md)：离线模拟规则六轮已收尾，默认10秒；SP-04整体PARTIAL，真实trial/ML/独立验收待完成。最终回归171项含既有检查，不等于项目完成率。
 
-## B section project map
+## B部分阅读地图与后续路线
+[B部分项目地图](project/B_PROJECT_MAP_AND_NEXT_STEPS.md)：下一阶段如何做、推荐阅读顺序、逐份报告用途、代码/证据位置及验收边界。
 
-[Project map and next steps](project/B_PROJECT_MAP_AND_NEXT_STEPS.md)
+[B部分文档自检](project/B_DOCUMENT_AUDIT.md)：2026-11-03核对文档收录、链接及共享入口。
