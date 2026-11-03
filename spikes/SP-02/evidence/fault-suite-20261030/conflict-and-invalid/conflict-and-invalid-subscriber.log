@@ -1,0 +1,7 @@
+READY
+Traceback (most recent call last):
+  File "D:\高ice（大学版）\2026-2027 大二\10月华为ICT实践赛\spikes\SP-02\src\cli.py", line 110, in <module>
+    main()
+  File "D:\高ice（大学版）\2026-2027 大二\10月华为ICT实践赛\spikes\SP-02\src\cli.py", line 103, in main
+    raise RuntimeError('ingress errors: ' + repr(errors))
+RuntimeError: ingress errors: ['1 validation error for SensorObservation\nprototype_only\n  Extra inputs are not permitted [type=extra_forbidden, input_value=True, input_type=bool]\n    For further information visit https://errors.pydantic.dev/2.14/v/extra_forbidden']

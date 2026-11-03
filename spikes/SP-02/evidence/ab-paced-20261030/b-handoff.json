@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "prototype_only": true,
+  "observations": 6,
+  "experiments": [
+    {
+      "experiment_id": "a26adb2d1dd2aa4769bb81ea83b95afe076f0440b9c7e061843e9c346dc88ea6",
+      "device_id": "prototype01",
+      "boot_id": "boot-1",
+      "window": {
+        "schema_version": "1.1",
+        "window_id": "prototype01:2026-10-30T00:34:42.762776+00:00:sp03-r05-v1-f5dfabf0c6d4",
+        "device_id": "prototype01",
+        "window_start": "2026-10-30T00:34:12.762776Z",
+        "window_end": "2026-10-30T00:34:42.762776Z",
+        "published_at": "2026-10-30T00:34:44.762776Z",
+        "alignment_config_version": "sp03-r05-v1-f5dfabf0c6d4",
+        "sensor_summary": {
+          "flow": {
+            "state": "unknown",
+            "age_sec": null,
+            "coverage_ratio": 0.06666666666666667
+          },
+          "water": {
+            "state": "dry",
+            "age_sec": 0.530944,
+            "coverage_ratio": 0.0690225
+          },
+          "presence": {
+            "state": "present",
+            "age_sec": 0.0,
+            "coverage_ratio": 0.0513382
+          }
+        },
+        "origin": "simulation",
+        "quality_flags": [
+          "RECEIVED_FALLBACK"
+        ],
+        "source_observation_ids": [
+          "0e93139a2778ec29d0c6a39bfca0054cdf122c380859ce2b0a098a755a3edf3c",
+          "541a2fd94684b74b76038c396df1f71b7ca20b19d83643127433bd8bf271648c",
+          "66ffd531ad922214873dedf998f1d31215dd5a962bcdec9bc4e59b5b7f378b80",
+          "7e2fdc8983b2a48139506abf9ab0548004d963b75d00b7298668d6b289e3f54e",
+          "a4a772d11d76814d44a487ceacd9e9d53ec26bac50e890f3f580df1f9adf53e4",
+          "e9199cdcf8ed11f409069571ba8f07d0225ad42d4db206e7660f1a0e38b59de1"
+        ]
+      },
+      "features": {
+        "window_id": "prototype01:2026-10-30T00:34:42.762776+00:00:sp03-r05-v1-f5dfabf0c6d4",
+        "device_id": "prototype01",
+        "feature_version": "m4-r06-v1",
+        "features": {
+          "flow_mean_lpm": 0.2,
+          "flow_max_lpm": 0.2,
+          "flow_active_ratio": 1.0,
+          "flow_streak_sec": null,
+          "flow_change_count": null,
+          "water_contact": false,
+          "water_contact_sec": 0.0,
+          "presence_state": "present",
+          "presence_occupied_ratio": 1.0,
+          "presence_transition_count": 0,
+          "absence_after_flow_sec": null,
+          "data_coverage_ratio": 0.06234245555555556
+        },
+        "missing_mask": {
+          "flow": false,
+          "water": false,
+          "presence": false
+        },
+        "origin": "simulation",
+        "prototype_only": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "limitations": [
+    "Each device/boot is an independent finite experiment; not a continuous restart timeline.",
+    "RECEIVED_FALLBACK cannot reconstruct measurement time of queued messages.",
+    "M4 output is experimental features, not a checkpoint-backed FeatureWindow."
+  ]
+}

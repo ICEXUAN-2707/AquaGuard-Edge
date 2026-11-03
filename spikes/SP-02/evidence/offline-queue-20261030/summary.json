@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "sent_attempts": 100,
+  "sent_unique": 100,
+  "received": 100,
+  "accepted": 100,
+  "classifications": {
+    "new": 100
+  },
+  "missing": [],
+  "unexpected": []
+}

@@ -1,0 +1,27 @@
+1793319561: mosquitto version 2.1.2 starting
+1793319561: Config loaded from spikes/SP-02/evidence/commit-before-ack-20261030/broker.conf.
+1793319561: Bridge support available.
+1793319561: Persistence support available.
+1793319561: TLS support available.
+1793319561: TLS-PSK support available.
+1793319561: Websockets support available.
+1793319561: Opening ipv4 listen socket on port 18886.
+1793319561: mosquitto version 2.1.2 running
+1793319562: New connection from 127.0.0.1:53540 on port 18886.
+1793319562: New client connected from 127.0.0.1:53540 as sp02-subscribe (p4, c0, k30).
+1793319562: No will message specified.
+1793319562: Sending CONNACK to sp02-subscribe (0, 0)
+1793319562: Received SUBSCRIBE from sp02-subscribe
+1793319562: 	prototype/aquaguard/prototype01/observation (QoS 1)
+1793319562: sp02-subscribe 1 prototype/aquaguard/prototype01/observation
+1793319562: Sending SUBACK to sp02-subscribe
+1793319564: New connection from 127.0.0.1:53549 on port 18886.
+1793319564: New client connected from 127.0.0.1:53549 as sp02-publish (p4, c1, k30).
+1793319564: No will message specified.
+1793319564: Sending CONNACK to sp02-publish (0, 0)
+1793319564: Received PUBLISH from sp02-publish (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (417 bytes))
+1793319564: Sending PUBLISH to sp02-subscribe (d0, q1, r0, m1, 'prototype/aquaguard/prototype01/observation', ... (417 bytes))
+1793319564: Sending PUBACK to sp02-publish (m1, rc0)
+1793319564: Received DISCONNECT from sp02-publish
+1793319564: Client sp02-publish [127.0.0.1:53549] disconnected.
+1793319564: Client sp02-subscribe [127.0.0.1:53540] disconnected: connection closed by client.

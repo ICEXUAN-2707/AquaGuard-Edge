@@ -1,0 +1,65 @@
+{
+  "results": [
+    {
+      "scenario": "duplicate-order",
+      "expected": [
+        "new",
+        "out_of_order",
+        "duplicate"
+      ],
+      "actual": [
+        "new",
+        "out_of_order",
+        "duplicate"
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": "conflict-and-invalid",
+      "expected": [
+        "new",
+        "conflict",
+        "invalid",
+        "new"
+      ],
+      "actual": [
+        "new",
+        "conflict",
+        "invalid",
+        "new"
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": "subscriber-and-publisher-restart",
+      "expected": [
+        "duplicate",
+        "new"
+      ],
+      "actual": [
+        "duplicate",
+        "new"
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": "broker-restart",
+      "expected": [
+        "duplicate",
+        "new"
+      ],
+      "actual": [
+        "duplicate",
+        "new"
+      ],
+      "status": "PASS"
+    },
+    {
+      "scenario": "live-subscriber-reconnect",
+      "status": "PASS",
+      "recovery_seconds": 1.0310000000172295,
+      "received": 1
+    }
+  ],
+  "complete": true
+}
