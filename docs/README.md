@@ -1,5 +1,7 @@
 # 水知安文档导航
 
+C-R05最新入口：[Mock Outbox阶段报告](../spikes/docs/C/C_R05_STAGE_REVIEW.md)，含持久退避、租约恢复、消息快照和128项相关回归；命令见[本地演示手册R05章节](../spikes/docs/C/C-business/LOCAL_DEMO.md)，不连接真实IoTDA。
+
 软件安装与首次复现：[零基础软件安装与复现手册](project/零基础软件安装与复现手册.md)，包含软件版本、下载安装、PowerShell操作、A/B/C分支命令、预期结果和排错。
 
 A部分最新入口：[A文档导航](../spikes/docs/A/A_文档导航.md)，统一收录项目地图、代码算法导读、实物实验方案及零基础采集手册；实物参数待核验，未宣称已完成硬件实验。

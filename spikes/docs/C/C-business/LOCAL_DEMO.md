@@ -1,5 +1,21 @@
 # C本地原型启动与演示
 
+## R05本机Mock worker（最新补充）
+
+请新seed独立R05库并保留旧库；旧库可能缺历史发送快照，worker会拒绝，不从最新事件重建旧消息。
+
+```powershell
+.\.venv-app\Scripts\python.exe spikes/C-business/run.py seed --db spikes/C-business/local/r05-demo01.sqlite --ttl 30 --clear 2
+.\.venv-app\Scripts\python.exe spikes/C-business/run.py worker --db spikes/C-business/local/r05-demo01.sqlite --mode temporary --steps 1
+.\.venv-app\Scripts\python.exe spikes/C-business/run.py worker --db spikes/C-business/local/r05-demo01.sqlite --mode accept --steps 5 --interval 1
+```
+
+temporary模拟临时失败，exception模拟TimeoutError，permanent模拟不可恢复失败；accept仅生成Mock传输回执。未到next_retry_at返回IDLE，steps结束退出，Ctrl+C停止。worker和serve分终端运行，serve默认不发送。
+
+默认实验策略1秒起步、60秒封顶、10秒租约、5次上限，无jitter；重启须保持一致，非生产推荐参数。worker是本机数据库操作，不要求网页token、不暴露HTTP发送入口。
+
+查询可见待发减少与TRANSPORT，但不表示真实IoTDA或联系人收到。BUSINESS须独立受控Worker.business_receipt调用记录，CLI不自动生成。FAILED尚无人工重投入口。详见[R05报告](../C_R05_STAGE_REVIEW.md)。下文为此前操作说明。
+
 更新：2026-11-03。prototype_only，使用模拟水接触，不连接硬件、IoTDA或联系人。仅监听127.0.0.1；手机LAN访问与远程部署尚不支持。正式edge服务仍独立，默认8000；本原型默认8010。
 
 ## 1. 初始化新实验库
@@ -24,7 +40,7 @@ $env:AQUAGUARD_C_CURSOR_KEY = [guid]::NewGuid().ToString('N') + [guid]::NewGuid(
 .\.venv-app\Scripts\python.exe spikes/C-business/run.py serve --db spikes/C-business/local/demo01.sqlite --port 8010
 ```
 
-初始化后尽快启动。数据超过30秒会正常过期，服务不会刷新演示证据。健康检查http://127.0.0.1:8010/health不含业务数据，其他七条查询/ACK路由都需Bearer token。当前根路径没有业务页面。
+初始化后尽快启动。数据超过30秒会正常过期，服务不会刷新演示证据。健康检查http://127.0.0.1:8010/health不含业务数据，其他七条查询/ACK路由都需Bearer token。若启动时已有web/dist构建产物，根路径和/c.html提供业务页面；操作见第6节。
 
 ## 3. 查询与确认
 
@@ -62,7 +78,7 @@ ACK与timer可能竞争版本，若返回VERSION_CONFLICT，重新查询后用�
 |查询401|token缺失/不一致；实验token不是华为云凭据|
 |实时/情境503|可能是投影正常过期；不要刷新captured_at凑实时|
 |health为503 degraded|timer处理失败；排查库、配置、时钟；不等于传感器一定损坏|
-|同步NONE/PENDING|尚无worker/云回执，符合当前阶段|
+|同步NONE/PENDING|未运行worker或还未收到回执；R05可显式运行Mock worker，仍不代表真实云|
 
 仅单进程单实例使用一个库。尚未实现多服务互斥、数据保留/容量、运行日志轮转及迁移；不要把SP-06库或R02a低层库混作本演示库。环境变量和本地SQLite不随Git交付。
 
