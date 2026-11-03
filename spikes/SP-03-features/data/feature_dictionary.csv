@@ -1,0 +1,13 @@
+feature,unit,proposed_definition,missing_rule
+flow_mean_lpm,L/min,有效区间流量按时长加权平均,有效流量时长为0则null
+flow_max_lpm,L/min,有效流量区间最大值,无有效流量区间则null
+flow_active_ratio,ratio,有效活动流量时长除以有效流量时长,分母为0则null
+flow_streak_sec,s,截至窗尾且有连续证据的活动流量时长可跨窗,窗尾未知则null已知停止则0
+flow_change_count,count,仅连续已知区间内活动与非活动转换次数,无连续比较证据则null
+water_contact,bool,窗尾水接触状态,窗尾未知则null
+water_contact_sec,s,截至窗尾连续湿时长可跨窗,窗尾未知则null已知干则0
+presence_state,enum,窗尾present或absent或unknown,无窗尾有效状态则unknown
+presence_occupied_ratio,ratio,有效在场时长除以有效人员观测时长,分母为0则null
+presence_transition_count,count,连续已知区间内present与absent转换次数,无连续比较证据则null
+absence_after_flow_sec,s,截至窗尾流水活动与未检出人员连续交集时长,任一关键终态未知或任一源全缺失则null
+data_coverage_ratio,ratio,三源有效覆盖率等权平均且缺失源不重分权重,全缺失为0

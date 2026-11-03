@@ -1,0 +1,445 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "prototype_only": true
+  },
+  "config": {
+    "width": 30,
+    "lateness": 2,
+    "ttl": 10
+  },
+  "window_ends": [
+    "2026-10-29T00:00:30+00:00",
+    "2026-10-29T00:00:35+00:00"
+  ],
+  "observations": [
+    {
+      "schema_version": "1.1",
+      "observation_id": "flow-0",
+      "device_id": "demo",
+      "sensor_type": "flow",
+      "boot_id": "boot-a",
+      "seq": 0,
+      "uptime_ms": 0,
+      "event_time": "2026-10-29T00:00:00+00:00",
+      "received_at": "2026-10-29T00:00:00+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "pulse_count": 5,
+        "interval_ms": 5000,
+        "estimated_lpm": 6.0,
+        "calibration_id": "synthetic-only"
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "water-0",
+      "device_id": "demo",
+      "sensor_type": "water",
+      "boot_id": "boot-a",
+      "seq": 0,
+      "uptime_ms": 0,
+      "event_time": "2026-10-29T00:00:00+00:00",
+      "received_at": "2026-10-29T00:00:01+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "wet": false
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "presence-0",
+      "device_id": "demo",
+      "sensor_type": "presence",
+      "boot_id": "boot-a",
+      "seq": 0,
+      "uptime_ms": 0,
+      "event_time": "2026-10-29T00:00:00+00:00",
+      "received_at": "2026-10-29T00:00:00+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "flow-5",
+      "device_id": "demo",
+      "sensor_type": "flow",
+      "boot_id": "boot-a",
+      "seq": 1,
+      "uptime_ms": 5000,
+      "event_time": "2026-10-29T00:00:05+00:00",
+      "received_at": "2026-10-29T00:00:05+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "pulse_count": 5,
+        "interval_ms": 5000,
+        "estimated_lpm": 6.0,
+        "calibration_id": "synthetic-only"
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "water-5",
+      "device_id": "demo",
+      "sensor_type": "water",
+      "boot_id": "boot-a",
+      "seq": 1,
+      "uptime_ms": 5000,
+      "event_time": "2026-10-29T00:00:05+00:00",
+      "received_at": "2026-10-29T00:00:06+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "wet": false
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "presence-5",
+      "device_id": "demo",
+      "sensor_type": "presence",
+      "boot_id": "boot-a",
+      "seq": 1,
+      "uptime_ms": 5000,
+      "event_time": "2026-10-29T00:00:05+00:00",
+      "received_at": "2026-10-29T00:00:05+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "flow-10",
+      "device_id": "demo",
+      "sensor_type": "flow",
+      "boot_id": "boot-a",
+      "seq": 2,
+      "uptime_ms": 10000,
+      "event_time": "2026-10-29T00:00:10+00:00",
+      "received_at": "2026-10-29T00:00:10+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "pulse_count": 5,
+        "interval_ms": 5000,
+        "estimated_lpm": 6.0,
+        "calibration_id": "synthetic-only"
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "water-10",
+      "device_id": "demo",
+      "sensor_type": "water",
+      "boot_id": "boot-a",
+      "seq": 2,
+      "uptime_ms": 10000,
+      "event_time": "2026-10-29T00:00:10+00:00",
+      "received_at": "2026-10-29T00:00:11+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "wet": false
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "presence-10",
+      "device_id": "demo",
+      "sensor_type": "presence",
+      "boot_id": "boot-a",
+      "seq": 2,
+      "uptime_ms": 10000,
+      "event_time": "2026-10-29T00:00:10+00:00",
+      "received_at": "2026-10-29T00:00:10+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "flow-15",
+      "device_id": "demo",
+      "sensor_type": "flow",
+      "boot_id": "boot-a",
+      "seq": 3,
+      "uptime_ms": 15000,
+      "event_time": "2026-10-29T00:00:15+00:00",
+      "received_at": "2026-10-29T00:00:15+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "pulse_count": 5,
+        "interval_ms": 5000,
+        "estimated_lpm": 6.0,
+        "calibration_id": "synthetic-only"
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "water-15",
+      "device_id": "demo",
+      "sensor_type": "water",
+      "boot_id": "boot-a",
+      "seq": 3,
+      "uptime_ms": 15000,
+      "event_time": "2026-10-29T00:00:15+00:00",
+      "received_at": "2026-10-29T00:00:16+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "wet": false
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "presence-15",
+      "device_id": "demo",
+      "sensor_type": "presence",
+      "boot_id": "boot-a",
+      "seq": 3,
+      "uptime_ms": 15000,
+      "event_time": "2026-10-29T00:00:15+00:00",
+      "received_at": "2026-10-29T00:00:15+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "flow-20",
+      "device_id": "demo",
+      "sensor_type": "flow",
+      "boot_id": "boot-a",
+      "seq": 4,
+      "uptime_ms": 20000,
+      "event_time": "2026-10-29T00:00:20+00:00",
+      "received_at": "2026-10-29T00:00:20+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "pulse_count": 5,
+        "interval_ms": 5000,
+        "estimated_lpm": 6.0,
+        "calibration_id": "synthetic-only"
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "water-20",
+      "device_id": "demo",
+      "sensor_type": "water",
+      "boot_id": "boot-a",
+      "seq": 4,
+      "uptime_ms": 20000,
+      "event_time": "2026-10-29T00:00:20+00:00",
+      "received_at": "2026-10-29T00:00:21+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "wet": false
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "presence-20",
+      "device_id": "demo",
+      "sensor_type": "presence",
+      "boot_id": "boot-a",
+      "seq": 4,
+      "uptime_ms": 20000,
+      "event_time": "2026-10-29T00:00:20+00:00",
+      "received_at": "2026-10-29T00:00:20+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "flow-25",
+      "device_id": "demo",
+      "sensor_type": "flow",
+      "boot_id": "boot-a",
+      "seq": 5,
+      "uptime_ms": 25000,
+      "event_time": "2026-10-29T00:00:25+00:00",
+      "received_at": "2026-10-29T00:00:25+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "pulse_count": 5,
+        "interval_ms": 5000,
+        "estimated_lpm": 6.0,
+        "calibration_id": "synthetic-only"
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "water-25",
+      "device_id": "demo",
+      "sensor_type": "water",
+      "boot_id": "boot-a",
+      "seq": 5,
+      "uptime_ms": 25000,
+      "event_time": "2026-10-29T00:00:25+00:00",
+      "received_at": "2026-10-29T00:00:26+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "wet": false
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "presence-25",
+      "device_id": "demo",
+      "sensor_type": "presence",
+      "boot_id": "boot-a",
+      "seq": 5,
+      "uptime_ms": 25000,
+      "event_time": "2026-10-29T00:00:25+00:00",
+      "received_at": "2026-10-29T00:00:25+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "present": null,
+        "moving": null,
+        "still": null
+      },
+      "quality": "unknown",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "flow-30",
+      "device_id": "demo",
+      "sensor_type": "flow",
+      "boot_id": "boot-a",
+      "seq": 6,
+      "uptime_ms": 30000,
+      "event_time": "2026-10-29T00:00:30+00:00",
+      "received_at": "2026-10-29T00:00:30+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "pulse_count": 5,
+        "interval_ms": 5000,
+        "estimated_lpm": 6.0,
+        "calibration_id": "synthetic-only"
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "water-30",
+      "device_id": "demo",
+      "sensor_type": "water",
+      "boot_id": "boot-a",
+      "seq": 6,
+      "uptime_ms": 30000,
+      "event_time": "2026-10-29T00:00:30+00:00",
+      "received_at": "2026-10-29T00:00:31+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "wet": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    },
+    {
+      "schema_version": "1.1",
+      "observation_id": "presence-30",
+      "device_id": "demo",
+      "sensor_type": "presence",
+      "boot_id": "boot-a",
+      "seq": 6,
+      "uptime_ms": 30000,
+      "event_time": "2026-10-29T00:00:30+00:00",
+      "received_at": "2026-10-29T00:00:30+00:00",
+      "time_basis": "DEVICE_SYNCED",
+      "value": {
+        "present": true,
+        "moving": false,
+        "still": true
+      },
+      "quality": "valid",
+      "source": "simulation"
+    }
+  ],
+  "expected_summaries": [
+    {
+      "flow": {
+        "state": "active",
+        "age_sec": 0.0,
+        "coverage_ratio": 1.0
+      },
+      "water": {
+        "state": "wet",
+        "age_sec": 0.0,
+        "coverage_ratio": 1.0
+      },
+      "presence": {
+        "state": "present",
+        "age_sec": 0.0,
+        "coverage_ratio": 0.8333333333333334
+      }
+    },
+    {
+      "flow": {
+        "state": "unknown",
+        "age_sec": null,
+        "coverage_ratio": 0.8333333333333334
+      },
+      "water": {
+        "state": "wet",
+        "age_sec": 5.0,
+        "coverage_ratio": 1.0
+      },
+      "presence": {
+        "state": "present",
+        "age_sec": 5.0,
+        "coverage_ratio": 0.8333333333333334
+      }
+    }
+  ]
+}

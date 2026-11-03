@@ -2,3 +2,6 @@
 reference/** -text whitespace=cr-at-eol
 *.md text eol=lf
 *.py text eol=lf
+
+spikes/SP-03-features/evidence/checkpoints/*.json -text
+spikes/SP-04/evidence/r05/checkpoints/*.json -text

@@ -1,0 +1,6 @@
+﻿[
+ {"name":"partial_flow","window_sec":30,"flow_segments":[[0,10,6]],"water_valid_sec":0,"presence_segments":[],"expected":{"flow_mean_lpm":6,"flow_max_lpm":6,"flow_active_ratio":1,"presence_occupied_ratio":null,"data_coverage_ratio":0.1111111111111111}},
+ {"name":"unequal_sampling","window_sec":30,"flow_segments":[[0,10,6],[10,30,0]],"water_valid_sec":30,"presence_segments":[[0,30,true]],"expected":{"flow_mean_lpm":2,"flow_max_lpm":6,"flow_active_ratio":0.3333333333333333,"presence_occupied_ratio":1,"data_coverage_ratio":1}},
+ {"name":"all_missing","window_sec":30,"flow_segments":[],"water_valid_sec":0,"presence_segments":[],"expected":{"flow_mean_lpm":null,"flow_max_lpm":null,"flow_active_ratio":null,"presence_occupied_ratio":null,"data_coverage_ratio":0}},
+ {"name":"presence_unknown_gap","window_sec":30,"flow_segments":[[0,30,6]],"water_valid_sec":30,"presence_segments":[[0,10,true],[20,30,false]],"expected":{"flow_mean_lpm":6,"flow_max_lpm":6,"flow_active_ratio":1,"presence_occupied_ratio":0.5,"data_coverage_ratio":0.8888888888888888}}
+]

@@ -1,0 +1,1 @@
+﻿{"rule_version":"m5-r01-v1","unattended_sec":10,"min_flow_coverage":0.8,"min_presence_coverage":0.8,"idle_confirm_sec":5,"max_window_age_sec":10,"evaluation_policy":"fixed_publication_time","flow_threshold_policy":"inherit_alignment_config"}
