@@ -1,0 +1,123 @@
+﻿{
+    "date":  "2026-11-05",
+    "base":  "b304174",
+    "scope":  "software integration baseline; joint signatures pending",
+    "files":  [
+                  {
+                      "path":  "reference/reference_02/contracts/AlignedWindow.schema.json",
+                      "sha256":  "63d9dcd311e299c09ecad157a495ef5698b4b6bb0cc0313d3e859e85d2028689"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/ApiError.schema.json",
+                      "sha256":  "870c2786a0218e8225445faf0f3a973f83052111c8d096f9a191e2c6b2b32000"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/CloudSyncRecord.schema.json",
+                      "sha256":  "37bfe3e98685be77387ba5f02f3071621ad6e163ea68d362b75db75522a50d5f"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/EventTransition.schema.json",
+                      "sha256":  "50de5a6553e7ad6f694de582fa7bf94080bbeb580942f80e60b2d85f0c2db7c5"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/examples.json",
+                      "sha256":  "da709afbedb651ef1307961fa7ea2e887090a986488e2c8947e07d4252e7dbb7"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/FeatureWindow.schema.json",
+                      "sha256":  "c36fa56b4df18d0ec85906cbdaa417d5ae16eb03d3ec177f3119c2674cffa2ef"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/SafetyEvent.schema.json",
+                      "sha256":  "488b5b00ab27175c7178c0e4a7696022917047e7ee8775d6e8d4c10dadc1a34b"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/SafetySignal.schema.json",
+                      "sha256":  "ae88d4a8e4915fedf9e04f7dc5301e9acbaf11432bb0b57e18110ae91620ead1"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/scenario_s01.json",
+                      "sha256":  "cebaed1ff8b38b8c1609f99a5f6a191793e15744f76176fd731ead89a5cb0c9f"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/SensorObservation.schema.json",
+                      "sha256":  "7272f514b5f0914b2d9741db697507dee51836cbf67ccb2bd6ab1d8f6a86c3a4"
+                  },
+                  {
+                      "path":  "reference/reference_02/contracts/SituationAssessment.schema.json",
+                      "sha256":  "afaa3be5ebc3088b6dab74b8d02c53ca472c47a9ec399ce810fa3bebba7e446b"
+                  },
+                  {
+                      "path":  "reference/reference_02/tests/test_contract_revision.py",
+                      "sha256":  "1a9b172858fd89cbd281b7f52711327025ce32e374950ff416fa417d5479d85b"
+                  },
+                  {
+                      "path":  "reference/reference_02/tests/test_json_schema_contracts.py",
+                      "sha256":  "c33797e37e824611d58b600ad3a9f09b1ffab186cea242a9ef1afe9b05b6ad8d"
+                  },
+                  {
+                      "path":  "tests/contracts/test_api_models.py",
+                      "sha256":  "6df4d26c53671553977faf44267114cabb144e8ea7fec49da55d31f545c4fd80"
+                  },
+                  {
+                      "path":  "tests/contracts/test_dto_semantics.py",
+                      "sha256":  "27c4f6f6466dfab9dded8cba554d1f58b385b19aac7468623b2cd138b34ad1a1"
+                  },
+                  {
+                      "path":  "docs/contracts/G0_FREEZE_RECORD.md",
+                      "sha256":  "1e3d980714751f58851c39947aa305ec7c5d08a305ee5676a4f410410ed80008"
+                  },
+                  {
+                      "path":  "edge/contracts/api_models.py",
+                      "sha256":  "0c063dcb3710d339773cabf13c724ca0795549877d21a06debe07439939ce282"
+                  },
+                  {
+                      "path":  "edge/contracts/models.py",
+                      "sha256":  "672422c04e9eae6cc48e4d5b48a5eda5461ff1fd4cf5228d28c826cbc17cd273"
+                  },
+                  {
+                      "path":  "reference/reference_02/00_Contracts_V1.2_修订候选.md",
+                      "sha256":  "428192753303dc06861b9c0a92dc4918e4c002e5f597648080a34809cc11e2ea"
+                  },
+                  {
+                      "path":  "spikes/SP-03/src/alignment.py",
+                      "sha256":  "f0109ed979e031da0bc4d1ca7ce507f81a82638f7d221afc355245a283faf35f"
+                  },
+                  {
+                      "path":  "spikes/SP-03/src/stream.py",
+                      "sha256":  "3a0533253bbbc29240f32b94ee1a225c58def97f7977562863c71dcccba49d1f"
+                  },
+                  {
+                      "path":  "spikes/SP-03-features/src/engine.py",
+                      "sha256":  "88926d474a8b3a6ab3b9635a61a459433e3d5139b7104bd38f8223e5ead76486"
+                  },
+                  {
+                      "path":  "spikes/SP-03-features/src/checkpoint.py",
+                      "sha256":  "cd242acccb3db3df6733edff9501c31ef3e4a0ae24deabec66e276c0ca6da259"
+                  },
+                  {
+                      "path":  "spikes/C-business/api.py",
+                      "sha256":  "725b3d7a900a14235fe423ed58b2d0ec6beb9047d8e32e2adfdebf275a8d8571"
+                  },
+                  {
+                      "path":  "spikes/C-business/outbox.py",
+                      "sha256":  "fed67bfb6cd18b374bb722172af34c702a4199543e19be27011f00bca1301d84"
+                  },
+                  {
+                      "path":  "spikes/C-business/store.py",
+                      "sha256":  "63e25fb232f03b31d441a2d37f29f64771f8bb583fae63ada01cab83b42fc585"
+                  },
+                  {
+                      "path":  "spikes/C-business/water.py",
+                      "sha256":  "746e41adff094a3f503d5170fff26d6ee6008376cbd4b42c50b8f5b44ac6463e"
+                  },
+                  {
+                      "path":  "spikes/C-business/policy.py",
+                      "sha256":  "86824f1822cb19c46a667334a61601c736c10cc6e6a82e2e386c57eacc9b2d4b"
+                  },
+                  {
+                      "path":  "docs/AquaGuard_Edition11_Topic1_PlanB_V1.0/00_DELIVERY_BASELINE_V1.0.md",
+                      "sha256":  "7051b29b3d5a92e4d408de15b2240621245c68c5e83530f2f3e039548b46cecf"
+                  }
+              ]
+}

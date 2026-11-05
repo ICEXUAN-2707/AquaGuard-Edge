@@ -19,3 +19,5 @@
 - [联合评审报告](CONTRACT_JOINT_REVIEW_REPORT.md)：发现、D1–D5 决议包和评审范围。
 - [验收门槛](CONTRACT_ACCEPTANCE.md)：C0–C5 的进入条件、可观察断言和当前证据。
 - [V1.1 合规探针报告](CONTRACT_COMPLIANCE.md)：旧 1.0 Schema 的历史缺陷，不用于否定已更新的候选文件。
+
+> 2026-11-05 增量：项目负责人授权的软件集成基线已锁定，决议、版本兼容、实跑结果及哈希见 [G0 冻结记录](G0_FREEZE_RECORD.md)。A/B/C 联合签署及资源登记仍待完成；正文候选/历史状态保留，不代表整体 G0 放行。
