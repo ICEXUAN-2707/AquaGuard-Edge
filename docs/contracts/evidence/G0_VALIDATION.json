@@ -1,0 +1,24 @@
+﻿{
+    "date":  "2026-11-05",
+    "schema":  45,
+    "dto_api_smoke":  32,
+    "m3":  42,
+    "m4":  43,
+    "m5":  54,
+    "c_business":  82,
+    "result":  "passed in separate processes",
+    "prototype_command":  ".venv-app/Scripts/python.exe -m pytest \u003csuite\u003e/tests -q -p no:cacheprovider --basetemp=\u003cunique project directory\u003e",
+    "limitations":  [
+                        "No browser/hardware/IoTDA acceptance",
+                        "Initial importlib collection failed; corrected to independent suite runs",
+                        "System temp disk full; reran with project basetemp"
+                    ],
+    "exit_codes":  [
+                       0,
+                       0,
+                       0,
+                       0,
+                       0,
+                       0
+                   ]
+}
