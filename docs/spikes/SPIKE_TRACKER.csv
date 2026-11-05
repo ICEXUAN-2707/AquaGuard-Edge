@@ -4,4 +4,4 @@ SP-02,MQTT时间与重启,A,待指定,PARTIAL,,,spikes/SP-02/evidence,,软件阶
 SP-03,滑动窗口与异步数据,B,待指定,PARTIAL,,,spikes/SP-03/evidence,,R06三源黄金与流式对照已记录；复核待确认口径表的时间和boot及flow端点口径；待独立评审与实物验证
 SP-04,规则与轻量模型可行性,B,待指定,PARTIAL,,,spikes/SP-04/evidence,SP-03,M4-R07和M5-R06离线模拟已收尾；交M6规则与UNKNOWN结论；真实trial及独立验收未完成；ML未开展且须有数据再决定
 SP-05,华为IoTDA独立接入,C（项目统筹负责人）,待指定,NOT_STARTED,,,,,与SP-06对齐云端回执层级
-SP-06,SQLite事务与Outbox,C（项目统筹负责人）,待指定,IN_PROGRESS,,,spikes/docs/C/SP-06/REPORT.md,,事务与Mock Outbox原型及14项历史测试已记录；指定独立Reviewer；不代表M6业务状态机或真实IoTDA验收
+SP-06,SQLite事务与Outbox,C（项目统筹负责人）,待指定,PARTIAL,,,docs/integration/G1_STAGE_REPORT.md,,持久Mock worker与G1事件事务已实现；真实IoTDA适配及独立验收待完成；不以历史14项代表最新范围

@@ -73,3 +73,9 @@ Reviewer均沿用“待指定”，不代填签字。Issue/PR链接未核实，�
 
 ## 2026-11-05 G0 增量
 软件契约集成基线锁定，Schema 45、DTO/API/启动 32、M3 42、M4 43、M5 54、C业务 82 项分别回归通过，不累加为系统验收。见 [冻结记录](../contracts/G0_FREEZE_RECORD.md)。C0 三方签署、实际 Owner/Reviewer 与外部资源登记待完成，G0 整体仍 PARTIAL；G1 未验收。
+
+## 2026-11-05 G1 模拟集成增量
+
+隔离 C 原型新增持续三源模拟→M3/M4/M5→情境事件与独立快速水接触→SQLite/Outbox→API 投影；快慢水接触共享唯一 OPEN，周期窗口去重与事务状态持久化、过期 UNKNOWN、ACK 及重启复用已加入自动化。联合回归 116 项通过，前端上一批构建通过。见 [启动与限制](../integration/G1_CONTINUOUS_SIMULATION.md)及[交叉自检](../integration/G1_CROSS_CHECK.md)。仍未迁移正式 edge 入口，未完成浏览器 E2E、实验页实际 trial、完整关闭/复发与容量治理；G1 保持 IN_PROGRESS，不宣称验收通过。
+
+后续收尾增量：`python -m edge` 已支持 simulation 装配，实际运行的 trial/检查点进入实验查询；真实子进程 HTTP 两个连续窗口验收通过。最终联合回归 118 项通过，之后毫秒抖动专项 1 项独立通过。正式入口已接通，但仍通过迁移适配层依赖 Spike 模块，A MQTT 尚未纳入同一在线 runtime；浏览器工具因系统盘空间不足未能启动，点击/窄屏验收未通过。G1 当前 PARTIAL，详见 [阶段报告](../integration/G1_STAGE_REPORT.md)。G2–G4 不升级。

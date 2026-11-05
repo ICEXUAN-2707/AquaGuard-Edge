@@ -12,7 +12,7 @@ from rules import classify
 from edge.contracts.models import _aware
 
 
-def publish_window(queries,feature_window,*,now,checkpoint_root,config=None):
+def publish_window(queries,feature_window,*,now,checkpoint_root,config=None,safety_signals=None):
     """Trusted local call per new feature window; caller owns input scheduling.
 
     Recompute from content-addressed B checkpoint under an approved directory.
@@ -36,6 +36,6 @@ def publish_window(queries,feature_window,*,now,checkpoint_root,config=None):
         queries.publish("live",dict(schema_version="1.1",device_id=window["device_id"],captured_at=captured,
             sensor_summary=window["sensor_summary"],data_quality=context["data_quality"],cloud_status="UNKNOWN",origin=window["origin"]),
             captured_at=captured,ttl_seconds=ttl,_connection=db)
-        queries.publish("assessment",dict(schema_version="1.1",assessment=assessment,safety_signals=[]),
+        queries.publish("assessment",dict(schema_version="1.1",assessment=assessment,safety_signals=safety_signals or []),
             captured_at=captured,ttl_seconds=ttl,_connection=db)
     return assessment
