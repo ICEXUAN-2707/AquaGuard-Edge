@@ -146,11 +146,16 @@ def main():
             if not args.db.is_file() or not 1<=args.steps<=10000 or not 0.05<=args.interval<=60:
                 raise ValueError("existing database, steps 1..10000 and interval 0.05..60 required")
             from outbox import Worker
-            delivery=Worker(args.db)
-            for index in range(args.steps):
-                print(json.dumps(dict(prototype_only=True,provider="mock",result=delivery.step(now=utcnow(),mode=args.mode))),flush=True)
-                if index+1<args.steps:
-                    time.sleep(args.interval)
+            from delivery import DeliveryService
+            from adapters.mock import MockAdapter
+            delivery=DeliveryService(Worker(args.db),MockAdapter(args.mode))
+            try:
+                for index in range(args.steps):
+                    print(json.dumps(dict(prototype_only=True,provider="mock",result=delivery.step(now=utcnow()))),flush=True)
+                    if index+1<args.steps:
+                        time.sleep(args.interval)
+            finally:
+                delivery.close()
             return 0
         if not 1<=args.port<=65535:
             raise ValueError("port must be 1..65535")
