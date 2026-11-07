@@ -9,6 +9,7 @@ import math
 import ssl
 from edge.contracts.models import _aware
 from uuid import uuid4
+from adapters.client_protocol import ConnectReason
 from adapters.base import TransportAccepted, RetryableFailure, PermanentFailure
 
 
@@ -61,14 +62,14 @@ class IoTDATransport:
             phase=["connect"]
             self.wakeup=connected
             connect_deadline=self.monotonic()+self.connect_timeout
-            publish_deadline=[None]
             generation=str(uuid4())
             with self.lock:
                 self.generation=generation
             def on_connect(success):
                 with self.lock:
                     if self.generation==generation and phase[0]=="connect" and not connect_result:
-                        connect_result.append((success is True,self.monotonic()))
+                        connect_result.append((ConnectReason.ACCEPTED if success is True else
+                            ConnectReason.AUTH_REJECTED if success is False else success,self.monotonic()))
                         connected.set()
             def on_publish(mid,success=True):
                 try:
@@ -93,21 +94,33 @@ class IoTDATransport:
                 self.client=self.factory()
                 self.client.start(on_connect,on_publish,on_disconnect)
                 if not connected.wait(max(0,connect_deadline-self.monotonic())):
-                    return RetryableFailure("IOTDA_CONNACK_TIMEOUT")
+                    outcome=RetryableFailure("IOTDA_CONNACK_TIMEOUT")
+                    return outcome
                 if self.stop.is_set() or disconnected.is_set():
-                    return RetryableFailure("IOTDA_DISCONNECTED")
+                    outcome=RetryableFailure("IOTDA_DISCONNECTED")
+                    return outcome
                 if connect_result and connect_result[0][1]>=connect_deadline:
-                    return RetryableFailure("IOTDA_CONNACK_TIMEOUT")
-                if not connect_result or not connect_result[0][0]:
-                    return PermanentFailure("IOTDA_CONNECT_REJECTED")
+                    outcome=RetryableFailure("IOTDA_CONNACK_TIMEOUT")
+                    return outcome
+                reason=connect_result[0][0] if connect_result else None
+                if reason is not ConnectReason.ACCEPTED:
+                    if reason is ConnectReason.TEMPORARY_FAILURE:
+                        outcome=RetryableFailure("IOTDA_CONNECT_TEMPORARY")
+                    elif reason is ConnectReason.PROTOCOL_REJECTED:
+                        outcome=PermanentFailure("IOTDA_PROTOCOL_REJECTED")
+                    else:
+                        outcome=PermanentFailure("IOTDA_CONNECT_REJECTED")
+                    return outcome
                 phase[0]="publish"
                 self.wakeup=published
                 deadline=self.monotonic()+self.publish_timeout
                 rc,mid=self.client.publish(payload)
                 if type(mid) is not int or not 1<=mid<=65535:
-                    return PermanentFailure("IOTDA_INVALID_MID")
+                    outcome=PermanentFailure("IOTDA_INVALID_MID")
+                    return outcome
                 if rc!=0:
-                    return RetryableFailure("IOTDA_PUBLISH_FAILED")
+                    outcome=RetryableFailure("IOTDA_PUBLISH_FAILED")
+                    return outcome
                 # start/publish are required to be nonblocking by client contract.
                 while True:
                     with self.lock:
@@ -115,21 +128,27 @@ class IoTDATransport:
                         published.clear()
                     if result is not None:
                         if result[2]>=deadline:
-                            return RetryableFailure("IOTDA_PUBACK_TIMEOUT")
+                            outcome=RetryableFailure("IOTDA_PUBACK_TIMEOUT")
+                            return outcome
                         if not result[0]:
-                            return PermanentFailure("IOTDA_PUBLISH_REJECTED")
+                            outcome=PermanentFailure("IOTDA_PUBLISH_REJECTED")
+                            return outcome
                         outcome=TransportAccepted(dict(provider="iotda-mqtt-puback",
                             receipt_id=f"{message_id}:{attempt_token}:{generation}:{mid}",received_at=result[1]))
                         return outcome
                     if self.stop.is_set() or disconnected.is_set():
-                        return RetryableFailure("IOTDA_DISCONNECTED")
+                        outcome=RetryableFailure("IOTDA_DISCONNECTED")
+                        return outcome
                     remaining=deadline-self.monotonic()
                     if remaining<=0 or not published.wait(remaining):
-                        return RetryableFailure("IOTDA_PUBACK_TIMEOUT")
+                        outcome=RetryableFailure("IOTDA_PUBACK_TIMEOUT")
+                        return outcome
             except ssl.SSLError:
-                return PermanentFailure("IOTDA_TLS_INVALID")
+                outcome=PermanentFailure("IOTDA_TLS_INVALID")
+                return outcome
             except Exception:
-                return RetryableFailure("IOTDA_CLIENT_FAILED")
+                outcome=RetryableFailure("IOTDA_CLIENT_FAILED")
+                return outcome
             finally:
                 # One client generation per attempt prevents stale in-memory sends.
                 try:
@@ -145,6 +164,6 @@ class IoTDATransport:
         if wakeup is not None:
             wakeup.set()
         with self.serial:
-            if not self.closed:
-                self.closed=True
-                self._dispose()
+            # closed permanently forbids sends; retained resources may be retried.
+            self.closed=True
+            self._dispose()

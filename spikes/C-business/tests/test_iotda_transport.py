@@ -114,3 +114,76 @@ def test_concurrent_close_wakes_connect_wait():
         closing=pool.submit(core.close)
         assert sending.result(timeout=2).error=="IOTDA_DISCONNECTED"
         closing.result(timeout=2)
+
+
+@pytest.mark.parametrize("mode,error",[("accept",None),("timeout","IOTDA_PUBACK_TIMEOUT"),
+    ("connack_timeout","IOTDA_CONNACK_TIMEOUT"),("reject","IOTDA_CONNECT_REJECTED"),
+    ("publish_fail","IOTDA_PUBLISH_FAILED"),("tls","IOTDA_TLS_INVALID")])
+def test_all_outcomes_survive_cleanup_failure(mode,error):
+    import ssl
+    from adapters.iotda_transport import CleanupError
+    class BrokenCleanup(Fake):
+        def start(self,*args):
+            if mode=="tls": raise ssl.SSLError("secret")
+            return super().start(*args)
+        def close(self):
+            self.closes+=1
+            if self.closes==1: raise OSError("secret")
+    fake=BrokenCleanup(mode)
+    core=IoTDATransport(lambda:fake,utcnow=lambda:T,connect_timeout=.01,publish_timeout=.01)
+    with pytest.raises(CleanupError) as failure:
+        core.send("{}",message_id="m",attempt_token="a")
+    outcome=failure.value.outcome
+    if error: assert outcome.error==error
+    else: assert isinstance(outcome,TransportAccepted)
+    assert core.broken and core.client is fake
+    with pytest.raises(RuntimeError,match="UNAVAILABLE"):
+        core.send("{}",message_id="m",attempt_token="b")
+    core.close(); core.close()
+    assert core.client is None and fake.closes==2
+
+
+def test_explicit_close_retries_after_failure():
+    from adapters.iotda_transport import CleanupError
+    class Resource:
+        count=0
+        def close(self):
+            self.count+=1
+            if self.count==1: raise OSError("secret")
+    core=IoTDATransport(lambda:Fake(),utcnow=lambda:T)
+    resource=Resource(); core.client=resource
+    with pytest.raises(CleanupError): core.close()
+    assert core.closed and core.client is resource
+    core.close(); core.close()
+    assert resource.count==2 and core.client is None
+
+
+@pytest.mark.parametrize("reason,error",[("TEMPORARY_FAILURE","IOTDA_CONNECT_TEMPORARY"),
+    ("PROTOCOL_REJECTED","IOTDA_PROTOCOL_REJECTED")])
+def test_typed_connect_reason(reason,error):
+    from adapters.client_protocol import ConnectReason
+    class Client(Fake):
+        def start(self,connect,*args): connect(ConnectReason[reason])
+    result=IoTDATransport(lambda:Client(),utcnow=lambda:T).send("{}",message_id="m",attempt_token="a")
+    assert result.error==error
+
+
+def test_close_requested_during_client_call():
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Event
+    entered,release=Event(),Event()
+    class Blocking(Fake):
+        def start(self,*args):
+            entered.set()
+            assert release.wait(2)
+            super().start(*args)
+    core=IoTDATransport(lambda:Blocking(),utcnow=lambda:T)
+    with ThreadPoolExecutor(2) as pool:
+        sending=pool.submit(core.send,"{}",message_id="m",attempt_token="a")
+        assert entered.wait(1)
+        closing=pool.submit(core.close)
+        assert core.stop.wait(1)
+        release.set()
+        assert sending.result(timeout=2).error=="IOTDA_DISCONNECTED"
+        closing.result(timeout=2)
+    assert core.closed and core.client is None
