@@ -7,6 +7,7 @@ from datetime import datetime,timezone
 from threading import Event,Lock,Thread,current_thread
 import math
 import ssl
+from time import monotonic
 import paho.mqtt.client as mqtt
 from adapters.client_protocol import ClientBinding,ConnectReason
 from adapters.iotda_auth import generate_credentials
@@ -35,6 +36,9 @@ class PahoClient:
         self.cleanup_lock=Lock()
         self.disposed=False
         self.failure=None
+        self.shutdown_deadline=None
+        self.cleanup_error=None
+        self.owner_cleanup_complete=False
 
     def start(self,on_connect,on_publish,on_disconnect):
         with self.lock:
@@ -68,6 +72,19 @@ class PahoClient:
                         on_disconnect()
                     except Exception:
                         pass
+                    try:
+                        rc=self.client.disconnect()
+                        if rc is not None and rc not in (mqtt.MQTT_ERR_SUCCESS,mqtt.MQTT_ERR_NO_CONN):
+                            raise RuntimeError("disconnect incomplete")
+                        if callable(getattr(self.client,"socket",None)) and self.client.socket() is not None:
+                            raise RuntimeError("socket retained")
+                        # Paho owns its internal wakeup pair. Public API does not
+                        # establish its disposal, so fail closed rather than GC.
+                        if any(getattr(self.client,name,None) is not None for name in ("_sockpairR","_sockpairW")):
+                            raise RuntimeError("wakeup resources retained")
+                        self.owner_cleanup_complete=True
+                    except Exception:
+                        self.cleanup_error="IOTDA_RESOURCES_RETAINED"
             self.thread=Thread(target=run,name="aquaguard-paho",daemon=False)
             self.thread.start()
 
@@ -79,25 +96,36 @@ class PahoClient:
             return info.rc,info.mid
 
     def close(self):
-        with self.cleanup_lock:
-            if not self.disposed:
-                self._close_owned()
-
-    def _close_owned(self):
-        with self.lock:
-            self.closed=True
-            self.stop.set()
-            thread=self.thread
-        # No loop_start/loop_stop and no unbounded join. Connection calls may
-        # still block; retained thread is an explicit unreleased-resource fault.
-        if thread is not None:
+        # Stop is visible even if publish holds the state lock. The first close
+        # episode owns one deadline; repeated/concurrent calls cannot extend it.
+        self.stop.set()
+        self.closed=True
+        if self.shutdown_deadline is None:
+            self.shutdown_deadline=monotonic()+self.close_timeout
+        remaining=lambda:max(0,self.shutdown_deadline-monotonic())
+        if not self.cleanup_lock.acquire(timeout=remaining()):
+            raise RuntimeError("IOTDA_CLOSE_BUDGET_EXPIRED")
+        try:
+            if self.disposed:
+                return
+            if not self.lock.acquire(timeout=remaining()):
+                raise RuntimeError("IOTDA_CLOSE_BUDGET_EXPIRED")
+            try:
+                thread=self.thread
+            finally:
+                self.lock.release()
             if thread is current_thread():
                 raise RuntimeError("IOTDA_CLOSE_FROM_CALLBACK")
-            thread.join(self.close_timeout)
-            if thread.is_alive():
-                raise RuntimeError("IOTDA_THREAD_EXIT_TIMEOUT")
-        try:
-            self.client.disconnect()
+            if thread is not None:
+                thread.join(remaining())
+                if thread.is_alive():
+                    raise RuntimeError("IOTDA_THREAD_EXIT_TIMEOUT")
+                if not self.owner_cleanup_complete:
+                    raise RuntimeError(self.cleanup_error or "IOTDA_RESOURCES_RETAINED")
+            else:
+                # Unstarted instance owns no socket or network-loop pair.
+                if callable(getattr(self.client,"socket",None)) and self.client.socket() is not None:
+                    raise RuntimeError("IOTDA_RESOURCES_RETAINED")
             self.disposed=True
-        except Exception:
-            raise RuntimeError("IOTDA_DISCONNECT_FAILED") from None
+        finally:
+            self.cleanup_lock.release()

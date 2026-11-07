@@ -49,7 +49,7 @@ def test_blocked_connect_reports_retained_thread_then_retry(environment):
         assert client.thread.is_alive() and client.closed
         with pytest.raises(RuntimeError): client.publish("{}");
     finally:
-        release.set(); client.close()
+        release.set(); client.thread.join(3); client.close()
     assert not client.thread.is_alive()
 
 
@@ -119,6 +119,7 @@ def test_real_paho_stalled_tls_exposes_cleanup_limit(environment):
         assert client.thread.is_alive() and client.closed
         release.set()
         assert disconnected.wait(3)
+        client.thread.join(3)
         client.close()
         assert reasons in ([ConnectReason.TLS_FAILURE],[ConnectReason.NETWORK_FAILURE])
         assert not client.thread.is_alive()
@@ -126,3 +127,45 @@ def test_real_paho_stalled_tls_exposes_cleanup_limit(environment):
         release.set(); server.close(); thread.join(3)
         client.close()
     assert not thread.is_alive() and not errors
+
+
+def test_retained_socket_never_reports_disposed(environment):
+    class Retained(Backend):
+        def socket(self): return object()
+    client=PahoClient(load_config(environment),client_factory=Retained)
+    ready=Event(); client.start(lambda r:ready.set(),lambda *a:None,lambda:None)
+    assert ready.wait(1)
+    with pytest.raises(RuntimeError,match="RESOURCES_RETAINED"): client.close()
+    assert not client.disposed and not client.thread.is_alive()
+
+
+def test_close_budget_includes_blocked_publish_lock(environment):
+    from concurrent.futures import ThreadPoolExecutor
+    entered,release=Event(),Event()
+    class BlockingPublish(Backend):
+        def publish(self,*args,**kwargs):
+            entered.set(); assert release.wait(2)
+            return SimpleNamespace(rc=0,mid=7)
+    client=PahoClient(load_config(environment),client_factory=BlockingPublish,close_timeout=.05)
+    ready=Event(); client.start(lambda r:ready.set(),lambda *a:None,lambda:None)
+    assert ready.wait(1)
+    with ThreadPoolExecutor(1) as pool:
+        sending=pool.submit(client.publish,"{}")
+        try:
+            assert entered.wait(1)
+            with pytest.raises(RuntimeError,match="BUDGET_EXPIRED"): client.close()
+            deadline=client.shutdown_deadline
+            with pytest.raises(RuntimeError): client.close()
+            assert client.shutdown_deadline==deadline and not client.disposed
+        finally:
+            release.set(); sending.result(timeout=2); client.thread.join(2); client.close()
+
+
+def test_disconnect_failure_is_not_disposal(environment):
+    class FailedDisconnect(Backend):
+        def disconnect(self): return 1
+    client=PahoClient(load_config(environment),client_factory=FailedDisconnect)
+    ready=Event(); client.start(lambda r:ready.set(),lambda *a:None,lambda:None)
+    assert ready.wait(1)
+    with pytest.raises(RuntimeError,match="RESOURCES_RETAINED"): client.close()
+    assert not client.disposed
