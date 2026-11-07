@@ -96,7 +96,7 @@ class IoTDATransport:
                 if not connected.wait(max(0,connect_deadline-self.monotonic())):
                     outcome=RetryableFailure("IOTDA_CONNACK_TIMEOUT")
                     return outcome
-                if self.stop.is_set() or disconnected.is_set():
+                if self.stop.is_set() or (disconnected.is_set() and (not connect_result or connect_result[0][0] is ConnectReason.ACCEPTED)):
                     outcome=RetryableFailure("IOTDA_DISCONNECTED")
                     return outcome
                 if connect_result and connect_result[0][1]>=connect_deadline:
@@ -104,7 +104,13 @@ class IoTDATransport:
                     return outcome
                 reason=connect_result[0][0] if connect_result else None
                 if reason is not ConnectReason.ACCEPTED:
-                    if reason is ConnectReason.TEMPORARY_FAILURE:
+                    if reason is ConnectReason.TLS_FAILURE:
+                        outcome=PermanentFailure("IOTDA_TLS_INVALID")
+                    elif reason is ConnectReason.CONNECT_TIMEOUT:
+                        outcome=RetryableFailure("IOTDA_CONNECT_TIMEOUT")
+                    elif reason is ConnectReason.NETWORK_FAILURE:
+                        outcome=RetryableFailure("IOTDA_NETWORK_FAILED")
+                    elif reason is ConnectReason.TEMPORARY_FAILURE:
                         outcome=RetryableFailure("IOTDA_CONNECT_TEMPORARY")
                     elif reason is ConnectReason.PROTOCOL_REJECTED:
                         outcome=PermanentFailure("IOTDA_PROTOCOL_REJECTED")

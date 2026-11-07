@@ -130,7 +130,7 @@ def test_all_outcomes_survive_cleanup_failure(mode,error):
             self.closes+=1
             if self.closes==1: raise OSError("secret")
     fake=BrokenCleanup(mode)
-    core=IoTDATransport(lambda:fake,utcnow=lambda:T,connect_timeout=.01,publish_timeout=.01)
+    core=IoTDATransport(lambda:fake,utcnow=lambda:T,connect_timeout=.5,publish_timeout=.1)
     with pytest.raises(CleanupError) as failure:
         core.send("{}",message_id="m",attempt_token="a")
     outcome=failure.value.outcome

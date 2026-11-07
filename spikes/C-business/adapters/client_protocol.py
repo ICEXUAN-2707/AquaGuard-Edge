@@ -5,6 +5,9 @@ from typing import Callable, Protocol
 
 
 class ConnectReason(Enum):
+    TLS_FAILURE = "tls_failure"
+    CONNECT_TIMEOUT = "connect_timeout"
+    NETWORK_FAILURE = "network_failure"
     ACCEPTED = "accepted"
     AUTH_REJECTED = "auth_rejected"
     TEMPORARY_FAILURE = "temporary_failure"
