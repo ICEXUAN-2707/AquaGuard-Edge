@@ -21,6 +21,10 @@ def simulation_app(settings):
     if not raw:
         raise ConfigurationError('simulation requires explicit AQUAGUARD_DB')
     path=Path(raw).resolve()
+    mqtt=os.environ.get('AQUAGUARD_RUNTIME')=='mqtt'
+    journal=os.environ.get('AQUAGUARD_MQTT_JOURNAL','').strip()
+    if mqtt and (not journal or not Path(journal).is_file() or Path(journal).resolve()==path):
+        raise ConfigurationError('mqtt requires a separate existing AQUAGUARD_MQTT_JOURNAL')
     root=Path(__file__).resolve().parents[1]
     prototype=root/'spikes/C-business'
     if str(prototype) not in sys.path:
@@ -31,6 +35,6 @@ def simulation_app(settings):
     path.parent.mkdir(parents=True,exist_ok=True)
     if not path.exists():
         module.WaterService(path)
-    app=module.build(path,token=token,cursor_key=key,simulate=True)
+    app=module.build(path,token=token,cursor_key=key,simulate=not mqtt,journal=journal if mqtt else None)
     app.state.settings=settings
     return app

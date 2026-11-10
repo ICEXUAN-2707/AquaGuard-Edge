@@ -21,7 +21,7 @@ class Simulation:
     History is bounded to 180 seconds; checkpoint retention remains a demo limit.
     """
 
-    def __init__(self, path, checkpoints, start):
+    def __init__(self, path, checkpoints, start, *, trial='demo-trial', initialize_trial=True):
         self.water = WaterService(path)
         self.queries = Projections(path)
         self.context = ContextEvents(path)
@@ -31,10 +31,11 @@ class Simulation:
         self.rows = []
         self.sequence = 0
         self.next_end = start + timedelta(seconds=30)
-        self.trial='demo-trial'
-        self.queries.publish('experiment',dict(schema_version='1.1',trial_id=self.trial,
-            source='simulation',status='RUNNING',started_at=start.isoformat(),ended_at=None,
-            asset_refs=[]),captured_at=start.isoformat())
+        self.trial=trial
+        if initialize_trial:
+            self.queries.publish('experiment',dict(schema_version='1.1',trial_id=self.trial,
+                source='simulation',status='RUNNING',started_at=start.isoformat(),ended_at=None,
+                asset_refs=[]),captured_at=start.isoformat())
 
     def step(self, now):
         if now.tzinfo is None or now < self.last:
@@ -61,6 +62,10 @@ class Simulation:
                     trusted_source="simulation", escalation_level="L2")
         self.sequence += 1
         self.last = now
+        return self.publish(now)
+
+    def publish(self, now):
+        """Shared analysis for received observations; never generates inputs."""
         cutoff = (now-timedelta(seconds=180)).isoformat()
         self.rows = [r for r in self.rows if r["received_at"] >= cutoff]
         if now < self.next_end + timedelta(seconds=2):
@@ -74,6 +79,8 @@ class Simulation:
         if not endpoints:
             return None
         end=max(endpoints)
+        if end < self.next_end or (now-end).total_seconds() >= 10:
+            return None
         config = dict(width=30, lateness=2, ttl=10, flow_threshold=0.1)
         window = align(self.rows, [end], **config)["windows"][0]
         fw = save(self.checkpoints, window, self.rows, alignment_config=config)

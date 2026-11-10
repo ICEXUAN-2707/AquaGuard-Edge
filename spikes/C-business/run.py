@@ -69,7 +69,7 @@ def tick(service,now):
         raise ValueError("one or more water timers failed")
 
 
-def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False):
+def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False,journal=None):
     if not isinstance(interval,(int,float)) or isinstance(interval,bool) or not 0.05<=interval<=60:
         raise ValueError("timer interval must be 0.05..60 seconds")
     if not Path(path).is_file():
@@ -78,6 +78,12 @@ def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False):
     app=create_app(service,token=token,cursor_key=cursor_key,clock=clock)
     app.state.timer_error=False
     simulation=None
+    if simulate and journal is not None:
+        raise ValueError('choose generated simulation or MQTT journal')
+    if journal is not None:
+        from mqtt_journal import JournalRuntime
+        simulation=JournalRuntime(path,Path(path).parent/(Path(path).name+'.checkpoints'),
+                                  datetime.fromisoformat(clock().replace('Z','+00:00')),journal)
     if simulate:
         from online import Simulation
         simulation=Simulation(path,Path(path).parent/(Path(path).name+'.checkpoints'),
@@ -89,9 +95,11 @@ def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False):
                 await asyncio.to_thread(simulation.step,datetime.fromisoformat(now.replace('Z','+00:00')))
             await asyncio.to_thread(tick,service,now)
             app.state.timer_error=False
-        except Exception:
+        except Exception as exc:
             app.state.timer_error=True
-            logging.getLogger("aquaguard.prototype").error("water timer failed; inspect database/config/clock")
+            import traceback
+            frame=traceback.extract_tb(exc.__traceback__)[-1]
+            logging.getLogger("aquaguard.prototype").error("water timer failed (%s at %s:%s); inspect database/config/clock",type(exc).__name__,Path(frame.filename).name,frame.lineno)
 
     @asynccontextmanager
     async def lifespan(app):
