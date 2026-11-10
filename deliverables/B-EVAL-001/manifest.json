@@ -1,0 +1,76 @@
+{
+  "format": "sha256-package-manifest-v1",
+  "evaluation_id": "b-synthetic-8-478d2679798cfec3",
+  "files": [
+    {
+      "path": "evaluation.json",
+      "bytes": 10729,
+      "sha256": "f1ff1a61e63d23bbc6df302b0c8b15f820b1cb25d4485d558016ff555ae02be6"
+    },
+    {
+      "path": "observations.jsonl",
+      "bytes": 60058,
+      "sha256": "a7be47aa5ad35ea6de9dfcb707ab4416bb12b6833873ff25e256476c8e273637"
+    },
+    {
+      "path": "predictions.jsonl",
+      "bytes": 31113,
+      "sha256": "573266025e851c27717f2b379b394f3da70a321392f66d3111e393cd4a3eea97"
+    },
+    {
+      "path": "raw/checkpoints/2055a7e7086e408d03d4a356becb83200e52708a0e2d19b2fc15b9ccae7d9e4a.json",
+      "bytes": 8229,
+      "sha256": "2055a7e7086e408d03d4a356becb83200e52708a0e2d19b2fc15b9ccae7d9e4a"
+    },
+    {
+      "path": "raw/checkpoints/2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c.json",
+      "bytes": 8253,
+      "sha256": "2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c"
+    },
+    {
+      "path": "raw/checkpoints/76774e748eba73bbca111440ec2736dcc47c852edbc4784951b304f95deb1715.json",
+      "bytes": 5755,
+      "sha256": "76774e748eba73bbca111440ec2736dcc47c852edbc4784951b304f95deb1715"
+    },
+    {
+      "path": "raw/checkpoints/7f343b86dbe555b823ba7e3e13c6ebde28ae7e367604928d42d90a05f26ceb54.json",
+      "bytes": 8246,
+      "sha256": "7f343b86dbe555b823ba7e3e13c6ebde28ae7e367604928d42d90a05f26ceb54"
+    },
+    {
+      "path": "raw/checkpoints/95aabfcdc14613fa41aee1bc843b108a3c9e0bb3246fe4d6bb41754220fdcae2.json",
+      "bytes": 8249,
+      "sha256": "95aabfcdc14613fa41aee1bc843b108a3c9e0bb3246fe4d6bb41754220fdcae2"
+    },
+    {
+      "path": "raw/checkpoints/95d61e820a09561119ea13080eca782b23c3096d31a7c0700572b592dcea2ea2.json",
+      "bytes": 8605,
+      "sha256": "95d61e820a09561119ea13080eca782b23c3096d31a7c0700572b592dcea2ea2"
+    },
+    {
+      "path": "raw/checkpoints/a5fd409088536933da42c2191cf5296a0465727e0daafab5df88c9ea5dfff90f.json",
+      "bytes": 8249,
+      "sha256": "a5fd409088536933da42c2191cf5296a0465727e0daafab5df88c9ea5dfff90f"
+    },
+    {
+      "path": "raw/comparison.json",
+      "bytes": 4360,
+      "sha256": "5f51e5dd274f4c6234383794b4b64b63a4e4402a7960718338ad8cd23147b32b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1233,
+      "sha256": "0df2a56a7891a3a46e7642559e674f8f2e726aab8e8edfa5d9722a35e52ba555"
+    },
+    {
+      "path": "review_cases.json",
+      "bytes": 11089,
+      "sha256": "72ef70a501fc9685852158d54bb61910323dce28ba41d501b3e75f4ff3162f8a"
+    },
+    {
+      "path": "trials.json",
+      "bytes": 5883,
+      "sha256": "8e91495b42e1a8570f5c9b727f977561ffc501c5841d455d3a692cf67e0a73dd"
+    }
+  ]
+}

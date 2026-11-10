@@ -1,0 +1,241 @@
+{
+  "scope": "diagnostic errors and abstentions, not real incidents",
+  "cases": [
+    {
+      "case_id": "synthetic-attended:B0_flow",
+      "trial_id": "synthetic-attended",
+      "method_id": "B0_flow",
+      "category": "fp",
+      "operation": "全程检出人员且流水",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/2055a7e7086e408d03d4a356becb83200e52708a0e2d19b2fc15b9ccae7d9e4a.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-transient5:B0_flow",
+      "trial_id": "synthetic-transient5",
+      "method_id": "B0_flow",
+      "category": "fp",
+      "operation": "短暂离开5秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/7f343b86dbe555b823ba7e3e13c6ebde28ae7e367604928d42d90a05f26ceb54.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-transient5:B1_instant",
+      "trial_id": "synthetic-transient5",
+      "method_id": "B1_instant",
+      "category": "fp",
+      "operation": "短暂离开5秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/7f343b86dbe555b823ba7e3e13c6ebde28ae7e367604928d42d90a05f26ceb54.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-transient5:B2_5s",
+      "trial_id": "synthetic-transient5",
+      "method_id": "B2_5s",
+      "category": "fp",
+      "operation": "短暂离开5秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/7f343b86dbe555b823ba7e3e13c6ebde28ae7e367604928d42d90a05f26ceb54.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-transient5:B2_10s",
+      "trial_id": "synthetic-transient5",
+      "method_id": "B2_10s",
+      "category": "rejected_negative",
+      "operation": "短暂离开5秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/7f343b86dbe555b823ba7e3e13c6ebde28ae7e367604928d42d90a05f26ceb54.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-transient5:B2_15s",
+      "trial_id": "synthetic-transient5",
+      "method_id": "B2_15s",
+      "category": "rejected_negative",
+      "operation": "短暂离开5秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/7f343b86dbe555b823ba7e3e13c6ebde28ae7e367604928d42d90a05f26ceb54.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-transient9_9:B0_flow",
+      "trial_id": "synthetic-transient9_9",
+      "method_id": "B0_flow",
+      "category": "fp",
+      "operation": "短暂离开9.9秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/95d61e820a09561119ea13080eca782b23c3096d31a7c0700572b592dcea2ea2.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-transient9_9:B1_instant",
+      "trial_id": "synthetic-transient9_9",
+      "method_id": "B1_instant",
+      "category": "fp",
+      "operation": "短暂离开9.9秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/95d61e820a09561119ea13080eca782b23c3096d31a7c0700572b592dcea2ea2.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-transient9_9:B2_5s",
+      "trial_id": "synthetic-transient9_9",
+      "method_id": "B2_5s",
+      "category": "fp",
+      "operation": "短暂离开9.9秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/95d61e820a09561119ea13080eca782b23c3096d31a7c0700572b592dcea2ea2.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-transient9_9:B2_10s",
+      "trial_id": "synthetic-transient9_9",
+      "method_id": "B2_10s",
+      "category": "rejected_negative",
+      "operation": "短暂离开9.9秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/95d61e820a09561119ea13080eca782b23c3096d31a7c0700572b592dcea2ea2.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-transient9_9:B2_15s",
+      "trial_id": "synthetic-transient9_9",
+      "method_id": "B2_15s",
+      "category": "rejected_negative",
+      "operation": "短暂离开9.9秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/95d61e820a09561119ea13080eca782b23c3096d31a7c0700572b592dcea2ea2.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-left10:B2_15s",
+      "trial_id": "synthetic-left10",
+      "method_id": "B2_15s",
+      "category": "rejected_positive",
+      "operation": "操作者离开且持续流水，窗尾已10秒",
+      "candidate_target": true,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/95aabfcdc14613fa41aee1bc843b108a3c9e0bb3246fe4d6bb41754220fdcae2.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-missing:B1_instant",
+      "trial_id": "synthetic-missing",
+      "method_id": "B1_instant",
+      "category": "rejected_positive",
+      "operation": "操作者离开但presence传感器断流",
+      "candidate_target": true,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/76774e748eba73bbca111440ec2736dcc47c852edbc4784951b304f95deb1715.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-missing:B2_5s",
+      "trial_id": "synthetic-missing",
+      "method_id": "B2_5s",
+      "category": "rejected_positive",
+      "operation": "操作者离开但presence传感器断流",
+      "candidate_target": true,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/76774e748eba73bbca111440ec2736dcc47c852edbc4784951b304f95deb1715.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-missing:B2_10s",
+      "trial_id": "synthetic-missing",
+      "method_id": "B2_10s",
+      "category": "rejected_positive",
+      "operation": "操作者离开但presence传感器断流",
+      "candidate_target": true,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/76774e748eba73bbca111440ec2736dcc47c852edbc4784951b304f95deb1715.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-missing:B2_15s",
+      "trial_id": "synthetic-missing",
+      "method_id": "B2_15s",
+      "category": "rejected_positive",
+      "operation": "操作者离开但presence传感器断流",
+      "candidate_target": true,
+      "prediction": null,
+      "checkpoint_ref": "raw/checkpoints/76774e748eba73bbca111440ec2736dcc47c852edbc4784951b304f95deb1715.json",
+      "interpretation": "Rejected evidence is not a confirmed correct negative."
+    },
+    {
+      "case_id": "synthetic-hidden-person:B0_flow",
+      "trial_id": "synthetic-hidden-person",
+      "method_id": "B0_flow",
+      "category": "fp",
+      "operation": "人员实际静止在场，但传感器表现与离开20秒完全相同",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-hidden-person:B1_instant",
+      "trial_id": "synthetic-hidden-person",
+      "method_id": "B1_instant",
+      "category": "fp",
+      "operation": "人员实际静止在场，但传感器表现与离开20秒完全相同",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-hidden-person:B2_5s",
+      "trial_id": "synthetic-hidden-person",
+      "method_id": "B2_5s",
+      "category": "fp",
+      "operation": "人员实际静止在场，但传感器表现与离开20秒完全相同",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-hidden-person:B2_10s",
+      "trial_id": "synthetic-hidden-person",
+      "method_id": "B2_10s",
+      "category": "fp",
+      "operation": "人员实际静止在场，但传感器表现与离开20秒完全相同",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    },
+    {
+      "case_id": "synthetic-hidden-person:B2_15s",
+      "trial_id": "synthetic-hidden-person",
+      "method_id": "B2_15s",
+      "category": "fp",
+      "operation": "人员实际静止在场，但传感器表现与离开20秒完全相同",
+      "candidate_target": false,
+      "prediction": true,
+      "checkpoint_ref": "raw/checkpoints/2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c.json",
+      "interpretation": "Candidate decision disagrees with the synthetic operation target."
+    }
+  ],
+  "indistinguishable_pair": [
+    "synthetic-left20",
+    "synthetic-hidden-person"
+  ],
+  "pair_explanation": "Identical sensor observations cannot establish which operation annotation is true."
+}

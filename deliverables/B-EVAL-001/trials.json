@@ -1,0 +1,156 @@
+{
+  "trials": {
+    "synthetic-idle": {
+      "trial_id": "synthetic-idle",
+      "source": "simulation",
+      "operation": "全程停止流水",
+      "candidate_target": false,
+      "parameters": {
+        "idle": true
+      },
+      "label_basis": "hand-authored synthetic operation annotation",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "window_end": "2026-10-29T00:00:30Z",
+      "checkpoint_ref": "raw/checkpoints/a5fd409088536933da42c2191cf5296a0465727e0daafab5df88c9ea5dfff90f.json",
+      "observation_count": 20,
+      "quality_gate": {
+        "status": "READY",
+        "reason": null,
+        "data_quality": "VALID"
+      }
+    },
+    "synthetic-attended": {
+      "trial_id": "synthetic-attended",
+      "source": "simulation",
+      "operation": "全程检出人员且流水",
+      "candidate_target": false,
+      "parameters": {
+        "attended": true
+      },
+      "label_basis": "hand-authored synthetic operation annotation",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "window_end": "2026-10-29T00:00:30Z",
+      "checkpoint_ref": "raw/checkpoints/2055a7e7086e408d03d4a356becb83200e52708a0e2d19b2fc15b9ccae7d9e4a.json",
+      "observation_count": 20,
+      "quality_gate": {
+        "status": "READY",
+        "reason": null,
+        "data_quality": "VALID"
+      }
+    },
+    "synthetic-transient5": {
+      "trial_id": "synthetic-transient5",
+      "source": "simulation",
+      "operation": "短暂离开5秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "parameters": {
+        "leave": 25
+      },
+      "label_basis": "hand-authored synthetic operation annotation",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "window_end": "2026-10-29T00:00:30Z",
+      "checkpoint_ref": "raw/checkpoints/7f343b86dbe555b823ba7e3e13c6ebde28ae7e367604928d42d90a05f26ceb54.json",
+      "observation_count": 20,
+      "quality_gate": {
+        "status": "READY",
+        "reason": null,
+        "data_quality": "VALID"
+      }
+    },
+    "synthetic-transient9_9": {
+      "trial_id": "synthetic-transient9_9",
+      "source": "simulation",
+      "operation": "短暂离开9.9秒后将返回，观察窗结束于返回前",
+      "candidate_target": false,
+      "parameters": {
+        "leave": 20.1
+      },
+      "label_basis": "hand-authored synthetic operation annotation",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "window_end": "2026-10-29T00:00:30Z",
+      "checkpoint_ref": "raw/checkpoints/95d61e820a09561119ea13080eca782b23c3096d31a7c0700572b592dcea2ea2.json",
+      "observation_count": 21,
+      "quality_gate": {
+        "status": "READY",
+        "reason": null,
+        "data_quality": "VALID"
+      }
+    },
+    "synthetic-left10": {
+      "trial_id": "synthetic-left10",
+      "source": "simulation",
+      "operation": "操作者离开且持续流水，窗尾已10秒",
+      "candidate_target": true,
+      "parameters": {
+        "leave": 20
+      },
+      "label_basis": "hand-authored synthetic operation annotation",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "window_end": "2026-10-29T00:00:30Z",
+      "checkpoint_ref": "raw/checkpoints/95aabfcdc14613fa41aee1bc843b108a3c9e0bb3246fe4d6bb41754220fdcae2.json",
+      "observation_count": 20,
+      "quality_gate": {
+        "status": "READY",
+        "reason": null,
+        "data_quality": "VALID"
+      }
+    },
+    "synthetic-left20": {
+      "trial_id": "synthetic-left20",
+      "source": "simulation",
+      "operation": "操作者离开且持续流水，窗尾已20秒",
+      "candidate_target": true,
+      "parameters": {
+        "leave": 10
+      },
+      "label_basis": "hand-authored synthetic operation annotation",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "window_end": "2026-10-29T00:00:30Z",
+      "checkpoint_ref": "raw/checkpoints/2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c.json",
+      "observation_count": 20,
+      "quality_gate": {
+        "status": "READY",
+        "reason": null,
+        "data_quality": "VALID"
+      }
+    },
+    "synthetic-missing": {
+      "trial_id": "synthetic-missing",
+      "source": "simulation",
+      "operation": "操作者离开但presence传感器断流",
+      "candidate_target": true,
+      "parameters": {
+        "missing_presence": true
+      },
+      "label_basis": "hand-authored synthetic operation annotation",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "window_end": "2026-10-29T00:00:30Z",
+      "checkpoint_ref": "raw/checkpoints/76774e748eba73bbca111440ec2736dcc47c852edbc4784951b304f95deb1715.json",
+      "observation_count": 13,
+      "quality_gate": {
+        "status": "UNKNOWN",
+        "reason": "PRESENCE_UNKNOWN",
+        "data_quality": "DEGRADED"
+      }
+    },
+    "synthetic-hidden-person": {
+      "trial_id": "synthetic-hidden-person",
+      "source": "simulation",
+      "operation": "人员实际静止在场，但传感器表现与离开20秒完全相同",
+      "candidate_target": false,
+      "parameters": {
+        "leave": 10
+      },
+      "label_basis": "hand-authored synthetic operation annotation",
+      "window_id": "demo:2026-10-29T00:00:30+00:00:sp03-r05-v1-f5dfabf0c6d4",
+      "window_end": "2026-10-29T00:00:30Z",
+      "checkpoint_ref": "raw/checkpoints/2252eaf802abef35705ffc6d1bdc12b205dfe8ecb3dcdbb46c2fb9c32011213c.json",
+      "observation_count": 20,
+      "quality_gate": {
+        "status": "READY",
+        "reason": null,
+        "data_quality": "VALID"
+      }
+    }
+  }
+}
