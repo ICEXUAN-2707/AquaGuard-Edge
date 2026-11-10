@@ -80,3 +80,21 @@ Preview remains 8023; separate 8024 acceptance service is stopped after verifica
 F3 presentation is complete for existing APIs. F4 presentation is complete for
 existing metadata; quantitative results still require B/C handoff. F5 integration
 with the final C runtime, MQTT browser acceptance and independent review remain.
+
+## Reference-informed workspace increment
+
+Inspected the user's AquaGuard Edge validation Site version 1 through authorized
+read-only access. The hosted Site is unchanged. Reused its sidebar/breadcrumb,
+mint surface hierarchy and chain explanation as local presentation ideas, retaining
+only the three operational pages. No management Issue/Gate counts were imported.
+The data-path strip describes architecture, not stage acceptance or delivery status.
+
+Final build and five state/display tests PASS. Eleven browser interactions PASS:
+audit/frontend-reference-browser-20261110/result.json. Three pages at 1280/768/390px,
+history expansion, deliberately stalled response, 503 and disconnect PASS:
+audit/frontend-reference-visual-20261110/result.json. Desktop/mobile screenshots
+inspected and git diff --check passed. Preview remains 8023; test-only 8024 is stopped.
+
+B report handoff proposal is in B_RESULTS_FRONTEND_HANDOFF_PROPOSAL.md. Existing
+ExperimentResult 1.1 has no metrics. Proposal requires B/C review; no new API,
+contract version or evaluation numbers have been implemented or implied.

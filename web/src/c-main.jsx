@@ -8,6 +8,7 @@ import { Events } from './c-events.jsx'
 import { Experiment } from './c-experiment.jsx'
 import { label } from './c-display.js'
 import { requestJSON } from './c-request.js'
+import { WorkspaceNavigation } from './c-navigation.jsx'
 
 function download(value) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(value,null,2)], {type:'application/json'}))
@@ -74,15 +75,14 @@ function App() {
       else setNotice(`${message(error)}。网络结果不确定时，再次点击会重放原请求。`)
     } finally {setBusy(false)}
   }
-  return <main>
-    <header><div className="brand"><span className="brand-mark" aria-hidden="true">≈</span><div><h1>水知安 <span>AquaGuard Edge</span></h1><p>多源感知 · 用水异常监测工作台</p></div></div><span className="badge">实验环境 · 不发送真实通知</span></header>
+  return <div className="workbench-shell"><WorkspaceNavigation tab={tab} onTab={setTab}/><main>
+    <header className="workspace-topbar"><div className="breadcrumb"><span>工作区</span><span aria-hidden="true">›</span><span>AquaGuard Edge</span><span aria-hidden="true">›</span><b>{tab}</b></div><span className="badge">实验环境 · 不发送真实通知</span></header>
     <div className="workspace-bar"><div><span className={`connection-dot ${token?'loaded':''}`}/><b>{token?'已装入访问凭据':'尚未连接'}</b><span className="bar-divider">/</span><span>设备 {device || '未选择'}</span><span className="source-chip">{data.live?.value?`${label(data.live.value.origin)}数据`:'来源待确认'}</span></div><button type="button" onClick={()=>setSettingsOpen(x=>!x)} aria-expanded={!token||settingsOpen}>{settingsOpen?'收起设置':'连接设置'}</button></div>
     <form hidden={Boolean(token)&&!settingsOpen} className="connection" onSubmit={e=>{e.preventDefault();setToken(draft);setDraft('');setSettingsOpen(false)}}>
       <label>设备<input value={device} onChange={e=>setDevice(e.target.value)} disabled={busy}/></label>
       <label>实验访问凭据<input type="password" autoComplete="off" value={draft} onChange={e=>setDraft(e.target.value)} placeholder={token?'凭据已装入内存':'输入启动时保存的 token'} disabled={busy}/></label>
       <button disabled={busy || !draft}>连接</button><button type="button" disabled={busy} onClick={()=>setToken('')}>断开</button>
     </form>
-    <nav aria-label="工作台页面">{['实时总览','事件确认','实验诊断'].map((name,index)=><button key={name} aria-label={name} aria-current={tab===name?'page':undefined} onClick={()=>setTab(name)}><span className="nav-index" aria-hidden="true">0{index+1}</span>{name}</button>)}</nav>
     {!token?<section><h2>连接本地业务服务</h2><p>请先按本地演示手册启动服务，并通过该服务地址打开工作台。凭据仅保存在当前页面内存，刷新后需重新输入。</p></section>:<>
       {tab==='实时总览'&&<Overview data={data} onRefresh={()=>setEpoch(x=>x+1)} onEvents={()=>setTab('事件确认')}/>}
       {tab==='事件确认'&&<Events key={device} resource={data.events} selected={selected} onSelect={setSelected} detail={detail} busy={busy} retry={Boolean(operation.current.body)} onAck={ack} onDownload={download} notice={notice} onRefresh={()=>setEpoch(x=>x+1)}/>}
@@ -90,6 +90,6 @@ function App() {
 
     </>}
     <footer>本地结果、云同步与联系人送达分别验收 · 当前尚未完成真实硬件/云与独立验收</footer>
-  </main>
+  </main></div>
 }
 createRoot(document.getElementById('root')).render(<App/> )

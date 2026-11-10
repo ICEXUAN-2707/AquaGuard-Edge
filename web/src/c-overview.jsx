@@ -1,5 +1,6 @@
 import React from 'react'
 import { label, localTime, ageText } from './c-display.js'
+import { DataPath } from './c-navigation.jsx'
 
 function Pending({error,children}) {
   return <p role="status" className={error?'warning':'muted'}>{error || children || '正在查询…'}</p>
@@ -17,6 +18,7 @@ export function Overview({data,onRefresh,onEvents}) {
       <div><p className="eyebrow">当前用水情境</p><h3>{assessment?label(assessment.assessment.situation):'等待有效分析'}</h3><p>{data.assessment?.error || '情境判断与水接触安全信号分别展示。'}</p></div>
       <div className="safety-summary"><span className={`status-pill ${alarm?'alert':'neutral'}`}>{alarm?'水接触异常候选':'独立安全信号'}</span><p>{alarm?'请查看现场情况，并在事件页确认知晓。':safety.length?'查看下方有效信号与证据。':'暂无可用安全信号'}</p>{alarm&&<button onClick={onEvents}>查看事件 →</button>}</div>
     </section>
+    <DataPath/>
     <div className="section-title"><h3>三源感知</h3><span className="muted">每 5 秒查询 · 未知不代表正常</span></div>
     {data.live?.error?<Pending error={`传感快照：${data.live.error}`}/>:live?<>
       <p className="snapshot-meta">来源：{label(live.origin)} · 质量：{label(live.data_quality)} · 快照：{localTime(live.captured_at)}</p>
