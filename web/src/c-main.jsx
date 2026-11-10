@@ -4,11 +4,15 @@ import './c.css'
 import './c-workbench.css'
 import { AckIntent, ResponseOrder } from './c-state.js'
 import { Overview } from './c-overview.jsx'
+import { Events } from './c-events.jsx'
+import { Experiment } from './c-experiment.jsx'
 import { label } from './c-display.js'
+import { requestJSON } from './c-request.js'
 
 function download(value) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(value,null,2)], {type:'application/json'}))
-  const link = document.createElement('a'); link.href=url; link.download='aquaguard-local-evidence.json'; link.click(); URL.revokeObjectURL(url)
+  const identity=String(value.event?.event_id||value.trial_id||'local-evidence').replace(/[^a-zA-Z0-9_-]/g,'_')
+  const link = document.createElement('a'); link.href=url; link.download=`aquaguard-${identity}.json`; link.click(); URL.revokeObjectURL(url)
 }
 function App() {
   const [token,setToken]=useState(''), [draft,setDraft]=useState(''), [device,setDevice]=useState('demo01')
@@ -19,12 +23,11 @@ function App() {
   const [settingsOpen,setSettingsOpen]=useState(false)
   const experimentVersion=useRef(new ResponseOrder())
   async function request(path, options={}) {
-    const response=await fetch(path,{...options,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json',...options.headers}})
-    const body=await response.json()
-    if(!response.ok) { const error=new Error(body.code || `HTTP ${response.status}`); error.status=response.status; error.body=body; throw error }
-    return body
+    return requestJSON(path,token,options)
   }
   function message(error) {
+    if(error instanceof TypeError)return '无法连接本地服务，请检查服务是否运行'
+    if(error instanceof SyntaxError)return '服务响应无法解析，请重试'
     return error.status===401?'访问凭据无效，请重新连接':error.status===503?'不可用或证据已过期':error.status===404?'尚无对应数据':error.message
   }
   useEffect(()=>{ const id=setInterval(()=>setEpoch(x=>x+1),5000); return ()=>clearInterval(id) },[])
@@ -34,7 +37,7 @@ function App() {
   },[token,device])
   async function loadExperiment() {
     const version=experimentVersion.current.next()
-    setExperiment(null)
+    setExperiment({loading:true})
     try {const value=await request(`/api/experiments/${encodeURIComponent(trial)}`);if(experimentVersion.current.current(version))setExperiment({value})}
     catch(error){if(experimentVersion.current.current(version))setExperiment({error:message(error)})}
   }
@@ -59,7 +62,9 @@ function App() {
   async function ack() {
     if(busy || !detail?.value) return
     const event=detail.value.event
-    const body=operation.current.prepare(event)
+    let body
+    try {body=operation.current.prepare(event)}
+    catch(error){setNotice(error.message);return}
     setBusy(true)
     try {
       await request(`/api/events/${encodeURIComponent(event.event_id)}/ack`,{method:'POST',body:JSON.stringify(body)})
@@ -69,7 +74,6 @@ function App() {
       else setNotice(`${message(error)}。网络结果不确定时，再次点击会重放原请求。`)
     } finally {setBusy(false)}
   }
-  const event=detail?.value?.event
   return <main>
     <header><div className="brand"><span className="brand-mark" aria-hidden="true">≈</span><div><h1>水知安 <span>AquaGuard Edge</span></h1><p>多源感知 · 用水异常监测工作台</p></div></div><span className="badge">实验环境 · 不发送真实通知</span></header>
     <div className="workspace-bar"><div><span className={`connection-dot ${token?'loaded':''}`}/><b>{token?'已装入访问凭据':'尚未连接'}</b><span className="bar-divider">/</span><span>设备 {device || '未选择'}</span><span className="source-chip">{data.live?.value?`${label(data.live.value.origin)}数据`:'来源待确认'}</span></div><button type="button" onClick={()=>setSettingsOpen(x=>!x)} aria-expanded={!token||settingsOpen}>{settingsOpen?'收起设置':'连接设置'}</button></div>
@@ -81,15 +85,9 @@ function App() {
     <nav aria-label="工作台页面">{['实时总览','事件确认','实验诊断'].map((name,index)=><button key={name} aria-label={name} aria-current={tab===name?'page':undefined} onClick={()=>setTab(name)}><span className="nav-index" aria-hidden="true">0{index+1}</span>{name}</button>)}</nav>
     {!token?<section><h2>连接本地业务服务</h2><p>请先按本地演示手册启动服务，并通过该服务地址打开工作台。凭据仅保存在当前页面内存，刷新后需重新输入。</p></section>:<>
       {tab==='实时总览'&&<Overview data={data} onRefresh={()=>setEpoch(x=>x+1)} onEvents={()=>setTab('事件确认')}/>}
-      {tab==='事件确认'&&<><h2>事件确认</h2><p className="muted">仅显示该设备最新100项。确认代表知晓，不代表水已干或事件已关闭。</p>
-        {data.events?.error?<p className="warning">{data.events.error}</p>:<div className="event-list">{(data.events?.value?.items||[]).map(e=><button key={e.event_id} disabled={busy} onClick={()=>setSelected(e.event_id)}>{e.event_type} · {label(e.physical_status)} · v{e.version}</button>)}{data.events?.value?.items.length===0&&<p>暂无事件</p>}</div>}
-        {detail?.error&&<p className="warning">{detail.error}</p>}
-        {event&&<section><h3>事件详情</h3><dl>{[['事件',event.event_id],['生命周期',label(event.lifecycle)],['用户确认',label(event.ack_status)],['物理状态',label(event.physical_status)],['风险级',event.escalation_level],['来源',label(event.origin)],['版本',event.version]].map(([key,value])=><React.Fragment key={key}><dt>{key}</dt><dd>{value}</dd></React.Fragment>)}</dl>
-          <button disabled={busy || (event.ack_status==='ACKNOWLEDGED' && !operation.current.body) || event.lifecycle!=='OPEN'} onClick={ack}>{busy?'提交中…':operation.current.body?'重试原确认请求':'我已知晓'}</button><button onClick={()=>download(detail.value)}>导出事件记录</button>
-          <ol>{detail.value.transitions.map(t=><li key={t.transition_id}>v{t.event_version} · {t.occurred_at} · {t.transition_type}<p className="muted">证据：{t.evidence_refs.join(', ')||'用户操作'}</p></li>)}</ol>
-        </section>}<p role="status">{notice}</p>
-      </>}
-      {tab==='实验诊断'&&<section><h2>实验诊断</h2><p>仅查询与导出受控实验，不提供执行回放或通知入口。</p><label>实验ID<input value={trial} onChange={e=>{experimentVersion.current.next();setTrial(e.target.value);setExperiment(null)}}/></label><button onClick={loadExperiment}>查询</button>{experiment?.error&&<p className="warning">{experiment.error}</p>}{experiment?.value&&<><p>来源：{label(experiment.value.source)} · 状态：{experiment.value.status}</p><pre>{JSON.stringify(experiment.value,null,2)}</pre><button onClick={()=>download(experiment.value)}>导出实验记录</button></>}</section>}
+      {tab==='事件确认'&&<Events key={device} resource={data.events} selected={selected} onSelect={setSelected} detail={detail} busy={busy} retry={Boolean(operation.current.body)} onAck={ack} onDownload={download} notice={notice} onRefresh={()=>setEpoch(x=>x+1)}/>}
+      {tab==='实验诊断'&&<Experiment trial={trial} onTrial={value=>{experimentVersion.current.next();setTrial(value);setExperiment(null)}} onQuery={loadExperiment} result={experiment} onDownload={download}/>}
+
     </>}
     <footer>本地结果、云同步与联系人送达分别验收 · 当前尚未完成真实硬件/云与独立验收</footer>
   </main>

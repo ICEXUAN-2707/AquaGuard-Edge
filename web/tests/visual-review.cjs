@@ -21,7 +21,39 @@ const assert=require('node:assert/strict');
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
       await page.screenshot({path:path.join(output,`overview-${width}.png`),fullPage:true});
     }
+    await page.getByRole('button',{name:'事件确认',exact:true}).click();
+    await page.locator('.event-card').first().waitFor({timeout:120000});
+    await page.locator('.event-card').first().click();
+    await page.getByRole('heading',{name:'事件详情',exact:true}).waitFor();
+    assert.ok(await page.locator('.event-timeline>li').count()<=8);
+    for(const width of [1280,768,390]){
+      await page.setViewportSize({width,height:900});
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+      await page.screenshot({path:path.join(output,`events-${width}.png`),fullPage:true});
+    }
+    const older=page.getByRole('button',{name:/查看更早记录/});
+    if(await older.count()){
+      const before=await page.locator('.event-timeline>li').count();
+      await older.click();
+      assert.ok(await page.locator('.event-timeline>li').count()>before);
+    }
+    await page.getByRole('button',{name:'实验诊断',exact:true}).click();
+    await page.getByRole('button',{name:'查询',exact:true}).click();
+    await page.locator('.trial-name').waitFor();
+    for(const width of [1280,768,390]){
+      await page.setViewportSize({width,height:900});
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+      await page.screenshot({path:path.join(output,`experiment-${width}.png`),fullPage:true});
+    }
+    await page.getByRole('button',{name:'实时总览',exact:true}).click();
     await page.setViewportSize({width:1280,height:900});
+    const stall=route=>{};
+    await page.route('**/api/devices/*/live',stall);
+    await page.getByRole('button',{name:'刷新',exact:true}).click();
+    await page.getByText('传感快照：请求超时，请检查本地服务后重试').waitFor({timeout:15000});
+    assert.equal(await page.locator('.sensor-grid').count(),0);
+    await page.screenshot({path:path.join(output,'overview-timeout.png'),fullPage:true});
+    await page.unroute('**/api/devices/*/live',stall);
     await page.route('**/api/devices/*/live',route=>route.fulfill({status:503,contentType:'application/json',body:'{"code":"STALE"}'}));
     await page.getByRole('button',{name:'刷新',exact:true}).click();
     await page.getByText('传感快照：不可用或证据已过期').waitFor();

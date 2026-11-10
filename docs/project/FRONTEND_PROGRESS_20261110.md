@@ -53,3 +53,30 @@ D1: no hardware progress claimed here. D2: common layout and overview improved;
 event/experiment redesign and integration remain. D3: no cloud progress claimed.
 D4: frontend screenshots/tests added; experiment report/video/PPT remain outstanding.
 G1 remains partial; frontend visual work does not release G2–G4.
+
+## F3 and F4 presentation increment
+
+- Event page: structured list/detail, filters on the latest 100 loaded records,
+  independent physical/ACK/lifecycle states, Chinese transitions, evidence details,
+  export names containing event identity. Recent eight transitions are shown newest
+  first with incremental access to older records; exported backend history is intact.
+- Experiment page: query form and demo-trial/mqtt-trial examples, running metadata,
+  evidence filenames and expandable original paths, raw JSON and export. C0–C3
+  remain explicitly pending because the existing endpoint has no evaluation metrics.
+- Requests now time out after four seconds, before the five-second poll cycle,
+  so a stalled endpoint cannot indefinitely preserve an apparently live snapshot.
+  Parent cancellation is forwarded and cleaned up; uncertain ACK intent is retained.
+- Browser-level checks with a fresh simulation DB: 11 PASS, including ACK conflict,
+  actual ACK, export content, filters, missing trial recovery and disconnect cleanup.
+  Report: audit/frontend-pages-release-browser-20261110/result.json.
+- Final visual/browser review: all three pages at 1280/768/390px, older timeline
+  expansion, a deliberately stalled live request, injected 503, and disconnect PASS.
+  No page errors. Screenshots inspected for event desktop/mobile and experiment
+  mobile. Report: audit/frontend-pages-release-20261110/result.json.
+- Final build, five state/display tests and git diff --check PASS. No backend or
+  contract changes, new dependencies, cloud access or hardware acceptance.
+
+Preview remains 8023; separate 8024 acceptance service is stopped after verification.
+F3 presentation is complete for existing APIs. F4 presentation is complete for
+existing metadata; quantitative results still require B/C handoff. F5 integration
+with the final C runtime, MQTT browser acceptance and independent review remain.
