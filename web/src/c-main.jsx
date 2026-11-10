@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './c.css'
+import './c-workbench.css'
 import { AckIntent, ResponseOrder } from './c-state.js'
+import { Overview } from './c-overview.jsx'
+import { label } from './c-display.js'
 
-const words = { ACTIVE:'仍有物理异常', CLEARED:'物理清除候选', UNKNOWN:'未知', OPEN:'处理中', RESOLVED:'已恢复', CLOSED:'已关闭', ACKNOWLEDGED:'已确认', UNACKNOWLEDGED:'未确认', simulation:'模拟', hardware:'硬件', mixed:'混合来源', unknown:'来源未知', wet:'湿', dry:'干', active:'流水', inactive:'未流水', present:'检出人员', absent:'未检出人员', ATTENDED_FLOW:'有人用水', POSSIBLE_UNATTENDED_FLOW:'可能无人流水', IDLE:'空闲', NONE:'尚无回执', TRANSPORT:'传输确认', BUSINESS:'业务回执' }
-const label = value => words[value] || value
 function download(value) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(value,null,2)], {type:'application/json'}))
   const link = document.createElement('a'); link.href=url; link.download='aquaguard-local-evidence.json'; link.click(); URL.revokeObjectURL(url)
@@ -15,6 +16,7 @@ function App() {
   const [selected,setSelected]=useState(''), [detail,setDetail]=useState(null), [notice,setNotice]=useState('')
   const [busy,setBusy]=useState(false), [trial,setTrial]=useState('demo-trial'), [experiment,setExperiment]=useState(null)
   const operation=useRef(new AckIntent())
+  const [settingsOpen,setSettingsOpen]=useState(false)
   const experimentVersion=useRef(new ResponseOrder())
   async function request(path, options={}) {
     const response=await fetch(path,{...options,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json',...options.headers}})
@@ -67,27 +69,18 @@ function App() {
       else setNotice(`${message(error)}。网络结果不确定时，再次点击会重放原请求。`)
     } finally {setBusy(false)}
   }
-  const live=data.live?.value, assessment=data.assessment?.value, sync=data.sync?.value, event=detail?.value?.event
+  const event=detail?.value?.event
   return <main>
-    <header><div><p className="eyebrow">AQUAGUARD EDGE · 本地原型</p><h1>水知安</h1></div><span className="badge">实验环境 · 不发送真实通知</span></header>
-    <form className="connection" onSubmit={e=>{e.preventDefault();setToken(draft);setDraft('')}}>
+    <header><div className="brand"><span className="brand-mark" aria-hidden="true">≈</span><div><h1>水知安 <span>AquaGuard Edge</span></h1><p>多源感知 · 用水异常监测工作台</p></div></div><span className="badge">实验环境 · 不发送真实通知</span></header>
+    <div className="workspace-bar"><div><span className={`connection-dot ${token?'loaded':''}`}/><b>{token?'已装入访问凭据':'尚未连接'}</b><span className="bar-divider">/</span><span>设备 {device || '未选择'}</span><span className="source-chip">{data.live?.value?`${label(data.live.value.origin)}数据`:'来源待确认'}</span></div><button type="button" onClick={()=>setSettingsOpen(x=>!x)} aria-expanded={!token||settingsOpen}>{settingsOpen?'收起设置':'连接设置'}</button></div>
+    <form hidden={Boolean(token)&&!settingsOpen} className="connection" onSubmit={e=>{e.preventDefault();setToken(draft);setDraft('');setSettingsOpen(false)}}>
       <label>设备<input value={device} onChange={e=>setDevice(e.target.value)} disabled={busy}/></label>
       <label>实验访问凭据<input type="password" autoComplete="off" value={draft} onChange={e=>setDraft(e.target.value)} placeholder={token?'凭据已装入内存':'输入启动时保存的 token'} disabled={busy}/></label>
       <button disabled={busy || !draft}>连接</button><button type="button" disabled={busy} onClick={()=>setToken('')}>断开</button>
     </form>
-    <nav>{['实时总览','事件确认','实验诊断'].map(name=><button key={name} aria-current={tab===name?'page':undefined} onClick={()=>setTab(name)}>{name}</button>)}</nav>
+    <nav aria-label="工作台页面">{['实时总览','事件确认','实验诊断'].map((name,index)=><button key={name} aria-label={name} aria-current={tab===name?'page':undefined} onClick={()=>setTab(name)}><span className="nav-index" aria-hidden="true">0{index+1}</span>{name}</button>)}</nav>
     {!token?<section><h2>连接本地业务服务</h2><p>请先按本地演示手册启动服务，并通过该服务地址打开工作台。凭据仅保存在当前页面内存，刷新后需重新输入。</p></section>:<>
-      {tab==='实时总览'&&<>
-        <div className="section-title"><h2>实时总览</h2><button onClick={()=>setEpoch(x=>x+1)}>刷新</button></div>
-        <p className="muted">每5秒查询一次。缺失、过期与未知均不会显示为正常。</p>
-        {data.live?.error?<p role="status" className="warning">传感快照：{data.live.error}</p>:live?<>
-          <p>来源：{label(live.origin)} · 质量：{live.data_quality} · 快照：{live.captured_at}</p>
-          <div className="grid">{Object.entries(live.sensor_summary).map(([name,value])=><section key={name}><h3>{{flow:'水流',water:'水接触',presence:'人员检测'}[name]}</h3><strong>{label(value.state)}</strong><p>证据年龄：{value.age_sec===null?'未知':`${(value.age_sec+Math.max(0,(Date.now()-Date.parse(live.captured_at))/1000)).toFixed(1)}秒`}</p><p>窗口覆盖：{(value.coverage_ratio*100).toFixed(0)}%</p></section>)}</div>
-          <p>快照中的云连接状态：{live.cloud_status}（与传感质量分开）</p>
-        </>:<p role="status">正在读取传感快照…</p>}
-        <section><h3>用水情境与独立安全信号</h3>{data.assessment?.error?<p className="warning">{data.assessment.error}</p>:assessment?<><strong>{label(assessment.assessment.situation)}</strong><p>{assessment.assessment.reason_codes.join(' · ')}</p><p>来源：{label(assessment.assessment.origin)} · 模式：{assessment.assessment.inference_mode}</p><ul>{assessment.safety_signals.map(s=><li key={s.signal_id}>{s.signal_type}：{s.quality==='VALID'?(s.value?'异常存在候选':'物理清除候选'):'证据不可用'} · {s.quality} · {s.observed_at}</li>)}</ul></>:<p>正在查询…</p>}</section>
-        <section><h3>云同步</h3>{data.sync?.error?<p className="warning">{data.sync.error}</p>:sync?<p>待发 {sync.pending_count} · 失败 {sync.failed_count} · {label(sync.last_ack_level)}。回执不代表联系人收到。</p>:<p>正在查询…</p>}</section>
-      </>}
+      {tab==='实时总览'&&<Overview data={data} onRefresh={()=>setEpoch(x=>x+1)} onEvents={()=>setTab('事件确认')}/>}
       {tab==='事件确认'&&<><h2>事件确认</h2><p className="muted">仅显示该设备最新100项。确认代表知晓，不代表水已干或事件已关闭。</p>
         {data.events?.error?<p className="warning">{data.events.error}</p>:<div className="event-list">{(data.events?.value?.items||[]).map(e=><button key={e.event_id} disabled={busy} onClick={()=>setSelected(e.event_id)}>{e.event_type} · {label(e.physical_status)} · v{e.version}</button>)}{data.events?.value?.items.length===0&&<p>暂无事件</p>}</div>}
         {detail?.error&&<p className="warning">{detail.error}</p>}
