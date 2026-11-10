@@ -16,6 +16,7 @@ from projections import Projections, Unavailable
 from edge.contracts.models import ApiError, _aware
 from store import Store, Conflict, IdempotencyConflict, NotFound, VersionConflict, canonical
 from lifecycle import CloseRequest, close_event
+from evaluations import Evaluations, EvaluationReport
 
 
 def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
@@ -23,6 +24,7 @@ def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
         raise ValueError("explicit token >=24 characters and cursor key >=32 bytes required")
     clock=clock or (lambda: datetime.now(timezone.utc).isoformat())
     projections=Projections(store.path)
+    evaluations=Evaluations(store.path)
     app=FastAPI(title="AquaGuard C prototype",docs_url=None,redoc_url=None,openapi_url=None)
 
     def error(status,code,details=None):
@@ -140,5 +142,14 @@ def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
     @app.get("/api/experiments/{trial_id}",response_model=ExperimentResult,dependencies=[Depends(authorize)])
     def experiment(trial_id: str):
         return projections.read("experiment",trial_id,now=clock())
+
+    @app.get('/api/evaluations/{evaluation_id}',response_model=EvaluationReport,dependencies=[Depends(authorize)])
+    def evaluation(evaluation_id: str):
+        return evaluations.read(evaluation_id)
+
+    @app.get('/api/experiments/{trial_id}/evaluations',dependencies=[Depends(authorize)])
+    def experiment_evaluations(trial_id: str):
+        projections.read('experiment',trial_id,now=clock())
+        return evaluations.associations(trial_id)
 
     return app
