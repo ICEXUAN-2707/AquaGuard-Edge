@@ -32,7 +32,9 @@ def main():
     parser.add_argument('--mqtt-port',type=int,default=18886)
     parser.add_argument('--http-port',type=int,default=8021)
     parser.add_argument('--browser',action='store_true',help='verify browser and ACK in the same MQTT run')
+    parser.add_argument('--lifecycle',action='store_true',help='include dry, browser close and recurrence')
     args=parser.parse_args()
+    if args.lifecycle: args.browser=True
     args.directory=args.directory.resolve()
     for port in (args.mqtt_port,args.http_port):
         with socket.socket() as probe: probe.bind(('127.0.0.1',port))
@@ -67,10 +69,10 @@ def main():
         from core import sample
         rows=[]
         boot=uuid4().hex
-        for i in range(45):
+        for i in range(65 if args.lifecycle else 45):
             for sensor in ('flow','water','presence'):
                 row=sample(i,sensor,boot,device_id='demo01')
-                if sensor=='water':row['value']['wet']=i>=35
+                if sensor=='water':row['value']['wet']=(35<=i<42 or i>=58) if args.lifecycle else i>=35
                 rows.append(row)
         (args.directory/'manifest.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
         publisher=launch([sys.executable,str(cli),'publish','--device-id','demo01','--directory',str(args.directory),
@@ -79,16 +81,20 @@ def main():
             browser_env=env.copy()
             browser_env.update(AQUAGUARD_BROWSER_URL=f'http://127.0.0.1:{args.http_port}/c.html',
                 AQUAGUARD_BROWSER_TRIAL='mqtt-trial',
+                AQUAGUARD_BROWSER_LIFECYCLE='1' if args.lifecycle else '0',
                 AQUAGUARD_BROWSER_EVIDENCE=str(args.directory/'browser'))
             subprocess.run(['node',str(ROOT/'web/tests/browser-acceptance.cjs')],cwd=ROOT,
                            env=browser_env,check=True,timeout=150)
-        assert publisher.wait(timeout=65)==0
+        assert publisher.wait(timeout=90)==0
         live=wait(lambda:request('/api/devices/demo01/live'))
         events=wait(lambda:request('/api/events?device_id=demo01')['items'])
         assert live['origin']=='simulation'
         assert any(e['event_type']=='WATER_CONTACT' for e in events)
         if args.browser:
             assert any(e['event_type']=='WATER_CONTACT' and e['ack_status']=='ACKNOWLEDGED' for e in events)
+        if args.lifecycle:
+            assert any(e['event_type']=='WATER_CONTACT' and e['lifecycle']=='CLOSED' for e in events)
+            assert any(e['event_type']=='WATER_CONTACT' and e['lifecycle']=='OPEN' and e['ack_status']=='UNACKNOWLEDGED' for e in events)
         (args.directory/'events.json').write_text(json.dumps(events,indent=2))
         sync=request('/api/sync/status?device_id=demo01')
         assert sync['pending_count']>0

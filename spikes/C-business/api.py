@@ -15,6 +15,7 @@ from edge.contracts.api_models import LiveSnapshot, AssessmentResponse, SyncStat
 from projections import Projections, Unavailable
 from edge.contracts.models import ApiError, _aware
 from store import Store, Conflict, IdempotencyConflict, NotFound, VersionConflict, canonical
+from lifecycle import CloseRequest, close_event
 
 
 def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
@@ -119,6 +120,10 @@ def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
     @app.post("/api/events/{event_id}/ack",response_model=AckResponse,dependencies=[Depends(authorize)])
     def ack(event_id: str,body: AckRequest):
         return store.ack(event_id,body.model_dump(mode="json"),now=clock(),authorized=True)
+
+    @app.post("/api/events/{event_id}/close",response_model=AckResponse,dependencies=[Depends(authorize)])
+    def close(event_id: str,body: CloseRequest):
+        return close_event(store,event_id,body.model_dump(mode="json"),now=clock(),authorized=True)
 
     @app.get("/api/devices/{device_id}/live",response_model=LiveSnapshot,dependencies=[Depends(authorize)])
     def live(device_id: str):

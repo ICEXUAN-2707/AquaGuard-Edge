@@ -90,7 +90,7 @@ def test_batch_receipts_and_concurrent_future_commit(tmp_path):
     assert [r['received_at'] for r in runtime.rows][-1]==(start+timedelta(seconds=2)).isoformat()
 
 
-@pytest.mark.parametrize('change',['boot','source'])
+@pytest.mark.parametrize('change',['source'])
 def test_unapproved_boot_and_source_fail_closed(tmp_path,change):
     start=datetime(2026,11,10,tzinfo=timezone.utc)
     source=tmp_path/'journal'; journal(source); append(source,start,0)
@@ -99,3 +99,20 @@ def test_unapproved_boot_and_source_fail_closed(tmp_path,change):
     append(source,start,1,boot='other' if change=='boot' else 'mqtt-boot',source='hardware' if change=='source' else 'simulation')
     with pytest.raises(ValueError): runtime.step(start+timedelta(seconds=1))
     assert runtime.cursor==3
+
+
+def test_boot_switch_resets_history_and_rejects_retired_boot_after_restart(tmp_path):
+    start=datetime(2026,11,10,tzinfo=timezone.utc)
+    source=tmp_path/'journal';journal(source)
+    runtime=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start,source)
+    append(source,start,35)
+    runtime.step(start+timedelta(seconds=35))
+    append(source,start,36,boot='second')
+    runtime.step(start+timedelta(seconds=36))
+    assert runtime.cursor==6 and {r['boot_id'] for r in runtime.rows}=={'second'}
+    restored=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start+timedelta(seconds=36),source)
+    assert {r['boot_id'] for r in restored.rows}=={'second'}
+    append(source,start,37)
+    with pytest.raises(ValueError,match='retired MQTT boot'):
+        restored.step(start+timedelta(seconds=37))
+    assert restored.cursor==6

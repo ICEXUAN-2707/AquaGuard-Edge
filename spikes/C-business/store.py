@@ -130,6 +130,13 @@ class Store:
                     raise Conflict("origin change requires reviewed merge policy")
                 # Return the existing event; repeated paths do not create transitions.
                 return event
+            # A delayed second path must not reopen a closed incident using
+            # evidence already attached to that incident.
+            historical=db.execute("SELECT e.body,t.body FROM events e JOIN transitions t ON e.event_id=t.event_id WHERE e.device_id=? AND e.event_type=? AND e.lifecycle='CLOSED'",
+                                  (signal.device_id,signal.signal_type)).fetchall()
+            for previous,transition in historical:
+                if set(signal.observation_refs).intersection(json.loads(transition)['evidence_refs']):
+                    return json.loads(previous)
             event = dict(schema_version="1.1", event_id=str(uuid4()),device_id=signal.device_id,
                          event_type=signal.signal_type,lifecycle="OPEN",ack_status="UNACKNOWLEDGED",
                          physical_status="ACTIVE",escalation_level=escalation_level,version=1,

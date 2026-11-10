@@ -47,6 +47,15 @@ const assert = require('node:assert/strict');
       await page.getByText('已确认',{exact:true}).waitFor();
     } else throw new Error('Use a fresh simulation database for ACK verification');
     check('user acknowledgement persists and is shown separately');
+    if(process.env.AQUAGUARD_BROWSER_LIFECYCLE==='1') {
+      await page.waitForFunction(() => [...document.querySelectorAll('button')].some(b=>b.textContent==='关闭已恢复事件' && !b.disabled),null,{timeout:45000});
+      await page.getByRole('button',{name:'关闭已恢复事件',exact:true}).click();
+      await page.getByText('事件已关闭；再次发生将创建新的未确认事件。',{exact:true}).waitFor();
+      await page.getByText('已关闭',{exact:true}).waitFor();
+      check('fresh physical recovery permits explicit close');
+      await page.waitForFunction(() => [...document.querySelectorAll('.event-list button')].filter(b=>b.textContent.includes('WATER_CONTACT')).length>=2,null,{timeout:45000});
+      check('recurrence creates a separate event in the same MQTT run');
+    }
     await page.screenshot({path:path.join(output,'event-ack.png'),fullPage:true});
     await page.getByRole('button',{name:'实验诊断',exact:true}).click();
     await page.getByLabel('实验ID').fill(trial);

@@ -15,6 +15,7 @@ function App() {
   const [selected,setSelected]=useState(''), [detail,setDetail]=useState(null), [notice,setNotice]=useState('')
   const [busy,setBusy]=useState(false), [trial,setTrial]=useState('demo-trial'), [experiment,setExperiment]=useState(null)
   const operation=useRef(new AckIntent())
+  const closeIntent=useRef(null)
   const experimentVersion=useRef(new ResponseOrder())
   async function request(path, options={}) {
     const response=await fetch(path,{...options,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json',...options.headers}})
@@ -28,6 +29,7 @@ function App() {
   useEffect(()=>{ const id=setInterval(()=>setEpoch(x=>x+1),5000); return ()=>clearInterval(id) },[])
   useEffect(()=>{
     experimentVersion.current.next()
+    closeIntent.current=null
     setData({}); setDetail(null); setExperiment(null); operation.current.reset(); setSelected(''); setNotice('')
   },[token,device])
   async function loadExperiment() {
@@ -46,6 +48,7 @@ function App() {
     return ()=>controller.abort()
   },[token,device,epoch])
   useEffect(()=>{
+    closeIntent.current=null
     operation.current.reset(); setNotice(''); setDetail(null)
   },[selected])
   useEffect(()=>{
@@ -65,6 +68,19 @@ function App() {
     } catch(error) {
       if(error.status===409){operation.current.reset(); setNotice('版本或操作冲突，已重新查询；核对后再次确认。');setEpoch(x=>x+1)}
       else setNotice(`${message(error)}。网络结果不确定时，再次点击会重放原请求。`)
+    } finally {setBusy(false)}
+  }
+  async function closeEvent() {
+    if(busy || !detail?.value) return
+    const event=detail.value.event
+    closeIntent.current ||= {schema_version:'1.1',expected_version:event.version,idempotency_key:crypto.randomUUID()}
+    setBusy(true)
+    try {
+      await request(`/api/events/${encodeURIComponent(event.event_id)}/close`,{method:'POST',body:JSON.stringify(closeIntent.current)})
+      closeIntent.current=null;setNotice('事件已关闭；再次发生将创建新的未确认事件。');setEpoch(x=>x+1)
+    } catch(error) {
+      if(error.status===409 || error.status===400){closeIntent.current=null;setNotice('关闭未完成：请核对确认状态、恢复证据与版本。');setEpoch(x=>x+1)}
+      else setNotice(`${message(error)}。再次点击会重放原关闭请求。`)
     } finally {setBusy(false)}
   }
   const live=data.live?.value, assessment=data.assessment?.value, sync=data.sync?.value, event=detail?.value?.event
@@ -93,6 +109,8 @@ function App() {
         {detail?.error&&<p className="warning">{detail.error}</p>}
         {event&&<section><h3>事件详情</h3><dl>{[['事件',event.event_id],['生命周期',label(event.lifecycle)],['用户确认',label(event.ack_status)],['物理状态',label(event.physical_status)],['风险级',event.escalation_level],['来源',label(event.origin)],['版本',event.version]].map(([key,value])=><React.Fragment key={key}><dt>{key}</dt><dd>{value}</dd></React.Fragment>)}</dl>
           <button disabled={busy || (event.ack_status==='ACKNOWLEDGED' && !operation.current.body) || event.lifecycle!=='OPEN'} onClick={ack}>{busy?'提交中…':operation.current.body?'重试原确认请求':'我已知晓'}</button><button onClick={()=>download(detail.value)}>导出事件记录</button>
+          <button disabled={busy || (!closeIntent.current && (event.lifecycle!=='OPEN' || event.ack_status!=='ACKNOWLEDGED' || event.physical_status!=='CLEARED'))} onClick={closeEvent}>{closeIntent.current?'重试原关闭请求':'关闭已恢复事件'}</button>
+          <p className="muted">关闭需已确认且恢复证据仍新鲜；再次发生会创建新的未确认事件。</p>
           <ol>{detail.value.transitions.map(t=><li key={t.transition_id}>v{t.event_version} · {t.occurred_at} · {t.transition_type}<p className="muted">证据：{t.evidence_refs.join(', ')||'用户操作'}</p></li>)}</ol>
         </section>}<p role="status">{notice}</p>
       </>}
