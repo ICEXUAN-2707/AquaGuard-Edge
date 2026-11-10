@@ -7,7 +7,9 @@ analysis/events/API/UI. The journal is the durable handoff, not a second simulat
 
 ## Boundaries
 
-- Only demo01, source=simulation, one boot per trial database are allowed.
+- Only demo01 and source=simulation are allowed. New boots reset analysis history;
+  retired boots are durably quarantined without blocking later valid input.
+  See C_LOCAL_CLOSEOUT.md for current verification and delivery commands.
 - The original observation IDs and received_at are preserved. No hardware relabeling.
 - Fresh water observations reach the existing fast path; checkpoint-backed windows
   use the same B/C engines as the internal simulation. No cloud worker is enabled.
@@ -20,11 +22,14 @@ analysis/events/API/UI. The journal is the durable handoff, not a second simulat
 - Within a batch the fast path processes observations in their original receipt
   chronology, then the scheduler evaluates expiry at actual current time. Records
   committed after the sampled tick time are deferred. An observation behind the
-  already evaluated water-state watermark fails closed rather than rewinding it;
-  delayed/late-water recovery still needs separate acceptance.
+  already evaluated water-state watermark is not applied to the fast path. Its
+  BEHIND_WATER_WATERMARK disposition and consumer cursor are durably recorded
+  together, so later inputs can continue without rewinding water state. Stale
+  backlog records STALE_BACKLOG. Original input remains in the journal.
 - This is one consumer, one local journal and one business DB. Use fresh databases
-  per trial; do not replace/truncate a bound journal in place. Boot changes fail
-  closed until explicitly reviewed continuous restart/time semantics are implemented.
+  per trial; do not replace/truncate a bound journal in place. Never reuse retired
+  boot IDs. Retired inputs remain in the journal with mqtt_quarantine records;
+  new boots require a new 30-second analysis window.
 - Existing 180s in-memory history and demo checkpoint retention limits remain;
   this is not a long-running production service or complete hardware acceptance.
 
@@ -80,6 +85,11 @@ Earlier failed runs are retained. One exposed initialization/path errors in the
 verifier; another failed under real scheduling, prompting receipt-batch/deferred
 commit handling and additional boundary tests. No new browser acceptance of MQTT mode is implied
 by API checks. The previous eight browser checks covered internal simulation.
+
+Current `.c23-process` increment adds `--browser` for same-run MQTT/Chromium/ACK
+verification and durable late-water dispositions. See
+[G1 closure progress](G1_CLOSURE_PROGRESS.md) for current evidence and remaining
+lifecycle/boot release gates; the historical counts above are not current reruns.
 
 D1: transport-to-business integration advances, real rig still pending.
 D2: same APIs/pages can now be driven by MQTT; interactive 8020 review remains

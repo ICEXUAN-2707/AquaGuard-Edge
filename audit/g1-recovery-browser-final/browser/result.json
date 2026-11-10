@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checks": [
+    "MQTT overview initially available",
+    "real stopped input expires and hides sensor values",
+    "same browser recovers after consumer restart and new MQTT boot"
+  ],
+  "errors": []
+}

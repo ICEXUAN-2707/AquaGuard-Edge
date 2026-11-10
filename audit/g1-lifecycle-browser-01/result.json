@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "origin": "simulation",
+  "event_types": [
+    "WATER_CONTACT",
+    "WATER_CONTACT"
+  ],
+  "pending_count": 6,
+  "trial_id": "mqtt-trial",
+  "cloud_connected": false
+}

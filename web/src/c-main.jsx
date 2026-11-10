@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './c.css'
 import './c-workbench.css'
-import { AckIntent, ResponseOrder } from './c-state.js'
+import { AckIntent, ResponseOrder, CloseIntent } from './c-state.js'
 import { Overview } from './c-overview.jsx'
 import { Events } from './c-events.jsx'
 import { Experiment } from './c-experiment.jsx'
@@ -21,6 +21,7 @@ function App() {
   const [selected,setSelected]=useState(''), [detail,setDetail]=useState(null), [notice,setNotice]=useState('')
   const [busy,setBusy]=useState(false), [trial,setTrial]=useState('demo-trial'), [experiment,setExperiment]=useState(null)
   const operation=useRef(new AckIntent())
+  const closeIntent=useRef(new CloseIntent())
   const [settingsOpen,setSettingsOpen]=useState(false)
   const experimentVersion=useRef(new ResponseOrder())
   async function request(path, options={}) {
@@ -34,7 +35,7 @@ function App() {
   useEffect(()=>{ const id=setInterval(()=>setEpoch(x=>x+1),5000); return ()=>clearInterval(id) },[])
   useEffect(()=>{
     experimentVersion.current.next()
-    setData({}); setDetail(null); setExperiment(null); operation.current.reset(); setSelected(''); setNotice('')
+    setData({}); setDetail(null); setExperiment(null); operation.current.reset(); closeIntent.current.reset(); setSelected(''); setNotice('')
   },[token,device])
   async function loadExperiment() {
     const version=experimentVersion.current.next()
@@ -52,7 +53,7 @@ function App() {
     return ()=>controller.abort()
   },[token,device,epoch])
   useEffect(()=>{
-    operation.current.reset(); setNotice(''); setDetail(null)
+    operation.current.reset(); closeIntent.current.reset(); setNotice(''); setDetail(null)
   },[selected])
   useEffect(()=>{
     if(!token || !selected) return
@@ -75,6 +76,19 @@ function App() {
       else setNotice(`${message(error)}。网络结果不确定时，再次点击会重放原请求。`)
     } finally {setBusy(false)}
   }
+  async function closeEvent(){
+    if(busy||!detail?.value)return
+    let body
+    try{body=closeIntent.current.prepare(detail.value.event)}catch(error){setNotice(error.message);return}
+    setBusy(true)
+    try{
+      await request(`/api/events/${encodeURIComponent(detail.value.event.event_id)}/close`,{method:'POST',body:JSON.stringify(body)})
+      closeIntent.current.reset();setNotice('事件已关闭；再次发生将创建新的未确认事件。');setEpoch(x=>x+1)
+    }catch(error){
+      if(error.status===409||error.status===400){closeIntent.current.reset();setNotice('关闭未完成：请核对确认状态、恢复证据与版本。');setEpoch(x=>x+1)}
+      else setNotice(`${message(error)}。再次点击会重放原关闭请求。`)
+    }finally{setBusy(false)}
+  }
   return <div className="workbench-shell"><WorkspaceNavigation tab={tab} onTab={setTab}/><main>
     <header className="workspace-topbar"><div className="breadcrumb"><span>工作区</span><span aria-hidden="true">›</span><span>AquaGuard Edge</span><span aria-hidden="true">›</span><b>{tab}</b></div><span className="badge">实验环境 · 不发送真实通知</span></header>
     <div className="workspace-bar"><div><span className={`connection-dot ${token?'loaded':''}`}/><b>{token?'已装入访问凭据':'尚未连接'}</b><span className="bar-divider">/</span><span>设备 {device || '未选择'}</span><span className="source-chip">{data.live?.value?`${label(data.live.value.origin)}数据`:'来源待确认'}</span></div><button type="button" onClick={()=>setSettingsOpen(x=>!x)} aria-expanded={!token||settingsOpen}>{settingsOpen?'收起设置':'连接设置'}</button></div>
@@ -85,7 +99,7 @@ function App() {
     </form>
     {!token?<section><h2>连接本地业务服务</h2><p>请先按本地演示手册启动服务，并通过该服务地址打开工作台。凭据仅保存在当前页面内存，刷新后需重新输入。</p></section>:<>
       {tab==='实时总览'&&<Overview data={data} onRefresh={()=>setEpoch(x=>x+1)} onEvents={()=>setTab('事件确认')}/>}
-      {tab==='事件确认'&&<Events key={device} resource={data.events} selected={selected} onSelect={setSelected} detail={detail} busy={busy} retry={Boolean(operation.current.body)} onAck={ack} onDownload={download} notice={notice} onRefresh={()=>setEpoch(x=>x+1)}/>}
+      {tab==='事件确认'&&<Events key={device} resource={data.events} selected={selected} onSelect={setSelected} detail={detail} busy={busy} retry={Boolean(operation.current.body)} onAck={ack} onClose={closeEvent} closeRetry={Boolean(closeIntent.current.body)} onDownload={download} notice={notice} onRefresh={()=>setEpoch(x=>x+1)}/>}
       {tab==='实验诊断'&&<Experiment trial={trial} onTrial={value=>{experimentVersion.current.next();setTrial(value);setExperiment(null)}} onQuery={loadExperiment} result={experiment} onDownload={download}/>}
 
     </>}

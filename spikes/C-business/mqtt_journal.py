@@ -1,6 +1,6 @@
 """Consume SP-02's committed simulation journal, not broker callbacks.
 
-One demo01 boot per business database. Hardware authorization is not enabled.
+Only demo01 simulation is authorized. Retired boots are durably quarantined.
 The bounded batch and original timestamps keep backlog from becoming fresh data.
 """
 import json
@@ -22,22 +22,28 @@ class JournalRuntime(Simulation):
         super().__init__(path, checkpoints, start, trial='mqtt-trial', initialize_trial=False)
         with self.water.connection() as db:
             db.execute('CREATE TABLE IF NOT EXISTS mqtt_consumer (singleton INTEGER PRIMARY KEY CHECK(singleton=1), journal TEXT, boot TEXT, cursor INTEGER)')
+            db.execute('CREATE TABLE IF NOT EXISTS mqtt_water_dispositions (number INTEGER PRIMARY KEY, observation_id TEXT NOT NULL, reason TEXT NOT NULL)')
+            db.execute('CREATE TABLE IF NOT EXISTS mqtt_boots (boot TEXT PRIMARY KEY)')
+            db.execute('CREATE TABLE IF NOT EXISTS mqtt_quarantine (number INTEGER PRIMARY KEY, observation_id TEXT NOT NULL, boot TEXT NOT NULL, reason TEXT NOT NULL)')
             state = db.execute('SELECT journal,boot,cursor FROM mqtt_consumer WHERE singleton=1').fetchone()
         if state and state[0] != str(self.journal):
             raise ValueError('consumer database belongs to another journal')
         self.input_boot = state[1] if state else None
+        if self.input_boot:
+            with self.water.connection() as db:
+                db.execute('INSERT OR IGNORE INTO mqtt_boots VALUES(?)',(self.input_boot,))
         self.cursor = state[2] if state else 0
         # Reload bounded history on restart; do not re-ingest old water evidence.
         with self.connection() as db:
             records = db.execute("SELECT body FROM attempts WHERE number<=? AND classification IN ('new','out_of_order') ORDER BY number DESC LIMIT 2048", (self.cursor,)).fetchall()
-        self.rows = [json.loads(r[0]) for r in reversed(records)]
+        self.rows = [json.loads(r[0]) for r in reversed(records) if json.loads(r[0])['boot_id']==self.input_boot]
         if self.rows:
             self.start = _aware(self.rows[0]['received_at'])
             self.next_end = self.start + timedelta(seconds=30)
         with self.water.connection() as db:
             prior=db.execute('SELECT body FROM context_state WHERE device=?',('demo01',)).fetchone()
         if prior:
-            self.next_end=_aware(json.loads(prior[0])['end'])+timedelta(seconds=5)
+            self.next_end=max(self.next_end,_aware(json.loads(prior[0])['end'])+timedelta(seconds=5))
 
     @contextmanager
     def connection(self):
@@ -59,19 +65,47 @@ class JournalRuntime(Simulation):
             if row['device_id'] != 'demo01' or row['source'] != 'simulation':
                 raise ValueError('MQTT runtime permits demo01 simulation only')
             boot = row['boot_id']
-            if self.input_boot is not None and boot != self.input_boot:
-                raise ValueError('new MQTT boot requires a fresh trial database')
+            switching = self.input_boot is not None and boot != self.input_boot
+            if switching:
+                with self.water.connection() as db:
+                    retired=db.execute('SELECT 1 FROM mqtt_boots WHERE boot=?',(boot,)).fetchone()
+                if retired:
+                    # Preserve the current boot, state and projections. Quarantine
+                    # and cursor advancement commit together; original stays in journal.
+                    with self.water.connection() as db:
+                        db.execute('INSERT OR IGNORE INTO mqtt_quarantine VALUES(?,?,?,?)',
+                                   (number,row['observation_id'],boot,'RETIRED_BOOT'))
+                        db.execute('UPDATE mqtt_consumer SET cursor=? WHERE singleton=1',(number,))
+                    self.cursor=number
+                    continue
             age = (now-_aware(row['received_at'])).total_seconds()
             if age < 0:
                 # A callback may commit after this scheduler tick sampled now.
                 # Defer it to the next tick without consuming or relabeling it.
                 break
-            if row['sensor_type'] == 'water' and age < 10:
+            if switching:
+                # No cross-boot window or dry confirmation history.
+                self.rows=[]
+                self.start=_aware(row['received_at'])
+                self.next_end=self.start+timedelta(seconds=30)
+            disposition = None
+            if row['sensor_type'] == 'water':
+                with self.water.connection() as db:
+                    state = db.execute('SELECT body FROM water_state WHERE device_id=?', ('demo01',)).fetchone()
+                if age >= 10:
+                    disposition = 'STALE_BACKLOG'
+                elif state and _aware(row['received_at']) < _aware(json.loads(state[0])['evaluated_at']):
+                    disposition = 'BEHIND_WATER_WATERMARK'
+            if row['sensor_type'] == 'water' and disposition is None:
                 # Stable observation IDs make crash-before-cursor replay idempotent.
                 self.water.ingest(row,now=row['received_at'],policy=Policy(10,2),
                     policy_version='g1-simulation-v1',trusted_device='demo01',
                     trusted_source='simulation',escalation_level='L2')
             with self.water.connection() as db:
+                db.execute('INSERT OR IGNORE INTO mqtt_boots VALUES(?)',(boot,))
+                if disposition:
+                    db.execute('INSERT OR IGNORE INTO mqtt_water_dispositions VALUES(?,?,?)',
+                               (number,row['observation_id'],disposition))
                 db.execute('INSERT INTO mqtt_consumer VALUES(1,?,?,?) ON CONFLICT(singleton) DO UPDATE SET boot=excluded.boot,cursor=excluded.cursor',
                            (str(self.journal),boot,number))
             self.input_boot, self.cursor = boot, number

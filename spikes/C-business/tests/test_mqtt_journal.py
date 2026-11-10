@@ -56,6 +56,26 @@ def test_stale_backlog_cannot_refresh_state(tmp_path):
     assert runtime.step(now) is None
     with runtime.water.connection() as db:
         assert db.execute('SELECT count(*) FROM events').fetchone()[0]==0
+        assert db.execute('SELECT reason FROM mqtt_water_dispositions').fetchone()[0]=='STALE_BACKLOG'
+
+
+def test_late_water_is_recorded_without_blocking_consumer_restart(tmp_path):
+    start=datetime(2026,11,10,tzinfo=timezone.utc)
+    source=tmp_path/'journal'; journal(source)
+    runtime=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start,source)
+    append(source,start,35)
+    runtime.step(start+timedelta(seconds=35))
+    runtime.water.expire('demo01',now=(start+timedelta(seconds=37)).isoformat(),
+                         policy=__import__('policy').Policy(10,2),policy_version='g1-simulation-v1')
+    append(source,start,36)
+    runtime.step(start+timedelta(seconds=38))
+    assert runtime.cursor==6
+    with runtime.water.connection() as db:
+        assert db.execute('SELECT reason FROM mqtt_water_dispositions').fetchone()[0]=='BEHIND_WATER_WATERMARK'
+        assert db.execute('SELECT count(*) FROM events').fetchone()[0]==1
+    restored=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start+timedelta(seconds=38),source)
+    restored.step(start+timedelta(seconds=38))
+    assert restored.cursor==6
 
 
 def test_batch_receipts_and_concurrent_future_commit(tmp_path):
@@ -70,7 +90,7 @@ def test_batch_receipts_and_concurrent_future_commit(tmp_path):
     assert [r['received_at'] for r in runtime.rows][-1]==(start+timedelta(seconds=2)).isoformat()
 
 
-@pytest.mark.parametrize('change',['boot','source'])
+@pytest.mark.parametrize('change',['source'])
 def test_unapproved_boot_and_source_fail_closed(tmp_path,change):
     start=datetime(2026,11,10,tzinfo=timezone.utc)
     source=tmp_path/'journal'; journal(source); append(source,start,0)
@@ -79,3 +99,26 @@ def test_unapproved_boot_and_source_fail_closed(tmp_path,change):
     append(source,start,1,boot='other' if change=='boot' else 'mqtt-boot',source='hardware' if change=='source' else 'simulation')
     with pytest.raises(ValueError): runtime.step(start+timedelta(seconds=1))
     assert runtime.cursor==3
+
+
+def test_boot_switch_resets_history_and_rejects_retired_boot_after_restart(tmp_path):
+    start=datetime(2026,11,10,tzinfo=timezone.utc)
+    source=tmp_path/'journal';journal(source)
+    runtime=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start,source)
+    append(source,start,35)
+    runtime.step(start+timedelta(seconds=35))
+    append(source,start,36,boot='second')
+    runtime.step(start+timedelta(seconds=36))
+    assert runtime.cursor==6 and {r['boot_id'] for r in runtime.rows}=={'second'}
+    restored=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start+timedelta(seconds=36),source)
+    assert {r['boot_id'] for r in restored.rows}=={'second'}
+    append(source,start,37)
+    restored.step(start+timedelta(seconds=37))
+    assert restored.cursor==9 and restored.input_boot=='second'
+    with restored.water.connection() as db:
+        assert db.execute('SELECT count(*) FROM mqtt_quarantine').fetchone()[0]==3
+    append(source,start,38,boot='second')
+    restored.step(start+timedelta(seconds=38))
+    assert restored.cursor==12
+    again=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start+timedelta(seconds=38),source)
+    assert again.cursor==12 and {r['boot_id'] for r in again.rows}=={'second'}
