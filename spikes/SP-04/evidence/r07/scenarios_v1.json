@@ -1,0 +1,740 @@
+{
+  "decision_window_end_sec": 35,
+  "description": "B 组冻结仿真场景清单。标签来自人工操作时间线，不调用任何被评估规则；随机种子固定，所有标量参数在此冻结。",
+  "device_id": "sim-b01",
+  "generator_version": "b-exp-generator-v1",
+  "manifest_version": "b-exp-manifest-v1",
+  "min_flow_coverage": 0.8,
+  "min_presence_coverage": 0.8,
+  "scenarios": [
+    {
+      "anomaly": "none",
+      "expected": "no_candidate",
+      "notes": "负例基线：任何候选都是误报。",
+      "onset_sec": null,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 0.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "still",
+      "scenario_id": "idle",
+      "seeds": {
+        "eval": 2201,
+        "train": 1101
+      },
+      "title": "空闲：全程无流水且人员在场",
+      "truth": "negative"
+    },
+    {
+      "anomaly": "none",
+      "expected": "no_candidate",
+      "notes": "负例：C1/C2 应使用人员在场证据抑制仅凭流水的候选。",
+      "onset_sec": null,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "attended",
+      "seeds": {
+        "eval": 2218,
+        "train": 1114
+      },
+      "title": "有人在场正常用水",
+      "truth": "negative"
+    },
+    {
+      "anomaly": "none",
+      "expected": "no_candidate",
+      "notes": "水接触属于独立安全信号，不能改变情境分类，也不能被 C3 覆盖。",
+      "onset_sec": null,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 20,
+            "wet": false
+          },
+          {
+            "from": 20,
+            "to": 45,
+            "wet": true
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "attended_wet",
+      "seeds": {
+        "eval": 2235,
+        "train": 1127
+      },
+      "title": "有人用水同时发生水接触",
+      "truth": "negative"
+    },
+    {
+      "anomaly": "none",
+      "expected": "no_candidate",
+      "notes": "静止存在仍被检出时不得误报；运动字段不参与当前规则。",
+      "onset_sec": null,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "still",
+      "scenario_id": "static_present",
+      "seeds": {
+        "eval": 2252,
+        "train": 1140
+      },
+      "title": "静止人员在场且持续流水",
+      "truth": "negative"
+    },
+    {
+      "anomaly": "none",
+      "expected": "no_candidate",
+      "notes": "C0 只凭窗尾流量会在 35 秒窗口误报；C2 的 IDLE/有人分支不应产生候选。",
+      "onset_sec": null,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 5
+          },
+          {
+            "from": 5,
+            "lpm": 0.0,
+            "to": 15
+          },
+          {
+            "from": 15,
+            "lpm": 6.0,
+            "to": 25
+          },
+          {
+            "from": 25,
+            "lpm": 0.0,
+            "to": 35
+          },
+          {
+            "from": 35,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "intermittent_flow",
+      "seeds": {
+        "eval": 2269,
+        "train": 1153
+      },
+      "title": "断续用水且人员全程在场",
+      "truth": "negative"
+    },
+    {
+      "anomaly": "none",
+      "expected": "no_candidate",
+      "notes": "人员返回后窗尾状态为在场；C1 在 30 秒窗口会提前误报。",
+      "onset_sec": null,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 26
+          },
+          {
+            "from": 26,
+            "present": false,
+            "to": 32
+          },
+          {
+            "from": 32,
+            "present": true,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "transient_brief",
+      "seeds": {
+        "eval": 2286,
+        "train": 1166
+      },
+      "title": "短暂离开 6 秒后返回且持续流水",
+      "truth": "negative"
+    },
+    {
+      "anomaly": "none",
+      "expected": "candidate",
+      "notes": "正例：窗尾恰好达到 10 秒无人在场流水阈值。",
+      "onset_sec": 20,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 20
+          },
+          {
+            "from": 20,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "left_10",
+      "seeds": {
+        "eval": 2303,
+        "train": 1179
+      },
+      "title": "人员离开 10 秒且持续流水",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "none",
+      "expected": "candidate",
+      "notes": "正例：离开时间更长，用于延迟指标对照。",
+      "onset_sec": 10,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 10
+          },
+          {
+            "from": 10,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "left_20",
+      "seeds": {
+        "eval": 2320,
+        "train": 1192
+      },
+      "title": "人员离开 20 秒且持续流水",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "presence_miss",
+      "expected": "unknown",
+      "notes": "不可区分反例：传感输入与 left_10 相同，任何方法都无法从当前观测区分。",
+      "onset_sec": null,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "still",
+      "scenario_id": "presence_miss",
+      "seeds": {
+        "eval": 2337,
+        "train": 1205
+      },
+      "title": "人员实际在场但雷达始终未检出且持续流水",
+      "truth": "indistinguishable"
+    },
+    {
+      "anomaly": "presence_stop",
+      "expected": "unknown",
+      "notes": "单源失联：最后有效在场证据在 TTL 后过期，正确输出是 UNKNOWN 而非硬猜。",
+      "onset_sec": 20,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 20
+          },
+          {
+            "from": 20,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "presence_stop",
+      "seeds": {
+        "eval": 2354,
+        "train": 1218
+      },
+      "title": "人员源 15 秒后停报，人员离开且流水继续",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "flow_stop",
+      "expected": "unknown",
+      "notes": "单源失联：流量证据不足时不得把缺失当作零流量。",
+      "onset_sec": 15,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 15
+          },
+          {
+            "from": 15,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "flow_stop",
+      "seeds": {
+        "eval": 2371,
+        "train": 1231
+      },
+      "title": "流量源 20 秒后停报，人员离开且水仍流",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "invalid_presence",
+      "expected": "unknown",
+      "notes": "无效质量行不参与覆盖和状态计算，覆盖率跌破门槛时输出 UNKNOWN。",
+      "onset_sec": 20,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 20
+          },
+          {
+            "from": 20,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "invalid_presence",
+      "seeds": {
+        "eval": 2388,
+        "train": 1244
+      },
+      "title": "人员源 20 秒后质量无效，人员离开且流水继续",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "late_presence",
+      "expected": "unknown",
+      "notes": "迟到数据不得改写已发布窗口；窗尾缺证时 C2 输出 UNKNOWN，C1 会凭瞬时状态硬判。",
+      "onset_sec": 25,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 25
+          },
+          {
+            "from": 25,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "late_presence",
+      "seeds": {
+        "eval": 2405,
+        "train": 1257
+      },
+      "title": "人员源通信延迟 8 秒，人员离开且流水继续",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "restart",
+      "expected": "unknown",
+      "notes": "重启后不继承重启前状态，新 boot 覆盖不足时输出 UNKNOWN。",
+      "onset_sec": 20,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 20
+          },
+          {
+            "from": 20,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "restart",
+      "seeds": {
+        "eval": 2422,
+        "train": 1270
+      },
+      "title": "25 秒设备重启，人员离开且流水继续",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "slow_presence",
+      "expected": "unknown",
+      "notes": "采样间隔变化导致覆盖不足，正确输出仍是 UNKNOWN。",
+      "onset_sec": 20,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 20
+          },
+          {
+            "from": 20,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "slow_presence",
+      "seeds": {
+        "eval": 2439,
+        "train": 1283
+      },
+      "title": "人员采样间隔由 5 秒变为 15 秒，人员离开且流水继续",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "async_sources",
+      "expected": "candidate",
+      "notes": "到达顺序抖动但仍在迟到窗口内，窗口与结论应与离线回放一致。",
+      "onset_sec": 20,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 20
+          },
+          {
+            "from": 20,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "async_sources",
+      "seeds": {
+        "eval": 2456,
+        "train": 1296
+      },
+      "title": "三源异步到达并带抖动，人员离开 10 秒且流水继续",
+      "truth": "positive"
+    },
+    {
+      "anomaly": "duplicates",
+      "expected": "candidate",
+      "notes": "重复观测必须去重且不改变窗口、特征和结论。",
+      "onset_sec": 20,
+      "operation": {
+        "flow": [
+          {
+            "from": 0,
+            "lpm": 6.0,
+            "to": 45
+          }
+        ],
+        "presence": [
+          {
+            "from": 0,
+            "present": true,
+            "to": 20
+          },
+          {
+            "from": 20,
+            "present": false,
+            "to": 45
+          }
+        ],
+        "water": [
+          {
+            "from": 0,
+            "to": 45,
+            "wet": false
+          }
+        ]
+      },
+      "presence_motion": "moving",
+      "scenario_id": "duplicates",
+      "seeds": {
+        "eval": 2473,
+        "train": 1309
+      },
+      "title": "观测重复投递，人员离开 10 秒且流水继续",
+      "truth": "positive"
+    }
+  ],
+  "stream_duration_sec": 45,
+  "time_origin": "2026-10-29T00:00:00+00:00",
+  "window": {
+    "flow_threshold": 0.1,
+    "lateness": 2,
+    "step": 5,
+    "ttl": 10,
+    "width": 30
+  },
+  "window_ends_sec": [
+    30,
+    35,
+    40,
+    45
+  ]
+}

@@ -1,0 +1,2212 @@
+[
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": false,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "idle",
+    "split": "train",
+    "title": "空闲：全程无流水且人员在场",
+    "trial_id": "idle-train-1101",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": false,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "idle",
+    "split": "eval",
+    "title": "空闲：全程无流水且人员在场",
+    "trial_id": "idle-eval-2201",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "attended",
+    "split": "train",
+    "title": "有人在场正常用水",
+    "trial_id": "attended-train-1114",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "attended",
+    "split": "eval",
+    "title": "有人在场正常用水",
+    "trial_id": "attended-eval-2218",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "attended_wet",
+    "split": "train",
+    "title": "有人用水同时发生水接触",
+    "trial_id": "attended_wet-train-1127",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "attended_wet",
+    "split": "eval",
+    "title": "有人用水同时发生水接触",
+    "trial_id": "attended_wet-eval-2235",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "static_present",
+    "split": "train",
+    "title": "静止人员在场且持续流水",
+    "trial_id": "static_present-train-1140",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "static_present",
+    "split": "eval",
+    "title": "静止人员在场且持续流水",
+    "trial_id": "static_present-eval-2252",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 35,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "intermittent_flow",
+    "split": "train",
+    "title": "断续用水且人员全程在场",
+    "trial_id": "intermittent_flow-train-1153",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 35,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": false,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "intermittent_flow",
+    "split": "eval",
+    "title": "断续用水且人员全程在场",
+    "trial_id": "intermittent_flow-eval-2269",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": false,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "transient_brief",
+    "split": "train",
+    "title": "短暂离开 6 秒后返回且持续流水",
+    "trial_id": "transient_brief-train-1166",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "no_candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": false,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": null,
+    "scenario_id": "transient_brief",
+    "split": "eval",
+    "title": "短暂离开 6 秒后返回且持续流水",
+    "trial_id": "transient_brief-eval-2286",
+    "truth": "negative",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": false,
+          "C2_temporal_rules": false,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": 10,
+      "C2_temporal_rules": 10,
+      "C3_lightweight_ml_shadow": 10
+    },
+    "expected": "candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": 20,
+    "scenario_id": "left_10",
+    "split": "train",
+    "title": "人员离开 10 秒且持续流水",
+    "trial_id": "left_10-train-1179",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": 10,
+      "C2_temporal_rules": 10,
+      "C3_lightweight_ml_shadow": 10
+    },
+    "expected": "candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": 20,
+    "scenario_id": "left_10",
+    "split": "eval",
+    "title": "人员离开 10 秒且持续流水",
+    "trial_id": "left_10-eval-2303",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 20,
+      "C1_instant_multisource": 20,
+      "C2_temporal_rules": 20,
+      "C3_lightweight_ml_shadow": 20
+    },
+    "expected": "candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": 10,
+    "scenario_id": "left_20",
+    "split": "train",
+    "title": "人员离开 20 秒且持续流水",
+    "trial_id": "left_20-train-1192",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 20,
+      "C1_instant_multisource": 20,
+      "C2_temporal_rules": 20,
+      "C3_lightweight_ml_shadow": 20
+    },
+    "expected": "candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": 10,
+    "scenario_id": "left_20",
+    "split": "eval",
+    "title": "人员离开 20 秒且持续流水",
+    "trial_id": "left_20-eval-2320",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": null,
+    "scenario_id": "presence_miss",
+    "split": "train",
+    "title": "人员实际在场但雷达始终未检出且持续流水",
+    "trial_id": "presence_miss-train-1205",
+    "truth": "indistinguishable",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": null,
+    "scenario_id": "presence_miss",
+    "split": "eval",
+    "title": "人员实际在场但雷达始终未检出且持续流水",
+    "trial_id": "presence_miss-eval-2337",
+    "truth": "indistinguishable",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 20,
+    "scenario_id": "presence_stop",
+    "split": "train",
+    "title": "人员源 15 秒后停报，人员离开且流水继续",
+    "trial_id": "presence_stop-train-1218",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 20,
+    "scenario_id": "presence_stop",
+    "split": "eval",
+    "title": "人员源 15 秒后停报，人员离开且流水继续",
+    "trial_id": "presence_stop-eval-2354",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 15,
+    "scenario_id": "flow_stop",
+    "split": "train",
+    "title": "流量源 20 秒后停报，人员离开且水仍流",
+    "trial_id": "flow_stop-train-1231",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 15,
+    "scenario_id": "flow_stop",
+    "split": "eval",
+    "title": "流量源 20 秒后停报，人员离开且水仍流",
+    "trial_id": "flow_stop-eval-2371",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 20,
+    "scenario_id": "invalid_presence",
+    "split": "train",
+    "title": "人员源 20 秒后质量无效，人员离开且流水继续",
+    "trial_id": "invalid_presence-train-1244",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 20,
+    "scenario_id": "invalid_presence",
+    "split": "eval",
+    "title": "人员源 20 秒后质量无效，人员离开且流水继续",
+    "trial_id": "invalid_presence-eval-2388",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 5,
+      "C1_instant_multisource": 5,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": 25,
+    "scenario_id": "late_presence",
+    "split": "train",
+    "title": "人员源通信延迟 8 秒，人员离开且流水继续",
+    "trial_id": "late_presence-train-1257",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 5,
+      "C1_instant_multisource": 5,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": false
+    },
+    "onset_sec": 25,
+    "scenario_id": "late_presence",
+    "split": "eval",
+    "title": "人员源通信延迟 8 秒，人员离开且流水继续",
+    "trial_id": "late_presence-eval-2405",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": false
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 20,
+    "scenario_id": "restart",
+    "split": "train",
+    "title": "25 秒设备重启，人员离开且流水继续",
+    "trial_id": "restart-train-1270",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": null,
+      "C1_instant_multisource": null,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 20,
+    "scenario_id": "restart",
+    "split": "eval",
+    "title": "25 秒设备重启，人员离开且流水继续",
+    "trial_id": "restart-eval-2422",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": null,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": 15,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 35,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 20,
+    "scenario_id": "slow_presence",
+    "split": "train",
+    "title": "人员采样间隔由 5 秒变为 15 秒，人员离开且流水继续",
+    "trial_id": "slow_presence-train-1283",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": 15,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "expected": "unknown",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 35,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": null,
+      "C3_lightweight_ml_shadow": null
+    },
+    "onset_sec": 20,
+    "scenario_id": "slow_presence",
+    "split": "eval",
+    "title": "人员采样间隔由 5 秒变为 15 秒，人员离开且流水继续",
+    "trial_id": "slow_presence-eval-2439",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": null,
+          "C2_temporal_rules": null,
+          "C3_lightweight_ml_shadow": null
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": 10,
+      "C2_temporal_rules": 10,
+      "C3_lightweight_ml_shadow": 10
+    },
+    "expected": "candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": 20,
+    "scenario_id": "async_sources",
+    "split": "train",
+    "title": "三源异步到达并带抖动，人员离开 10 秒且流水继续",
+    "trial_id": "async_sources-train-1296",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": 10,
+      "C2_temporal_rules": 10,
+      "C3_lightweight_ml_shadow": 10
+    },
+    "expected": "candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": 20,
+    "scenario_id": "async_sources",
+    "split": "eval",
+    "title": "三源异步到达并带抖动，人员离开 10 秒且流水继续",
+    "trial_id": "async_sources-eval-2456",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": 10,
+      "C2_temporal_rules": 10,
+      "C3_lightweight_ml_shadow": 10
+    },
+    "expected": "candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": 20,
+    "scenario_id": "duplicates",
+    "split": "train",
+    "title": "观测重复投递，人员离开 10 秒且流水继续",
+    "trial_id": "duplicates-train-1309",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  },
+  {
+    "detection_delay_sec": {
+      "C0_threshold_flow": 10,
+      "C1_instant_multisource": 10,
+      "C2_temporal_rules": 10,
+      "C3_lightweight_ml_shadow": 10
+    },
+    "expected": "candidate",
+    "first_candidate_sec": {
+      "C0_threshold_flow": 30,
+      "C1_instant_multisource": 30,
+      "C2_temporal_rules": 30,
+      "C3_lightweight_ml_shadow": 30
+    },
+    "method_outputs": {
+      "C0_threshold_flow": true,
+      "C1_instant_multisource": true,
+      "C2_temporal_rules": true,
+      "C3_lightweight_ml_shadow": true
+    },
+    "onset_sec": 20,
+    "scenario_id": "duplicates",
+    "split": "eval",
+    "title": "观测重复投递，人员离开 10 秒且流水继续",
+    "trial_id": "duplicates-eval-2473",
+    "truth": "positive",
+    "window_predictions": [
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 30
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 35
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 40
+      },
+      {
+        "methods": {
+          "C0_threshold_flow": true,
+          "C1_instant_multisource": true,
+          "C2_temporal_rules": true,
+          "C3_lightweight_ml_shadow": true
+        },
+        "window_end_sec": 45
+      }
+    ]
+  }
+]
