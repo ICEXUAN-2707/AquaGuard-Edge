@@ -1,0 +1,1300 @@
+{
+  "trials": [
+    {
+      "trial_id": "bsim1-s20261110-cohort-000-idle",
+      "cohort_id": "cohort-000",
+      "split": "train",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-000-attended",
+      "cohort_id": "cohort-000",
+      "split": "train",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-000-brief_leave",
+      "cohort_id": "cohort-000",
+      "split": "train",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-000-unattended",
+      "cohort_id": "cohort-000",
+      "split": "train",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-000-hidden_present",
+      "cohort_id": "cohort-000",
+      "split": "train",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-000-presence_dropout",
+      "cohort_id": "cohort-000",
+      "split": "train",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 20
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-001-idle",
+      "cohort_id": "cohort-001",
+      "split": "train",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-001-attended",
+      "cohort_id": "cohort-001",
+      "split": "train",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-001-brief_leave",
+      "cohort_id": "cohort-001",
+      "split": "train",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-001-unattended",
+      "cohort_id": "cohort-001",
+      "split": "train",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-001-hidden_present",
+      "cohort_id": "cohort-001",
+      "split": "train",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-001-presence_dropout",
+      "cohort_id": "cohort-001",
+      "split": "train",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 49
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "cohort_id": "cohort-002",
+      "split": "test",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "cohort_id": "cohort-002",
+      "split": "test",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "cohort_id": "cohort-002",
+      "split": "test",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "cohort_id": "cohort-002",
+      "split": "test",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "cohort_id": "cohort-002",
+      "split": "test",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "cohort_id": "cohort-002",
+      "split": "test",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 96
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "cohort_id": "cohort-003",
+      "split": "train",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 4.8,
+        "leave_at": 18,
+        "brief_leave_at": 25,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "cohort_id": "cohort-003",
+      "split": "train",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 4.8,
+        "leave_at": 18,
+        "brief_leave_at": 25,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "cohort_id": "cohort-003",
+      "split": "train",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 4.8,
+        "leave_at": 18,
+        "brief_leave_at": 25,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "cohort_id": "cohort-003",
+      "split": "train",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 4.8,
+        "leave_at": 18,
+        "brief_leave_at": 25,
+        "brief_duration": 5
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "cohort_id": "cohort-003",
+      "split": "train",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 4.8,
+        "leave_at": 18,
+        "brief_leave_at": 25,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "cohort_id": "cohort-003",
+      "split": "train",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 4.8,
+        "leave_at": 18,
+        "brief_leave_at": 25,
+        "brief_duration": 5
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 99
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "cohort_id": "cohort-004",
+      "split": "test",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "cohort_id": "cohort-004",
+      "split": "test",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "cohort_id": "cohort-004",
+      "split": "test",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "cohort_id": "cohort-004",
+      "split": "test",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 3
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "cohort_id": "cohort-004",
+      "split": "test",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "cohort_id": "cohort-004",
+      "split": "test",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0,
+        "flow_lpm": 1.2,
+        "leave_at": 15,
+        "brief_leave_at": 24,
+        "brief_duration": 3
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 96
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-005-idle",
+      "cohort_id": "cohort-005",
+      "split": "validation",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-005-attended",
+      "cohort_id": "cohort-005",
+      "split": "validation",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-005-brief_leave",
+      "cohort_id": "cohort-005",
+      "split": "validation",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-005-unattended",
+      "cohort_id": "cohort-005",
+      "split": "validation",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-005-hidden_present",
+      "cohort_id": "cohort-005",
+      "split": "validation",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-005-presence_dropout",
+      "cohort_id": "cohort-005",
+      "split": "validation",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 50
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-006-idle",
+      "cohort_id": "cohort-006",
+      "split": "train",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-006-attended",
+      "cohort_id": "cohort-006",
+      "split": "train",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-006-brief_leave",
+      "cohort_id": "cohort-006",
+      "split": "train",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-006-unattended",
+      "cohort_id": "cohort-006",
+      "split": "train",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-006-hidden_present",
+      "cohort_id": "cohort-006",
+      "split": "train",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-006-presence_dropout",
+      "cohort_id": "cohort-006",
+      "split": "train",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.1,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 19
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-007-idle",
+      "cohort_id": "cohort-007",
+      "split": "validation",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-007-attended",
+      "cohort_id": "cohort-007",
+      "split": "validation",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-007-brief_leave",
+      "cohort_id": "cohort-007",
+      "split": "validation",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-007-unattended",
+      "cohort_id": "cohort-007",
+      "split": "validation",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-007-hidden_present",
+      "cohort_id": "cohort-007",
+      "split": "validation",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-007-presence_dropout",
+      "cohort_id": "cohort-007",
+      "split": "validation",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 4.8,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 96
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-008-idle",
+      "cohort_id": "cohort-008",
+      "split": "train",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-008-attended",
+      "cohort_id": "cohort-008",
+      "split": "train",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-008-brief_leave",
+      "cohort_id": "cohort-008",
+      "split": "train",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-008-unattended",
+      "cohort_id": "cohort-008",
+      "split": "train",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 3
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-008-hidden_present",
+      "cohort_id": "cohort-008",
+      "split": "train",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 26
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-008-presence_dropout",
+      "cohort_id": "cohort-008",
+      "split": "train",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 5,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 2.4,
+        "leave_at": 10,
+        "brief_leave_at": 25,
+        "brief_duration": 3
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 19
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-009-idle",
+      "cohort_id": "cohort-009",
+      "split": "validation",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-009-attended",
+      "cohort_id": "cohort-009",
+      "split": "validation",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-009-brief_leave",
+      "cohort_id": "cohort-009",
+      "split": "validation",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-009-unattended",
+      "cohort_id": "cohort-009",
+      "split": "validation",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-009-hidden_present",
+      "cohort_id": "cohort-009",
+      "split": "validation",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 122
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-009-presence_dropout",
+      "cohort_id": "cohort-009",
+      "split": "validation",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 1,
+        "receive_delay_sec": 0.3,
+        "flow_lpm": 1.2,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 5
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 99
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-010-idle",
+      "cohort_id": "cohort-010",
+      "split": "test",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 0.6,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-010-attended",
+      "cohort_id": "cohort-010",
+      "split": "test",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 0.6,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-010-brief_leave",
+      "cohort_id": "cohort-010",
+      "split": "test",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 0.6,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-010-unattended",
+      "cohort_id": "cohort-010",
+      "split": "test",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 0.6,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-010-hidden_present",
+      "cohort_id": "cohort-010",
+      "split": "test",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 0.6,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-010-presence_dropout",
+      "cohort_id": "cohort-010",
+      "split": "test",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 0.6,
+        "leave_at": 15,
+        "brief_leave_at": 22,
+        "brief_duration": 3
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 49
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-011-idle",
+      "cohort_id": "cohort-011",
+      "split": "train",
+      "scenario": "idle",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 2.4,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-011-attended",
+      "cohort_id": "cohort-011",
+      "split": "train",
+      "scenario": "attended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 2.4,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-011-brief_leave",
+      "cohort_id": "cohort-011",
+      "split": "train",
+      "scenario": "brief_leave",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 2.4,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-011-unattended",
+      "cohort_id": "cohort-011",
+      "split": "train",
+      "scenario": "unattended",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 2.4,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-011-hidden_present",
+      "cohort_id": "cohort-011",
+      "split": "train",
+      "scenario": "hidden_present",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 2.4,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 8
+      },
+      "candidate_target": false,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 62
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-011-presence_dropout",
+      "cohort_id": "cohort-011",
+      "split": "train",
+      "scenario": "presence_dropout",
+      "source": "simulation",
+      "parameters": {
+        "cadence_sec": 2,
+        "receive_delay_sec": 0,
+        "flow_lpm": 2.4,
+        "leave_at": 18,
+        "brief_leave_at": 22,
+        "brief_duration": 8
+      },
+      "candidate_target": true,
+      "label_basis": "scripted persistent-unattended episode annotation",
+      "observation_count": 50
+    }
+  ]
+}
