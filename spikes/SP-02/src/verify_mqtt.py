@@ -8,7 +8,8 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
-from core import sample
+from core import sample as make_sample
+from ingress import observation_topic
 
 
 def wait_for(predicate, timeout=10):
@@ -25,7 +26,11 @@ def main():
     parser.add_argument('--broker', required=True, type=Path)
     parser.add_argument('--directory', required=True, type=Path)
     parser.add_argument('--port', type=int, default=18884)
+    parser.add_argument('--device-id', default='prototype01')
     args = parser.parse_args()
+    observation_topic(args.device_id)
+    def sample(*values, **options):
+        return make_sample(*values, **options, device_id=args.device_id)
     args.directory.mkdir(parents=True, exist_ok=False)
     # Refuse occupied port rather than accidentally testing someone else's Broker.
     with socket.socket() as probe:
@@ -58,10 +63,10 @@ def main():
         log = logpath.open('w')
         logs.append(log)
         command = [sys.executable, str(cli)]
-        subscriber = subprocess.Popen(command+['subscribe','--directory',str(directory),'--port',str(args.port),'--seconds','3'], stdout=log, stderr=log)
+        subscriber = subprocess.Popen(command+['subscribe','--device-id',args.device_id,'--directory',str(directory),'--port',str(args.port),'--seconds','3'], stdout=log, stderr=log)
         processes.append(subscriber)
         wait_for(lambda: 'READY' in logpath.read_text() if subscriber.poll() is None else False)
-        published = subprocess.run(command+['publish','--directory',str(directory),'--port',str(args.port)], capture_output=True, text=True, timeout=15)
+        published = subprocess.run(command+['publish','--device-id',args.device_id,'--directory',str(directory),'--port',str(args.port)], capture_output=True, text=True, timeout=15)
         (directory/f'{label}-publisher.log').write_text(published.stdout+published.stderr)
         if published.returncode:
             raise RuntimeError('publisher failed')
@@ -97,7 +102,7 @@ def main():
         log = (live/'subscriber.log').open('w')
         logs.append(log)
         subscriber = subprocess.Popen([sys.executable,str(cli),'subscribe','--directory',str(live),
-                                       '--port',str(args.port),'--seconds','15'],stdout=log,stderr=log)
+                                       '--port',str(args.port),'--seconds','15','--device-id',args.device_id],stdout=log,stderr=log)
         processes.append(subscriber)
         def events():
             path = live/'subscribe-connections.jsonl'
@@ -109,7 +114,7 @@ def main():
         broker = start_broker('live-recovery')
         wait_for(lambda: sum(e['event']=='subscribed' for e in events()) >= 2)
         (live/'manifest.jsonl').write_text(json.dumps(sample(99))+'\n')
-        subprocess.run([sys.executable,str(cli),'publish','--directory',str(live),'--port',str(args.port)],
+        subprocess.run([sys.executable,str(cli),'publish','--directory',str(live),'--port',str(args.port),'--device-id',args.device_id],
                        check=True,capture_output=True,timeout=10)
         subscriber.wait(timeout=20)
         records = [json.loads(line) for line in (live/'received.jsonl').read_text().splitlines()]

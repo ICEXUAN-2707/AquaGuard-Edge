@@ -67,10 +67,10 @@ class Journal:
         self.db.close()
 
 
-def sample(seq=0, sensor='water', boot='boot-1'):
+def sample(seq=0, sensor='water', boot='boot-1', device_id='prototype01'):
     values = {'water': {'wet': False}, 'presence': {'present': True, 'moving': False, 'still': True},
               'flow': {'pulse_count': 2, 'interval_ms': 1000, 'estimated_lpm': 0.2, 'calibration_id': 'simulation-only'}}
-    row = dict(schema_version='1.1', device_id='prototype01', sensor_type=sensor, boot_id=boot,
+    row = dict(schema_version='1.1', device_id=device_id, sensor_type=sensor, boot_id=boot,
                seq=seq, uptime_ms=seq * 1000, event_time=None, time_basis='RECEIVED_FALLBACK',
                value=values[sensor], quality='valid', source='simulation')
     row['observation_id'] = observation_id(row)

@@ -10,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 from core import Journal, normalize, sample
-from ingress import process_message
+from ingress import process_message, observation_topic
 import paho.mqtt.client as mqtt
 
 
@@ -19,18 +19,23 @@ def main():
     parser.add_argument('mode', choices=['generate', 'publish', 'subscribe', 'export'])
     parser.add_argument('--directory', type=Path, required=True)
     parser.add_argument('--port', type=int, default=1883)
+    parser.add_argument('--device-id', default='prototype01', help='trusted simulation device identity')
     parser.add_argument('--count', type=int, default=100)
     parser.add_argument('--seconds', type=float, default=30)
     parser.add_argument('--interval', type=float, default=0, help='seconds between publications; flow feature experiments need compatible measured intervals')
     parser.add_argument('--persistent-session', action='store_true')
     parser.add_argument('--crash-after-commit', action='store_true', help='prototype fault injection: exit before MQTT ACK')
     args = parser.parse_args()
+    try:
+        topic = observation_topic(args.device_id)
+    except ValueError as exc:
+        parser.error(str(exc))
     if args.count < 1 or args.seconds <= 0 or args.interval < 0:
         parser.error('count and seconds must be positive')
     args.directory.mkdir(parents=True, exist_ok=True)
     data = args.directory / 'manifest.jsonl'
     if args.mode == 'generate':
-        data.write_text(''.join(json.dumps(sample(i, ['flow','water','presence'][i % 3])) + '\n' for i in range(args.count)), encoding='utf-8')
+        data.write_text(''.join(json.dumps(sample(i, ['flow','water','presence'][i % 3], device_id=args.device_id)) + '\n' for i in range(args.count)), encoding='utf-8')
         return
     if args.mode == 'export':
         journal = Journal(args.directory / 'journal.sqlite')
@@ -40,7 +45,6 @@ def main():
         return
     ready = threading.Event()
     errors = []
-    topic = 'prototype/aquaguard/prototype01/observation'
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id='sp02-' + args.mode, protocol=mqtt.MQTTv311,
                          clean_session=not args.persistent_session, manual_ack=True)
     client.reconnect_delay_set(min_delay=1, max_delay=4)
@@ -80,7 +84,7 @@ def main():
                 def acknowledge(mid, qos):
                     if c.ack(mid, qos) != mqtt.MQTT_ERR_SUCCESS:
                         raise RuntimeError('ack submission failed')
-                record = process_message(msg, journal, acknowledge, after_commit)
+                record = process_message(msg, journal, acknowledge, after_commit, device_id=args.device_id)
             finally:
                 journal.close()
             with (args.directory / 'received.jsonl').open('a', encoding='utf-8') as log:
