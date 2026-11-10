@@ -76,7 +76,7 @@ function App() {
       <button disabled={busy || !draft}>连接</button><button type="button" disabled={busy} onClick={()=>setToken('')}>断开</button>
     </form>
     <nav>{['实时总览','事件确认','实验诊断'].map(name=><button key={name} aria-current={tab===name?'page':undefined} onClick={()=>setTab(name)}>{name}</button>)}</nav>
-    {!token?<section><h2>连接本地业务服务</h2><p>请先按本地演示手册启动8010服务。凭据仅保存在当前页面内存，刷新后需重新输入。</p></section>:<>
+    {!token?<section><h2>连接本地业务服务</h2><p>请先按本地演示手册启动服务，并通过该服务地址打开工作台。凭据仅保存在当前页面内存，刷新后需重新输入。</p></section>:<>
       {tab==='实时总览'&&<>
         <div className="section-title"><h2>实时总览</h2><button onClick={()=>setEpoch(x=>x+1)}>刷新</button></div>
         <p className="muted">每5秒查询一次。缺失、过期与未知均不会显示为正常。</p>
