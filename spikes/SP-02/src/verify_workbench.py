@@ -31,6 +31,7 @@ def main():
     parser.add_argument('--broker',type=Path,required=True)
     parser.add_argument('--mqtt-port',type=int,default=18886)
     parser.add_argument('--http-port',type=int,default=8021)
+    parser.add_argument('--browser',action='store_true',help='verify browser and ACK in the same MQTT run')
     args=parser.parse_args()
     args.directory=args.directory.resolve()
     for port in (args.mqtt_port,args.http_port):
@@ -72,12 +73,23 @@ def main():
                 if sensor=='water':row['value']['wet']=i>=35
                 rows.append(row)
         (args.directory/'manifest.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
-        subprocess.run([sys.executable,str(cli),'publish','--device-id','demo01','--directory',str(args.directory),
-            '--port',str(args.mqtt_port),'--interval','0.34'],cwd=ROOT,check=True,timeout=65)
+        publisher=launch([sys.executable,str(cli),'publish','--device-id','demo01','--directory',str(args.directory),
+            '--port',str(args.mqtt_port),'--interval','0.34'],'publisher')
+        if args.browser:
+            browser_env=env.copy()
+            browser_env.update(AQUAGUARD_BROWSER_URL=f'http://127.0.0.1:{args.http_port}/c.html',
+                AQUAGUARD_BROWSER_TRIAL='mqtt-trial',
+                AQUAGUARD_BROWSER_EVIDENCE=str(args.directory/'browser'))
+            subprocess.run(['node',str(ROOT/'web/tests/browser-acceptance.cjs')],cwd=ROOT,
+                           env=browser_env,check=True,timeout=150)
+        assert publisher.wait(timeout=65)==0
         live=wait(lambda:request('/api/devices/demo01/live'))
         events=wait(lambda:request('/api/events?device_id=demo01')['items'])
         assert live['origin']=='simulation'
         assert any(e['event_type']=='WATER_CONTACT' for e in events)
+        if args.browser:
+            assert any(e['event_type']=='WATER_CONTACT' and e['ack_status']=='ACKNOWLEDGED' for e in events)
+        (args.directory/'events.json').write_text(json.dumps(events,indent=2))
         sync=request('/api/sync/status?device_id=demo01')
         assert sync['pending_count']>0
         trial=request('/api/experiments/mqtt-trial')

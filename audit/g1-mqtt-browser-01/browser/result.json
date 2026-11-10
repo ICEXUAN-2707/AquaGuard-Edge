@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "checks": [
+    "invalid credentials are visible",
+    "continuous simulation updates overview",
+    "ACK conflict prompts requery before retry",
+    "user acknowledgement persists and is shown separately",
+    "experiment queries the running trial",
+    "three pages fit a 390px viewport",
+    "unavailable snapshot removes old sensor values",
+    "disconnect clears displayed experiment data"
+  ],
+  "errors": [],
+  "at": "2026-11-10T05:40:35.190Z"
+}

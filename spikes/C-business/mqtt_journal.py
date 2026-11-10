@@ -22,6 +22,7 @@ class JournalRuntime(Simulation):
         super().__init__(path, checkpoints, start, trial='mqtt-trial', initialize_trial=False)
         with self.water.connection() as db:
             db.execute('CREATE TABLE IF NOT EXISTS mqtt_consumer (singleton INTEGER PRIMARY KEY CHECK(singleton=1), journal TEXT, boot TEXT, cursor INTEGER)')
+            db.execute('CREATE TABLE IF NOT EXISTS mqtt_water_dispositions (number INTEGER PRIMARY KEY, observation_id TEXT NOT NULL, reason TEXT NOT NULL)')
             state = db.execute('SELECT journal,boot,cursor FROM mqtt_consumer WHERE singleton=1').fetchone()
         if state and state[0] != str(self.journal):
             raise ValueError('consumer database belongs to another journal')
@@ -66,12 +67,23 @@ class JournalRuntime(Simulation):
                 # A callback may commit after this scheduler tick sampled now.
                 # Defer it to the next tick without consuming or relabeling it.
                 break
-            if row['sensor_type'] == 'water' and age < 10:
+            disposition = None
+            if row['sensor_type'] == 'water':
+                with self.water.connection() as db:
+                    state = db.execute('SELECT body FROM water_state WHERE device_id=?', ('demo01',)).fetchone()
+                if age >= 10:
+                    disposition = 'STALE_BACKLOG'
+                elif state and _aware(row['received_at']) < _aware(json.loads(state[0])['evaluated_at']):
+                    disposition = 'BEHIND_WATER_WATERMARK'
+            if row['sensor_type'] == 'water' and disposition is None:
                 # Stable observation IDs make crash-before-cursor replay idempotent.
                 self.water.ingest(row,now=row['received_at'],policy=Policy(10,2),
                     policy_version='g1-simulation-v1',trusted_device='demo01',
                     trusted_source='simulation',escalation_level='L2')
             with self.water.connection() as db:
+                if disposition:
+                    db.execute('INSERT OR IGNORE INTO mqtt_water_dispositions VALUES(?,?,?)',
+                               (number,row['observation_id'],disposition))
                 db.execute('INSERT INTO mqtt_consumer VALUES(1,?,?,?) ON CONFLICT(singleton) DO UPDATE SET boot=excluded.boot,cursor=excluded.cursor',
                            (str(self.journal),boot,number))
             self.input_boot, self.cursor = boot, number

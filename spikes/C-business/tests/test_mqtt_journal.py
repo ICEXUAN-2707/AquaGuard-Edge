@@ -56,6 +56,26 @@ def test_stale_backlog_cannot_refresh_state(tmp_path):
     assert runtime.step(now) is None
     with runtime.water.connection() as db:
         assert db.execute('SELECT count(*) FROM events').fetchone()[0]==0
+        assert db.execute('SELECT reason FROM mqtt_water_dispositions').fetchone()[0]=='STALE_BACKLOG'
+
+
+def test_late_water_is_recorded_without_blocking_consumer_restart(tmp_path):
+    start=datetime(2026,11,10,tzinfo=timezone.utc)
+    source=tmp_path/'journal'; journal(source)
+    runtime=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start,source)
+    append(source,start,35)
+    runtime.step(start+timedelta(seconds=35))
+    runtime.water.expire('demo01',now=(start+timedelta(seconds=37)).isoformat(),
+                         policy=__import__('policy').Policy(10,2),policy_version='g1-simulation-v1')
+    append(source,start,36)
+    runtime.step(start+timedelta(seconds=38))
+    assert runtime.cursor==6
+    with runtime.water.connection() as db:
+        assert db.execute('SELECT reason FROM mqtt_water_dispositions').fetchone()[0]=='BEHIND_WATER_WATERMARK'
+        assert db.execute('SELECT count(*) FROM events').fetchone()[0]==1
+    restored=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start+timedelta(seconds=38),source)
+    restored.step(start+timedelta(seconds=38))
+    assert restored.cursor==6
 
 
 def test_batch_receipts_and_concurrent_future_commit(tmp_path):
