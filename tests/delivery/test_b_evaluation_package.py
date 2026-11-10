@@ -106,3 +106,29 @@ def test_existing_package_never_overwritten(package):
     result=subprocess.run([sys.executable,str(SCRIPT),'--output',str(package)],cwd=ROOT,capture_output=True,text=True)
     assert result.returncode!=0
     assert (package/'evaluation.json').read_bytes()==before
+
+
+@pytest.mark.parametrize('mutation',['missing-method','duplicate-method','changed-label','changed-sample-count','changed-observation','changed-review-label'])
+def test_cross_file_semantics_cannot_be_changed_by_rehashing(package,tmp_path,mutation):
+    changed=tmp_path/'changed';shutil.copytree(package,changed)
+    if mutation in ('missing-method','duplicate-method','changed-sample-count'):
+        name='evaluation.json';value=load(changed,name)
+        if mutation=='missing-method':value['methods'].pop()
+        elif mutation=='duplicate-method':value['methods'].append(value['methods'][0])
+        else:value['dataset']['positive_trials']=8
+        (changed/name).write_text(json.dumps(value),encoding='utf-8')
+    elif mutation=='changed-label':
+        name='trials.json';value=load(changed,name)
+        value['trials']['synthetic-hidden-person']['candidate_target']=True
+        (changed/name).write_text(json.dumps(value),encoding='utf-8')
+    elif mutation=='changed-review-label':
+        name='review_cases.json';value=load(changed,name)
+        value['cases'][0]['candidate_target']=not value['cases'][0]['candidate_target']
+        (changed/name).write_text(json.dumps(value),encoding='utf-8')
+    else:
+        name='observations.jsonl'
+        rows=[json.loads(line) for line in (changed/name).read_text(encoding='utf-8').splitlines()]
+        rows[0]['observation']['quality']='unknown'
+        (changed/name).write_text(''.join(json.dumps(row)+'\n' for row in rows),encoding='utf-8')
+    rehash(changed,name)
+    with pytest.raises(ValueError):builder.verify(changed)

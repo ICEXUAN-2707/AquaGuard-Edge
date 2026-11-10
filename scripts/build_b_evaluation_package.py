@@ -227,6 +227,18 @@ def verify(output):
     records = raw['records']
     if report['source']!='simulation' or report['dataset']['trial_count']!=len(records):
         raise ValueError('dataset scope mismatch')
+    method_ids=[method['method_id'] for method in report['methods']]
+    if len(method_ids)!=len(set(method_ids)) or set(method_ids)!=set(METHODS) or set(raw['metrics'])!=set(METHODS):
+        raise ValueError('method inventory mismatch')
+    record_ids=[record['trial_id'] for record in records]
+    if len(record_ids)!=len(set(record_ids)):
+        raise ValueError('duplicate raw trial')
+    for record in records:
+        if type(record['candidate_target']) is not bool or set(record['predictions'])!=set(METHODS):
+            raise ValueError('invalid raw target or prediction inventory')
+        for prediction in record['predictions'].values():
+            if prediction is not None and type(prediction) is not bool:
+                raise ValueError('invalid raw prediction')
     for method in report['methods']:
         method_id = method['method_id']
         counts = Counter(outcome(r['candidate_target'],r['predictions'][method_id]) for r in records)
@@ -245,6 +257,30 @@ def verify(output):
             if metric['value']!=expected_numerator/expected_denominator:
                 raise ValueError('metric arithmetic mismatch')
     trials = json.loads((output/'trials.json').read_text(encoding='utf-8'))['trials']
+    if set(trials)!=set(record_ids):
+        raise ValueError('trial inventory mismatch')
+    for record in records:
+        trial=trials[record['trial_id']]
+        for key in ('trial_id','operation','candidate_target','parameters'):
+            if trial[key]!=record[key] or type(trial[key]) is not type(record[key]):
+                raise ValueError('trial label/provenance mismatch')
+        if trial['source']!='simulation':
+            raise ValueError('trial source mismatch')
+    observations=[json.loads(line) for line in (output/'observations.jsonl').read_text(encoding='utf-8').splitlines()]
+    grouped={trial_id:[] for trial_id in trials}
+    for item in observations:
+        if item['trial_id'] not in grouped or item['observation']['source']!='simulation':
+            raise ValueError('observation scope mismatch')
+        grouped[item['trial_id']].append(item['observation'])
+    for trial_id, rows in grouped.items():
+        if len(rows)!=trials[trial_id]['observation_count'] or len({row['observation_id'] for row in rows})!=len(rows):
+            raise ValueError('observation identity/count mismatch')
+    positives=sum(record['candidate_target'] for record in records)
+    dataset=report['dataset']
+    if (dataset['positive_trials'],dataset['negative_trials'],dataset['evaluated_windows'],dataset['raw_observation_records'])!=(positives,len(records)-positives,len(records),len(observations)):
+        raise ValueError('dataset accounting mismatch')
+    if dataset['sha256']!=digest(canonical({'trials':records,'observations':observations})):
+        raise ValueError('dataset digest mismatch')
     expected = {(r['trial_id'], key):(r['candidate_target'], prediction)
                 for r in records for key, prediction in r['predictions'].items()}
     normalized = [json.loads(line) for line in (output/'predictions.jsonl').read_text(encoding='utf-8').splitlines()]
@@ -255,6 +291,10 @@ def verify(output):
             raise ValueError('normalized prediction mismatch')
         if row['outcome']!=outcome(row['candidate_target'],row['prediction']):
             raise ValueError('normalized outcome mismatch')
+        trial=trials[row['trial_id']]
+        scope=row['observation_scope']
+        if row['checkpoint_ref']!=trial['checkpoint_ref'] or scope!={'trial_id':row['trial_id'],'observation_ids':[r['observation_id'] for r in grouped[row['trial_id']]]}:
+            raise ValueError('prediction evidence mismatch')
         seen.add(key)
     if seen!=set(expected):
         raise ValueError('prediction inventory mismatch')
@@ -263,6 +303,11 @@ def verify(output):
     actual_cases={(r['trial_id'],r['method_id'],r['category']) for r in cases}
     if actual_cases!=expected_cases or len(cases)!=len(actual_cases):
         raise ValueError('review case mismatch')
+    for case in cases:
+        trial=trials[case['trial_id']]
+        target,prediction=expected[(case['trial_id'],case['method_id'])]
+        if (case['candidate_target'],case['prediction'],case['operation'],case['checkpoint_ref'])!=(target,prediction,trial['operation'],trial['checkpoint_ref']):
+            raise ValueError('review label/evidence mismatch')
     for trial in trials.values():
         ref=trial['checkpoint_ref']
         if ref not in names:
@@ -270,6 +315,11 @@ def verify(output):
         p=output/ref
         if p.stem!=digest(p.read_bytes()):
             raise ValueError('checkpoint identity mismatch')
+        payload=json.loads(p.read_text(encoding='utf-8'))
+        if canonical(payload['history'])!=canonical(sorted(grouped[trial['trial_id']],key=lambda r:r['observation_id'])):
+            raise ValueError('checkpoint observation mismatch')
+        if payload['window']['window_id']!=trial['window_id'] or payload['window']['window_end']!=trial['window_end']:
+            raise ValueError('checkpoint window mismatch')
     return {'status':'PASS', 'evaluation_id':report['evaluation_id'], 'trials':len(records),
             'methods':len(report['methods']), 'files':len(entries), 'scope':'synthetic development diagnostic'}
 
