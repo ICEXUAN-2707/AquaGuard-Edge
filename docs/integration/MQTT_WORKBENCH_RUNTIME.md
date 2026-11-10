@@ -8,7 +8,8 @@ analysis/events/API/UI. The journal is the durable handoff, not a second simulat
 ## Boundaries
 
 - Only demo01 and source=simulation are allowed. New boots reset analysis history;
-  retired boots fail closed. See G1_LIFECYCLE_PROGRESS.md for current verification.
+  retired boots are durably quarantined without blocking later valid input.
+  See C_LOCAL_CLOSEOUT.md for current verification and delivery commands.
 - The original observation IDs and received_at are preserved. No hardware relabeling.
 - Fresh water observations reach the existing fast path; checkpoint-backed windows
   use the same B/C engines as the internal simulation. No cloud worker is enabled.
@@ -27,7 +28,8 @@ analysis/events/API/UI. The journal is the durable handoff, not a second simulat
   backlog records STALE_BACKLOG. Original input remains in the journal.
 - This is one consumer, one local journal and one business DB. Use fresh databases
   per trial; do not replace/truncate a bound journal in place. Never reuse retired
-  boot IDs. New boots require a new 30-second analysis window.
+  boot IDs. Retired inputs remain in the journal with mqtt_quarantine records;
+  new boots require a new 30-second analysis window.
 - Existing 180s in-memory history and demo checkpoint retention limits remain;
   this is not a long-running production service or complete hardware acceptance.
 

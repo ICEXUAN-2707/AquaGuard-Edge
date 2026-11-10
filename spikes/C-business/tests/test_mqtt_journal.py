@@ -113,6 +113,12 @@ def test_boot_switch_resets_history_and_rejects_retired_boot_after_restart(tmp_p
     restored=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start+timedelta(seconds=36),source)
     assert {r['boot_id'] for r in restored.rows}=={'second'}
     append(source,start,37)
-    with pytest.raises(ValueError,match='retired MQTT boot'):
-        restored.step(start+timedelta(seconds=37))
-    assert restored.cursor==6
+    restored.step(start+timedelta(seconds=37))
+    assert restored.cursor==9 and restored.input_boot=='second'
+    with restored.water.connection() as db:
+        assert db.execute('SELECT count(*) FROM mqtt_quarantine').fetchone()[0]==3
+    append(source,start,38,boot='second')
+    restored.step(start+timedelta(seconds=38))
+    assert restored.cursor==12
+    again=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start+timedelta(seconds=38),source)
+    assert again.cursor==12 and {r['boot_id'] for r in again.rows}=={'second'}

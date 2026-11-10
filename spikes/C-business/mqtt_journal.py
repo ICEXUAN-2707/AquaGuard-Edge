@@ -1,6 +1,6 @@
 """Consume SP-02's committed simulation journal, not broker callbacks.
 
-One demo01 boot per business database. Hardware authorization is not enabled.
+Only demo01 simulation is authorized. Retired boots are durably quarantined.
 The bounded batch and original timestamps keep backlog from becoming fresh data.
 """
 import json
@@ -24,6 +24,7 @@ class JournalRuntime(Simulation):
             db.execute('CREATE TABLE IF NOT EXISTS mqtt_consumer (singleton INTEGER PRIMARY KEY CHECK(singleton=1), journal TEXT, boot TEXT, cursor INTEGER)')
             db.execute('CREATE TABLE IF NOT EXISTS mqtt_water_dispositions (number INTEGER PRIMARY KEY, observation_id TEXT NOT NULL, reason TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS mqtt_boots (boot TEXT PRIMARY KEY)')
+            db.execute('CREATE TABLE IF NOT EXISTS mqtt_quarantine (number INTEGER PRIMARY KEY, observation_id TEXT NOT NULL, boot TEXT NOT NULL, reason TEXT NOT NULL)')
             state = db.execute('SELECT journal,boot,cursor FROM mqtt_consumer WHERE singleton=1').fetchone()
         if state and state[0] != str(self.journal):
             raise ValueError('consumer database belongs to another journal')
@@ -69,7 +70,14 @@ class JournalRuntime(Simulation):
                 with self.water.connection() as db:
                     retired=db.execute('SELECT 1 FROM mqtt_boots WHERE boot=?',(boot,)).fetchone()
                 if retired:
-                    raise ValueError('retired MQTT boot')
+                    # Preserve the current boot, state and projections. Quarantine
+                    # and cursor advancement commit together; original stays in journal.
+                    with self.water.connection() as db:
+                        db.execute('INSERT OR IGNORE INTO mqtt_quarantine VALUES(?,?,?,?)',
+                                   (number,row['observation_id'],boot,'RETIRED_BOOT'))
+                        db.execute('UPDATE mqtt_consumer SET cursor=? WHERE singleton=1',(number,))
+                    self.cursor=number
+                    continue
             age = (now-_aware(row['received_at'])).total_seconds()
             if age < 0:
                 # A callback may commit after this scheduler tick sampled now.
