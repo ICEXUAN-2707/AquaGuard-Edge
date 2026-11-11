@@ -4,24 +4,24 @@
 
 ## 指标定义
 
-- `n`：评估 trial 数（一个 scenario 的一个冻结种子为一个 trial）。
+- `correct_abstentions`：unknown_required 中输出 UNKNOWN 的 trial 数。
 - `decidable`：期望为候选或明确无候选、且仿真证据足以判定的 trial 数。
-- `unknown_required`：证据不足、正确输出为 UNKNOWN 的 trial 数（含不可区分场景）。
-- `tp`：期望候选且输出候选的 decidable trial 数。
-- `fp`：期望无候选却输出候选的 decidable trial 数（按 trial 计，不按重叠窗计）。
-- `tn`：期望无候选且输出无候选的 decidable trial 数。
+- `decided_without_evidence`：unknown_required 中仍给出候选的 trial 数。
+- `detection_delay_sec`：成功检出的正例中，首个候选窗口窗尾减操作真值 onset（秒）；含窗口步长与 10 秒规则阈值，不含真实网络/硬件时延。
+- `false_positive_rate`：fp / (fp + tn + rejected_negative)；拒判负例保留在分母。
 - `fn`：期望候选却明确输出无候选的 decidable trial 数。
-- `rejected_positive`：期望候选但输出 UNKNOWN 的 decidable trial 数。
-- `rejected_negative`：期望无候选但输出 UNKNOWN 的 decidable trial 数。
+- `fp`：期望无候选却输出候选的 decidable trial 数（按 trial 计，不按重叠窗计）。
+- `n`：评估 trial 数（一个 scenario 的一个冻结种子为一个 trial）。
+- `negative_without_evidence`：unknown_required 中仍明确判为无候选的 trial 数。
 - `precision`：tp / (tp + fp)；无候选输出时为空。
 - `recall`：tp / (tp + fn + rejected_positive)；拒判正例计为未检出。
 - `recall_decided`：tp / (tp + fn)；只统计方法实际给出二值结论的正例。
-- `false_positive_rate`：fp / (fp + tn + rejected_negative)；拒判负例保留在分母。
+- `rejected_negative`：期望无候选但输出 UNKNOWN 的 decidable trial 数。
+- `rejected_positive`：期望候选但输出 UNKNOWN 的 decidable trial 数。
 - `rejection_rate`：(rejected_positive + rejected_negative) / decidable。
-- `correct_abstentions`：unknown_required 中输出 UNKNOWN 的 trial 数。
-- `decided_without_evidence`：unknown_required 中仍给出候选的 trial 数。
-- `negative_without_evidence`：unknown_required 中仍明确判为无候选的 trial 数。
-- `detection_delay_sec`：成功检出的正例中，首个候选窗口窗尾减操作真值 onset（秒）；含窗口步长与 10 秒规则阈值，不含真实网络/硬件时延。
+- `tn`：期望无候选且输出无候选的 decidable trial 数。
+- `tp`：期望候选且输出候选的 decidable trial 数。
+- `unknown_required`：证据不足、正确输出为 UNKNOWN 的 trial 数（含不可区分场景）。
 
 ## 总体结果
 
@@ -33,6 +33,8 @@
 | C3 轻量 ML 影子推断 | 34 | 20 | 8 | 0 | 12 | 0 | 0 | 0 | 1.000 | 0.000 | 0.000 | 10.000 |
 
 ## 评估集（C3 的样本外结果）
+
+n 包含可判定与证据不足项；二分类指标只针对可判定项。证据不足项正确拒判请查看 report.metrics 中 correct_abstentions / unknown_required；不能把 n 当作二分类分母，当前结果不证明 C3 优于 C2。
 
 | 方法 | n | tp | fp | tn | fn | 拒判正例 | 拒判负例 | 召回 | 误报率 |
 |---|---|---|---|---|---|---|---|---|---|

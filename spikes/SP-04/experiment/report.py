@@ -162,6 +162,8 @@ def render_metrics_markdown(report: dict) -> str:
         "",
         "## 评估集（C3 的样本外结果）",
         "",
+        "n 包含可判定与证据不足项；二分类指标只针对可判定项。证据不足项正确拒判请查看 report.metrics 中 correct_abstentions / unknown_required；不能把 n 当作二分类分母，当前结果不证明 C3 优于 C2。",
+        "",
         "| 方法 | n | tp | fp | tn | fn | 拒判正例 | 拒判负例 | 召回 | 误报率 |",
         "|---|---|---|---|---|---|---|---|---|---|",
     ]
@@ -238,6 +240,10 @@ def render_model_card(report: dict) -> str:
         f"- 平票策略：`{model['hyperparameters']['tie_break']}`（平票判正例，避免静默漏报）",
         "",
         "## 样本外指标（eval split）",
+        "",
+        f"- 分母：共 {metrics['n']} 项，可判定 {metrics['decidable']} 项，证据不足、应拒判 {metrics['unknown_required']} 项。",
+        f"- 证据不足项正确拒判：{metrics['correct_abstentions']}/{metrics['unknown_required']}；不并入普通二分类分母。",
+        "- 训练与评估使用相同场景族的不同种子，不构成独立真实场景验证。",
         "",
         f"- n={metrics['n']}，tp={metrics['tp']}，fp={metrics['fp']}，tn={metrics['tn']}，fn={metrics['fn']}，"
         f"拒判正例={metrics['rejected_positive']}，拒判负例={metrics['rejected_negative']}",
