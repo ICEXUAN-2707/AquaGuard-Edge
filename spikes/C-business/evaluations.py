@@ -4,11 +4,14 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from typing import Literal
 from pydantic import StrictInt, StrictBool, Field
 from edge.contracts.models import DTO
 
 from store import Store, NotFound, Conflict, canonical
+from evaluations_r07 import read_source,load_r07
 
 METHODS={'B0_flow','B1_instant','B2_5s','B2_10s','B2_15s'}
 COUNTS={'n','tp','fp','tn','fn','rejected_positive','rejected_negative'}
@@ -123,6 +126,16 @@ def load_legacy(path, root, evaluation_id):
     return EvaluationReport.model_validate(value).model_dump(mode='json')
 
 
+def load_report(path,root,evaluation_id):
+    _,_,_,data=read_source(path,root)
+    if isinstance(data,dict) and data.get('report_version')=='b-exp-report-v1':
+        try:
+            return load_r07(path,root,evaluation_id)
+        except (KeyError,TypeError,IndexError,AttributeError) as error:
+            raise ValueError('invalid R07 structure') from error
+    return load_legacy(path,root,evaluation_id)
+
+
 class Evaluations(Store):
     def __init__(self,path):
         super().__init__(path)
@@ -166,6 +179,6 @@ if __name__=='__main__':
     parser.add_argument('--experiment-id')
     args=parser.parse_args()
     if not args.db.is_file(): parser.error('existing initialized business database required')
-    report=load_legacy(args.report,args.root,args.evaluation_id)
+    report=load_report(args.report,args.root,args.evaluation_id)
     Evaluations(args.db).register(report,args.experiment_id)
     print(json.dumps(dict(evaluation_id=args.evaluation_id,status='IMPORTED',relation_type='reference' if args.experiment_id else None)))

@@ -7,6 +7,7 @@ const assert = require('node:assert/strict');
 (async () => {
   const base = process.env.AQUAGUARD_BROWSER_URL;
   const token = process.env.AQUAGUARD_C_TOKEN;
+  const trial=process.env.AQUAGUARD_BROWSER_TRIAL||'demo-trial';
   if (!base || !token) throw new Error('Explicit local URL and test token required');
   const url = new URL(base);
   if (!['127.0.0.1', 'localhost'].includes(url.hostname)) throw new Error('Local service only');
@@ -58,19 +59,42 @@ const assert = require('node:assert/strict');
     await page.getByRole('group',{name:'筛选事件'}).getByRole('button',{name:'全部',exact:true}).click();
     check('event filter applies to loaded records');
     await page.screenshot({path:path.join(output,'event-ack.png'),fullPage:true});
+    if(process.env.AQUAGUARD_BROWSER_LIFECYCLE==='1'){
+      const close=page.getByRole('button',{name:'关闭已恢复事件',exact:true});
+      await page.waitForFunction(()=>{const b=[...document.querySelectorAll('button')].find(b=>b.textContent==='关闭已恢复事件');return b&&!b.disabled},null,{timeout:45000});
+      await close.click();
+      await page.getByText('已关闭',{exact:true}).waitFor();
+      await page.waitForFunction(()=>[...document.querySelectorAll('.event-card')].filter(b=>b.getAttribute('aria-label')?.includes('WATER_CONTACT')).length>=2,null,{timeout:45000});
+      check('recovered acknowledged event closes and recurrence creates a new event');
+    }
     await page.getByRole('button',{name:'实验诊断',exact:true}).click();
+    await page.getByLabel('实验ID').fill(trial);
     await page.getByRole('button',{name:'查询',exact:true}).click();
     await page.getByText('来源：模拟 · 状态：', {exact:false}).waitFor();
-    assert.match(await page.locator('pre').textContent(), /demo-trial/);
+    assert.ok((await page.locator('.raw-experiment pre').textContent()).includes(trial));
     check('experiment queries the running trial');
     await page.getByLabel('实验ID').fill('missing-trial');
     await page.getByRole('button',{name:'查询',exact:true}).click();
     await page.getByText('实验查询：尚无对应数据。请核对实验 ID 与当前运行模式。').waitFor();
     assert.equal(await page.locator('.trial-name').count(),0);
-    await page.getByRole('button',{name:'内置模拟 · demo-trial',exact:true}).click();
+    await page.getByRole('button',{name:trial==='mqtt-trial'?'MQTT 输入 · mqtt-trial':'内置模拟 · demo-trial',exact:true}).click();
     await page.getByRole('button',{name:'查询',exact:true}).click();
     await page.locator('.trial-name').waitFor();
     check('missing trial clears old results and can recover');
+    if(process.env.AQUAGUARD_BROWSER_EVALUATION){
+      await page.getByRole('heading',{name:'C0–C3 算法对照',exact:true}).waitFor();
+      assert.match(await page.locator('.metric-scope').textContent(),/共 17 项，可判定 10 项，证据不足 7 项/);
+      await page.getByLabel('评估分区').selectOption('all');
+      assert.match(await page.locator('.metric-scope').textContent(),/共 34 项，可判定 20 项，证据不足 14 项/);
+      await page.getByLabel('评估分区').selectOption('eval');
+      await page.getByLabel('筛选方法').selectOption('C3_lightweight_ml_shadow');
+      const exported=page.waitForEvent('download');
+      await page.getByRole('button',{name:'导出评估报告',exact:true}).click();
+      const report=JSON.parse(fs.readFileSync(await (await exported).path(),'utf8'));
+      assert.equal(report.evaluation_id,process.env.AQUAGUARD_BROWSER_EVALUATION);
+      assert.equal(report.report_schema_version,2);
+      check('R07 denominators, split, case filter and report export');
+    }
     await page.screenshot({path:path.join(output,'experiment.png'),fullPage:true});
     await page.setViewportSize({width:390,height:844});
     for (const tab of ['实时总览','事件确认','实验诊断']) {

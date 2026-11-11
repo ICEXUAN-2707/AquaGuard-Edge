@@ -207,8 +207,9 @@ def write_model(path: str | Path, model: dict) -> str:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     data = json.dumps(model, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    path.write_text(data, encoding="utf-8")
-    return sha256_bytes(data.encode("utf-8"))
+    encoded = data.encode("utf-8")
+    path.write_bytes(encoded)
+    return sha256_bytes(path.read_bytes())
 
 
 def _expected_content(payload: dict) -> str:

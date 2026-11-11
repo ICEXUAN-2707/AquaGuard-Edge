@@ -1,0 +1,57 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "report_schema_version": {
+      "const": 2,
+      "title": "Report Schema Version",
+      "type": "integer"
+    },
+    "evaluation_id": {
+      "title": "Evaluation Id",
+      "type": "string"
+    },
+    "source": {
+      "const": "simulation",
+      "title": "Source",
+      "type": "string"
+    },
+    "task": {
+      "const": "scenario_candidate_with_abstention",
+      "title": "Task",
+      "type": "string"
+    },
+    "trial_count": {
+      "title": "Trial Count",
+      "type": "integer"
+    },
+    "report": {
+      "additionalProperties": true,
+      "title": "Report",
+      "type": "object"
+    },
+    "provenance": {
+      "additionalProperties": true,
+      "title": "Provenance",
+      "type": "object"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "report_schema_version",
+    "evaluation_id",
+    "source",
+    "task",
+    "trial_count",
+    "report",
+    "provenance",
+    "limitations"
+  ],
+  "title": "R07EvaluationReport",
+  "type": "object"
+}

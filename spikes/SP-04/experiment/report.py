@@ -299,7 +299,7 @@ def write_artifacts(
     def write(name: str, content: str) -> None:
         path = output / name
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content, encoding="utf-8")
+        path.write_bytes(content.encode("utf-8"))
         try:
             written[name] = str(path.resolve().relative_to(REPO_ROOT)).replace("\\", "/")
         except ValueError:

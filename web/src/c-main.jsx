@@ -40,9 +40,28 @@ function App() {
   async function loadExperiment() {
     const version=experimentVersion.current.next()
     setExperiment({loading:true})
-    try {const value=await request(`/api/experiments/${encodeURIComponent(trial)}`);if(experimentVersion.current.current(version))setExperiment({value})}
-    catch(error){if(experimentVersion.current.current(version))setExperiment({error:message(error)})}
+    try {
+      const value=await request(`/api/experiments/${encodeURIComponent(trial)}`)
+      if(!experimentVersion.current.current(version))return
+      setExperiment({value,evaluationLoading:true})
+      try{
+        const links=await request(`/api/experiments/${encodeURIComponent(trial)}/evaluations`)
+        const first=links.items[0]?.evaluation_id
+        const evaluation=first?await request(`/api/evaluations/${encodeURIComponent(first)}`):null
+        if(experimentVersion.current.current(version))setExperiment({value,evaluations:links.items,evaluation,selectedEvaluation:first||''})
+      }catch(error){if(experimentVersion.current.current(version))setExperiment({value,evaluationError:message(error)})}
+    }catch(error){if(experimentVersion.current.current(version))setExperiment({error:message(error)})}
   }
+  async function selectEvaluation(identity){
+    if(!experiment?.value||!experiment.evaluations?.some(item=>item.evaluation_id===identity))return
+    const previous=experiment,version=experimentVersion.current.next()
+    setExperiment({...previous,evaluation:null,evaluationLoading:true,selectedEvaluation:identity,evaluationError:null})
+    try{
+      const evaluation=await request(`/api/evaluations/${encodeURIComponent(identity)}`)
+      if(experimentVersion.current.current(version))setExperiment({...previous,evaluation,selectedEvaluation:identity})
+    }catch(error){if(experimentVersion.current.current(version))setExperiment({...previous,evaluation:null,selectedEvaluation:identity,evaluationError:message(error)})}
+  }
+
   useEffect(()=>{
     if(!token || !device) return
     const controller=new AbortController()
@@ -100,7 +119,7 @@ function App() {
     {!token?<section><h2>连接本地业务服务</h2><p>请先按本地演示手册启动服务，并通过该服务地址打开工作台。凭据仅保存在当前页面内存，刷新后需重新输入。</p></section>:<>
       {tab==='实时总览'&&<Overview data={data} onRefresh={()=>setEpoch(x=>x+1)} onEvents={()=>setTab('事件确认')}/>}
       {tab==='事件确认'&&<Events key={device} resource={data.events} selected={selected} onSelect={setSelected} detail={detail} busy={busy} retry={Boolean(operation.current.body)} onAck={ack} onClose={closeEvent} closeRetry={Boolean(closeIntent.current.body)} onDownload={download} notice={notice} onRefresh={()=>setEpoch(x=>x+1)}/>}
-      {tab==='实验诊断'&&<Experiment trial={trial} onTrial={value=>{experimentVersion.current.next();setTrial(value);setExperiment(null)}} onQuery={loadExperiment} result={experiment} onDownload={download}/>}
+      {tab==='实验诊断'&&<Experiment trial={trial} onTrial={value=>{experimentVersion.current.next();setTrial(value);setExperiment(null)}} onQuery={loadExperiment} result={experiment} onEvaluation={selectEvaluation} onDownload={download}/>}
 
     </>}
     <footer>本地结果、云同步与联系人送达分别验收 · 当前尚未完成真实硬件/云与独立验收</footer>

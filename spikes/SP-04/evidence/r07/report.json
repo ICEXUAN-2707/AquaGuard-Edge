@@ -2154,7 +2154,7 @@
     "windows_compared": 136,
     "windows_equal": 136
   },
-  "python": "3.15.0",
+  "python": "3.12.10",
   "report_version": "b-exp-report-v1",
   "reproduction": {
     "artifacts": {

@@ -1,6 +1,7 @@
 """C3 model: training, persistence, loading and fallback error codes."""
 
 import json
+import hashlib
 
 import pytest
 
@@ -58,6 +59,14 @@ def test_training_is_deterministic():
     second = _train()
     assert first["model_version"] == second["model_version"]
     assert first["tree"] == second["tree"]
+
+
+def test_declared_model_digest_matches_persisted_bytes(tmp_path):
+    path=tmp_path/'model.json'
+    expected=ml.write_model(path,_train())
+    assert expected==hashlib.sha256(path.read_bytes()).hexdigest()
+    assert b'\r\n' not in path.read_bytes()
+    assert ml.load_model(path)['model_version']==_train()['model_version']
 
 
 def test_write_and_load_roundtrip(tmp_path):

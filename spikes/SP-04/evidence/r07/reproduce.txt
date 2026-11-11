@@ -2,7 +2,7 @@ B experiment reproduction
 ========================
 report_version: b-exp-report-v1
 manifest_sha256: 5e50db579e8ab29582d05090ac88aa564f9ab02f69320268b93703346f1f912c
-python: 3.15.0
+python: 3.12.10
 
 Commands (from repository root):
   python spikes/SP-04/experiment/run.py --output spikes/SP-04/evidence/r07

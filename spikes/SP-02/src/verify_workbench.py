@@ -36,6 +36,7 @@ def main():
     parser.add_argument('--browser',action='store_true',help='verify browser and ACK in the same MQTT run')
     parser.add_argument('--lifecycle',action='store_true',help='include dry, browser close and recurrence')
     parser.add_argument('--recovery',action='store_true',help='real expiry, edge restart and new MQTT boot')
+    parser.add_argument('--evaluation-report',type=Path)
     args=parser.parse_args()
     if args.lifecycle: args.browser=True
     if args.recovery and (args.browser or args.lifecycle): parser.error('recovery is a separate scenario')
@@ -123,6 +124,13 @@ def main():
                 event_id=resumed[0]['event_id'],before=water[0],after=resumed[0],
                 first_boot=boot,second_boot=boot2,cloud_connected=False),indent=2))
         if args.browser:
+            if args.evaluation_report:
+                wait(lambda:request('/api/experiments/mqtt-trial'),timeout=50)
+                subprocess.run([sys.executable,str(ROOT/'spikes/C-business/evaluations.py'),
+                    '--db',str(args.directory/'business.sqlite'),'--root',str(ROOT),
+                    '--report',str(args.evaluation_report.resolve()),'--evaluation-id','rules-r07',
+                    '--experiment-id','mqtt-trial'],cwd=ROOT,env=env,check=True)
+                env['AQUAGUARD_BROWSER_EVALUATION']='rules-r07'
             browser_env=env.copy()
             browser_env.update(AQUAGUARD_BROWSER_URL=f'http://127.0.0.1:{args.http_port}/c.html',
                 AQUAGUARD_BROWSER_TRIAL='mqtt-trial',

@@ -9,7 +9,7 @@ export function Events({resource,selected,onSelect,detail,busy,retry,onAck,onClo
   const [timelineLimit,setTimelineLimit]=useState(8)
   useEffect(()=>setTimelineLimit(8),[selected])
   const items=resource?.value?.items||[], event=detail?.value?.event
-  const visible=items.filter(e=>filter==='全部'||filter==='未确认'&&e.ack_status==='UNACKNOWLEDGED'||filter==='活动异常'&&e.physical_status==='ACTIVE'||filter==='已恢复'&&e.lifecycle==='RESOLVED')
+  const visible=items.filter(e=>filter==='全部'||filter==='未确认'&&e.ack_status==='UNACKNOWLEDGED'||filter==='活动异常'&&e.physical_status==='ACTIVE'||filter==='已恢复'&&e.physical_status==='CLEARED')
   return <>
     <div className="page-heading"><div><p className="eyebrow">EVENT WORKSPACE</p><h2>事件确认</h2><p className="muted">确认代表知晓，物理状态与事件生命周期独立维护。</p></div><button onClick={onRefresh}>刷新事件</button></div>
     <div className="event-layout"><section className="event-panel"><div className="section-title"><h3>事件记录</h3><span className="small-tag">已加载 {items.length} 项</span></div><p className="muted">仅查询该设备最新 100 项，筛选作用于已加载记录。</p>

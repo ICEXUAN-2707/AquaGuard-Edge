@@ -1,6 +1,7 @@
 """End-to-end report artifacts and their stable handoff fields."""
 
 import json
+import hashlib
 
 import pytest
 
@@ -17,6 +18,8 @@ def test_full_report_artifacts_and_contract(tmp_path):
     for name in ("report.json", "trial_index.json", "metrics.md", "model_card.md", "reproduce.txt", "scenarios_v1.json"):
         assert (output / name).is_file(), name
     assert (output / "model" / "c3-model.json").is_file()
+
+    assert hashlib.sha256((output / "model" / "c3-model.json").read_bytes()).hexdigest() == report["model"]["sha256"]
 
     assert report["scope"] == "synthetic_prototype_only"
     assert report["manifest"]["trials"] == 34

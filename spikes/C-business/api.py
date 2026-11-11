@@ -17,6 +17,7 @@ from edge.contracts.models import ApiError, _aware
 from store import Store, Conflict, IdempotencyConflict, NotFound, VersionConflict, canonical
 from lifecycle import CloseRequest, close_event
 from evaluations import Evaluations, EvaluationReport
+from evaluations_r07 import R07EvaluationReport
 
 
 def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
@@ -143,7 +144,7 @@ def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
     def experiment(trial_id: str):
         return projections.read("experiment",trial_id,now=clock())
 
-    @app.get('/api/evaluations/{evaluation_id}',response_model=EvaluationReport,dependencies=[Depends(authorize)])
+    @app.get('/api/evaluations/{evaluation_id}',response_model=EvaluationReport|R07EvaluationReport,dependencies=[Depends(authorize)])
     def evaluation(evaluation_id: str):
         return evaluations.read(evaluation_id)
 
