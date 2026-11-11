@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "b_acceptance": "ON_HOLD",
+  "cloud_accepted": false,
+  "launcher_revision": "8cb7372f24858915c676ec5e70ab957e54cf3f13",
+  "launcher_exited": true,
+  "port_closed": true,
+  "shutdown_method": "owned process tree forced stop; not graceful shutdown acceptance"
+}
