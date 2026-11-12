@@ -1,0 +1,31 @@
+{
+  "different_top_keys": [
+    "model",
+    "reproduction"
+  ],
+  "equal_sections": {
+    "metrics": true,
+    "trials": true,
+    "online_offline": true,
+    "fallback_check": true
+  },
+  "trial_keys": [
+    "anomaly",
+    "audits",
+    "decision_window_end_sec",
+    "expected",
+    "fallback",
+    "methods",
+    "notes",
+    "online_offline_equal",
+    "onset_sec",
+    "rows",
+    "scenario_id",
+    "seed",
+    "split",
+    "title",
+    "trial_id",
+    "truth",
+    "windows"
+  ]
+}
