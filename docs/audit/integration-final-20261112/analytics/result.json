@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "stdout": "PASS: live chart, range, export, mobile width, disconnect, no page errors\n",
+  "stderr": "",
+  "revision": "2b425f2a9b55e900cf72a479e81776ad609f154c",
+  "owned_process_exited": true
+}

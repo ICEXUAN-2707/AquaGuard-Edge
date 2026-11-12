@@ -1,0 +1,7 @@
+{
+  "status": "FAIL",
+  "stdout": "",
+  "stderr": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.coverage-chart') to be visible\u001b[22m\n\n    at D:\\\u6942\u69a0ce\u951b\u581d\u3047\u701b\ufe3e\u5897\u951b\u58612026-2027 \u6fb6\u0442\u7c29\\10\u93c8\u581d\u5d15\u6d93\u7bd2CT\u7039\u70b6\u8fd4\u74a7\u6c91.integration-r07\\web\\tests\\analytics-acceptance.cjs:10:39 {\n  log: [ \"  - waiting for locator('.coverage-chart') to be visible\" ],\n  name: 'TimeoutError'\n}\n",
+  "revision": "a6aab02f936907f29b23d8bfaa31da1e50450898",
+  "owned_process_exited": true
+}
