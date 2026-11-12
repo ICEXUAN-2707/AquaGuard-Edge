@@ -167,13 +167,18 @@ def main():
     except sqlite3.Error as exc:final={'error_type':type(exc).__name__}
     steady=[s for s in samples if s['elapsed_sec']>=45]
     good=bool(steady) and all(s['health']['status']==200 and s['live']['status']==200 for s in steady)
-    passed=not failure and good and final.get('integrity')=='ok' and final.get('duplicate_open_groups')==0
+    with socket.socket() as probe:
+        probe.settimeout(1)
+        port_closed=probe.connect_ex(('127.0.0.1',args.port))!=0
+    passed=not failure and good and port_closed and final.get('integrity')=='ok' and final.get('duplicate_open_groups')==0
     result=dict(status='PASS' if passed else 'FAIL',failure_type=failure,
                 observed_seconds=round(time.monotonic()-started,3),samples=len(samples),
                 steady_samples=len(steady),steady_api_available=good,database=final,
                 owned_process_exited=process is not None and process.poll() is not None,
+                port_closed=port_closed,
                 rss_peak_bytes=max((s['rss_bytes'] for s in samples if s['rss_bytes'] is not None),default=None),
                 observed_growth_bytes_per_hour={key:growth(samples,key) for key in ('rss_bytes','sqlite_bytes','checkpoint_bytes')},
+                steady_growth_bytes_per_hour={key:growth(steady,key) for key in ('rss_bytes','sqlite_bytes','checkpoint_bytes')},
                 note='Endpoint growth is descriptive, not a leak verdict or long-term capacity guarantee; startup first 45s excluded from API gate. Forced termination is not graceful shutdown acceptance.')
     (out/'result.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     print(json.dumps(result));return 0 if passed else 1
