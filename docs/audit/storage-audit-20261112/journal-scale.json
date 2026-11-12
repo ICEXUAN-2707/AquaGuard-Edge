@@ -1,0 +1,30 @@
+{
+  "scope": "offline_single_process_journal_insertion",
+  "results": [
+    {
+      "observations": 300,
+      "sqlite_bytes": 393216,
+      "insertion_seconds": 10.957310799974948,
+      "tail_samples": 100,
+      "tail_mean_ms": 36.274825999571476,
+      "tail_max_ms": 286.7288000052213
+    },
+    {
+      "observations": 600,
+      "sqlite_bytes": 753664,
+      "insertion_seconds": 13.968890400072269,
+      "tail_samples": 100,
+      "tail_mean_ms": 21.253481000239844,
+      "tail_max_ms": 102.57329999876674
+    },
+    {
+      "observations": 1200,
+      "sqlite_bytes": 1486848,
+      "insertion_seconds": 36.35319889987295,
+      "tail_samples": 100,
+      "tail_mean_ms": 73.40161399974022,
+      "tail_max_ms": 267.0572999995784
+    }
+  ],
+  "note": "Includes SQLite commits; excludes MQTT, ACK, subscriber, edge consumer and concurrent hour-run load. Not a complexity proof or production throughput guarantee."
+}
