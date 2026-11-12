@@ -49,7 +49,7 @@ def main():
     journal = args.journal.resolve() if args.journal else None
     problems = inspect(run_dir, args.port, args.mode, journal)
     print(json.dumps(dict(status='FAIL' if problems else 'PASS', mode=args.mode,
-                         source='simulation', cloud_accepted=False, b_acceptance='ON_HOLD',
+                         source='simulation', cloud_accepted=False, b_acceptance='SYNTHETIC_SCOPE_VERIFIED',
                          run_dir=str(run_dir), problems=problems), ensure_ascii=False))
     if problems:
         return 2
@@ -69,7 +69,9 @@ def main():
         revision=revision.stdout.strip() if revision.returncode == 0 else 'unknown',
         tracked_changes=bool(dirty.stdout.strip()) if dirty.returncode == 0 else None,
         mode=args.mode, source='simulation', port=args.port,
-        cloud_accepted=False, b_acceptance='ON_HOLD'), indent=2), encoding='utf8')
+        cloud_accepted=False, b_acceptance='SYNTHETIC_SCOPE_VERIFIED',
+        b_acceptance_evidence='docs/project/B_INDEPENDENT_REVIEW_20261112.md',
+        hardware_accepted=False), indent=2), encoding='utf8')
     print(f'Open http://127.0.0.1:{args.port}/c.html', flush=True)
     print('Local access token (do not record/share): ' + env['AQUAGUARD_C_TOKEN'], flush=True)
     print('Ctrl+C stops this foreground service. MQTT broker/subscriber remain externally owned.', flush=True)

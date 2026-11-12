@@ -45,5 +45,7 @@ def test_start_passes_explicit_config_and_never_archives_secrets(tmp_path, monke
     assert len(bytes.fromhex(captured['AQUAGUARD_C_CURSOR_KEY'])) >= 32
     assert captured['AQUAGUARD_C_TOKEN'] not in text
     assert captured['AQUAGUARD_C_CURSOR_KEY'] not in text
-    assert record['b_acceptance'] == 'ON_HOLD'
+    assert record['b_acceptance'] == 'SYNTHETIC_SCOPE_VERIFIED'
+    assert record['hardware_accepted'] is False
+    assert record['b_acceptance_evidence'] == 'docs/project/B_INDEPENDENT_REVIEW_20261112.md'
     assert record['cloud_accepted'] is False
