@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "event_id": "1ace9cb3-fda9-4034-8f46-3c9a448a98b5",
+  "before": {
+    "schema_version": "1.1",
+    "event_id": "1ace9cb3-fda9-4034-8f46-3c9a448a98b5",
+    "device_id": "demo01",
+    "event_type": "WATER_CONTACT",
+    "lifecycle": "OPEN",
+    "ack_status": "UNACKNOWLEDGED",
+    "physical_status": "UNKNOWN",
+    "escalation_level": "L2",
+    "version": 2,
+    "created_at": "2026-11-11T02:03:51.919068Z",
+    "origin": "simulation"
+  },
+  "after": {
+    "schema_version": "1.1",
+    "event_id": "1ace9cb3-fda9-4034-8f46-3c9a448a98b5",
+    "device_id": "demo01",
+    "event_type": "WATER_CONTACT",
+    "lifecycle": "OPEN",
+    "ack_status": "UNACKNOWLEDGED",
+    "physical_status": "ACTIVE",
+    "escalation_level": "L2",
+    "version": 3,
+    "created_at": "2026-11-11T02:03:51.919068Z",
+    "origin": "simulation"
+  },
+  "first_boot": "bfb0b76e1da14b708b0f87b38d6f50a3",
+  "second_boot": "d2a87c5500654914a338810081034a32",
+  "cloud_connected": false
+}

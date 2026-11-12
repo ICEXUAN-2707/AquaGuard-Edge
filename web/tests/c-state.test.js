@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { AckIntent, ResponseOrder } from '../src/c-state.js'
+import { AckIntent, ResponseOrder, CloseIntent } from '../src/c-state.js'
 
 const event={event_id:'event-a',version:1,lifecycle:'OPEN',ack_status:'UNACKNOWLEDGED'}
 test('uncertain response retry preserves original key and version after polling',()=>{
@@ -27,4 +27,14 @@ test('slow experiment response loses to new request or changed context',async()=
   assert.equal(order.current(current),true)
   order.next() // device/token/trial change invalidates the in-flight request.
   assert.equal(order.current(current),false)
+})
+
+test('close requires recovery and preserves uncertain original intent',()=>{
+  const intent=new CloseIntent()
+  assert.throws(()=>intent.prepare({...event,physical_status:'ACTIVE',ack_status:'ACKNOWLEDGED'}))
+  const ready={...event,physical_status:'CLEARED',ack_status:'ACKNOWLEDGED'}
+  const first=intent.prepare(ready,()=> 'close-1')
+  assert.strictEqual(intent.prepare({...ready,version:3,lifecycle:'CLOSED'},()=> 'wrong'),first)
+  intent.reset()
+  assert.equal(intent.prepare({...ready,version:3},()=> 'close-2').expected_version,3)
 })

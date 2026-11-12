@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "files": 20,
+  "package_sha256": "1190af75d8cd1e2df418a49da7cde700d7445d3161c3f44bd3460ae4caf4dad4",
+  "source_run": "audit/integrated-recovery",
+  "scope": "export and integrity recheck; original runtime evidence retained",
+  "limitations": "Completed local run; per-database backups, not a cross-database live snapshot. Checkpoint references preserve original paths; replay requires relocation mapping."
+}

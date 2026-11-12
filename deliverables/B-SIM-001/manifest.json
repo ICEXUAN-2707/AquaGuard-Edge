@@ -1,0 +1,35 @@
+{
+  "format": "sha256-dataset-manifest-v1",
+  "files": [
+    {
+      "path": "dataset.json",
+      "sha256": "2686e367ae83cb8c3d5f8d6a50a841df7e8a650ba6afd864f954ea4e2762afee",
+      "bytes": 1937
+    },
+    {
+      "path": "labels.jsonl",
+      "sha256": "84aaa35f32bc427b87c66b3e68c44de1e5d1b10e027a7093092d7a1961eff03f",
+      "bytes": 59868
+    },
+    {
+      "path": "observations.jsonl.gz",
+      "sha256": "62a71a9b89d277d96ebd40773ac19c6457c7885909f77a320c4842d018d2e388",
+      "bytes": 74503
+    },
+    {
+      "path": "README.md",
+      "sha256": "cf4ec43a078707f5fff17e894e1a879420295d9df1fd2e8e913218ac01609624",
+      "bytes": 1443
+    },
+    {
+      "path": "split_manifest.json",
+      "sha256": "709682fdfcecb0a0cb3b5eb1550537cf5ecd64da6400832e75b9cea80ce01431",
+      "bytes": 4024
+    },
+    {
+      "path": "trials.json",
+      "sha256": "6b11784d668f10331483b12afb28b1b41b423f25ad2c7fa0fdd7590d7fc59fe9",
+      "bytes": 37990
+    }
+  ]
+}

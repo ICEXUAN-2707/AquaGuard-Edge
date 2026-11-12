@@ -3,6 +3,7 @@
 .upstream-review/
 __pycache__/
 .pytest_cache/
+pytest-of-*/
 .env
 .env.*
 !.env.example

@@ -1,0 +1,37 @@
+[
+  {
+    "pid": 49448,
+    "exitcode": 0,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 14952,
+    "exitcode": 1,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 9752,
+    "exitcode": 0,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 38120,
+    "exitcode": 0,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 45196,
+    "exitcode": 1,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 13536,
+    "exitcode": 1,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 49688,
+    "exitcode": 1,
+    "exit_confirmed": true
+  }
+]

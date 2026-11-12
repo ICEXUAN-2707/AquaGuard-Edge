@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "checks": [
+    "invalid credentials are visible",
+    "continuous simulation updates overview",
+    "ACK conflict prompts requery before retry",
+    "user acknowledgement persists and is shown separately",
+    "event export retains backend acknowledgement",
+    "event filter applies to loaded records",
+    "recovered acknowledged event closes and recurrence creates a new event",
+    "experiment queries the running trial",
+    "missing trial clears old results and can recover",
+    "R07 denominators, split, case filter and report export",
+    "three pages fit a 390px viewport",
+    "unavailable snapshot removes old sensor values",
+    "disconnect clears displayed experiment data"
+  ],
+  "errors": [],
+  "at": "2026-11-11T02:04:03.636Z"
+}

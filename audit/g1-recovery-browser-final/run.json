@@ -1,0 +1,13 @@
+{
+  "revision": "d93cbe9221608a4d6649a593de91d02a41cfd44e",
+  "tracked_changes": true,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source": "simulation",
+  "runtime": "mqtt",
+  "mqtt_port": 18886,
+  "http_port": 8021,
+  "recovery": true,
+  "lifecycle": false,
+  "browser": true
+}

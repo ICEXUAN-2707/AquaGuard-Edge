@@ -5,3 +5,9 @@ reference/** -text whitespace=cr-at-eol
 
 spikes/SP-03-features/evidence/checkpoints/*.json -text
 spikes/SP-04/evidence/r05/checkpoints/*.json -text
+
+# This handoff package has byte-level checksums; preserve all artifact bytes.
+deliverables/B-EVAL-001/** -text whitespace=cr-at-eol
+deliverables/B-SIM-001/** -text whitespace=cr-at-eol
+spikes/SP-04/evidence/r07/** -text whitespace=cr-at-eol
+audit/b-independent-20261112/r07/** -text whitespace=cr-at-eol

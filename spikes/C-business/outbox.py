@@ -144,23 +144,14 @@ class Worker(Store):
             return record["sync_status"]
 
     def step(self,*,now,mode="accept"):
-        if mode not in ("accept","temporary","permanent","exception"):
-            raise ValueError("unsupported Mock mode")
-        claimed=self.claim(now=now)
-        if claimed is None:
-            return "IDLE"
-        if claimed["record"]["origin"]!="simulation":
-            raise ValueError("Mock worker permits simulation only")
+        # Compatibility entry point; persistence remains in claim()/finish().
+        from delivery import DeliveryService
+        from adapters.mock import MockAdapter
+        service = DeliveryService(self, MockAdapter(mode))
         try:
-            if mode=="exception":
-                raise TimeoutError("mock injected transport timeout")
-            if mode=="accept":
-                result=dict(status="ACCEPTED",transport_receipt=dict(provider="mock",receipt_id=claimed["record"]["message_id"],received_at=now))
-            else:
-                result=dict(status="FAILED" if mode=="permanent" else "RETRY_WAIT")
-        except TimeoutError:
-            result=dict(status="RETRY_WAIT")
-        return self.finish(claimed["token"],result,now=now)
+            return service.step(now=now)
+        finally:
+            service.close()
 
     def business_receipt(self,message_id,payload,*,now):
         """Independent Mock consumer acknowledgement, never inferred from send."""

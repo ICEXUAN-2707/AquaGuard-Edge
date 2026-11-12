@@ -1,0 +1,337 @@
+{
+  "package_schema_version": "aquaguard-b-evaluation-draft-1",
+  "evaluation_id": "b-synthetic-8-478d2679798cfec3",
+  "status": "NORMALIZED_DRAFT",
+  "acceptance": {
+    "b_owner_review": "PENDING",
+    "independent_review": "PENDING",
+    "g3_passed": false
+  },
+  "generated_at": "2026-11-10T11:10:17.688417+00:00",
+  "source": "simulation",
+  "task": {
+    "id": "binary-unattended-flow-candidate",
+    "description": "Binary candidate decision versus synthetic operation annotation; not proof of actual absence.",
+    "positive_label": "candidate_target=true",
+    "prediction_null": "abstention / UNKNOWN"
+  },
+  "dataset": {
+    "sha256": "bb622dffbf6be20e27c9a4be6e40e518fcb9e91e2482a127d7adb8132eecf8eb",
+    "trial_count": 8,
+    "evaluated_windows": 8,
+    "positive_trials": 3,
+    "negative_trials": 5,
+    "raw_observation_records": 154,
+    "identity_scope": "trial_id + observation identity",
+    "split": {
+      "status": "NOT_SPLIT",
+      "role": "development_diagnostic",
+      "held_out_test": false
+    }
+  },
+  "versions": {
+    "alignment": "sp03-r05-v1",
+    "features": "m4-r06-v1",
+    "checkpoint": "m4-replay-checkpoint-v1",
+    "rules_semantic": "m5-r03-v1",
+    "alignment_configuration": {
+      "width": 30,
+      "lateness": 2,
+      "ttl": 10,
+      "flow_threshold": 0.1,
+      "ttl_by_source": {
+        "flow": 10,
+        "water": 10,
+        "presence": 10
+      }
+    },
+    "runtime": {
+      "python": "3.12.10",
+      "pydantic": "2.14.1"
+    },
+    "rules_configuration": {
+      "rule_version": "m5-r01-v1",
+      "unattended_sec": 10,
+      "min_flow_coverage": 0.8,
+      "min_presence_coverage": 0.8,
+      "idle_confirm_sec": 5,
+      "max_window_age_sec": 10,
+      "evaluation_policy": "fixed_publication_time",
+      "flow_threshold_policy": "inherit_alignment_config"
+    },
+    "checkout_commit": "6a9be48959e4ceb146dbd7fa7da25a6461d76379",
+    "builder_sha256": "5c585087a081d5d91b7fb4bdc597cecf104d8069ce15ff4babfa183025016a3c",
+    "source_files": [
+      {
+        "path": "edge/contracts/models.py",
+        "sha256": "672422c04e9eae6cc48e4d5b48a5eda5461ff1fd4cf5228d28c826cbc17cd273"
+      },
+      {
+        "path": "spikes/SP-03/src/alignment.py",
+        "sha256": "f0109ed979e031da0bc4d1ca7ce507f81a82638f7d221afc355245a283faf35f"
+      },
+      {
+        "path": "spikes/SP-03/src/replay.py",
+        "sha256": "e06b1756c2672ee7e965442df51f21f81458292a47bfa51a498b46ea2c20d378"
+      },
+      {
+        "path": "spikes/SP-03/src/stream.py",
+        "sha256": "3a0533253bbbc29240f32b94ee1a225c58def97f7977562863c71dcccba49d1f"
+      },
+      {
+        "path": "spikes/SP-03-features/src/basic_flow.py",
+        "sha256": "fb5c0f51b14ef5531d0feb4219a9a6c816515715ec6466a733ca12cd276afdfa"
+      },
+      {
+        "path": "spikes/SP-03-features/src/checkpoint.py",
+        "sha256": "6c439a5fb45a08a4e90584388b46513aae21574fd043e4ff41d031739c52ba2b"
+      },
+      {
+        "path": "spikes/SP-03-features/src/continuous.py",
+        "sha256": "e0ffc16f6a36870ffa34cfdaf0331700970483f40b3ac58ab24699b1e7e4181d"
+      },
+      {
+        "path": "spikes/SP-03-features/src/engine.py",
+        "sha256": "8c2ab28d583e4b9c24bd6cfcf39398efb7f7be6a75f119577b0fafdc2a1908bb"
+      },
+      {
+        "path": "spikes/SP-03-features/src/state_features.py",
+        "sha256": "bd0981daa2131f191dbb2c63c4d9a901f9d343e158916b65171b261be7575c99"
+      },
+      {
+        "path": "spikes/SP-03-features/src/transitions.py",
+        "sha256": "e1aeddb0f4fd8d6554a36dc78a191dc3239638713357b03f291c30201cad4a63"
+      },
+      {
+        "path": "spikes/SP-04/data/evaluation_trials.json",
+        "sha256": "0e965b5b766a51c9d660153118513f3b38ce3eb61cc0740685a4480760d7954c"
+      },
+      {
+        "path": "spikes/SP-04/data/rules_config.json",
+        "sha256": "c62a0f166c84b10be1dc93e76cfe6a733cd7e75123545c520ba349348ce25f55"
+      },
+      {
+        "path": "spikes/SP-04/evaluate.py",
+        "sha256": "679960c8d0a0a7b9ac99ec430c42fe567709b6b0546f5e014f79468f12c5611a"
+      },
+      {
+        "path": "spikes/SP-04/src/gates.py",
+        "sha256": "8a352782bddbf96c0ef1417412edf402f0870c77843d73fbfc1a34ec047bf77c"
+      },
+      {
+        "path": "spikes/SP-04/src/rules.py",
+        "sha256": "974136a53c064262fbed404e1e5d19eefcf3e2c847dff9697d7a418350de1c6c"
+      },
+      {
+        "path": "spikes/SP-04/src/scenarios.py",
+        "sha256": "c10fa32fad4c7e13601b2fac1768f862ddc441376388df52487fdf112cb76719"
+      }
+    ]
+  },
+  "metric_definitions": {
+    "counts": "Exactly one terminal binary candidate per trial/method. TP/FP/TN/FN exclude abstentions.",
+    "positive_recall_all": "TP / all positive trials, including rejected positives in the denominator.",
+    "rejection_rate": "(rejected_positive + rejected_negative) / all trials.",
+    "no_event_metric": "FP here counts trial-level predictions, not M6 alarm events or false alarms per hour."
+  },
+  "methods": [
+    {
+      "method_id": "B0_flow",
+      "title": "水流阈值",
+      "presentation_slot_proposal": "C0",
+      "mapping_status": "PENDING_B_REVIEW",
+      "availability": "AVAILABLE",
+      "configuration": {},
+      "counts": {
+        "n": 8,
+        "tp": 3,
+        "fp": 4,
+        "tn": 1,
+        "fn": 0,
+        "rejected_positive": 0,
+        "rejected_negative": 0
+      },
+      "metrics": {
+        "positive_recall_all": {
+          "value": 1.0,
+          "unit": "fraction",
+          "numerator": 3,
+          "denominator": 3
+        },
+        "rejection_rate": {
+          "value": 0.0,
+          "unit": "fraction",
+          "numerator": 0,
+          "denominator": 8
+        }
+      }
+    },
+    {
+      "method_id": "B1_instant",
+      "title": "即时多源规则",
+      "presentation_slot_proposal": "C1",
+      "mapping_status": "PENDING_B_REVIEW",
+      "availability": "AVAILABLE",
+      "configuration": {},
+      "counts": {
+        "n": 8,
+        "tp": 2,
+        "fp": 3,
+        "tn": 2,
+        "fn": 0,
+        "rejected_positive": 1,
+        "rejected_negative": 0
+      },
+      "metrics": {
+        "positive_recall_all": {
+          "value": 0.6666666666666666,
+          "unit": "fraction",
+          "numerator": 2,
+          "denominator": 3
+        },
+        "rejection_rate": {
+          "value": 0.125,
+          "unit": "fraction",
+          "numerator": 1,
+          "denominator": 8
+        }
+      }
+    },
+    {
+      "method_id": "B2_5s",
+      "title": "时序规则 · 5 秒",
+      "presentation_slot_proposal": "C2",
+      "mapping_status": "PENDING_B_REVIEW",
+      "availability": "AVAILABLE",
+      "configuration": {
+        "unattended_sec": 5
+      },
+      "counts": {
+        "n": 8,
+        "tp": 2,
+        "fp": 3,
+        "tn": 2,
+        "fn": 0,
+        "rejected_positive": 1,
+        "rejected_negative": 0
+      },
+      "metrics": {
+        "positive_recall_all": {
+          "value": 0.6666666666666666,
+          "unit": "fraction",
+          "numerator": 2,
+          "denominator": 3
+        },
+        "rejection_rate": {
+          "value": 0.125,
+          "unit": "fraction",
+          "numerator": 1,
+          "denominator": 8
+        }
+      }
+    },
+    {
+      "method_id": "B2_10s",
+      "title": "时序规则 · 10 秒",
+      "presentation_slot_proposal": "C2",
+      "mapping_status": "PENDING_B_REVIEW",
+      "availability": "AVAILABLE",
+      "configuration": {
+        "unattended_sec": 10
+      },
+      "counts": {
+        "n": 8,
+        "tp": 2,
+        "fp": 1,
+        "tn": 2,
+        "fn": 0,
+        "rejected_positive": 1,
+        "rejected_negative": 2
+      },
+      "metrics": {
+        "positive_recall_all": {
+          "value": 0.6666666666666666,
+          "unit": "fraction",
+          "numerator": 2,
+          "denominator": 3
+        },
+        "rejection_rate": {
+          "value": 0.375,
+          "unit": "fraction",
+          "numerator": 3,
+          "denominator": 8
+        }
+      }
+    },
+    {
+      "method_id": "B2_15s",
+      "title": "时序规则 · 15 秒",
+      "presentation_slot_proposal": "C2",
+      "mapping_status": "PENDING_B_REVIEW",
+      "availability": "AVAILABLE",
+      "configuration": {
+        "unattended_sec": 15
+      },
+      "counts": {
+        "n": 8,
+        "tp": 1,
+        "fp": 1,
+        "tn": 2,
+        "fn": 0,
+        "rejected_positive": 2,
+        "rejected_negative": 2
+      },
+      "metrics": {
+        "positive_recall_all": {
+          "value": 0.3333333333333333,
+          "unit": "fraction",
+          "numerator": 1,
+          "denominator": 3
+        },
+        "rejection_rate": {
+          "value": 0.5,
+          "unit": "fraction",
+          "numerator": 4,
+          "denominator": 8
+        }
+      }
+    }
+  ],
+  "unavailable_methods": [
+    {
+      "presentation_slot_proposal": "C3",
+      "availability": "NOT_PROVIDED",
+      "reason": "No trained ML or model evaluation in the source experiment."
+    }
+  ],
+  "unavailable_metrics": {
+    "macro_f1": {
+      "value": null,
+      "reason": "Not computed by the source evaluator; abstention policy not agreed."
+    },
+    "response_latency_ms": {
+      "value": null,
+      "reason": "Fixed logical evaluation time is not measured runtime latency."
+    },
+    "false_alarms_per_hour": {
+      "value": null,
+      "reason": "No measured duration or event-matching experiment."
+    }
+  },
+  "limitations": [
+    "Only eight hand-constructed synthetic scenarios, one evaluated window per trial; no population generalization.",
+    "No held-out test split; scenario thresholds were examined on this set. This is a development diagnostic set.",
+    "Candidate labels are synthetic operation annotations, not sensor-proven absence or real incident labels.",
+    "Hidden-person and left20 scenarios deliberately have identical observations and different targets.",
+    "No trained ML, real hardware, real response latency or cloud acceptance is included.",
+    "Observation IDs repeat across trials: identity is scoped by trial_id. Do not merge trials into a live device stream.",
+    "C0-C2 presentation mapping is a proposal pending B review; original B method IDs remain authoritative."
+  ],
+  "evidence": {
+    "raw_comparison": "raw/comparison.json",
+    "trials": "trials.json",
+    "observations": "observations.jsonl",
+    "predictions": "predictions.jsonl",
+    "review_cases": "review_cases.json"
+  }
+}

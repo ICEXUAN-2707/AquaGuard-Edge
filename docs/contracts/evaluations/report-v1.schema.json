@@ -1,0 +1,215 @@
+{
+  "$defs": {
+    "EvaluationMetrics": {
+      "additionalProperties": false,
+      "properties": {
+        "n": {
+          "title": "N",
+          "type": "integer"
+        },
+        "tp": {
+          "title": "Tp",
+          "type": "integer"
+        },
+        "fp": {
+          "title": "Fp",
+          "type": "integer"
+        },
+        "tn": {
+          "title": "Tn",
+          "type": "integer"
+        },
+        "fn": {
+          "title": "Fn",
+          "type": "integer"
+        },
+        "rejected_positive": {
+          "title": "Rejected Positive",
+          "type": "integer"
+        },
+        "rejected_negative": {
+          "title": "Rejected Negative",
+          "type": "integer"
+        },
+        "rejection_rate": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Rejection Rate",
+          "type": "number"
+        },
+        "positive_recall_all": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Positive Recall All"
+        }
+      },
+      "required": [
+        "n",
+        "tp",
+        "fp",
+        "tn",
+        "fn",
+        "rejected_positive",
+        "rejected_negative",
+        "rejection_rate",
+        "positive_recall_all"
+      ],
+      "title": "EvaluationMetrics",
+      "type": "object"
+    },
+    "EvaluationTrial": {
+      "additionalProperties": false,
+      "properties": {
+        "trial_id": {
+          "title": "Trial Id",
+          "type": "string"
+        },
+        "operation": {
+          "title": "Operation",
+          "type": "string"
+        },
+        "candidate_target": {
+          "title": "Candidate Target",
+          "type": "boolean"
+        },
+        "parameters": {
+          "additionalProperties": true,
+          "title": "Parameters",
+          "type": "object"
+        },
+        "predictions": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Predictions",
+          "type": "object"
+        }
+      },
+      "required": [
+        "trial_id",
+        "operation",
+        "candidate_target",
+        "parameters",
+        "predictions"
+      ],
+      "title": "EvaluationTrial",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "report_schema_version": {
+      "const": 1,
+      "title": "Report Schema Version",
+      "type": "integer"
+    },
+    "evaluation_id": {
+      "title": "Evaluation Id",
+      "type": "string"
+    },
+    "source": {
+      "const": "simulation",
+      "title": "Source",
+      "type": "string"
+    },
+    "task": {
+      "const": "binary_candidate",
+      "title": "Task",
+      "type": "string"
+    },
+    "sample_unit": {
+      "const": "trial",
+      "title": "Sample Unit",
+      "type": "string"
+    },
+    "trial_count": {
+      "title": "Trial Count",
+      "type": "integer"
+    },
+    "class_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Class Counts",
+      "type": "object"
+    },
+    "split": {
+      "additionalProperties": true,
+      "title": "Split",
+      "type": "object"
+    },
+    "records": {
+      "items": {
+        "$ref": "#/$defs/EvaluationTrial"
+      },
+      "title": "Records",
+      "type": "array"
+    },
+    "metrics": {
+      "additionalProperties": {
+        "$ref": "#/$defs/EvaluationMetrics"
+      },
+      "title": "Metrics",
+      "type": "object"
+    },
+    "metric_definitions": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Metric Definitions",
+      "type": "object"
+    },
+    "provenance": {
+      "additionalProperties": true,
+      "title": "Provenance",
+      "type": "object"
+    },
+    "unavailable": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Unavailable",
+      "type": "object"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "report_schema_version",
+    "evaluation_id",
+    "source",
+    "task",
+    "sample_unit",
+    "trial_count",
+    "class_counts",
+    "split",
+    "records",
+    "metrics",
+    "metric_definitions",
+    "provenance",
+    "unavailable",
+    "limitations"
+  ],
+  "title": "EvaluationReport",
+  "type": "object"
+}

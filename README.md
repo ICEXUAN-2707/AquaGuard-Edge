@@ -1,8 +1,16 @@
 # 水知安 AquaGuard Edge
 
+## 2026-11-12 集成候选进展
+
+当前集成候选已接入连续仿真/MQTT运行时及实时总览、数据可视化、事件确认、实验诊断四页工作台。B 合成仿真限定范围独立复验通过，工作台及可视化人工验收通过；真实装置仍在制作，真实云、长期运行和整体交付验收未完成。历史段落保留原时间范围；当前范围见 [集成计划](docs/project/INTEGRATION_PLAN_20261112.md)、[B 复验](docs/project/B_INDEPENDENT_REVIEW_20261112.md)与[闭环记录](docs/project/B_CLOSURE_PROGRESS_20261112.md)。
+
+完整克隆并安装既有应用依赖后，执行 `npm ci --prefix web`、`npm run build --prefix web`，再以应用 Python 运行 `scripts/demo.py --run-dir audit/my-new-demo --port 8030 --start`。选择尚不存在的运行目录；使用终端生成的本机凭据访问 `http://127.0.0.1:8030/c.html`。数据可视化仅保留本次页面会话最多30分钟，不是持久历史查询。
+
 基于水流、水接触、人体存在三源时序融合与端边云协同的异常监测项目。D0 审计与 I-001 基线已建立，A/B/C 软件原型已合入 main；真实采集、云接入与联合验收尚未完成。仓库为私有仓库。
 
 ## 当前进度（2026-11-03）
+
+2026-11-05 G1 增量：已提供 `python -m edge` 显式 simulation 模式，持续模拟三源→B 推断→C 事件/SQLite/Outbox→业务三页接口。启动方式及未通过项见 [G1 集成记录](docs/integration/G1_CONTINUOUS_SIMULATION.md)。默认 baseline 模式仍提供原健康检查；模拟入口仍通过适配层复用 Spike 模块，未宣称迁移全部完成。下面内容为历史基线。
 
 A 通信、B 离线算法和 C 本地业务原型已合入 main，项目处于技术原型验证向正式工程化过渡阶段。下文 I-001 命令仍启动健康检查基线；业务原型使用独立入口。
 

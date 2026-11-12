@@ -1,0 +1,22 @@
+[
+  {
+    "pid": 8948,
+    "exitcode": 0,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 24208,
+    "exitcode": 1,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 25844,
+    "exitcode": 1,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 35468,
+    "exitcode": 1,
+    "exit_confirmed": true
+  }
+]

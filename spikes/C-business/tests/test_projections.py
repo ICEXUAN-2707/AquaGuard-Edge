@@ -90,4 +90,8 @@ def test_invalid_sync_receipt_returns_unavailable(tmp_path):
 
 def test_all_seven_candidate_paths_exist(tmp_path):
     store,app,events=setup(tmp_path)
-    assert len(app.openapi()["paths"])==7
+    paths=app.openapi()['paths']
+    assert {'/api/events','/api/events/{event_id}','/api/events/{event_id}/ack',
+            '/api/devices/{device_id}/live','/api/devices/{device_id}/assessment',
+            '/api/sync/status','/api/experiments/{trial_id}'} <= paths.keys()
+    assert 'post' in paths['/api/events/{event_id}/close']

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "origin": "simulation",
+  "event_types": [
+    "WATER_CONTACT",
+    "WATER_CONTACT"
+  ],
+  "pending_count": 6,
+  "trial_id": "mqtt-trial",
+  "cloud_connected": false,
+  "revision": "a6aab02f936907f29b23d8bfaa31da1e50450898",
+  "tracked_changes": false,
+  "duration_seconds": 71.76499999999942,
+  "manifest_sha256": "180219cebd59819ce7eb91efb7d13e742fe1f8f03dfe4ece5ac5da879e65f54e"
+}

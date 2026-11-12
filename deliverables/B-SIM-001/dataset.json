@@ -1,0 +1,40 @@
+{
+  "dataset_schema_version": "aquaguard-b-sim-dataset-1",
+  "dataset_id": "b-sim1-65ff0bbbac70fcc2",
+  "source": "simulation",
+  "seed": 20261110,
+  "generator_sha256": "bfb14098aaffb72892957946e8307d168ab6f1bf916ce4983805221d7a75d0bf",
+  "dataset_sha256": "65ff0bbbac70fcc2a0169b64bc10d7193b5792cfd16c3d698e25da77349c8e2c",
+  "observations_uncompressed_sha256": "6399989e19156787e84ba8f1b2108840b38f7ff34a903901ee677ddf8d7bb3c3",
+  "label_sha256": "84aaa35f32bc427b87c66b3e68c44de1e5d1b10e027a7093092d7a1961eff03f",
+  "cohorts": 12,
+  "trial_count": 72,
+  "window_label_count": 216,
+  "observation_count": 5422,
+  "positive_trials": 24,
+  "negative_trials": 48,
+  "window_ends_sec": [
+    30,
+    35,
+    40
+  ],
+  "split_trial_counts": {
+    "train": 36,
+    "validation": 18,
+    "test": 18
+  },
+  "training_complete": false,
+  "evaluation_complete": false,
+  "limitations": [
+    "Synthetic feasibility data, not real-world accuracy or a statistically representative sample.",
+    "Same scenario families appear in all partitions; this split does not test unseen family generalization.",
+    "Cohorts prevent splitting paired/overlapping samples, but synthetic settings may repeat across cohorts.",
+    "Hidden-present and unattended observations are identical apart from trial-scoped identities.",
+    "Brief-leave negative labels use complete operation-script knowledge, including a future return.",
+    "Only window snapshots of one binary task; not an event false-alarm or response-latency benchmark.",
+    "Cadence two may leave no flow endpoint at window end 35; UNKNOWN is a legitimate outcome.",
+    "DEVICE_SYNCED and K=60 calibration are synthetic conventions, not measured hardware evidence.",
+    "Water observations are dry; no model may replace the independent water-contact safety path.",
+    "Train with approved sensor-derived features only: no labels, trial/cohort/scenario IDs, parameters or split fields."
+  ]
+}

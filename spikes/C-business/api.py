@@ -15,6 +15,9 @@ from edge.contracts.api_models import LiveSnapshot, AssessmentResponse, SyncStat
 from projections import Projections, Unavailable
 from edge.contracts.models import ApiError, _aware
 from store import Store, Conflict, IdempotencyConflict, NotFound, VersionConflict, canonical
+from lifecycle import CloseRequest, close_event
+from evaluations import Evaluations, EvaluationReport
+from evaluations_r07 import R07EvaluationReport
 
 
 def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
@@ -22,6 +25,7 @@ def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
         raise ValueError("explicit token >=24 characters and cursor key >=32 bytes required")
     clock=clock or (lambda: datetime.now(timezone.utc).isoformat())
     projections=Projections(store.path)
+    evaluations=Evaluations(store.path)
     app=FastAPI(title="AquaGuard C prototype",docs_url=None,redoc_url=None,openapi_url=None)
 
     def error(status,code,details=None):
@@ -120,6 +124,10 @@ def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
     def ack(event_id: str,body: AckRequest):
         return store.ack(event_id,body.model_dump(mode="json"),now=clock(),authorized=True)
 
+    @app.post("/api/events/{event_id}/close",response_model=AckResponse,dependencies=[Depends(authorize)])
+    def close(event_id: str,body: CloseRequest):
+        return close_event(store,event_id,body.model_dump(mode="json"),now=clock(),authorized=True)
+
     @app.get("/api/devices/{device_id}/live",response_model=LiveSnapshot,dependencies=[Depends(authorize)])
     def live(device_id: str):
         return projections.read("live",device_id,now=clock())
@@ -135,5 +143,14 @@ def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
     @app.get("/api/experiments/{trial_id}",response_model=ExperimentResult,dependencies=[Depends(authorize)])
     def experiment(trial_id: str):
         return projections.read("experiment",trial_id,now=clock())
+
+    @app.get('/api/evaluations/{evaluation_id}',response_model=EvaluationReport|R07EvaluationReport,dependencies=[Depends(authorize)])
+    def evaluation(evaluation_id: str):
+        return evaluations.read(evaluation_id)
+
+    @app.get('/api/experiments/{trial_id}/evaluations',dependencies=[Depends(authorize)])
+    def experiment_evaluations(trial_id: str):
+        projections.read('experiment',trial_id,now=clock())
+        return evaluations.associations(trial_id)
 
     return app

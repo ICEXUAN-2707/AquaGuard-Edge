@@ -1,0 +1,21 @@
+B experiment reproduction
+========================
+report_version: b-exp-report-v1
+manifest_sha256: 5e50db579e8ab29582d05090ac88aa564f9ab02f69320268b93703346f1f912c
+python: 3.12.10
+
+Commands (from repository root):
+  python spikes/SP-04/experiment/run.py --output spikes/SP-04/evidence/r07
+  python -m pytest spikes/SP-04/tests -q -p no:cacheprovider
+  python -m pytest spikes/SP-03/tests spikes/SP-03-features/tests spikes/SP-04/tests tests/contracts tests/smoke -q -p no:cacheprovider
+
+Expected summary:
+  trials=34 scenarios=17 windows_compared=136
+
+Artifacts:
+  report: spikes/SP-04/evidence/r07/report.json
+  trial_index: spikes/SP-04/evidence/r07/trial_index.json
+  metrics: spikes/SP-04/evidence/r07/metrics.md
+  model_card: spikes/SP-04/evidence/r07/model_card.md
+  model: spikes/SP-04/evidence/r07/model/c3-model.json
+  scenarios: spikes/SP-04/evidence/r07/scenarios_v1.json

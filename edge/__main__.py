@@ -27,7 +27,12 @@ def main() -> int:
         print(f"Cannot listen on {settings.host}:{settings.port}: {exc}", file=sys.stderr)
         return 2
 
-    uvicorn.run(create_app(settings), host=settings.host, port=settings.port, log_level="info")
+    try:
+        app=create_app(settings)
+    except (ConfigurationError,ValueError,OSError) as exc:
+        print(f"Configuration error: {exc}",file=sys.stderr)
+        return 2
+    uvicorn.run(app, host=settings.host, port=settings.port, log_level="info")
     return 0
 
 

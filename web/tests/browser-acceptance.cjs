@@ -1,0 +1,125 @@
+// Run against a fresh, running simulation service. Output contains no token.
+const { chromium } = require(process.env.AQUAGUARD_PLAYWRIGHT || 'playwright');
+const fs = require('node:fs');
+const path = require('node:path');
+const assert = require('node:assert/strict');
+
+(async () => {
+  const base = process.env.AQUAGUARD_BROWSER_URL;
+  const token = process.env.AQUAGUARD_C_TOKEN;
+  const trial=process.env.AQUAGUARD_BROWSER_TRIAL||'demo-trial';
+  if (!base || !token) throw new Error('Explicit local URL and test token required');
+  const url = new URL(base);
+  if (!['127.0.0.1', 'localhost'].includes(url.hostname)) throw new Error('Local service only');
+  const output = path.resolve(process.env.AQUAGUARD_BROWSER_EVIDENCE || 'audit/browser-evidence');
+  fs.mkdirSync(output, { recursive: true });
+  const browser = await chromium.launch({headless:true, executablePath:process.env.AQUAGUARD_CHROMIUM || undefined});
+  const page = await browser.newPage({viewport:{width:1280,height:900}});
+  const errors = [], checks = [];
+  page.on('pageerror', error => errors.push(error.message));
+  const check = name => checks.push(name);
+  try {
+    await page.goto(base);
+    await page.getByRole('heading',{name:'连接本地业务服务'}).waitFor();
+    await page.getByLabel('实验访问凭据').fill('invalid-local-token');
+    await page.getByRole('button',{name:'连接',exact:true}).click();
+    await page.getByText('传感快照：访问凭据无效，请重新连接').waitFor();
+    check('invalid credentials are visible');
+    await page.getByRole('button',{name:'连接设置',exact:true}).click();
+    await page.getByLabel('实验访问凭据').fill(token);
+    await page.getByRole('button',{name:'连接',exact:true}).click();
+    await page.getByText('来源：模拟 · 质量：', {exact:false}).waitFor({timeout:45000});
+    const snapshot = await page.getByText('来源：模拟 · 质量：', {exact:false}).textContent();
+    await page.waitForFunction(old => [...document.querySelectorAll('p')].some(p => p.textContent.includes('来源：模拟 · 质量：') && p.textContent !== old), snapshot, {timeout:15000});
+    check('continuous simulation updates overview');
+    await page.screenshot({path:path.join(output,'overview.png'),fullPage:true});
+    await page.getByRole('button',{name:'事件确认',exact:true}).click();
+    await page.getByRole('button',{name:/WATER_CONTACT/}).first().waitFor({timeout:120000});
+    await page.getByRole('button',{name:/WATER_CONTACT/}).first().click();
+    await page.getByRole('heading',{name:'事件详情'}).waitFor();
+    const ack = page.getByRole('button',{name:'我已知晓',exact:true});
+    if (await ack.isEnabled()) {
+      await page.route('**/api/events/*/ack', route => route.fulfill({status:409,contentType:'application/json',body:JSON.stringify({code:'VERSION_CONFLICT'})}),{times:1});
+      await ack.click();
+      await page.getByText('版本或操作冲突，已重新查询；核对后再次确认。').waitFor();
+      check('ACK conflict prompts requery before retry');
+      await ack.click();
+      await page.getByText('已确认；物理状态与生命周期由后端单独维护。').waitFor();
+      await page.getByText('已确认',{exact:true}).waitFor();
+    } else throw new Error('Use a fresh simulation database for ACK verification');
+    check('user acknowledgement persists and is shown separately');
+    const exported=page.waitForEvent('download');
+    await page.getByRole('button',{name:'导出事件记录',exact:true}).click();
+    const download=await exported;
+    const record=JSON.parse(fs.readFileSync(await download.path(),'utf8'));
+    assert.equal(record.event.ack_status,'ACKNOWLEDGED');
+    check('event export retains backend acknowledgement');
+    await page.getByRole('group',{name:'筛选事件'}).getByRole('button',{name:'未确认',exact:true}).click();
+    assert.equal(await page.locator('.event-card[aria-pressed=true]').count(),0);
+    await page.getByRole('group',{name:'筛选事件'}).getByRole('button',{name:'全部',exact:true}).click();
+    check('event filter applies to loaded records');
+    await page.screenshot({path:path.join(output,'event-ack.png'),fullPage:true});
+    if(process.env.AQUAGUARD_BROWSER_LIFECYCLE==='1'){
+      const close=page.getByRole('button',{name:'关闭已恢复事件',exact:true});
+      await page.waitForFunction(()=>{const b=[...document.querySelectorAll('button')].find(b=>b.textContent==='关闭已恢复事件');return b&&!b.disabled},null,{timeout:45000});
+      await close.click();
+      await page.getByText('已关闭',{exact:true}).waitFor();
+      await page.waitForFunction(()=>[...document.querySelectorAll('.event-card')].filter(b=>b.getAttribute('aria-label')?.includes('WATER_CONTACT')).length>=2,null,{timeout:45000});
+      check('recovered acknowledged event closes and recurrence creates a new event');
+    }
+    await page.getByRole('button',{name:'实验诊断',exact:true}).click();
+    await page.getByLabel('实验ID').fill(trial);
+    await page.getByRole('button',{name:'查询',exact:true}).click();
+    await page.getByText('来源：模拟 · 状态：', {exact:false}).waitFor();
+    assert.ok((await page.locator('.raw-experiment pre').textContent()).includes(trial));
+    check('experiment queries the running trial');
+    await page.getByLabel('实验ID').fill('missing-trial');
+    await page.getByRole('button',{name:'查询',exact:true}).click();
+    await page.getByText('实验查询：尚无对应数据。请核对实验 ID 与当前运行模式。').waitFor();
+    assert.equal(await page.locator('.trial-name').count(),0);
+    await page.getByRole('button',{name:trial==='mqtt-trial'?'MQTT 输入 · mqtt-trial':'内置模拟 · demo-trial',exact:true}).click();
+    await page.getByRole('button',{name:'查询',exact:true}).click();
+    await page.locator('.trial-name').waitFor();
+    check('missing trial clears old results and can recover');
+    if(process.env.AQUAGUARD_BROWSER_EVALUATION){
+      await page.getByRole('heading',{name:'C0–C3 算法对照',exact:true}).waitFor();
+      assert.match(await page.locator('.metric-scope').textContent(),/共 17 项，可判定 10 项，证据不足 7 项/);
+      await page.getByLabel('评估分区').selectOption('all');
+      assert.match(await page.locator('.metric-scope').textContent(),/共 34 项，可判定 20 项，证据不足 14 项/);
+      await page.getByLabel('评估分区').selectOption('eval');
+      await page.getByLabel('筛选方法').selectOption('C3_lightweight_ml_shadow');
+      const exported=page.waitForEvent('download');
+      await page.getByRole('button',{name:'导出评估报告',exact:true}).click();
+      const report=JSON.parse(fs.readFileSync(await (await exported).path(),'utf8'));
+      assert.equal(report.evaluation_id,process.env.AQUAGUARD_BROWSER_EVALUATION);
+      assert.equal(report.report_schema_version,2);
+      check('R07 denominators, split, case filter and report export');
+    }
+    await page.screenshot({path:path.join(output,'experiment.png'),fullPage:true});
+    await page.setViewportSize({width:390,height:844});
+    for (const tab of ['实时总览','事件确认','实验诊断']) {
+      await page.getByRole('button',{name:tab,exact:true}).click();
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),true,tab+' horizontal overflow');
+      await page.screenshot({path:path.join(output,`mobile-${['实时总览','事件确认','实验诊断'].indexOf(tab)}.png`),fullPage:true});
+    }
+    check('three pages fit a 390px viewport');
+    await page.route('**/api/devices/*/live', route => route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({code:'STALE'})}));
+    await page.getByRole('button',{name:'实时总览',exact:true}).click();
+    await page.getByRole('button',{name:'刷新',exact:true}).click();
+    await page.getByText('传感快照：不可用或证据已过期').waitFor();
+    assert.equal(await page.locator('.grid').count(),0);
+    check('unavailable snapshot removes old sensor values');
+    await page.getByRole('button',{name:'连接设置',exact:true}).click();
+    await page.getByRole('button',{name:'断开',exact:true}).click();
+    await page.getByRole('heading',{name:'连接本地业务服务'}).waitFor();
+    assert.equal(await page.locator('pre').count(),0);
+    check('disconnect clears displayed experiment data');
+    assert.deepEqual(errors,[]);
+    fs.writeFileSync(path.join(output,'result.json'),JSON.stringify({status:'PASS',checks,errors,at:new Date().toISOString()},null,2));
+    console.log(JSON.stringify({status:'PASS',checks}));
+  } catch(error) {
+    fs.writeFileSync(path.join(output,'result.json'),JSON.stringify({status:'FAIL',checks,error:error.message,errors},null,2));
+    await page.screenshot({path:path.join(output,'failure.png'),fullPage:true});
+    throw error;
+  } finally { await browser.close(); }
+})().catch(error => {console.error(error);process.exitCode=1});

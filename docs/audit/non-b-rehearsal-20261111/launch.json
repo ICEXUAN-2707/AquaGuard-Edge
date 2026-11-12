@@ -1,0 +1,9 @@
+{
+  "revision": "8cb7372f24858915c676ec5e70ab957e54cf3f13",
+  "tracked_changes": false,
+  "mode": "simulation",
+  "source": "simulation",
+  "port": 8031,
+  "cloud_accepted": false,
+  "b_acceptance": "ON_HOLD"
+}
