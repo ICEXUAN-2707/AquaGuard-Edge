@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "event_id": "12feeb56-7416-42d6-bebf-476695765fab",
+  "before": {
+    "schema_version": "1.1",
+    "event_id": "12feeb56-7416-42d6-bebf-476695765fab",
+    "device_id": "demo01",
+    "event_type": "WATER_CONTACT",
+    "lifecycle": "OPEN",
+    "ack_status": "UNACKNOWLEDGED",
+    "physical_status": "UNKNOWN",
+    "escalation_level": "L2",
+    "version": 2,
+    "created_at": "2026-11-12T04:37:58.088648Z",
+    "origin": "simulation"
+  },
+  "after": {
+    "schema_version": "1.1",
+    "event_id": "12feeb56-7416-42d6-bebf-476695765fab",
+    "device_id": "demo01",
+    "event_type": "WATER_CONTACT",
+    "lifecycle": "OPEN",
+    "ack_status": "UNACKNOWLEDGED",
+    "physical_status": "ACTIVE",
+    "escalation_level": "L2",
+    "version": 3,
+    "created_at": "2026-11-12T04:37:58.088648Z",
+    "origin": "simulation"
+  },
+  "first_boot": "021f9b2aa3da4c388cb49afaf471aca9",
+  "second_boot": "5ccb7ccfd155463cbb488b4ecf194407",
+  "cloud_connected": false
+}
