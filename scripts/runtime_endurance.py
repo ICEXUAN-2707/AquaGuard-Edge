@@ -157,7 +157,10 @@ def main():
         failure=type(exc).__name__
     finally:
         if process is not None and process.poll() is None:
-            process.terminate()
+            if os.name == 'nt':
+                subprocess.run(['taskkill','/PID',str(process.pid),'/T','/F'],capture_output=True,check=False)
+            else:
+                process.terminate()
             try:process.wait(timeout=15)
             except subprocess.TimeoutExpired:process.kill();process.wait(timeout=10)
     try:final=database_snapshot(out/'business.sqlite',final=True)
