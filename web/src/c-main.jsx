@@ -9,6 +9,7 @@ import { Experiment } from './c-experiment.jsx'
 import { label } from './c-display.js'
 import { requestJSON } from './c-request.js'
 import { WorkspaceNavigation } from './c-navigation.jsx'
+import { Analytics } from './c-analytics.jsx'
 
 function download(value) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(value,null,2)], {type:'application/json'}))
@@ -23,6 +24,15 @@ function App() {
   const operation=useRef(new AckIntent())
   const closeIntent=useRef(new CloseIntent())
   const [settingsOpen,setSettingsOpen]=useState(false)
+  const [history,setHistory]=useState([])
+  useEffect(()=>{setHistory([])},[token,device])
+  useEffect(()=>{
+    const live=data.live?.value
+    if(!live)return
+    const time=Date.parse(live.captured_at)
+    if(!Number.isFinite(time))return
+    setHistory(rows=>rows.some(row=>row.time===time)?rows:[...rows,{time,summary:live.sensor_summary}].filter(row=>row.time>=time-30*60*1000).slice(-360))
+  },[data.live])
   const experimentVersion=useRef(new ResponseOrder())
   async function request(path, options={}) {
     return requestJSON(path,token,options)
@@ -118,6 +128,7 @@ function App() {
     </form>
     {!token?<section><h2>连接本地业务服务</h2><p>请先按本地演示手册启动服务，并通过该服务地址打开工作台。凭据仅保存在当前页面内存，刷新后需重新输入。</p></section>:<>
       {tab==='实时总览'&&<Overview data={data} onRefresh={()=>setEpoch(x=>x+1)} onEvents={()=>setTab('事件确认')}/>}
+      {tab==='数据可视化'&&<Analytics data={data} history={history} device={device}/>}
       {tab==='事件确认'&&<Events key={device} resource={data.events} selected={selected} onSelect={setSelected} detail={detail} busy={busy} retry={Boolean(operation.current.body)} onAck={ack} onClose={closeEvent} closeRetry={Boolean(closeIntent.current.body)} onDownload={download} notice={notice} onRefresh={()=>setEpoch(x=>x+1)}/>}
       {tab==='实验诊断'&&<Experiment trial={trial} onTrial={value=>{experimentVersion.current.next();setTrial(value);setExperiment(null)}} onQuery={loadExperiment} result={experiment} onEvaluation={selectEvaluation} onDownload={download}/>}
 
