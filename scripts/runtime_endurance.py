@@ -17,6 +17,46 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def process_tree(root_pid):
+    """Include Windows venv launcher children, using Toolhelp without commands."""
+    if os.name != 'nt':
+        return [root_pid]
+    class Entry(ctypes.Structure):
+        _fields_=[('size',wintypes.DWORD),('usage',wintypes.DWORD),('pid',wintypes.DWORD),
+                  ('heap',ctypes.c_size_t),('module',wintypes.DWORD),('threads',wintypes.DWORD),
+                  ('parent',wintypes.DWORD),('priority',wintypes.LONG),('flags',wintypes.DWORD),
+                  ('exe',wintypes.WCHAR*260)]
+    kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+    kernel.CreateToolhelp32Snapshot.restype=wintypes.HANDLE
+    kernel.CreateToolhelp32Snapshot.argtypes=[wintypes.DWORD,wintypes.DWORD]
+    kernel.Process32FirstW.argtypes=[wintypes.HANDLE,ctypes.POINTER(Entry)]
+    kernel.Process32NextW.argtypes=[wintypes.HANDLE,ctypes.POINTER(Entry)]
+    kernel.CloseHandle.argtypes=[wintypes.HANDLE]
+    snapshot=kernel.CreateToolhelp32Snapshot(2,0)
+    if snapshot==ctypes.c_void_p(-1).value:
+        raise OSError('process snapshot unavailable')
+    parents={}
+    try:
+        entry=Entry();entry.size=ctypes.sizeof(entry)
+        valid=kernel.Process32FirstW(snapshot,ctypes.byref(entry))
+        while valid:
+            parents[entry.pid]=entry.parent
+            valid=kernel.Process32NextW(snapshot,ctypes.byref(entry))
+    finally:kernel.CloseHandle(snapshot)
+    selected={root_pid}
+    while True:
+        expanded=selected|{pid for pid,parent in parents.items() if parent in selected}
+        if expanded==selected:return sorted(selected)
+        selected=expanded
+
+
+def tree_memory(pid):
+    pids=process_tree(pid)
+    values=[memory_bytes(child) for child in pids]
+    return dict(rss_bytes=sum(values) if all(v is not None for v in values) else None,
+                process_count=len(pids))
+
+
 def memory_bytes(pid):
     if os.name != 'nt':
         return None  # Explicitly unavailable; no invented zero.
@@ -104,7 +144,7 @@ def main():
             with (out/'samples.jsonl').open('w',encoding='utf-8') as stream:
                 while True:
                     elapsed=time.monotonic()-started
-                    sample=dict(elapsed_sec=round(elapsed,3),rss_bytes=memory_bytes(process.pid),
+                    sample=dict(elapsed_sec=round(elapsed,3),**tree_memory(process.pid),
                                 process_alive=process.poll() is None,health=request('/health'),
                                 live=request('/api/devices/demo01/live'),**storage_snapshot(out))
                     try:sample['database']=database_snapshot(out/'business.sqlite')
@@ -120,7 +160,8 @@ def main():
             process.terminate()
             try:process.wait(timeout=15)
             except subprocess.TimeoutExpired:process.kill();process.wait(timeout=10)
-    final=database_snapshot(out/'business.sqlite',final=True)
+    try:final=database_snapshot(out/'business.sqlite',final=True)
+    except sqlite3.Error as exc:final={'error_type':type(exc).__name__}
     steady=[s for s in samples if s['elapsed_sec']>=45]
     good=bool(steady) and all(s['health']['status']==200 and s['live']['status']==200 for s in steady)
     passed=not failure and good and final.get('integrity')=='ok' and final.get('duplicate_open_groups')==0

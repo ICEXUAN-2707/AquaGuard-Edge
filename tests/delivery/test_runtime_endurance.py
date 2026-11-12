@@ -17,6 +17,13 @@ def test_growth_ignores_unavailable_memory_and_uses_actual_elapsed():
     assert module.growth([{'elapsed_sec':0,'rss_bytes':None}],'rss_bytes') is None
     assert module.growth([{'elapsed_sec':10,'rss_bytes':100},{'elapsed_sec':70,'rss_bytes':200}],'rss_bytes')==6000
 
+def test_process_tree_memory_does_not_hide_unavailable_child(monkeypatch):
+    monkeypatch.setattr(module,'process_tree',lambda pid:[10,11])
+    monkeypatch.setattr(module,'memory_bytes',lambda pid:100 if pid==10 else None)
+    assert module.tree_memory(10)=={'rss_bytes':None,'process_count':2}
+    monkeypatch.setattr(module,'memory_bytes',lambda pid:100)
+    assert module.tree_memory(10)=={'rss_bytes':200,'process_count':2}
+
 def test_storage_includes_wal_and_checkpoints_not_logs(tmp_path):
     (tmp_path/'business.sqlite').write_bytes(b'a'*10)
     (tmp_path/'business.sqlite-wal').write_bytes(b'a'*5)
