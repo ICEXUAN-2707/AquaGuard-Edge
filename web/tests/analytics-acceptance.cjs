@@ -7,7 +7,8 @@ await page.getByLabel('实验访问凭据').fill(process.env.AQUAGUARD_C_TOKEN);
 await page.getByRole('button',{name:'连接',exact:true}).click();
 await page.getByRole('button',{name:'数据可视化',exact:true}).click();
 await page.getByRole('heading',{name:'三源窗口覆盖趋势'}).waitFor();
-await page.locator('.coverage-chart').waitFor({timeout:20000});
+// A fresh service first needs its 30-second analysis window, then two polls.
+await page.locator('.coverage-chart').waitFor({timeout:65000});
 await page.getByRole('button',{name:'15 分钟',exact:true}).click();
 assert.equal(await page.getByRole('button',{name:'15 分钟',exact:true}).getAttribute('aria-pressed'),'true');
 const download=page.waitForEvent('download');await page.getByRole('button',{name:'导出趋势数据'}).click();await download;
