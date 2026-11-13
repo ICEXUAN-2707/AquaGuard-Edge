@@ -14,3 +14,6 @@ pytest-of-*/
 node_modules/
 web/dist/
 b-repro-temp-*/
+
+# Isolated B experiment scratch outputs
+.local/

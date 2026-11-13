@@ -1,0 +1,1476 @@
+{
+  "model_sha256": "c08c77aba41d2b4cdfd7c1670dc9f828b337b1ff551b6bb60e20b7b6dd15bfbd",
+  "feature_manifest_sha256": "5b3731ddda6e9839a44a4e279b62be52add4b0fa05e204edafea3f89628ab6cf",
+  "schema": "b-proxy-p4-fallback-v1",
+  "windows": 54,
+  "trials": 18,
+  "checks": 162,
+  "all_passed": true,
+  "by_variant": {
+    "missing": 54,
+    "corrupt": 54,
+    "wrong_version": 54
+  },
+  "immutable_model_and_checkpoints": true,
+  "scope": "existing C3 adapter over P3 saved snapshots; no live service or hardware safety test",
+  "records": [
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-002-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-003-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-attended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-idle",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": false,
+      "fallback_value": false,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": null,
+      "fallback_value": null,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:40+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:30+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "missing",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_MISSING",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "corrupt",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_CORRUPT",
+      "passed": true
+    },
+    {
+      "trial_id": "bsim1-s20261110-cohort-004-unattended",
+      "window_end": "2026-11-10T00:00:35+00:00",
+      "variant": "wrong_version",
+      "c2_value": true,
+      "fallback_value": true,
+      "reason": "FALLBACK_MODEL_VERSION_MISMATCH",
+      "passed": true
+    }
+  ]
+}

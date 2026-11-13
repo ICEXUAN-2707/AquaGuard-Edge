@@ -1,0 +1,24 @@
+{
+  "scope": "offline synthetic proxy engineering phase only",
+  "delivery_files_verified": 67,
+  "dataset": {
+    "status": "PASS",
+    "dataset_id": "b-sim1-65ff0bbbac70fcc2",
+    "trials": 72,
+    "window_labels": 216,
+    "observations": 5422,
+    "split_trial_counts": {
+      "train": 36,
+      "validation": 18,
+      "test": 18
+    },
+    "training_complete": false
+  },
+  "model_sha256": "c08c77aba41d2b4cdfd7c1670dc9f828b337b1ff551b6bb60e20b7b6dd15bfbd",
+  "report_links": "PASS",
+  "fallback_checks": 162,
+  "regression_exit_code": 0,
+  "regression_log_sha256": "64c75aefaa43c0a41bfeb31b7c51c9d0eda8f4dd97b0706d1aee384efa7e9d60",
+  "tests_discovered": 38,
+  "test_run_passed": true
+}

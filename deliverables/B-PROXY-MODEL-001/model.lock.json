@@ -1,0 +1,68 @@
+{
+  "schema": "b-trained-model-lock-v1",
+  "task": "proxy approximation only; no true-occupancy accuracy or ML benefit claim",
+  "plan_sha256": "a73885fe4135f480ad5755f64a4ea31e2f097681c282515e5972902654c83c58",
+  "model_sha256": "c08c77aba41d2b4cdfd7c1670dc9f828b337b1ff551b6bb60e20b7b6dd15bfbd",
+  "selected": {
+    "hyperparameters": {
+      "max_depth": 1,
+      "min_samples_leaf": 2,
+      "criterion": "gini",
+      "tie_break": "positive"
+    },
+    "validation_error": 0.0,
+    "validation_error_fraction": "0",
+    "validation_scored_trials": 15
+  },
+  "candidates": [
+    {
+      "hyperparameters": {
+        "max_depth": 1,
+        "min_samples_leaf": 2,
+        "criterion": "gini",
+        "tie_break": "positive"
+      },
+      "validation_error": 0.0,
+      "validation_error_fraction": "0",
+      "validation_scored_trials": 15
+    },
+    {
+      "hyperparameters": {
+        "max_depth": 2,
+        "min_samples_leaf": 2,
+        "criterion": "gini",
+        "tie_break": "positive"
+      },
+      "validation_error": 0.0,
+      "validation_error_fraction": "0",
+      "validation_scored_trials": 15
+    }
+  ],
+  "window_accounting": {
+    "train": {
+      "total": 108,
+      "eligible": 75,
+      "rejected": 33
+    },
+    "test": {
+      "total": 54,
+      "eligible": 45,
+      "rejected": 9
+    },
+    "validation": {
+      "total": 54,
+      "eligible": 40,
+      "rejected": 14
+    }
+  },
+  "test_evaluated": false,
+  "limitation": "validation excludes UNKNOWN labels; full window accounting retained; proxy consistency only",
+  "input_checks": {
+    "source_manifest_sha256": "a3ff1c65ca3ef2776f53a5e1ef768127feb1375f1f9a34a8b3bf25a4468c51e2",
+    "split_sha256": "9b3ee2162b89bf50b50e5ae0effe31b5b706c731cd73681fc5943ffbc5889653",
+    "cohort_validation": "PASS"
+  },
+  "model_roundtrip": "PASS",
+  "runner_sha256": "9387e4987ebed636b7b57182a2a603397b20824fbb1e0e86c4591c821b8ac0b8",
+  "input_validator_sha256": "2060524be54d97c7e568d9f9be31ad04d7d3d1e11d5e9e61a5a914f0c7caae08"
+}

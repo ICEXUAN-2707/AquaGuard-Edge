@@ -1,0 +1,689 @@
+{
+  "schema": "b-expanded-features-v2",
+  "parent": {
+    "status": "PASS",
+    "dataset_id": "b-sim1-65ff0bbbac70fcc2",
+    "trials": 72,
+    "window_labels": 216,
+    "observations": 5422,
+    "split_trial_counts": {
+      "train": 36,
+      "validation": 18,
+      "test": 18
+    },
+    "training_complete": false
+  },
+  "alignment": "sp03-r05-v1",
+  "config": {
+    "width": 30,
+    "lateness": 2,
+    "ttl": 10,
+    "flow_threshold": 0.1
+  },
+  "feature_names": [
+    "flow_mean_lpm",
+    "flow_max_lpm",
+    "flow_active_ratio",
+    "flow_streak_sec",
+    "flow_change_count",
+    "presence_occupied_ratio",
+    "presence_transition_count",
+    "absence_after_flow_sec",
+    "data_coverage_ratio"
+  ],
+  "windows": 216,
+  "rejected": 56,
+  "cross_split_feature_groups": [
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-attended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-attended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-attended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-attended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-attended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-attended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-presence_dropout",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-presence_dropout",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-presence_dropout",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-presence_dropout",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-attended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-attended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-attended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-attended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-attended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-attended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-attended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-attended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-attended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-attended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      }
+    ]
+  ],
+  "features_sha256": "e091ea1f3c0aa74e6ae4ed88efe748b605e56143d4ca40bfc8bf920db31eb805",
+  "publication_policy": "window_end + 2 seconds; no events after window_end",
+  "quality_rejected": 56,
+  "incomplete_vectors": 56,
+  "training_ready": false,
+  "label_status": "candidate labels not assigned; original episode truth retained",
+  "code_sha256": "d0058031fd94c0ccf5abc39832cdc47067ed9bc54cddcffce2a97c607f0a9f91",
+  "split_sha256": "9b3ee2162b89bf50b50e5ae0effe31b5b706c731cd73681fc5943ffbc5889653",
+  "provenance": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "packages": {
+      "pydantic": "2.14.1",
+      "pydantic-core": "2.50.1",
+      "annotated-types": "0.8.0",
+      "typing-extensions": "4.16.0",
+      "typing-inspection": "0.4.5"
+    },
+    "git_commit": "2a04f74a2859f8a97b16a43565456b3a32e59d26",
+    "source_files": {
+      "scripts/extract_b_expanded_features.py": "161938a35d485b5635985d4ad442fbbb526664dfc827e58393417f738d2297b7",
+      "scripts/b_feature_audit.py": "b1a3b8c10a814680cd6cfe39be9cb4dcedeb74e5fa1fabf5497bf6059d267284",
+      "scripts/b_frozen_sources.py": "2670249e486fc1224f515aae91edc25b49174b7aacc1e3335f9b476ba72bc572",
+      "scripts/build_b_sim_dataset.py": "bfb14098aaffb72892957946e8307d168ab6f1bf916ce4983805221d7a75d0bf",
+      "scripts/b_training_inputs.py": "2060524be54d97c7e568d9f9be31ad04d7d3d1e11d5e9e61a5a914f0c7caae08",
+      "scripts/b_bundle_checks.py": "6bc9bc2881e41adf68e521c32cc1612e73245cf06073222eb97ff264857bb428",
+      "scripts/b_evidence_checks.py": "c989a807a0a471dbdd208fe806c1427b7cb55498a033dbc051f7fa74b6e27cbc",
+      "scripts/train_b_proxy.py": "9387e4987ebed636b7b57182a2a603397b20824fbb1e0e86c4591c821b8ac0b8",
+      "scripts/publish_b_proxy_labels.py": "fb581fd27c2aea185ea3e21b6ca2f59077cb9235b8761991238317b846c8e144",
+      "scripts/evaluate_b_proxy.py": "bb0786e22e73697cc54f413caa2bc2ef921ed681c36ac71a1e7c792c95294587",
+      "scripts/verify_b_proxy_fallback.py": "24ebcd859c975f0701644a55f7dcc802404fcf7fd6cba9f949bf438a004906f8",
+      "scripts/verify_b_phase_delivery.py": "6897f321d003a364b8df434dd2f3f65848639c24ed80013b337d83143584bef0",
+      "scripts/compare_b_paired.py": "f9b8818bba58330c4223b12e1e3fc87589d7c7eede519a870fecd834f38b7f38",
+      "spikes/SP-03/src/alignment.py": "f0109ed979e031da0bc4d1ca7ce507f81a82638f7d221afc355245a283faf35f",
+      "spikes/SP-03/src/replay.py": "e06b1756c2672ee7e965442df51f21f81458292a47bfa51a498b46ea2c20d378",
+      "spikes/SP-03/src/stream.py": "3a0533253bbbc29240f32b94ee1a225c58def97f7977562863c71dcccba49d1f",
+      "spikes/SP-03-features/src/basic_flow.py": "fb5c0f51b14ef5531d0feb4219a9a6c816515715ec6466a733ca12cd276afdfa",
+      "spikes/SP-03-features/src/checkpoint.py": "6c439a5fb45a08a4e90584388b46513aae21574fd043e4ff41d031739c52ba2b",
+      "spikes/SP-03-features/src/continuous.py": "e0ffc16f6a36870ffa34cfdaf0331700970483f40b3ac58ab24699b1e7e4181d",
+      "spikes/SP-03-features/src/engine.py": "8c2ab28d583e4b9c24bd6cfcf39398efb7f7be6a75f119577b0fafdc2a1908bb",
+      "spikes/SP-03-features/src/state_features.py": "bd0981daa2131f191dbb2c63c4d9a901f9d343e158916b65171b261be7575c99",
+      "spikes/SP-03-features/src/transitions.py": "e1aeddb0f4fd8d6554a36dc78a191dc3239638713357b03f291c30201cad4a63",
+      "spikes/SP-04/experiment/__init__.py": "0958feded906b36f16e05020edc8dbe81a9b96472cb06f3d85222aa62d9467bc",
+      "spikes/SP-04/experiment/config.py": "e6e707d2713f1ffa04bcc886362d797e8e5701938861a97be7a2b5d4d9833c5f",
+      "spikes/SP-04/experiment/generate.py": "d87f01d36dea61e63757c040727d8d32e8791759a2f36574f704b65b2d78efa0",
+      "spikes/SP-04/experiment/manifest.py": "1e06bbc6ec925691f637b3cb88b3c4f226dc11cfd4b7a6c852ac0c4ba638e9ba",
+      "spikes/SP-04/experiment/methods.py": "2be07617549629ced443a989e7981a9492c1f87b37fef128bd753f85892d7e7c",
+      "spikes/SP-04/experiment/metrics.py": "0759efefb845eff0f79632fa3dc441916e8af3d6abed224774bd5b1fdcf34edb",
+      "spikes/SP-04/experiment/ml.py": "e633aee583501367c127f578a758470ea7980891c2200b01e805f6f0a3460da6",
+      "spikes/SP-04/experiment/replay.py": "683e5643dd28fca2fb463b6e41900041e9e28aae1bc8376239a7d66edd542392",
+      "spikes/SP-04/experiment/report.py": "7cf5f8b0123411d0433b505255a76b32aef4f74798032ad0b713da42e944a24e",
+      "spikes/SP-04/experiment/run.py": "8b61cb36ea55c0308f6e648593608bb5f55f3559091431b91a23b9742bf439c0",
+      "spikes/SP-04/src/rules.py": "974136a53c064262fbed404e1e5d19eefcf3e2c847dff9697d7a418350de1c6c",
+      "spikes/SP-04/src/gates.py": "8a352782bddbf96c0ef1417412edf402f0870c77843d73fbfc1a34ec047bf77c",
+      "spikes/SP-04/src/scenarios.py": "c10fa32fad4c7e13601b2fac1768f862ddc441376388df52487fdf112cb76719",
+      "spikes/SP-04/data/rules_config.json": "50759466cf11fddadbda9e4e6f5dd0a7a55c7057f28cc9766856edc9eb8c9801",
+      "edge/contracts/__init__.py": "4338e84ce799e7793581694a8ea2b689ed0f4049f5f18965810b2c76c7348cad",
+      "edge/contracts/api_models.py": "0c063dcb3710d339773cabf13c724ca0795549877d21a06debe07439939ce282",
+      "edge/contracts/models.py": "672422c04e9eae6cc48e4d5b48a5eda5461ff1fd4cf5228d28c826cbc17cd273"
+    },
+    "dataset_manifest_sha256": "a3ff1c65ca3ef2776f53a5e1ef768127feb1375f1f9a34a8b3bf25a4468c51e2",
+    "split_sha256": "9b3ee2162b89bf50b50e5ae0effe31b5b706c731cd73681fc5943ffbc5889653",
+    "note": "Frozen dependency inventory v2; supersedes incomplete rule provenance; feature bytes unchanged",
+    "source_hash_policy": "SHA256 bytes with CRLF normalized to LF; BOM and all other bytes retained"
+  },
+  "diagnostics": {
+    "strata": [
+      {
+        "split": "test",
+        "scenario": "attended",
+        "windows": 9,
+        "eligible": 9,
+        "reasons": {}
+      },
+      {
+        "split": "test",
+        "scenario": "brief_leave",
+        "windows": 9,
+        "eligible": 9,
+        "reasons": {}
+      },
+      {
+        "split": "test",
+        "scenario": "hidden_present",
+        "windows": 9,
+        "eligible": 9,
+        "reasons": {}
+      },
+      {
+        "split": "test",
+        "scenario": "idle",
+        "windows": 9,
+        "eligible": 9,
+        "reasons": {}
+      },
+      {
+        "split": "test",
+        "scenario": "presence_dropout",
+        "windows": 9,
+        "eligible": 0,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 9,
+          "PRESENCE_STATE_UNKNOWN": 9,
+          "PRESENCE_LOW_COVERAGE": 6
+        }
+      },
+      {
+        "split": "test",
+        "scenario": "unattended",
+        "windows": 9,
+        "eligible": 9,
+        "reasons": {}
+      },
+      {
+        "split": "train",
+        "scenario": "attended",
+        "windows": 18,
+        "eligible": 15,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 3,
+          "FLOW_STATE_UNKNOWN": 3
+        }
+      },
+      {
+        "split": "train",
+        "scenario": "brief_leave",
+        "windows": 18,
+        "eligible": 15,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 3,
+          "FLOW_STATE_UNKNOWN": 3
+        }
+      },
+      {
+        "split": "train",
+        "scenario": "hidden_present",
+        "windows": 18,
+        "eligible": 15,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 3,
+          "FLOW_STATE_UNKNOWN": 3
+        }
+      },
+      {
+        "split": "train",
+        "scenario": "idle",
+        "windows": 18,
+        "eligible": 15,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 3,
+          "FLOW_STATE_UNKNOWN": 3
+        }
+      },
+      {
+        "split": "train",
+        "scenario": "presence_dropout",
+        "windows": 18,
+        "eligible": 0,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 18,
+          "PRESENCE_LOW_COVERAGE": 15,
+          "PRESENCE_STATE_UNKNOWN": 18,
+          "FLOW_STATE_UNKNOWN": 3
+        }
+      },
+      {
+        "split": "train",
+        "scenario": "unattended",
+        "windows": 18,
+        "eligible": 15,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 3,
+          "FLOW_STATE_UNKNOWN": 3
+        }
+      },
+      {
+        "split": "validation",
+        "scenario": "attended",
+        "windows": 9,
+        "eligible": 8,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 1,
+          "FLOW_STATE_UNKNOWN": 1
+        }
+      },
+      {
+        "split": "validation",
+        "scenario": "brief_leave",
+        "windows": 9,
+        "eligible": 8,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 1,
+          "FLOW_STATE_UNKNOWN": 1
+        }
+      },
+      {
+        "split": "validation",
+        "scenario": "hidden_present",
+        "windows": 9,
+        "eligible": 8,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 1,
+          "FLOW_STATE_UNKNOWN": 1
+        }
+      },
+      {
+        "split": "validation",
+        "scenario": "idle",
+        "windows": 9,
+        "eligible": 8,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 1,
+          "FLOW_STATE_UNKNOWN": 1
+        }
+      },
+      {
+        "split": "validation",
+        "scenario": "presence_dropout",
+        "windows": 9,
+        "eligible": 0,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 9,
+          "PRESENCE_STATE_UNKNOWN": 9,
+          "FLOW_STATE_UNKNOWN": 1,
+          "PRESENCE_LOW_COVERAGE": 6
+        }
+      },
+      {
+        "split": "validation",
+        "scenario": "unattended",
+        "windows": 9,
+        "eligible": 8,
+        "reasons": {
+          "INCOMPLETE_FEATURE_VECTOR": 1,
+          "FLOW_STATE_UNKNOWN": 1
+        }
+      }
+    ],
+    "feature_collisions": [
+      {
+        "windows": 32,
+        "scenarios": [
+          "idle"
+        ],
+        "original_episode_targets": [
+          false
+        ],
+        "eligible_windows": 32,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 4,
+        "scenarios": [
+          "idle"
+        ],
+        "original_episode_targets": [
+          false
+        ],
+        "eligible_windows": 0,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 3,
+        "scenarios": [
+          "attended"
+        ],
+        "original_episode_targets": [
+          false
+        ],
+        "eligible_windows": 3,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 3,
+        "scenarios": [
+          "attended"
+        ],
+        "original_episode_targets": [
+          false
+        ],
+        "eligible_windows": 3,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 2,
+        "scenarios": [
+          "presence_dropout"
+        ],
+        "original_episode_targets": [
+          true
+        ],
+        "eligible_windows": 0,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 2,
+        "scenarios": [
+          "presence_dropout"
+        ],
+        "original_episode_targets": [
+          true
+        ],
+        "eligible_windows": 0,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 2,
+        "scenarios": [
+          "attended"
+        ],
+        "original_episode_targets": [
+          false
+        ],
+        "eligible_windows": 2,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 3,
+        "scenarios": [
+          "attended"
+        ],
+        "original_episode_targets": [
+          false
+        ],
+        "eligible_windows": 3,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 2,
+        "scenarios": [
+          "attended"
+        ],
+        "original_episode_targets": [
+          false
+        ],
+        "eligible_windows": 2,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      },
+      {
+        "windows": 3,
+        "scenarios": [
+          "attended"
+        ],
+        "original_episode_targets": [
+          false
+        ],
+        "eligible_windows": 3,
+        "interpretation": "feature equality alone does not establish raw-data leakage"
+      }
+    ],
+    "near_duplicate_scope": "not assessed; exact vector equality only"
+  }
+}

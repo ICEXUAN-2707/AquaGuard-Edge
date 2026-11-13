@@ -1,0 +1,12 @@
+{
+  "stage": "P1",
+  "implementation": "complete with documented scope limits",
+  "training_ready": false,
+  "windows": 216,
+  "quality_rejected": 56,
+  "feature_sha256": "e091ea1f3c0aa74e6ae4ed88efe748b605e56143d4ca40bfc8bf920db31eb805",
+  "proximity_compared_pairs": 8175,
+  "exact_pairs": 339,
+  "near_pairs": 8,
+  "tests_passed": 7
+}

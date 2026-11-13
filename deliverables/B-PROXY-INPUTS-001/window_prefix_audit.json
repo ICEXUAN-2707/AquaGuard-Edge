@@ -1,0 +1,588 @@
+{
+  "schema": "b-causal-prefix-audit-v2",
+  "parent": "b-sim1-65ff0bbbac70fcc2",
+  "publication_policy": "events <= window_end; arrivals <= window_end + lateness",
+  "lateness_sec": 2,
+  "water_excluded": true,
+  "duplicate_groups": [
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-000-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-001-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "test"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-005-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-006-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-007-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-008-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-009-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "validation"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-idle",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-idle",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-idle",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-010-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-unattended",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-hidden_present",
+        "window_end": "2026-11-10T00:00:30+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-unattended",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-hidden_present",
+        "window_end": "2026-11-10T00:00:35+00:00",
+        "split": "train"
+      }
+    ],
+    [
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-unattended",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      },
+      {
+        "trial_id": "bsim1-s20261110-cohort-011-hidden_present",
+        "window_end": "2026-11-10T00:00:40+00:00",
+        "split": "train"
+      }
+    ]
+  ],
+  "cross_split_groups": [],
+  "scope": "raw visible prefix equality only; feature-vector/near-duplicate audit pending",
+  "training_ready": false
+}

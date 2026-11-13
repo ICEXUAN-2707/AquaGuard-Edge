@@ -1,0 +1,86 @@
+{
+  "content_sha256": "8dcda76971793c420dd0411857b07bc3a3b9ffbe305ab4b004718aceeff678a4",
+  "excluded_features": [
+    "water_contact",
+    "water_contact_sec"
+  ],
+  "family": "decision-tree",
+  "feature_names": [
+    "flow_mean_lpm",
+    "flow_max_lpm",
+    "flow_active_ratio",
+    "flow_streak_sec",
+    "flow_change_count",
+    "presence_occupied_ratio",
+    "presence_transition_count",
+    "absence_after_flow_sec",
+    "data_coverage_ratio"
+  ],
+  "feature_version": "m4-r06-v1",
+  "format": "b-exp-tree-v1",
+  "hyperparameters": {
+    "criterion": "gini",
+    "max_depth": 1,
+    "min_samples_leaf": 2,
+    "tie_break": "positive"
+  },
+  "model_version": "c3-decision-tree-v1-8dcda7697179",
+  "training": {
+    "label_sha256": "6436dd24164e06f584176813bb13e888ed080cae362ac681af3b11a0ca8135cc",
+    "plan_sha256": "a73885fe4135f480ad5755f64a4ea31e2f097681c282515e5972902654c83c58",
+    "task": "proxy approximation only; no true-occupancy accuracy or ML benefit claim",
+    "trial_ids": [
+      "bsim1-s20261110-cohort-000-attended",
+      "bsim1-s20261110-cohort-000-brief_leave",
+      "bsim1-s20261110-cohort-000-hidden_present",
+      "bsim1-s20261110-cohort-000-idle",
+      "bsim1-s20261110-cohort-000-unattended",
+      "bsim1-s20261110-cohort-001-attended",
+      "bsim1-s20261110-cohort-001-brief_leave",
+      "bsim1-s20261110-cohort-001-hidden_present",
+      "bsim1-s20261110-cohort-001-idle",
+      "bsim1-s20261110-cohort-001-unattended",
+      "bsim1-s20261110-cohort-006-attended",
+      "bsim1-s20261110-cohort-006-brief_leave",
+      "bsim1-s20261110-cohort-006-hidden_present",
+      "bsim1-s20261110-cohort-006-idle",
+      "bsim1-s20261110-cohort-006-unattended",
+      "bsim1-s20261110-cohort-008-attended",
+      "bsim1-s20261110-cohort-008-brief_leave",
+      "bsim1-s20261110-cohort-008-hidden_present",
+      "bsim1-s20261110-cohort-008-idle",
+      "bsim1-s20261110-cohort-008-unattended",
+      "bsim1-s20261110-cohort-010-attended",
+      "bsim1-s20261110-cohort-010-brief_leave",
+      "bsim1-s20261110-cohort-010-hidden_present",
+      "bsim1-s20261110-cohort-010-idle",
+      "bsim1-s20261110-cohort-010-unattended",
+      "bsim1-s20261110-cohort-011-attended",
+      "bsim1-s20261110-cohort-011-brief_leave",
+      "bsim1-s20261110-cohort-011-hidden_present",
+      "bsim1-s20261110-cohort-011-idle",
+      "bsim1-s20261110-cohort-011-unattended"
+    ]
+  },
+  "tree": {
+    "feature": "presence_occupied_ratio",
+    "impurity": 0.0,
+    "leaf": false,
+    "left": {
+      "leaf": true,
+      "positives": 30,
+      "samples": 30,
+      "score": 1.0,
+      "value": 1
+    },
+    "right": {
+      "leaf": true,
+      "positives": 0,
+      "samples": 45,
+      "score": 0.0,
+      "value": 0
+    },
+    "samples": 75,
+    "threshold": 0.6333333333333333
+  }
+}
