@@ -3,6 +3,7 @@ import argparse
 import ctypes
 from ctypes import wintypes
 import json
+import math
 import os
 from pathlib import Path
 import secrets
@@ -32,6 +33,28 @@ def host_clocks():
 def suspend_delta(previous,current):
     if previous is None or current is None:return None
     return max(0,(current['uptime_seconds']-previous['uptime_seconds'])-(current['awake_seconds']-previous['awake_seconds']))
+
+
+def keep_awake(enabled):
+    """Thread-scoped system sleep request; never changes display/power settings."""
+    if not enabled:return
+    if os.name!='nt':raise RuntimeError('keep-awake requires Windows')
+    kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+    function=kernel.SetThreadExecutionState
+    function.argtypes=[wintypes.DWORD];function.restype=wintypes.DWORD
+    if not function(0x80000001):raise OSError('system awake request failed')
+
+
+def release_awake(enabled):
+    if enabled and os.name=='nt':
+        ctypes.WinDLL('kernel32').SetThreadExecutionState(0x80000000)
+
+
+def sampling_coverage(samples,interval):
+    gaps=[b['elapsed_sec']-a['elapsed_sec'] for a,b in zip(samples,samples[1:])]
+    limit=max(5,interval*2)
+    return {'max_sample_gap_seconds':max(gaps,default=0), 'gap_limit_seconds':limit,
+            'coverage_valid':len(samples)>=2 and all(gap<=limit for gap in gaps)}
 
 
 def process_tree(root_pid):
@@ -132,8 +155,9 @@ def main():
     parser.add_argument('--seconds',type=float,default=3600)
     parser.add_argument('--interval',type=float,default=15)
     parser.add_argument('--port',type=int,default=8037)
+    parser.add_argument('--keep-awake',action='store_true',help='Windows process-scoped sleep inhibition for this observation only')
     args=parser.parse_args()
-    if args.seconds<45 or args.interval<1 or not 1<=args.port<=65535:
+    if not math.isfinite(args.seconds) or not math.isfinite(args.interval) or args.seconds<45 or args.interval<1 or not 1<=args.port<=65535:
         parser.error('seconds >=45, interval >=1 and valid port required')
     with socket.socket() as probe: probe.bind(('127.0.0.1',args.port))
     out=args.directory.resolve();out.mkdir(parents=True,exist_ok=False)
@@ -144,7 +168,7 @@ def main():
     revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     metadata=dict(revision=revision,tracked_changes=bool(subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],cwd=ROOT,text=True).strip()),
                   source='simulation',mode='wall_clock',requested_seconds=args.seconds,interval=args.interval,
-                  python=sys.version,cloud_accepted=False)
+                  python=sys.version,cloud_accepted=False,keep_awake_requested=args.keep_awake)
     (out/'run.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
     def request(route):
         began=time.monotonic()
@@ -158,6 +182,7 @@ def main():
         except (OSError,ValueError):return {'status':None}
     samples=[];started=time.monotonic();failure=None;process=None;previous=None;previous_host=None
     try:
+        keep_awake(args.keep_awake)
         with (out/'service.log').open('w',encoding='utf-8') as log:
             process=subprocess.Popen([sys.executable,'-m','edge'],cwd=ROOT,env=env,stdout=log,stderr=log)
             with (out/'samples.jsonl').open('w',encoding='utf-8') as stream:
@@ -182,6 +207,7 @@ def main():
     except BaseException as exc:
         failure=type(exc).__name__
     finally:
+        release_awake(args.keep_awake)
         if process is not None and process.poll() is None:
             if os.name == 'nt':
                 subprocess.run(['taskkill','/PID',str(process.pid),'/T','/F'],capture_output=True,check=False)
@@ -196,12 +222,14 @@ def main():
     with socket.socket() as probe:
         probe.settimeout(1)
         port_closed=probe.connect_ex(('127.0.0.1',args.port))!=0
-    passed=not failure and good and port_closed and final.get('integrity')=='ok' and final.get('duplicate_open_groups')==0
+    coverage=sampling_coverage(samples,args.interval)
+    passed=not failure and good and coverage['coverage_valid'] and port_closed and final.get('integrity')=='ok' and final.get('duplicate_open_groups')==0
     result=dict(status='PASS' if passed else 'FAIL',failure_type=failure,
                 observed_seconds=round(time.monotonic()-started,3),samples=len(samples),
                 steady_samples=len(steady),steady_api_available=good,database=final,
                 owned_process_exited=process is not None and process.poll() is not None,
                 port_closed=port_closed,
+                sampling_coverage=coverage,
                 rss_peak_bytes=max((s['rss_bytes'] for s in samples if s['rss_bytes'] is not None),default=None),
                 observed_growth_bytes_per_hour={key:growth(samples,key) for key in ('rss_bytes','sqlite_bytes','checkpoint_bytes')},
                 steady_growth_bytes_per_hour={key:growth(steady,key) for key in ('rss_bytes','sqlite_bytes','checkpoint_bytes')},

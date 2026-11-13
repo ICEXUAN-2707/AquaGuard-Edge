@@ -23,6 +23,11 @@ def test_host_suspend_is_not_confused_with_awake_scheduling_gap():
     assert module.suspend_delta(before,{'uptime_seconds':160,'awake_seconds':90})==50
     assert module.suspend_delta(None,before) is None
 
+def test_sampling_gap_cannot_pass_even_when_api_samples_are_healthy():
+    samples=[{'elapsed_sec':0},{'elapsed_sec':15},{'elapsed_sec':797}]
+    assert module.sampling_coverage(samples,15)['coverage_valid'] is False
+    assert module.sampling_coverage(samples[:2],15)['coverage_valid'] is True
+
 def test_process_tree_memory_does_not_hide_unavailable_child(monkeypatch):
     monkeypatch.setattr(module,'process_tree',lambda pid:[10,11])
     monkeypatch.setattr(module,'memory_bytes',lambda pid:100 if pid==10 else None)
