@@ -1,0 +1,13 @@
+{
+  "phase": "completed",
+  "supervisor_pid": 33476,
+  "started_at": "2026-11-13T06:19:24.419576+00:00",
+  "child_pid": 13032,
+  "child_exit_code": 0,
+  "result_exists": true,
+  "kill_on_supervisor_exit": true,
+  "heartbeat_at": "2026-11-13T06:20:54.937472+00:00",
+  "observation_status": "PASS",
+  "finished_at": "2026-11-13T06:20:58.516667+00:00",
+  "child_exit_confirmed": true
+}

@@ -54,3 +54,24 @@ def test_atomic_save_failure_leaves_no_partial_checkpoint(tmp_path,monkeypatch):
     monkeypatch.setattr(checkpoint.os,'replace',fail)
     with pytest.raises(OSError,match='injected'):save(tmp_path,w,rows,alignment_config={})
     assert list(tmp_path.iterdir())==[]
+
+def test_scoped_verification_reuses_compute_but_never_mutable_results_or_path_trust(tmp_path,monkeypatch):
+    import checkpoint
+    rows=history();w=align(rows,[T+timedelta(seconds=60)])['windows'][0]
+    output=save(tmp_path,w,rows,alignment_config={});path=Path(output['state_checkpoint_ref'])
+    compute_original=checkpoint.compute;calls=[]
+    def counted(*args,**kwargs):
+        calls.append(1);return compute_original(*args,**kwargs)
+    monkeypatch.setattr(checkpoint,'compute',counted)
+    with checkpoint.verification_scope():
+        restored=restore(path);restored['history'].clear();restored['last_window'].clear()
+        restored['feature_window']['features']['flow_mean_lpm']=999
+        assert restore(path)['history'] and restore(path)['last_window']
+        assert restore(path)['feature_window']==output
+        assert len(calls)==1
+        with pytest.raises(ValueError,match='configuration'):restore(path,expected_config={'ttl':99})
+        original=path.read_bytes();path.write_bytes(original+b' ')
+        with pytest.raises(ValueError,match='digest'):restore(path)
+        path.write_bytes(original)
+    restore(path)
+    assert len(calls)==2  # No reuse across publication lifetimes.

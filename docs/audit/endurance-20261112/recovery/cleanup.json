@@ -1,0 +1,37 @@
+[
+  {
+    "pid": 31680,
+    "exitcode": 0,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 32440,
+    "exitcode": 1,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 37564,
+    "exitcode": 0,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 35528,
+    "exitcode": 0,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 37576,
+    "exitcode": 1,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 36308,
+    "exitcode": 1,
+    "exit_confirmed": true
+  },
+  {
+    "pid": 8232,
+    "exitcode": 1,
+    "exit_confirmed": true
+  }
+]

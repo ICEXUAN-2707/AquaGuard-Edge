@@ -1,0 +1,18 @@
+{
+  "steady_live_status_counts": {
+    "200": 132,
+    "503": 11
+  },
+  "steady_health_status_counts": {
+    "200": 143
+  },
+  "first_bad_sec": 714.406,
+  "last_bad_sec": 3532.594,
+  "max_sample_gap_sec": 781.6880000000001,
+  "final_storage": {
+    "sqlite_bytes": 1191936,
+    "checkpoint_bytes": 60733442,
+    "checkpoint_files": 377
+  },
+  "limitations": "Sample counts are not continuous availability percentages; sparse sampling and host scheduling gaps require separate diagnosis."
+}

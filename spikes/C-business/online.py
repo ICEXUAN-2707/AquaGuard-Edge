@@ -3,10 +3,11 @@ from datetime import timedelta
 from pathlib import Path
 from uuid import uuid4
 import hashlib
+from runtime_diagnostics import phase as timed_phase
 
 from b_bridge import publish_window
 from alignment import align
-from checkpoint import save
+from checkpoint import save, verification_scope
 from policy import Policy
 from projections import Projections
 from water import WaterService
@@ -57,14 +58,19 @@ class Simulation:
                        value=value, quality="valid", source="simulation")
             self.rows.append(row)
             if sensor == "water":
-                self.water.ingest(row, now=now.isoformat(), policy=Policy(10, 2),
-                    policy_version="g1-simulation-v1", trusted_device="demo01",
-                    trusted_source="simulation", escalation_level="L2")
+                with timed_phase('raw_water_ingest'):
+                    self.water.ingest(row, now=now.isoformat(), policy=Policy(10, 2),
+                        policy_version="g1-simulation-v1", trusted_device="demo01",
+                        trusted_source="simulation", escalation_level="L2")
         self.sequence += 1
         self.last = now
         return self.publish(now)
 
     def publish(self, now):
+        with verification_scope():
+            return self._publish(now)
+
+    def _publish(self, now):
         """Shared analysis for received observations; never generates inputs."""
         cutoff = (now-timedelta(seconds=180)).isoformat()
         self.rows = [r for r in self.rows if r["received_at"] >= cutoff]
@@ -82,12 +88,16 @@ class Simulation:
         if end < self.next_end or (now-end).total_seconds() >= 10:
             return None
         config = dict(width=30, lateness=2, ttl=10, flow_threshold=0.1)
-        window = align(self.rows, [end], **config)["windows"][0]
-        fw = save(self.checkpoints, window, self.rows, alignment_config=config)
-        self.queries.publish('experiment',dict(schema_version='1.1',trial_id=self.trial,
-            source='simulation',status='RUNNING',started_at=self.start.isoformat(),ended_at=None,
-            asset_refs=[fw['state_checkpoint_ref']]),captured_at=now.isoformat())
-        self.context.ingest(fw,now=now.isoformat(),checkpoint_root=self.checkpoints)
+        with timed_phase('alignment'):
+            window = align(self.rows, [end], **config)["windows"][0]
+        with timed_phase('checkpoint_compute_write_fsync'):
+            fw = save(self.checkpoints, window, self.rows, alignment_config=config)
+        with timed_phase('experiment_projection'):
+            self.queries.publish('experiment',dict(schema_version='1.1',trial_id=self.trial,
+                source='simulation',status='RUNNING',started_at=self.start.isoformat(),ended_at=None,
+                asset_refs=[fw['state_checkpoint_ref']]),captured_at=now.isoformat())
+        with timed_phase('context_verify_event_transaction'):
+            self.context.ingest(fw,now=now.isoformat(),checkpoint_root=self.checkpoints)
         water_rows=[r for r in self.rows if r['sensor_type']=='water'
                     and r['observation_id'] in window['source_observation_ids']
                     and 0<=(_aware(window['window_end'])-_aware(r['received_at'])).total_seconds()<8]
@@ -100,8 +110,10 @@ class Simulation:
             if signals[0]['value']:
                 # The same evidence can reach both paths, sharing Store's unique OPEN key.
                 # Never use historical dry to override the raw fast-path state.
-                self.water.open_water(signals[0],now=now.isoformat(),escalation_level='L2',ttl_seconds=10)
-        assessment = publish_window(self.queries, fw, now=now.isoformat(),
-                                    checkpoint_root=self.checkpoints,safety_signals=signals)
+                with timed_phase('water_event_transaction'):
+                    self.water.open_water(signals[0],now=now.isoformat(),escalation_level='L2',ttl_seconds=10)
+        with timed_phase('live_assessment_verify_publish'):
+            assessment = publish_window(self.queries, fw, now=now.isoformat(),
+                                        checkpoint_root=self.checkpoints,safety_signals=signals)
         self.next_end = end+timedelta(seconds=5)
         return assessment

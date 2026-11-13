@@ -1,0 +1,62 @@
+{
+  "gaps_over_30_seconds": [
+    {
+      "previous_elapsed": 93.266,
+      "current_elapsed": 714.406,
+      "gap_seconds": 621.14,
+      "previous_captured_at": "2026-11-12T04:55:07.959644Z",
+      "current_captured_at": null,
+      "current_status": 503
+    },
+    {
+      "previous_elapsed": 714.406,
+      "current_elapsed": 1496.094,
+      "gap_seconds": 781.6880000000001,
+      "previous_captured_at": null,
+      "current_captured_at": null,
+      "current_status": 503
+    }
+  ],
+  "power_events": [
+    {
+      "utc": "2026-11-12T05:18:34.2173702Z",
+      "id": 507,
+      "event_description": "The system is exiting Modern Standby "
+    },
+    {
+      "utc": "2026-11-12T05:05:31.6333623Z",
+      "id": 506,
+      "event_description": "The system is entering Modern Standby "
+    },
+    {
+      "utc": "2026-11-12T05:05:31.6314048Z",
+      "id": 507,
+      "event_description": "The system is exiting Modern Standby "
+    },
+    {
+      "utc": "2026-11-12T04:55:15.3804981Z",
+      "id": 506,
+      "event_description": "The system is entering Modern Standby "
+    },
+    {
+      "utc": "2026-11-12T04:55:15.3796418Z",
+      "id": 507,
+      "event_description": "The system is exiting Modern Standby "
+    },
+    {
+      "utc": "2026-11-12T04:55:13.4828870Z",
+      "id": 506,
+      "event_description": "The system is entering Modern Standby "
+    },
+    {
+      "utc": "2026-11-12T04:55:13.4816603Z",
+      "id": 507,
+      "event_description": "The system is exiting Modern Standby "
+    },
+    {
+      "utc": "2026-11-12T04:55:12.9302691Z",
+      "id": 506,
+      "event_description": "The system is entering Modern Standby "
+    }
+  ]
+}

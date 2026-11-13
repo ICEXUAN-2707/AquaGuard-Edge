@@ -1,0 +1,14 @@
+{
+  "equal_sections": {
+    "metrics": true,
+    "trials": true,
+    "online_offline": true,
+    "fallback_check": true
+  },
+  "new_section_sha256": {
+    "metrics": "c70c9eadd902c4428b07bdb4315742443b7498dac92d4715f3ec15201c76eab9",
+    "trials": "a2440c096d23428dd388501aa7e13d9753f5041c6b80af8ded46c07379f8e101",
+    "online_offline": "305c066e8199241fb4da3fb2264b004a3fb2ee799068e7f9553540f2b7090224",
+    "fallback_check": "9253a7fdbfee4db3b274e0b55943f9c1df9d71eda41ea59490543d8f588a87ff"
+  }
+}

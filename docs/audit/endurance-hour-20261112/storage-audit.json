@@ -1,0 +1,32 @@
+﻿{
+  "scope": "read_only_inventory",
+  "table_counts": {
+    "events": 1,
+    "transitions": 61,
+    "outbox": 61,
+    "operations": 0,
+    "outbox_payloads": 61,
+    "water_state": 1,
+    "water_inputs": 1636,
+    "water_boots": 1,
+    "query_projections": 3,
+    "evaluations": 0,
+    "experiment_evaluations": 0,
+    "context_state": 1
+  },
+  "checkpoint_files": 377,
+  "checkpoint_bytes": 60733442,
+  "referenced_present": 1,
+  "referenced_missing": 0,
+  "no_reference_observed": 376,
+  "no_reference_observed_bytes": 60599776,
+  "outside_or_relative_references": 0,
+  "unparsed_json_cells": 0,
+  "deletion_authorized": false,
+  "limitations": [
+    "Only explicit asset_refs/state_checkpoint_ref JSON fields in TEXT columns are scanned.",
+    "In-memory, external exports, other databases and historical snapshots are not scanned.",
+    "Filesystem listing and database transaction are not one atomic snapshot; pause writers for retention decisions.",
+    "No observed reference does not mean safe to delete."
+  ]
+}

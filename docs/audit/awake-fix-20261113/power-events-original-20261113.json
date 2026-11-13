@@ -1,0 +1,42 @@
+﻿[
+    {
+        "utc":  "2026-11-12T05:18:34.2173702Z",
+        "id":  507,
+        "event_description":  "The system is exiting Modern Standby "
+    },
+    {
+        "utc":  "2026-11-12T05:05:31.6333623Z",
+        "id":  506,
+        "event_description":  "The system is entering Modern Standby "
+    },
+    {
+        "utc":  "2026-11-12T05:05:31.6314048Z",
+        "id":  507,
+        "event_description":  "The system is exiting Modern Standby "
+    },
+    {
+        "utc":  "2026-11-12T04:55:15.3804981Z",
+        "id":  506,
+        "event_description":  "The system is entering Modern Standby "
+    },
+    {
+        "utc":  "2026-11-12T04:55:15.3796418Z",
+        "id":  507,
+        "event_description":  "The system is exiting Modern Standby "
+    },
+    {
+        "utc":  "2026-11-12T04:55:13.4828870Z",
+        "id":  506,
+        "event_description":  "The system is entering Modern Standby "
+    },
+    {
+        "utc":  "2026-11-12T04:55:13.4816603Z",
+        "id":  507,
+        "event_description":  "The system is exiting Modern Standby "
+    },
+    {
+        "utc":  "2026-11-12T04:55:12.9302691Z",
+        "id":  506,
+        "event_description":  "The system is entering Modern Standby "
+    }
+]

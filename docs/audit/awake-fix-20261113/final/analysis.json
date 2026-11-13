@@ -1,0 +1,14 @@
+﻿{
+  "samples": 176,
+  "steady_samples": 167,
+  "steady_live_status_counts": {
+    "200": 167
+  },
+  "max_sample_gap_seconds": 7.39100000000326,
+  "max_estimated_suspend_seconds": 0.01451010002347175,
+  "max_advance_seconds": 2.5939999999827705,
+  "max_runtime_gap_seconds": 0.42199999999138527,
+  "max_timer_failures": 0,
+  "unavailable_samples": [],
+  "note": "Diagnostics follow the live request and may reflect a later state. Missing suspend metrics are unknown, not proof of awake operation. Tiny clock differences are quantization noise; no automatic root-cause verdict."
+}

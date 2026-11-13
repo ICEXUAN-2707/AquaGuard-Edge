@@ -1,0 +1,11 @@
+{
+  "revision": "e8735bf4757fff12e777570f037dceee6345d273",
+  "tracked_changes": false,
+  "source": "simulation",
+  "mode": "wall_clock",
+  "requested_seconds": 900.0,
+  "interval": 5.0,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "cloud_accepted": false,
+  "keep_awake_requested": true
+}
