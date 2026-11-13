@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from b_feature_audit import validate_split
 from build_b_sim_dataset import verify
+from b_frozen_sources import verify_sources
 
 def verify_inputs(root,feature_manifest,plan,rows,source=None,split=None):
     root=Path(root)
@@ -17,7 +18,5 @@ def verify_inputs(root,feature_manifest,plan,rows,source=None,split=None):
     if {r['trial_id'] for r in rows}!=set(assignments):raise ValueError('trial inventory mismatch')
     for row in rows:
         if row['split']!=assignments[row['trial_id']]:raise ValueError('row differs from frozen split')
-    for relative,digest in feature_manifest['provenance']['source_files'].items():
-        path=(root/relative).resolve()
-        if not path.is_relative_to(root.resolve()) or sha(path)!=digest:raise ValueError('feature implementation changed: '+relative)
+    verify_sources(root,feature_manifest['provenance']['source_files'])
     return {'source_manifest_sha256':sha(source/'manifest.json'),'split_sha256':sha(split),'cohort_validation':'PASS'}

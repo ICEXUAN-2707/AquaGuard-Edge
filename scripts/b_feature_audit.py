@@ -1,10 +1,11 @@
-﻿"""P1 partition validation and metadata; never part of model input."""
+"""P1 partition validation and metadata; never part of model input."""
 from collections import Counter, defaultdict
 import hashlib
 import importlib.metadata
 import json
 import subprocess
 import sys
+from b_frozen_sources import source_digests
 
 
 def validate_split(split, trials):
@@ -31,7 +32,7 @@ def provenance(root, source, split_path):
         files.extend(sorted((root/directory).glob('*.py')))
     return dict(python=sys.version,packages={name:importlib.metadata.version(name) for name in ('pydantic','pydantic-core','annotated-types','typing-extensions','typing-inspection')},
                 git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),
-                source_files={str(p.relative_to(root)):digest(p) for p in files},
+                source_files=source_digests(root),
                 dataset_manifest_sha256=digest(source/'manifest.json'),split_sha256=digest(split_path),
                 note='source hashes capture uncommitted implementation; commit alone is insufficient')
 

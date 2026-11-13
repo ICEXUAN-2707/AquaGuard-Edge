@@ -1,10 +1,11 @@
-﻿"""Final read-only evidence verification and captured targeted regression."""
+"""Final read-only evidence verification and captured targeted regression."""
 import hashlib
 import json
 from pathlib import Path
 import subprocess
 import sys
 from build_b_sim_dataset import verify
+from b_training_inputs import verify_inputs
 ROOT=Path(__file__).resolve().parents[1]
 
 def run(output):
@@ -14,6 +15,12 @@ def run(output):
         p=ROOT/entry['path']
         if p.stat().st_size!=entry['bytes'] or hashlib.sha256(p.read_bytes()).hexdigest()!=entry['sha256']:raise ValueError('delivery digest mismatch: '+str(p))
     dataset=verify(ROOT/'deliverables/B-SIM-001')
+    feature_dir=ROOT/'deliverables/B-PROXY-INPUTS-001'
+    plan=json.loads((ROOT/'deliverables/B-CANDIDATE-PROXY-001/training_plan.lock.json').read_text())
+    feature_manifest=json.loads((feature_dir/'manifest.json').read_text())
+    if hashlib.sha256((feature_dir/'manifest.json').read_bytes()).hexdigest()!=plan['feature_manifest_sha256']:raise ValueError('feature manifest binding mismatch')
+    rows=[json.loads(line) for line in (feature_dir/'features.jsonl').read_bytes().splitlines()]
+    verify_inputs(ROOT,feature_manifest,plan,rows)
     model_dir=ROOT/'deliverables/B-PROXY-MODEL-001'
     lock=json.loads((model_dir/'model.lock.json').read_text())
     model_hash=hashlib.sha256((model_dir/'model.json').read_bytes()).hexdigest()
@@ -29,7 +36,7 @@ def run(output):
     summary=dict(scope='offline synthetic proxy engineering phase only',delivery_files_verified=len(manifest['files']),dataset=dataset,
                  model_sha256=model_hash,report_links='PASS',fallback_checks=162,regression_exit_code=result.returncode,
                  regression_log_sha256=hashlib.sha256((output/'unittest.log').read_bytes()).hexdigest(),
-                 tests_expected=17,test_run_passed=result.returncode==0)
+                 tests_expected=24,test_run_passed=result.returncode==0)
     (output/'verification.json').write_text(json.dumps(summary,indent=2)+'\n')
     if result.returncode:raise RuntimeError('targeted regression failed')
     return summary

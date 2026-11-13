@@ -1,4 +1,4 @@
-﻿"""Publish an explicit causal evidence-proxy label contract, never efficacy truth."""
+"""Publish an explicit causal evidence-proxy label contract, never efficacy truth."""
 import argparse
 from collections import Counter
 import hashlib
@@ -42,7 +42,7 @@ def publish(features,output):
                   use='engineering proxy experiment only',human_signed=False)
     (output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     lock=dict(schema='b-training-plan-v1',status='pre-registered-no-training-run',label_manifest_sha256=hashlib.sha256((output/'manifest.json').read_bytes()).hexdigest(),
-              parent_features_sha256=parent['features_sha256'],split_sha256=parent['split_sha256'],
+              parent_features_sha256=parent['features_sha256'],feature_manifest_sha256=hashlib.sha256((features/'manifest.json').read_bytes()).hexdigest(),split_sha256=parent['split_sha256'],
               task='proxy approximation only; no true-occupancy accuracy or ML benefit claim',
               candidates=[dict(max_depth=d,min_samples_leaf=2,criterion='gini',tie_break='positive') for d in (1,2)],
               fitting='train only; non-UNKNOWN labels and eligible complete vectors; no imputation, scaling or class reweighting',

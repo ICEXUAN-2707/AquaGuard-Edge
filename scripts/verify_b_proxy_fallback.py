@@ -1,4 +1,4 @@
-﻿"""P4 adapter-level fault injection; immutable model and checkpoints."""
+"""P4 adapter-level fault injection; immutable model and checkpoints."""
 import argparse
 from collections import Counter
 from datetime import datetime
@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 from train_b_proxy import ROOT,checked
+from b_training_inputs import verify_inputs
 from checkpoint import restore
 from rules import classify
 from experiment.methods import c2_rules,c3_shadow
@@ -14,6 +15,11 @@ from experiment.methods import c2_rules,c3_shadow
 def run(checkpoints,model_dir,output):
     checkpoints,model_dir,output=map(Path,(checkpoints,model_dir,output))
     lock=json.loads((model_dir/'model.lock.json').read_text())
+    plan=json.loads(checked(model_dir/'training_plan.lock.json',lock['plan_sha256']))
+    feature_dir=ROOT/'deliverables/B-PROXY-INPUTS-001'
+    fm=json.loads(checked(feature_dir/'manifest.json',plan['feature_manifest_sha256']))
+    rows=[json.loads(line) for line in checked(feature_dir/'features.jsonl',plan['parent_features_sha256']).splitlines()]
+    verify_inputs(ROOT,fm,plan,rows)
     model_raw=checked(model_dir/'model.json',lock['model_sha256'])
     model=json.loads(model_raw)
     output.mkdir(parents=True,exist_ok=False)
@@ -37,7 +43,7 @@ def run(checkpoints,model_dir,output):
                                 c2_value=fixed['value'],fallback_value=result['value'],reason=result['reason'],passed=passed))
     if before!={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}:raise ValueError('checkpoint modified')
     checked(model_dir/'model.json',lock['model_sha256'])
-    report=dict(schema='b-proxy-p4-fallback-v1',windows=len(paths),trials=len({r['trial_id'] for r in records}),
+    report=dict(model_sha256=lock['model_sha256'],feature_manifest_sha256=plan['feature_manifest_sha256'],schema='b-proxy-p4-fallback-v1',windows=len(paths),trials=len({r['trial_id'] for r in records}),
                 checks=len(records),all_passed=True,by_variant=dict(Counter(r['variant'] for r in records)),
                 immutable_model_and_checkpoints=True,scope='existing C3 adapter over P3 saved snapshots; no live service or hardware safety test',
                 records=records)

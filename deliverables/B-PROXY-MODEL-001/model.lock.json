@@ -1,8 +1,8 @@
 {
   "schema": "b-trained-model-lock-v1",
   "task": "proxy approximation only; no true-occupancy accuracy or ML benefit claim",
-  "plan_sha256": "ba15975f6abbecda1690ddb017585647bbcad92d42661d3caf30d01ef3abe0dc",
-  "model_sha256": "567a3d496f72721cc56d161e26c477f7d6ca3bd4b7a1353618438b0ef74a2132",
+  "plan_sha256": "6ebdb36c4770e438f4844aee7fd5933084184e081385b58b7bfad19561de5973",
+  "model_sha256": "6a7372f27616b5f0507f621c6f3421593d640c72cdb3b2a1190c73c7f89bf54c",
   "selected": {
     "hyperparameters": {
       "max_depth": 1,
@@ -63,6 +63,6 @@
     "cohort_validation": "PASS"
   },
   "model_roundtrip": "PASS",
-  "runner_sha256": "dce39ac64e421f7d9140a87cdb0b891581da5df8b5b1a6327bc65a87d60e4a88",
-  "input_validator_sha256": "236f63db7e19ef8cc98f049ceb758130ce7f7f0d0072b5b825ee99261a7b3616"
+  "runner_sha256": "29d9ed6d327c60913b1f313a0ce48ce4d264472474ebac12cc44b785e0763039",
+  "input_validator_sha256": "37b01f7941b0cb73ac9dba6d293e7e7c884cca4a6b9acb9545780de5bec6c5b7"
 }

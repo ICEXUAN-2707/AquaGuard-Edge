@@ -1,6 +1,13 @@
 test_reject_duplicate_missing_and_cohort_leakage (test_b_feature_audit.SplitProtectionTest.test_reject_duplicate_missing_and_cohort_leakage) ... ok
 test_allowlist_and_invalid_values (test_b_feature_contract.FeatureContractTest.test_allowlist_and_invalid_values) ... ok
 test_fixed_proximity (test_b_feature_contract.FeatureContractTest.test_fixed_proximity) ... ok
+test_complete_snapshot_passes (test_b_frozen_sources.FrozenSourcesTest.test_complete_snapshot_passes) ... ok
+test_crlf_lf_only_normalization (test_b_frozen_sources.FrozenSourcesTest.test_crlf_lf_only_normalization) ... ok
+test_deleted_manifest_entry_rejected_even_if_disk_file_missing (test_b_frozen_sources.FrozenSourcesTest.test_deleted_manifest_entry_rejected_even_if_disk_file_missing) ... ok
+test_missing_rules_rejected (test_b_frozen_sources.FrozenSourcesTest.test_missing_rules_rejected) ... ok
+test_provenance_generation_refuses_missing_dependency (test_b_frozen_sources.FrozenSourcesTest.test_provenance_generation_refuses_missing_dependency) ... ok
+test_rules_and_gates_tampering_rejected (test_b_frozen_sources.FrozenSourcesTest.test_rules_and_gates_tampering_rejected) ... ok
+test_unattended_999_rejected (test_b_frozen_sources.FrozenSourcesTest.test_unattended_999_rejected) ... ok
 test_missing_corrupt_wrong_version (test_b_model_loading.ModelLoadTest.test_missing_corrupt_wrong_version) ... ok
 test_all_refused_known (test_b_p3_metrics.MetricsTest.test_all_refused_known) ... ok
 test_empty_no_positive_no_negative_all_unknown (test_b_p3_metrics.MetricsTest.test_empty_no_positive_no_negative_all_unknown) ... ok
@@ -17,6 +24,6 @@ test_missing_cadence_endpoint_remains_unknown (test_b_window_policy.WindowPolicy
 test_future_and_identity_invariance (test_b_window_prefixes.PrefixTest.test_future_and_identity_invariance) ... ok
 
 ----------------------------------------------------------------------
-Ran 17 tests in 1.249s
+Ran 24 tests in 3.894s
 
 OK

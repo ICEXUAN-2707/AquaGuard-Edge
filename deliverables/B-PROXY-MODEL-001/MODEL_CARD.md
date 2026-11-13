@@ -1,4 +1,4 @@
-﻿# B-PROXY-MODEL-001 模型卡与 P2 收尾
+# B-PROXY-MODEL-001 模型卡与 P2 收尾
 
 P2 已完成工程范围训练/验证选择与模型锁定。无人工会签，无真实场景效果验收。原始 B-SIM-001 未修改。
 
@@ -11,7 +11,7 @@ P2 已完成工程范围训练/验证选择与模型锁定。无人工会签，�
 
 结果只表示对工程代理的验证集一致性。原数据存在观测不可区分反例，特征有跨区碰撞，test 已暴露为开发留出；不能作真实准确率或未见场景泛化证明。
 
-模型 SHA256：567a3d496f72721cc56d161e26c477f7d6ca3bd4b7a1353618438b0ef74a2132。
+模型 SHA256：6a7372f27616b5f0507f621c6f3421593d640c72cdb3b2a1190c73c7f89bf54c。
 重复训练哈希相同；模型写入/加载往返一致。缺失、损坏、错特征版本加载均拒绝；这些是加载器验证，不冒充 P4 的完整 C2 回退集成验证。
 
 test_evaluated=false：未调用开发留出预测。P3 须先核对 model.lock.json 与模型摘要，再一次性按锁定方案比较 C0–C3；禁止看结果反复调参。
@@ -23,3 +23,5 @@ python scripts/train_b_proxy.py --features .local/b-expanded/runs/p1-features-00
 本轮 11 tests passed，非全系统回归。
 
 交付：model.json、model.lock.json、training_plan.lock.json、本模型卡。下一阶段为 P3 开发留出同范围对照及失败案例，P4 回退集成和 C 报告协商未完成。
+
+???????????/??/???????????????????????????? 24 ???????????????????????????? B_FREEZE_VALIDATION_FIX.md?

@@ -15,8 +15,8 @@
     "comparison": "paired counts on same trial set; no real-world efficacy or ML benefit inference"
   },
   "protocol_sha256": "1af1ce0315e911b910e4449aed60f946693b85124c63f48aced0929e739fd40c",
-  "model_sha256": "567a3d496f72721cc56d161e26c477f7d6ca3bd4b7a1353618438b0ef74a2132",
-  "runner_sha256": "8b1d9a6c7debcbed183780eb0cb2fa5d6fc72a92a07944864751e1bbcb33e449",
+  "model_sha256": "6a7372f27616b5f0507f621c6f3421593d640c72cdb3b2a1190c73c7f89bf54c",
+  "runner_sha256": "448befcd2a3aff547021ebbb702e0de297f011c9ad2729a7fc3378f29d865bb9",
   "label_sha256": "6436dd24164e06f584176813bb13e888ed080cae362ac681af3b11a0ca8135cc",
   "test_evaluated": true,
   "primary": {

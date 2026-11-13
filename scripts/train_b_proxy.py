@@ -22,7 +22,7 @@ def run(features,labels,output,source=None,split_path=None):
     features,labels,output=map(Path,(features,labels,output))
     plan_raw=(labels/'training_plan.lock.json').read_bytes();plan=json.loads(plan_raw)
     lm=json.loads(checked(labels/'manifest.json',plan['label_manifest_sha256']))
-    fm=json.loads((features/'manifest.json').read_text())
+    fm=json.loads(checked(features/'manifest.json',plan['feature_manifest_sha256']))
     raw=checked(features/'features.jsonl',plan['parent_features_sha256'])
     if fm['features_sha256']!=sha(raw) or fm['split_sha256']!=plan['split_sha256'] or lm['parent_features_sha256']!=sha(raw):raise ValueError('parent binding mismatch')
     checked(labels/'contract.json',lm['contract_sha256'])

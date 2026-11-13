@@ -28,5 +28,7 @@
   "random_seed": null,
   "determinism": "existing deterministic CART",
   "methods": "C0-C3 same publication, quality accounting and proxy target; original episode truth separate",
-  "remaining_gate": "P2 loader must verify all hashes and feature allowlist; persist chosen model hash before development-test evaluation"
+  "remaining_gate": "P2 loader must verify all hashes and feature allowlist; persist chosen model hash before development-test evaluation",
+  "feature_manifest_sha256": "e0bbabe9f6d3f9c0608c95a0c37f0d3312f2b9dd8bc8c3b3146e671af39cf34e",
+  "provenance_revision": "v2: full rules/gates/config dependency inventory; candidate grid, selection and split unchanged"
 }

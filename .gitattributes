@@ -41,3 +41,5 @@ deliverables/B-PROXY-FALLBACK-001/** -text whitespace=cr-at-eol
 deliverables/B-PROXY-INPUTS-001/** -text whitespace=cr-at-eol
 B_*.md -text whitespace=cr-at-eol
 B_*.json -text whitespace=cr-at-eol
+scripts/b_frozen_sources.py -text whitespace=cr-at-eol
+scripts/test_b_frozen_sources.py -text whitespace=cr-at-eol

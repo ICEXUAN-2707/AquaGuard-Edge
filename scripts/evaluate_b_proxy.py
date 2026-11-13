@@ -1,4 +1,4 @@
-﻿"""P3: unchanged production-shaped C0-C3 on locked proxy development holdout."""
+"""P3: unchanged production-shaped C0-C3 on locked proxy development holdout."""
 import argparse
 from collections import Counter,defaultdict
 from datetime import datetime
@@ -44,7 +44,7 @@ def evaluate(features,labels,model_dir,output):
     lm=json.loads(checked(labels/'manifest.json',plan['label_manifest_sha256']))
     checked(labels/'contract.json',lm['contract_sha256'])
     fr=[json.loads(l) for l in checked(features/'features.jsonl',plan['parent_features_sha256']).splitlines()]
-    fm=json.loads((features/'manifest.json').read_text())
+    fm=json.loads(checked(features/'manifest.json',plan['feature_manifest_sha256']))
     verify_inputs(ROOT,fm,plan,fr)
     annotations=[json.loads(l) for l in checked(labels/'labels.jsonl',lm['label_sha256']).splitlines()]
     index={(r['trial_id'],r['window_end']):r for r in annotations}

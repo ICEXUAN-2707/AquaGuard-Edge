@@ -1,4 +1,6 @@
 {
+  "model_sha256": "6a7372f27616b5f0507f621c6f3421593d640c72cdb3b2a1190c73c7f89bf54c",
+  "feature_manifest_sha256": "e0bbabe9f6d3f9c0608c95a0c37f0d3312f2b9dd8bc8c3b3146e671af39cf34e",
   "schema": "b-proxy-p4-fallback-v1",
   "windows": 54,
   "trials": 18,
