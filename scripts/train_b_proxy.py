@@ -11,6 +11,7 @@ sys.path.insert(0,str(ROOT/'spikes/SP-04'))
 from experiment.config import MODEL_FEATURE_NAMES
 from experiment.ml import train,predict,write_model,load_model
 from b_training_inputs import verify_inputs
+from b_bundle_checks import check_annotations
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def checked(path,digest):
@@ -29,9 +30,8 @@ def run(features,labels,output,source=None,split_path=None):
     label_rows=[json.loads(l) for l in checked(labels/'labels.jsonl',lm['label_sha256']).splitlines()]
     feature_rows=[json.loads(l) for l in raw.splitlines()]
     input_checks=verify_inputs(ROOT,fm,plan,feature_rows,source,split_path)
+    index=check_annotations(feature_rows,label_rows)
     key=lambda r:(r['trial_id'],r['window_end'])
-    index={key(r):r for r in label_rows}
-    if len(index)!=len(label_rows) or len({key(r) for r in feature_rows})!=len(feature_rows) or set(index)!={key(r) for r in feature_rows}:raise ValueError('window inventory mismatch')
     sets=defaultdict(list);counts=defaultdict(lambda:dict(total=0,eligible=0,rejected=0));trial_split={}
     for row in feature_rows:
         annotation=index[key(row)];split=row['split']

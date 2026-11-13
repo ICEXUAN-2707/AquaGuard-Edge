@@ -1,5 +1,5 @@
 {
-  "content_sha256": "0be6db038c35a729c76c39d252ba65b015a4a329fa86cfba8c9e86d4c3b21a46",
+  "content_sha256": "8dcda76971793c420dd0411857b07bc3a3b9ffbe305ab4b004718aceeff678a4",
   "excluded_features": [
     "water_contact",
     "water_contact_sec"
@@ -24,10 +24,10 @@
     "min_samples_leaf": 2,
     "tie_break": "positive"
   },
-  "model_version": "c3-decision-tree-v1-0be6db038c35",
+  "model_version": "c3-decision-tree-v1-8dcda7697179",
   "training": {
     "label_sha256": "6436dd24164e06f584176813bb13e888ed080cae362ac681af3b11a0ca8135cc",
-    "plan_sha256": "6ebdb36c4770e438f4844aee7fd5933084184e081385b58b7bfad19561de5973",
+    "plan_sha256": "a73885fe4135f480ad5755f64a4ea31e2f097681c282515e5972902654c83c58",
     "task": "proxy approximation only; no true-occupancy accuracy or ML benefit claim",
     "trial_ids": [
       "bsim1-s20261110-cohort-000-attended",

@@ -43,3 +43,6 @@ B_*.md -text whitespace=cr-at-eol
 B_*.json -text whitespace=cr-at-eol
 scripts/b_frozen_sources.py -text whitespace=cr-at-eol
 scripts/test_b_frozen_sources.py -text whitespace=cr-at-eol
+scripts/b_bundle_checks.py -text whitespace=cr-at-eol
+scripts/b_evidence_checks.py -text whitespace=cr-at-eol
+scripts/test_b_cross_integrity.py -text whitespace=cr-at-eol

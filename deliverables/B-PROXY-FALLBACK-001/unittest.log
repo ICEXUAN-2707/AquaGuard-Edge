@@ -1,3 +1,16 @@
+test_duplicate_fallback_record_rejected (test_b_cross_integrity.CrossIntegrityTest.test_duplicate_fallback_record_rejected) ... ok
+test_duplicate_feature_window_rejected (test_b_cross_integrity.CrossIntegrityTest.test_duplicate_feature_window_rejected) ... ok
+test_duplicate_prediction_rejected (test_b_cross_integrity.CrossIntegrityTest.test_duplicate_prediction_rejected) ... ok
+test_equivalent_timestamp_spellings (test_b_cross_integrity.CrossIntegrityTest.test_equivalent_timestamp_spellings) ... ok
+test_existing_evidence_passes (test_b_cross_integrity.CrossIntegrityTest.test_existing_evidence_passes) ... ok
+test_future_publication_rejected (test_b_cross_integrity.CrossIntegrityTest.test_future_publication_rejected) ... ok
+test_integer_prediction_rejected (test_b_cross_integrity.CrossIntegrityTest.test_integer_prediction_rejected) ... ok
+test_integer_target_rejected (test_b_cross_integrity.CrossIntegrityTest.test_integer_target_rejected) ... ok
+test_label_history_binding_rejected (test_b_cross_integrity.CrossIntegrityTest.test_label_history_binding_rejected) ... ok
+test_modified_fallback_summary_rejected (test_b_cross_integrity.CrossIntegrityTest.test_modified_fallback_summary_rejected) ... ok
+test_modified_summary_rejected (test_b_cross_integrity.CrossIntegrityTest.test_modified_summary_rejected) ... ok
+test_nonfinite_feature_rejected (test_b_cross_integrity.CrossIntegrityTest.test_nonfinite_feature_rejected) ... ok
+test_wrong_model_fallback_rejected (test_b_cross_integrity.CrossIntegrityTest.test_wrong_model_fallback_rejected) ... ok
 test_reject_duplicate_missing_and_cohort_leakage (test_b_feature_audit.SplitProtectionTest.test_reject_duplicate_missing_and_cohort_leakage) ... ok
 test_allowlist_and_invalid_values (test_b_feature_contract.FeatureContractTest.test_allowlist_and_invalid_values) ... ok
 test_fixed_proximity (test_b_feature_contract.FeatureContractTest.test_fixed_proximity) ... ok
@@ -22,8 +35,9 @@ test_reproducible_model_and_no_test_evaluation (test_b_training.TrainingTest.tes
 test_delayed_endpoint_and_future_filter (test_b_window_policy.WindowPolicyTest.test_delayed_endpoint_and_future_filter) ... ok
 test_missing_cadence_endpoint_remains_unknown (test_b_window_policy.WindowPolicyTest.test_missing_cadence_endpoint_remains_unknown) ... ok
 test_future_and_identity_invariance (test_b_window_prefixes.PrefixTest.test_future_and_identity_invariance) ... ok
+test_publication_wait_accepts_arrival_but_never_future_event (test_b_window_prefixes.PrefixTest.test_publication_wait_accepts_arrival_but_never_future_event) ... ok
 
 ----------------------------------------------------------------------
-Ran 24 tests in 3.894s
+Ran 38 tests in 6.150s
 
 OK

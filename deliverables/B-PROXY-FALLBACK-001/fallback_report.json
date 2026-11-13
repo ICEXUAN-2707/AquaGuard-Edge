@@ -1,6 +1,6 @@
 {
-  "model_sha256": "6a7372f27616b5f0507f621c6f3421593d640c72cdb3b2a1190c73c7f89bf54c",
-  "feature_manifest_sha256": "e0bbabe9f6d3f9c0608c95a0c37f0d3312f2b9dd8bc8c3b3146e671af39cf34e",
+  "model_sha256": "c08c77aba41d2b4cdfd7c1670dc9f828b337b1ff551b6bb60e20b7b6dd15bfbd",
+  "feature_manifest_sha256": "5b3731ddda6e9839a44a4e279b62be52add4b0fa05e204edafea3f89628ab6cf",
   "schema": "b-proxy-p4-fallback-v1",
   "windows": 54,
   "trials": 18,
@@ -16,7 +16,7 @@
   "records": [
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -25,7 +25,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -34,7 +34,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -43,7 +43,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -52,7 +52,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -61,7 +61,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -70,7 +70,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -79,7 +79,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -88,7 +88,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -97,7 +97,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -106,7 +106,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -115,7 +115,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -124,7 +124,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -133,7 +133,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -142,7 +142,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -151,7 +151,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -160,7 +160,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -169,7 +169,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -178,7 +178,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -187,7 +187,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -196,7 +196,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -205,7 +205,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -214,7 +214,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -223,7 +223,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -232,7 +232,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -241,7 +241,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -250,7 +250,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -259,7 +259,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -268,7 +268,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -277,7 +277,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -286,7 +286,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -295,7 +295,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -304,7 +304,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -313,7 +313,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -322,7 +322,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -331,7 +331,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -340,7 +340,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -349,7 +349,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -358,7 +358,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -367,7 +367,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -376,7 +376,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -385,7 +385,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -394,7 +394,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -403,7 +403,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -412,7 +412,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -421,7 +421,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -430,7 +430,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -439,7 +439,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -448,7 +448,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -457,7 +457,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -466,7 +466,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -475,7 +475,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -484,7 +484,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -493,7 +493,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-002-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -502,7 +502,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -511,7 +511,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -520,7 +520,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -529,7 +529,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -538,7 +538,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -547,7 +547,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -556,7 +556,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -565,7 +565,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -574,7 +574,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -583,7 +583,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -592,7 +592,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -601,7 +601,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -610,7 +610,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -619,7 +619,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -628,7 +628,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -637,7 +637,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -646,7 +646,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -655,7 +655,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -664,7 +664,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -673,7 +673,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -682,7 +682,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -691,7 +691,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -700,7 +700,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -709,7 +709,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -718,7 +718,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -727,7 +727,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -736,7 +736,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -745,7 +745,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -754,7 +754,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -763,7 +763,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -772,7 +772,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -781,7 +781,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -790,7 +790,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -799,7 +799,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -808,7 +808,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -817,7 +817,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -826,7 +826,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -835,7 +835,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -844,7 +844,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -853,7 +853,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -862,7 +862,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -871,7 +871,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -880,7 +880,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -889,7 +889,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -898,7 +898,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -907,7 +907,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -916,7 +916,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -925,7 +925,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -934,7 +934,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -943,7 +943,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -952,7 +952,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -961,7 +961,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -970,7 +970,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -979,7 +979,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-003-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -988,7 +988,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -997,7 +997,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1006,7 +1006,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1015,7 +1015,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -1024,7 +1024,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1033,7 +1033,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1042,7 +1042,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -1051,7 +1051,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1060,7 +1060,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-attended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1069,7 +1069,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -1078,7 +1078,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1087,7 +1087,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1096,7 +1096,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -1105,7 +1105,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1114,7 +1114,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1123,7 +1123,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -1132,7 +1132,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1141,7 +1141,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-brief_leave",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1150,7 +1150,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -1159,7 +1159,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -1168,7 +1168,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -1177,7 +1177,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -1186,7 +1186,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -1195,7 +1195,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -1204,7 +1204,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -1213,7 +1213,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -1222,7 +1222,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-hidden_present",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -1231,7 +1231,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -1240,7 +1240,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1249,7 +1249,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1258,7 +1258,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -1267,7 +1267,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1276,7 +1276,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1285,7 +1285,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": false,
       "fallback_value": false,
@@ -1294,7 +1294,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": false,
       "fallback_value": false,
@@ -1303,7 +1303,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-idle",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": false,
       "fallback_value": false,
@@ -1312,7 +1312,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -1321,7 +1321,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -1330,7 +1330,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -1339,7 +1339,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -1348,7 +1348,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -1357,7 +1357,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -1366,7 +1366,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": null,
       "fallback_value": null,
@@ -1375,7 +1375,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": null,
       "fallback_value": null,
@@ -1384,7 +1384,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-presence_dropout",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": null,
       "fallback_value": null,
@@ -1393,7 +1393,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -1402,7 +1402,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -1411,7 +1411,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:40Z",
+      "window_end": "2026-11-10T00:00:40+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -1420,7 +1420,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -1429,7 +1429,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -1438,7 +1438,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:30Z",
+      "window_end": "2026-11-10T00:00:30+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,
@@ -1447,7 +1447,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "missing",
       "c2_value": true,
       "fallback_value": true,
@@ -1456,7 +1456,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "corrupt",
       "c2_value": true,
       "fallback_value": true,
@@ -1465,7 +1465,7 @@
     },
     {
       "trial_id": "bsim1-s20261110-cohort-004-unattended",
-      "window_end": "2026-11-10T00:00:35Z",
+      "window_end": "2026-11-10T00:00:35+00:00",
       "variant": "wrong_version",
       "c2_value": true,
       "fallback_value": true,

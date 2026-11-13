@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 from train_b_proxy import ROOT,checked,sha
 from b_training_inputs import verify_inputs
+from b_bundle_checks import check_annotations
 from experiment.config import MODEL_FEATURE_NAMES
 from experiment.methods import c0_threshold,c1_instant,c2_rules,c3_shadow
 from experiment.ml import load_model
@@ -47,8 +48,7 @@ def evaluate(features,labels,model_dir,output):
     fm=json.loads(checked(features/'manifest.json',plan['feature_manifest_sha256']))
     verify_inputs(ROOT,fm,plan,fr)
     annotations=[json.loads(l) for l in checked(labels/'labels.jsonl',lm['label_sha256']).splitlines()]
-    index={(r['trial_id'],r['window_end']):r for r in annotations}
-    if len(index)!=len(annotations) or set(index)!={(r['trial_id'],r['window_end']) for r in fr}:raise ValueError('label inventory mismatch')
+    index=check_annotations(fr,annotations)
     source=ROOT/'deliverables/B-SIM-001'
     trials={t['trial_id']:t for t in json.loads((source/'trials.json').read_text())['trials']}
     streams=defaultdict(list)
@@ -84,12 +84,12 @@ def evaluate(features,labels,model_dir,output):
             if value is not target:
                 failures.append(dict(trial_id=r['trial_id'],window_end=r['window_end'],scenario=r['scenario'],method=method,target=target,output=value,reason=r['methods'][method]['reason']))
     report=dict(schema='b-proxy-p3-report-v1',protocol=spec,protocol_sha256=sha(protocol.read_bytes()),model_sha256=lock['model_sha256'],
-                runner_sha256=sha(Path(__file__).read_bytes()),label_sha256=lm['label_sha256'],test_evaluated=True,
+                runner_sha256=sha(Path(__file__).read_bytes()),label_sha256=lm['label_sha256'],predictions_sha256=sha(''.join(json.dumps(r,sort_keys=True)+'\n' for r in records).encode()),test_evaluated=True,
                 primary={m:metrics(primary,m) for m in METHODS},secondary_windows={m:metrics(records,m) for m in METHODS},
                 reasons={m:dict(Counter(r['methods'][m]['reason'] for r in records)) for m in METHODS},
                 scenarios={s:{m:metrics([r for r in primary if r['scenario']==s],m) for m in METHODS} for s in sorted({r['scenario'] for r in primary})},
                 failures=failures,limitations=['proxy labels are rule-derived','development holdout previously exposed','overlapping windows not independent','C3 native quality gate may use water quality; water is excluded from model vector; no safety path changes','no independent onset: delay not estimable'])
-    (output/'predictions.jsonl').write_text(''.join(json.dumps(r,sort_keys=True)+'\n' for r in records))
+    (output/'predictions.jsonl').write_bytes(''.join(json.dumps(r,sort_keys=True)+'\n' for r in records).encode())
     (output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
     return report
 

@@ -27,12 +27,10 @@ def validate_split(split, trials):
 
 def provenance(root, source, split_path):
     def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
-    files=[root/'scripts/extract_b_expanded_features.py',root/'scripts/b_feature_audit.py']
-    for directory in ('spikes/SP-03/src','spikes/SP-03-features/src','spikes/SP-04/experiment','edge/contracts'):
-        files.extend(sorted((root/directory).glob('*.py')))
     return dict(python=sys.version,packages={name:importlib.metadata.version(name) for name in ('pydantic','pydantic-core','annotated-types','typing-extensions','typing-inspection')},
                 git_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),
                 source_files=source_digests(root),
+                source_hash_policy='SHA256 bytes with CRLF normalized to LF; BOM and all other bytes retained',
                 dataset_manifest_sha256=digest(source/'manifest.json'),split_sha256=digest(split_path),
                 note='source hashes capture uncommitted implementation; commit alone is insufficient')
 
