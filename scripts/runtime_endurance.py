@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import secrets
 import socket
+import stat
 import sqlite3
 import subprocess
 import sys
@@ -121,11 +122,20 @@ def memory_bytes(pid):
 
 
 def storage_snapshot(directory):
-    files = list(directory.rglob('*'))
-    checkpoints = [p for p in files if p.is_file() and '.checkpoints' in str(p.relative_to(directory))]
-    sqlite_files = [p for p in files if p.is_file() and (p.name.endswith('.sqlite') or p.name.endswith(('.sqlite-wal', '.sqlite-shm')))]
-    return dict(sqlite_bytes=sum(p.stat().st_size for p in sqlite_files),
-                checkpoint_bytes=sum(p.stat().st_size for p in checkpoints), checkpoint_files=len(checkpoints))
+    result=dict(sqlite_bytes=0,checkpoint_bytes=0,checkpoint_files=0,transient_files_disappeared=0)
+    for path in directory.rglob('*'):
+        checkpoint='.checkpoints' in str(path.relative_to(directory)) and path.suffix=='.json'
+        database=path.name.endswith(('.sqlite','.sqlite-wal','.sqlite-shm'))
+        if not checkpoint and not database:continue
+        try:info=path.stat()
+        except FileNotFoundError:
+            result['transient_files_disappeared']+=1
+            continue  # Atomic rename/WAL cleanup can race an observational scan.
+        if not stat.S_ISREG(info.st_mode):continue
+        if checkpoint:
+            result['checkpoint_bytes']+=info.st_size;result['checkpoint_files']+=1
+        if database:result['sqlite_bytes']+=info.st_size
+    return result
 
 
 def database_snapshot(path, final=False):

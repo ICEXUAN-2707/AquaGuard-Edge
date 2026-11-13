@@ -41,4 +41,19 @@ def test_storage_includes_wal_and_checkpoints_not_logs(tmp_path):
     folder=tmp_path/'business.sqlite.checkpoints';folder.mkdir()
     (folder/'snapshot.json').write_bytes(b'a'*7)
     (tmp_path/'service.log').write_bytes(b'a'*100)
-    assert module.storage_snapshot(tmp_path)=={'sqlite_bytes':15,'checkpoint_bytes':7,'checkpoint_files':1}
+    (folder/'tmp-publishing').write_bytes(b'a'*500)
+    assert module.storage_snapshot(tmp_path)=={'sqlite_bytes':15,'checkpoint_bytes':7,'checkpoint_files':1,'transient_files_disappeared':0}
+
+def test_storage_scan_survives_wal_disappearance_but_not_permission_error(tmp_path,monkeypatch):
+    target=tmp_path/'business.sqlite-wal';target.write_bytes(b'123')
+    original=Path.stat
+    def disappearing(path,*args,**kwargs):
+        if path==target:raise FileNotFoundError()
+        return original(path,*args,**kwargs)
+    monkeypatch.setattr(Path,'stat',disappearing)
+    assert module.storage_snapshot(tmp_path)['transient_files_disappeared']==1
+    def denied(path,*args,**kwargs):
+        if path==target:raise PermissionError()
+        return original(path,*args,**kwargs)
+    monkeypatch.setattr(Path,'stat',denied)
+    with pytest.raises(PermissionError):module.storage_snapshot(tmp_path)
