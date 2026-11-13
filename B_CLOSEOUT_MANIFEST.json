@@ -1,10 +1,10 @@
 {
   "schema": "b-phase-closeout-manifest-v1",
-  "parent_delivery_manifest_sha256": "b8ff37958fe46e8910e31fd65b02189f76277433171aaae9bd8e480d7e386a3d",
+  "parent_delivery_manifest_sha256": "7798431b2d385fac38b8feb247715aca1c046b1759d89e6c9c598551d753a55b",
   "files": [
     {
       "path": "B_STAGE_VALIDATION_REPORT_20261113.md",
-      "sha256": "628f431d896288607312e77af496fc122f607f6e133365c3e56e1e00568b3a42"
+      "sha256": "37d9cb7d4c47b8699af1709437d7a8c43bd244477aae5ac45a89133e67577d4a"
     },
     {
       "path": "scripts/verify_b_phase_delivery.py",
