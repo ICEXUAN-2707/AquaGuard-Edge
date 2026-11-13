@@ -1,6 +1,7 @@
 """Owned local simulation wall-clock observation; never deletes business data."""
 import argparse
 import ctypes
+import faulthandler
 from ctypes import wintypes
 import json
 import math
@@ -171,6 +172,14 @@ def main():
         parser.error('seconds >=45, interval >=1 and valid port required')
     with socket.socket() as probe: probe.bind(('127.0.0.1',args.port))
     out=args.directory.resolve();out.mkdir(parents=True,exist_ok=False)
+    def stage(name):
+        target=out/'progress.json';temporary=out/'progress.json.tmp'
+        temporary.write_text(json.dumps({'stage':name,'utc':datetime.now(timezone.utc).isoformat(),'observer_pid':os.getpid()}),encoding='utf-8')
+        os.replace(temporary,target)
+    # Local stack-only diagnostics: no variables, environment, token or payloads.
+    stack_log=(out/'observer-stacks.log').open('w',encoding='utf-8')
+    faulthandler.dump_traceback_later(60,repeat=True,file=stack_log)
+    stage('metadata')
     env=os.environ.copy()
     env.update(AQUAGUARD_RUNTIME='simulation',AQUAGUARD_DEVICE_ID='demo01',AQUAGUARD_HOST='127.0.0.1',
                AQUAGUARD_PORT=str(args.port),AQUAGUARD_DB=str(out/'business.sqlite'),
@@ -198,19 +207,30 @@ def main():
             with (out/'samples.jsonl').open('w',encoding='utf-8') as stream:
                 while True:
                     elapsed=time.monotonic()-started
+                    stage('host_clocks')
                     host=host_clocks()
-                    sample=dict(elapsed_sec=round(elapsed,3),**tree_memory(process.pid),
+                    stage('process_memory')
+                    memory=tree_memory(process.pid)
+                    stage('health_http');health=request('/health')
+                    stage('live_http');live=request('/api/devices/demo01/live')
+                    stage('diagnostics_http');diagnostic=request('/api/runtime/diagnostics')
+                    stage('storage_scan');storage=storage_snapshot(out)
+                    sample=dict(elapsed_sec=round(elapsed,3),**memory,
                                 host_clocks=host,estimated_suspend_seconds=suspend_delta(previous_host,host),
                                 utc=datetime.now(timezone.utc).isoformat(),
                                 sample_gap_seconds=None if previous is None else elapsed-previous,
                                 sampling_lag_seconds=None if previous is None else max(0,elapsed-previous-args.interval),
-                                process_alive=process.poll() is None,health=request('/health'),
-                                live=request('/api/devices/demo01/live'),runtime=request('/api/runtime/diagnostics'),**storage_snapshot(out))
+                                process_alive=process.poll() is None,health=health,
+                                live=live,runtime=diagnostic,**storage)
                     previous=elapsed
                     previous_host=host
+                    stage('database_scan')
                     try:sample['database']=database_snapshot(out/'business.sqlite')
                     except sqlite3.Error as exc:sample['database']={'error_type':type(exc).__name__}
                     samples.append(sample);stream.write(json.dumps(sample)+'\n');stream.flush()
+                    stage('sleep')
+                    faulthandler.cancel_dump_traceback_later()
+                    faulthandler.dump_traceback_later(max(60,args.interval*2),repeat=True,file=stack_log)
                     if not sample['process_alive']:raise RuntimeError('owned service exited during observation')
                     if elapsed>=args.seconds:break
                     time.sleep(min(args.interval,args.seconds-elapsed))
@@ -245,6 +265,8 @@ def main():
                 steady_growth_bytes_per_hour={key:growth(steady,key) for key in ('rss_bytes','sqlite_bytes','checkpoint_bytes')},
                 note='Endpoint growth is descriptive, not a leak verdict or long-term capacity guarantee; startup first 45s excluded from API gate. Forced termination is not graceful shutdown acceptance.')
     (out/'result.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
+    stage('finished')
+    faulthandler.cancel_dump_traceback_later();stack_log.close()
     print(json.dumps(result));return 0 if passed else 1
 
 

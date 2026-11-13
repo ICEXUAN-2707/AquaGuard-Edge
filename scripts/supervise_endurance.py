@@ -29,6 +29,7 @@ def main():
     record={'phase':'starting','supervisor_pid':os.getpid(),'started_at':datetime.now(timezone.utc).isoformat(),
             'child_pid':None,'child_exit_code':None,'result_exists':False}
     process=None
+    started=time.monotonic()
     try:
         atomic_json(receipt,record)
         with (out.parent/(out.name+'.supervisor.log')).open('w',encoding='utf-8') as log:
@@ -40,6 +41,8 @@ def main():
             while True:
                 record['heartbeat_at']=datetime.now(timezone.utc).isoformat()
                 atomic_json(receipt,record)
+                if time.monotonic()-started>args.seconds+90:
+                    raise TimeoutError('observation exceeded duration and cleanup allowance')
                 try:code=process.wait(timeout=10);break
                 except subprocess.TimeoutExpired:continue
             result=out/'result.json'
