@@ -1,0 +1,27 @@
+﻿[
+    {
+        "utc":  "2026-11-13T04:43:39.2620000Z",
+        "event":  "package_selected",
+        "release":  "0.168.0-x86_64-pc-windows-msvc"
+    },
+    {
+        "utc":  "2026-11-13T04:43:40.6440000Z",
+        "event":  "restart_requested",
+        "release":  null
+    },
+    {
+        "utc":  "2026-11-13T04:43:40.6450000Z",
+        "event":  "shutdown_requested",
+        "release":  null
+    },
+    {
+        "utc":  "2026-11-13T04:44:40.6840000Z",
+        "event":  "shutdown_forced",
+        "release":  null
+    },
+    {
+        "utc":  "2026-11-13T04:44:42.1260000Z",
+        "event":  "process_spawned",
+        "release":  null
+    }
+]

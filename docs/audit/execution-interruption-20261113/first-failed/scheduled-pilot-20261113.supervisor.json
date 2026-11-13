@@ -1,0 +1,11 @@
+{
+  "phase": "failed",
+  "supervisor_pid": 40700,
+  "started_at": "2026-11-13T06:09:18.224352+00:00",
+  "child_pid": 41040,
+  "child_exit_code": 1,
+  "result_exists": true,
+  "heartbeat_at": "2026-11-13T06:10:18.450670+00:00",
+  "observation_status": "FAIL",
+  "finished_at": "2026-11-13T06:10:23.102746+00:00"
+}
