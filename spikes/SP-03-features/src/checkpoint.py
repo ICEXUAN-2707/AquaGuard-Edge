@@ -4,11 +4,23 @@ import json
 import os
 from pathlib import Path
 import tempfile
+from contextlib import contextmanager
+from contextvars import ContextVar
+from copy import deepcopy
 from engine import compute
 from edge.contracts.models import FeatureWindow
 
 FORMAT='m4-replay-checkpoint-v1'
 FEATURE_VERSION='m4-r06-v1'
+_verification_cache=ContextVar('checkpoint_verification_cache',default=None)
+
+
+@contextmanager
+def verification_scope():
+    """Reuse verified content within one publication; never trust a path cache."""
+    token=_verification_cache.set({})
+    try:yield
+    finally:_verification_cache.reset(token)
 
 def canonical(value):
     return json.dumps(value,sort_keys=True,ensure_ascii=False,separators=(',',':'),allow_nan=False).encode('utf-8')
@@ -43,12 +55,18 @@ def restore(path,*,expected_config=None):
     data=path.read_bytes()
     if hashlib.sha256(data).hexdigest()!=path.stem:
         raise ValueError('checkpoint digest mismatch')
-    payload=json.loads(data)
-    if payload.get('format')!=FORMAT or payload.get('feature_version')!=FEATURE_VERSION:
-        raise ValueError('checkpoint version mismatch')
+    cache=_verification_cache.get()
+    payload=cache.get(data) if cache is not None else None
+    verified=payload is not None
+    if payload is None:
+        payload=json.loads(data)
+        if payload.get('format')!=FORMAT or payload.get('feature_version')!=FEATURE_VERSION:
+            raise ValueError('checkpoint version mismatch')
     if expected_config is not None and canonical(payload['alignment_config'])!=canonical(expected_config):
         raise ValueError('checkpoint configuration mismatch')
-    result=compute(payload['window'],payload['history'],alignment_config=payload['alignment_config'])
-    if canonical(result)!=canonical(payload['result']):
-        raise ValueError('checkpoint replay mismatch')
-    return dict(history=payload['history'],alignment_config=payload['alignment_config'],last_window=payload['window'],feature_window=emit(result,str(path.resolve())))
+    if not verified:
+        result=compute(payload['window'],payload['history'],alignment_config=payload['alignment_config'])
+        if canonical(result)!=canonical(payload['result']):
+            raise ValueError('checkpoint replay mismatch')
+        if cache is not None and len(cache)<4:cache[data]=payload
+    return dict(history=deepcopy(payload['history']),alignment_config=deepcopy(payload['alignment_config']),last_window=deepcopy(payload['window']),feature_window=emit(payload['result'],str(path.resolve())))

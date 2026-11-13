@@ -6,7 +6,7 @@ import hashlib
 
 from b_bridge import publish_window
 from alignment import align
-from checkpoint import save
+from checkpoint import save, verification_scope
 from policy import Policy
 from projections import Projections
 from water import WaterService
@@ -65,6 +65,10 @@ class Simulation:
         return self.publish(now)
 
     def publish(self, now):
+        with verification_scope():
+            return self._publish(now)
+
+    def _publish(self, now):
         """Shared analysis for received observations; never generates inputs."""
         cutoff = (now-timedelta(seconds=180)).isoformat()
         self.rows = [r for r in self.rows if r["received_at"] >= cutoff]
