@@ -16,6 +16,7 @@ def test_atomic_receipt_replaces_prior_state_and_leaves_no_partial_file(tmp_path
 def test_failed_child_is_not_mislabeled_completed(tmp_path,monkeypatch):
     output=tmp_path/'new-observation'
     monkeypatch.setattr(sys,'argv',['supervise','--directory',str(output),'--seconds','60'])
+    monkeypatch.setattr(module,'owned_process_job',lambda:None)
     class FailedChild:
         pid=123
         returncode=7
