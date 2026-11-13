@@ -1,8 +1,33 @@
 from test_api import http, create_app, TOKEN
 from test_water import WaterService, time
-from runtime_diagnostics import RuntimeDiagnostics
+from runtime_diagnostics import RuntimeDiagnostics, phase
 from datetime import datetime, timedelta
 from test_projections import live, NOW, Projections
+import sqlite3
+import threading
+import time as timing
+from store import begin_immediate
+
+
+def test_real_database_writer_wait_is_attributed_and_nested_phase_restores(tmp_path):
+    service=WaterService(tmp_path/'db')
+    monitor=RuntimeDiagnostics();started=threading.Event();errors=[]
+    def writer():
+        try:
+            with monitor.scope(),phase('test_transaction'),service.connection() as db:
+                started.set();begin_immediate(db)
+        except Exception as exc:errors.append(type(exc).__name__)
+    with sqlite3.connect(service.path) as lock:
+        lock.execute('BEGIN IMMEDIATE')
+        thread=threading.Thread(target=writer);thread.start()
+        assert started.wait(2)
+        timing.sleep(.15)
+        lock.rollback()
+    thread.join(3)
+    assert not thread.is_alive() and not errors
+    assert monitor.value['phases']['sqlite_begin_immediate']['wall_seconds']>=.1
+    assert monitor.value['active_phase'] is None
+    assert 'sqlite_commit' in monitor.value['phases']
 
 def test_diagnostics_distinguishes_gap_from_work_and_retains_failure():
     monitor=RuntimeDiagnostics()

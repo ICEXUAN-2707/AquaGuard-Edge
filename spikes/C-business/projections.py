@@ -6,7 +6,7 @@ from pydantic import ValidationError
 
 from edge.contracts.api_models import LiveSnapshot, AssessmentResponse, ExperimentResult, SyncStatus
 from edge.contracts.models import CloudSyncRecord, _aware
-from store import Store, NotFound, canonical
+from store import Store, NotFound, canonical, begin_immediate
 
 
 class Unavailable(ValueError):
@@ -45,7 +45,7 @@ class Projections(Store):
                         raise ValueError("assessment signal identity/origin/time mismatch")
         with (self.connection() if _connection is None else nullcontext(_connection)) as db:
             if _connection is None:
-                db.execute("BEGIN IMMEDIATE")
+                begin_immediate(db)
             prior=db.execute("SELECT captured_at,ttl,body FROM query_projections WHERE kind=? AND identity=?",(kind,identity)).fetchone()
             if prior:
                 if _aware(prior[0])>captured:

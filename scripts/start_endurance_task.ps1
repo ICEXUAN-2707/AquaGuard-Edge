@@ -20,9 +20,9 @@ if ($outputPath.Contains('"') -or $pythonPath.Contains('"')) { throw 'Unsupporte
 $arguments='"'+$supervisor+'" --directory "'+$outputPath+'" --seconds '+$Seconds+' --interval '+$Interval+' --port '+$Port
 $action=New-ScheduledTaskAction -Execute $pythonPath -Argument $arguments -WorkingDirectory $projectRoot
 $principal=New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
-$settings=New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Seconds ($Seconds+1800)) -MultipleInstances IgnoreNew -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+$settings=New-ScheduledTaskSettingsSet -Priority 4 -ExecutionTimeLimit (New-TimeSpan -Seconds ($Seconds+1800)) -MultipleInstances IgnoreNew -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 New-Item -ItemType Directory -Force ([IO.Path]::GetDirectoryName($outputPath)) | Out-Null
 Register-ScheduledTask -TaskName $taskName -Action $action -Principal $principal -Settings $settings | Out-Null
-@{task_name=$taskName;directory=$outputPath;seconds=$Seconds;port=$Port;owner='Windows Task Scheduler';created_at=(Get-Date).ToUniversalTime().ToString('o')} | ConvertTo-Json | Set-Content -LiteralPath $receiptPath -Encoding UTF8
+@{task_name=$taskName;directory=$outputPath;seconds=$Seconds;port=$Port;priority=4;owner='Windows Task Scheduler';created_at=(Get-Date).ToUniversalTime().ToString('o')} | ConvertTo-Json | Set-Content -LiteralPath $receiptPath -Encoding UTF8
 Start-ScheduledTask -TaskName $taskName
 Get-ScheduledTask -TaskName $taskName | Select-Object TaskName,State

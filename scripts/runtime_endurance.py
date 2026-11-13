@@ -197,8 +197,8 @@ def main():
                 data=json.load(response)
                 return {'status':response.status,'captured_at':data.get('captured_at'),'request_seconds':time.monotonic()-began,
                         **({'diagnostics':data} if route.startswith('/api/runtime/diagnostics') else {})}
-        except urllib.error.HTTPError as exc:return {'status':exc.code}
-        except (OSError,ValueError):return {'status':None}
+        except urllib.error.HTTPError as exc:return {'status':exc.code,'request_seconds':time.monotonic()-began}
+        except (OSError,ValueError) as exc:return {'status':None,'request_seconds':time.monotonic()-began,'error_type':type(exc).__name__}
     samples=[];started=time.monotonic();failure=None;process=None;previous=None;previous_host=None
     try:
         keep_awake(args.keep_awake)
@@ -207,6 +207,7 @@ def main():
             with (out/'samples.jsonl').open('w',encoding='utf-8') as stream:
                 while True:
                     elapsed=time.monotonic()-started
+                    sample_utc=datetime.now(timezone.utc).isoformat()
                     stage('host_clocks')
                     host=host_clocks()
                     stage('process_memory')
@@ -217,7 +218,8 @@ def main():
                     stage('storage_scan');storage=storage_snapshot(out)
                     sample=dict(elapsed_sec=round(elapsed,3),**memory,
                                 host_clocks=host,estimated_suspend_seconds=suspend_delta(previous_host,host),
-                                utc=datetime.now(timezone.utc).isoformat(),
+                                utc=sample_utc,collection_finished_at=datetime.now(timezone.utc).isoformat(),
+                                collection_seconds=time.monotonic()-started-elapsed,
                                 sample_gap_seconds=None if previous is None else elapsed-previous,
                                 sampling_lag_seconds=None if previous is None else max(0,elapsed-previous-args.interval),
                                 process_alive=process.poll() is None,health=health,

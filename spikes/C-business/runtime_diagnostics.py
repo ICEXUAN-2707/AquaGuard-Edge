@@ -1,12 +1,39 @@
 """Bounded timing diagnostics. Does not change observation clocks or TTL."""
 from datetime import datetime
+from contextlib import contextmanager
+from contextvars import ContextVar
+import time
+
+_active=ContextVar('runtime_phase_diagnostics',default=None)
+
+@contextmanager
+def phase(name):
+    diagnostics=_active.get()
+    if diagnostics is None:
+        yield;return
+    started=time.monotonic();cpu=time.thread_time()
+    prior=diagnostics.value.get('active_phase')
+    diagnostics.value['active_phase']={'name':name,'started_at':datetime.now().astimezone().isoformat()}
+    try:yield
+    finally:
+        record={'wall_seconds':time.monotonic()-started,'thread_cpu_seconds':time.thread_time()-cpu}
+        previous=diagnostics.value['phases'].get(name,{})
+        record['max_wall_seconds']=max(previous.get('max_wall_seconds',0),record['wall_seconds'])
+        diagnostics.value['phases']={**diagnostics.value['phases'],name:record}
+        diagnostics.value['active_phase']=prior
 
 
 class RuntimeDiagnostics:
     def __init__(self):
         self.value={'cycles':0,'failures':0,'max_gap_seconds':0,'max_advance_seconds':0,
-                    'last_success_at':None,'last_cycle':None}
+                    'last_success_at':None,'last_cycle':None,'phases':{},'active_phase':None}
         self.previous=None
+
+    @contextmanager
+    def scope(self):
+        token=_active.set(self)
+        try:yield
+        finally:_active.reset(token)
 
     def begin(self,utc,monotonic,cpu):
         gap=None if self.previous is None else monotonic-self.previous['end']

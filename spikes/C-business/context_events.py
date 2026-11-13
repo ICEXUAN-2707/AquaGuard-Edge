@@ -5,7 +5,7 @@ from uuid import uuid4
 import b_bridge  # Establish the existing isolated B engine import paths.
 from gates import gate
 from rules import classify
-from store import Store, Conflict
+from store import Store, Conflict, begin_immediate
 from edge.contracts.models import _aware
 
 
@@ -25,7 +25,7 @@ class ContextEvents(Store):
         assessment=classify(feature,_aware(now),checkpoint_root=checkpoint_root)
         end=window['window_end']
         with self.connection() as db:
-            db.execute('BEGIN IMMEDIATE')
+            begin_immediate(db)
             prior=db.execute('SELECT body FROM context_state WHERE device=?',(window['device_id'],)).fetchone()
             if prior:
                 state=json.loads(prior[0])
@@ -56,7 +56,7 @@ class ContextEvents(Store):
 
     def expire(self, *, now):
         with self.connection() as db:
-            db.execute('BEGIN IMMEDIATE')
+            begin_immediate(db)
             for row in db.execute('SELECT device,body FROM context_state').fetchall():
                 state=json.loads(row['body'])
                 if (_aware(now)-_aware(state['end'])).total_seconds()<=10:
