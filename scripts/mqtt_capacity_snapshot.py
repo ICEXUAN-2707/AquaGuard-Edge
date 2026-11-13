@@ -16,6 +16,8 @@ def snapshot(journal,business):
         pending=db.execute("SELECT count(*) FROM attempts WHERE number>? AND classification IN ('new','out_of_order')",(row[1],)).fetchone()[0]
         latest=db.execute('SELECT max(number) FROM attempts').fetchone()[0]
         db.rollback()
+    if type(row[1]) is not int or row[1]<0 or row[1]>(latest or 0):
+        raise ValueError('consumer cursor outside journal inventory; possible replacement or truncation')
     return {'scope':'read_only_mqtt_capacity','counts':counts,'consumer_cursor':row[1],
             'journal_latest_attempt':latest,'pending_eligible_attempts':pending,
             'journal_bytes':journal.stat().st_size,'business_bytes':business.stat().st_size,

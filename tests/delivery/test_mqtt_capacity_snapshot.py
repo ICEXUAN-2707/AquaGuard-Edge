@@ -18,3 +18,5 @@ def test_backlog_counts_only_unconsumed_eligible_attempts(tmp_path):
         db.execute('CREATE TABLE mqtt_consumer(singleton,journal,cursor)')
         db.execute('INSERT INTO mqtt_consumer VALUES (1,?,1)',(str(journal.resolve()),))
     assert module.snapshot(journal,business)['pending_eligible_attempts']==2
+    with sqlite3.connect(business) as db:db.execute('UPDATE mqtt_consumer SET cursor=100')
+    with pytest.raises(ValueError,match='outside journal inventory'):module.snapshot(journal,business)

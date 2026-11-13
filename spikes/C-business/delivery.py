@@ -7,6 +7,7 @@ from adapters.base import (DeliveryAdapter, DeliveryRequest, TransportAccepted,
 
 class DeliveryService:
     def __init__(self, worker, adapter: DeliveryAdapter, *, finish_clock=None):
+        if finish_clock is not None and not callable(finish_clock):raise ValueError('finish_clock must be callable')
         self.worker, self.adapter = worker, adapter
         self.finish_clock=finish_clock
 
