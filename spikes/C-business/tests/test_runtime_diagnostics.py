@@ -29,6 +29,22 @@ def test_real_database_writer_wait_is_attributed_and_nested_phase_restores(tmp_p
     assert monitor.value['active_phase'] is None
     assert 'sqlite_commit' in monitor.value['phases']
 
+def test_checkpoint_delay_is_attributed_separately_from_other_phases(tmp_path,monkeypatch):
+    import online
+    original=online.save
+    def slow_save(*args,**kwargs):
+        timing.sleep(.15)
+        return original(*args,**kwargs)
+    monkeypatch.setattr(online,'save',slow_save)
+    monitor=RuntimeDiagnostics()
+    start=datetime.fromisoformat(NOW)
+    runtime=online.Simulation(tmp_path/'db',tmp_path/'checkpoints',start)
+    with monitor.scope():
+        for second in range(33):runtime.step(start+timedelta(seconds=second))
+    assert monitor.value['phases']['checkpoint_compute_write_fsync']['wall_seconds']>=.15
+    assert 'alignment' in monitor.value['phases'] and 'live_assessment_verify_publish' in monitor.value['phases']
+    assert monitor.value['active_phase'] is None
+
 def test_diagnostics_distinguishes_gap_from_work_and_retains_failure():
     monitor=RuntimeDiagnostics()
     first=monitor.begin('2026-11-13T00:00:00Z',0,0)

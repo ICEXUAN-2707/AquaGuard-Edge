@@ -1,0 +1,6 @@
+﻿{
+    "task_priority":  4,
+    "observer_priority":  "Normal",
+    "supervisor_phase":  "running",
+    "observer_pid":  18176
+}

@@ -1,0 +1,37 @@
+{
+  "status": "FAIL",
+  "failure_type": null,
+  "observed_seconds": 3602.907,
+  "samples": 218,
+  "steady_samples": 215,
+  "steady_api_available": false,
+  "database": {
+    "available": true,
+    "counts": {
+      "events": 1,
+      "transitions": 88,
+      "outbox": 88
+    },
+    "integrity": "ok",
+    "duplicate_open_groups": 0
+  },
+  "owned_process_exited": true,
+  "port_closed": true,
+  "sampling_coverage": {
+    "max_sample_gap_seconds": 279.25,
+    "gap_limit_seconds": 30.0,
+    "coverage_valid": false
+  },
+  "rss_peak_bytes": 62156800,
+  "observed_growth_bytes_per_hour": {
+    "rss_bytes": 48012833.44392465,
+    "sqlite_bytes": 1744729.7660250706,
+    "checkpoint_bytes": 99110452.97628587
+  },
+  "steady_growth_bytes_per_hour": {
+    "rss_bytes": -9885824.809004754,
+    "sqlite_bytes": 1747242.7559156176,
+    "checkpoint_bytes": 100289619.15784213
+  },
+  "note": "Endpoint growth is descriptive, not a leak verdict or long-term capacity guarantee; startup first 45s excluded from API gate. Forced termination is not graceful shutdown acceptance."
+}

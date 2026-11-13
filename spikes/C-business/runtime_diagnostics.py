@@ -3,6 +3,8 @@ from datetime import datetime
 from contextlib import contextmanager
 from contextvars import ContextVar
 import time
+import json
+import logging
 
 _active=ContextVar('runtime_phase_diagnostics',default=None)
 
@@ -19,6 +21,10 @@ def phase(name):
         record={'wall_seconds':time.monotonic()-started,'thread_cpu_seconds':time.thread_time()-cpu}
         previous=diagnostics.value['phases'].get(name,{})
         record['max_wall_seconds']=max(previous.get('max_wall_seconds',0),record['wall_seconds'])
+        record['max_wall_thread_cpu_seconds']=(record['thread_cpu_seconds'] if record['wall_seconds']>=previous.get('max_wall_seconds',0)
+                                               else previous.get('max_wall_thread_cpu_seconds'))
+        if record['wall_seconds']>=1:
+            logging.getLogger('aquaguard.runtime.phase').warning('runtime_phase %s',json.dumps({'name':name,**record}))
         diagnostics.value['phases']={**diagnostics.value['phases'],name:record}
         diagnostics.value['active_phase']=prior
 
