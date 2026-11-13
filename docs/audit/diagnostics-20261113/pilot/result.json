@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "failure_type": null,
+  "observed_seconds": 121.75,
+  "samples": 25,
+  "steady_samples": 16,
+  "steady_api_available": true,
+  "database": {
+    "available": true,
+    "counts": {
+      "events": 1,
+      "transitions": 3,
+      "outbox": 3
+    },
+    "integrity": "ok",
+    "duplicate_open_groups": 0
+  },
+  "owned_process_exited": true,
+  "port_closed": true,
+  "rss_peak_bytes": 61313024,
+  "observed_growth_bytes_per_hour": {
+    "rss_bytes": 1704976115.3762887,
+    "sqlite_bytes": 1964541.109464253,
+    "checkpoint_bytes": 42277142.904724635
+  },
+  "steady_growth_bytes_per_hour": {
+    "rss_bytes": 83299224.1175899,
+    "sqlite_bytes": 2251330.381556484,
+    "checkpoint_bytes": 63242966.39693534
+  },
+  "note": "Endpoint growth is descriptive, not a leak verdict or long-term capacity guarantee; startup first 45s excluded from API gate. Forced termination is not graceful shutdown acceptance."
+}
