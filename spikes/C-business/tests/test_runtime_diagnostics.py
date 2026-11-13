@@ -1,6 +1,8 @@
 from test_api import http, create_app, TOKEN
 from test_water import WaterService, time
 from runtime_diagnostics import RuntimeDiagnostics
+from datetime import datetime, timedelta
+from test_projections import live, NOW, Projections
 
 def test_diagnostics_distinguishes_gap_from_work_and_retains_failure():
     monitor=RuntimeDiagnostics()
@@ -18,3 +20,18 @@ def test_diagnostics_requires_auth_and_handles_api_only_app(tmp_path):
     assert http(app,'GET','/api/runtime/diagnostics',auth=False)[0]==401
     status,value=http(app,'GET','/api/runtime/diagnostics')
     assert status==200 and value['timing'] is None and value['projections']==[]
+
+def test_expired_snapshot_is_explained_without_extending_ttl_then_recovers(tmp_path):
+    service=WaterService(tmp_path/'db')
+    current=[NOW]
+    app=create_app(service,token=TOKEN,cursor_key=b'x'*32,clock=lambda:current[0])
+    queries=Projections(service.path)
+    queries.publish('live',live(),captured_at=NOW,ttl_seconds=10)
+    assert http(app,'GET','/api/devices/home01/live')[0]==200
+    current[0]=(datetime.fromisoformat(NOW)+timedelta(seconds=11)).isoformat()
+    assert http(app,'GET','/api/devices/home01/live')[0]==503
+    status,value=http(app,'GET','/api/runtime/diagnostics',query={'device_id':'home01'})
+    assert status==200 and value['projections'][0]['age_seconds']==11
+    assert value['projections'][0]['ttl_seconds']==10
+    queries.publish('live',dict(live(),captured_at=current[0]),captured_at=current[0],ttl_seconds=10)
+    assert http(app,'GET','/api/devices/home01/live')[0]==200
