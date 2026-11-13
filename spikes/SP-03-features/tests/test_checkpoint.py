@@ -65,7 +65,9 @@ def test_scoped_verification_reuses_compute_but_never_mutable_results_or_path_tr
     monkeypatch.setattr(checkpoint,'compute',counted)
     with checkpoint.verification_scope():
         restored=restore(path);restored['history'].clear();restored['last_window'].clear()
+        restored['feature_window']['features']['flow_mean_lpm']=999
         assert restore(path)['history'] and restore(path)['last_window']
+        assert restore(path)['feature_window']==output
         assert len(calls)==1
         with pytest.raises(ValueError,match='configuration'):restore(path,expected_config={'ttl':99})
         original=path.read_bytes();path.write_bytes(original+b' ')

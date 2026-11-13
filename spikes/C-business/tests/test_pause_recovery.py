@@ -20,6 +20,8 @@ def test_long_pause_expires_snapshot_and_resume_does_not_backfill(tmp_path):
 
 def test_one_publication_computes_saved_and_verified_features_only_once_each(tmp_path,monkeypatch):
     import checkpoint
+    import online
+    from contextlib import nullcontext
     original=checkpoint.compute;calls=[]
     def counted(*args,**kwargs):
         calls.append(1);return original(*args,**kwargs)
@@ -28,3 +30,10 @@ def test_one_publication_computes_saved_and_verified_features_only_once_each(tmp
     runtime=Simulation(tmp_path/'db',tmp_path/'checkpoints',start)
     for second in range(33):runtime.step(start+timedelta(seconds=second))
     assert len(calls)==2  # save plus independent replay verification; later gates reuse verified content.
+    calls.clear()
+    monkeypatch.setattr(online,'verification_scope',nullcontext)
+    baseline=Simulation(tmp_path/'baseline',tmp_path/'baseline-checkpoints',start)
+    for second in range(33):baseline.step(start+timedelta(seconds=second))
+    assert len(calls)==5
+    clock=(start+timedelta(seconds=32)).isoformat()
+    assert runtime.queries.read('live','demo01',now=clock)['sensor_summary']==baseline.queries.read('live','demo01',now=clock)['sensor_summary']
