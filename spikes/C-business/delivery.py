@@ -6,8 +6,9 @@ from adapters.base import (DeliveryAdapter, DeliveryRequest, TransportAccepted,
 
 
 class DeliveryService:
-    def __init__(self, worker, adapter: DeliveryAdapter):
+    def __init__(self, worker, adapter: DeliveryAdapter, *, finish_clock=None):
         self.worker, self.adapter = worker, adapter
+        self.finish_clock=finish_clock
 
     def step(self, *, now):
         claimed = self.worker.claim(now=now)
@@ -33,7 +34,7 @@ class DeliveryService:
             outcome = dict(status="FAILED", error=result.error)
         else:
             raise TypeError("invalid adapter result")
-        return self.worker.finish(claimed["token"], outcome, now=now)
+        return self.worker.finish(claimed["token"], outcome, now=self.finish_clock() if self.finish_clock else now)
 
     def close(self):
         self.adapter.close()
