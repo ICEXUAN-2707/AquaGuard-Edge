@@ -13,6 +13,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -130,14 +131,16 @@ def main():
                   python=sys.version,cloud_accepted=False)
     (out/'run.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
     def request(route):
+        began=time.monotonic()
         req=urllib.request.Request(f'http://127.0.0.1:{args.port}'+route,headers={'Authorization':'Bearer '+env['AQUAGUARD_C_TOKEN']})
         try:
             with urllib.request.urlopen(req,timeout=3) as response:
                 data=json.load(response)
-                return {'status':response.status,'captured_at':data.get('captured_at')}
+                return {'status':response.status,'captured_at':data.get('captured_at'),'request_seconds':time.monotonic()-began,
+                        **({'diagnostics':data} if route.startswith('/api/runtime/diagnostics') else {})}
         except urllib.error.HTTPError as exc:return {'status':exc.code}
         except (OSError,ValueError):return {'status':None}
-    samples=[];started=time.monotonic();failure=None;process=None
+    samples=[];started=time.monotonic();failure=None;process=None;previous=None
     try:
         with (out/'service.log').open('w',encoding='utf-8') as log:
             process=subprocess.Popen([sys.executable,'-m','edge'],cwd=ROOT,env=env,stdout=log,stderr=log)
@@ -145,8 +148,12 @@ def main():
                 while True:
                     elapsed=time.monotonic()-started
                     sample=dict(elapsed_sec=round(elapsed,3),**tree_memory(process.pid),
+                                utc=datetime.now(timezone.utc).isoformat(),
+                                sample_gap_seconds=None if previous is None else elapsed-previous,
+                                sampling_lag_seconds=None if previous is None else max(0,elapsed-previous-args.interval),
                                 process_alive=process.poll() is None,health=request('/health'),
-                                live=request('/api/devices/demo01/live'),**storage_snapshot(out))
+                                live=request('/api/devices/demo01/live'),runtime=request('/api/runtime/diagnostics'),**storage_snapshot(out))
+                    previous=elapsed
                     try:sample['database']=database_snapshot(out/'business.sqlite')
                     except sqlite3.Error as exc:sample['database']={'error_type':type(exc).__name__}
                     samples.append(sample);stream.write(json.dumps(sample)+'\n');stream.flush()

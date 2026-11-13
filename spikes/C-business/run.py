@@ -77,6 +77,9 @@ def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False,jour
     service=WaterService(path)
     app=create_app(service,token=token,cursor_key=cursor_key,clock=clock)
     app.state.timer_error=False
+    from runtime_diagnostics import RuntimeDiagnostics
+    diagnostics=RuntimeDiagnostics()
+    app.state.runtime_diagnostics=diagnostics
     simulation=None
     if simulate and journal is not None:
         raise ValueError('choose generated simulation or MQTT journal')
@@ -89,17 +92,30 @@ def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False,jour
         simulation=Simulation(path,Path(path).parent/(Path(path).name+'.checkpoints'),
                               datetime.fromisoformat(clock().replace('Z','+00:00')))
     async def advance():
+        cycle=diagnostics.begin(clock(),time.monotonic(),time.process_time())
+        step_seconds=tick_seconds=None
+        error_type=None
         try:
             now=clock()
             if simulation is not None:
+                started=time.monotonic()
                 await asyncio.to_thread(simulation.step,datetime.fromisoformat(now.replace('Z','+00:00')))
+                step_seconds=time.monotonic()-started
+            started=time.monotonic()
             await asyncio.to_thread(tick,service,now)
+            tick_seconds=time.monotonic()-started
             app.state.timer_error=False
         except Exception as exc:
+            error_type=type(exc).__name__
             app.state.timer_error=True
             import traceback
             frame=traceback.extract_tb(exc.__traceback__)[-1]
             logging.getLogger("aquaguard.prototype").error("water timer failed (%s at %s:%s); inspect database/config/clock",type(exc).__name__,Path(frame.filename).name,frame.lineno)
+        finally:
+            record=diagnostics.finish(cycle,end=time.monotonic(),cpu=time.process_time(),ended_at=clock(),
+                                      step_seconds=step_seconds,tick_seconds=tick_seconds,error_type=error_type)
+            if record['advance_seconds']>1 or (record['gap_seconds'] or 0)>2 or error_type:
+                logging.getLogger('aquaguard.runtime.timing').warning('runtime_timing %s',json.dumps(record))
 
     @asynccontextmanager
     async def lifespan(app):
