@@ -18,6 +18,22 @@ from datetime import datetime, timezone
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def host_clocks():
+    if os.name!='nt':return None
+    kernel=ctypes.WinDLL('kernel32',use_last_error=True)
+    kernel.GetTickCount64.restype=ctypes.c_ulonglong
+    query=kernel.QueryUnbiasedInterruptTime
+    query.argtypes=[ctypes.POINTER(ctypes.c_ulonglong)]
+    active=ctypes.c_ulonglong()
+    if not query(ctypes.byref(active)):return None
+    return {'uptime_seconds':kernel.GetTickCount64()/1000,'awake_seconds':active.value/10000000}
+
+
+def suspend_delta(previous,current):
+    if previous is None or current is None:return None
+    return max(0,(current['uptime_seconds']-previous['uptime_seconds'])-(current['awake_seconds']-previous['awake_seconds']))
+
+
 def process_tree(root_pid):
     """Include Windows venv launcher children, using Toolhelp without commands."""
     if os.name != 'nt':
@@ -140,20 +156,23 @@ def main():
                         **({'diagnostics':data} if route.startswith('/api/runtime/diagnostics') else {})}
         except urllib.error.HTTPError as exc:return {'status':exc.code}
         except (OSError,ValueError):return {'status':None}
-    samples=[];started=time.monotonic();failure=None;process=None;previous=None
+    samples=[];started=time.monotonic();failure=None;process=None;previous=None;previous_host=None
     try:
         with (out/'service.log').open('w',encoding='utf-8') as log:
             process=subprocess.Popen([sys.executable,'-m','edge'],cwd=ROOT,env=env,stdout=log,stderr=log)
             with (out/'samples.jsonl').open('w',encoding='utf-8') as stream:
                 while True:
                     elapsed=time.monotonic()-started
+                    host=host_clocks()
                     sample=dict(elapsed_sec=round(elapsed,3),**tree_memory(process.pid),
+                                host_clocks=host,estimated_suspend_seconds=suspend_delta(previous_host,host),
                                 utc=datetime.now(timezone.utc).isoformat(),
                                 sample_gap_seconds=None if previous is None else elapsed-previous,
                                 sampling_lag_seconds=None if previous is None else max(0,elapsed-previous-args.interval),
                                 process_alive=process.poll() is None,health=request('/health'),
                                 live=request('/api/devices/demo01/live'),runtime=request('/api/runtime/diagnostics'),**storage_snapshot(out))
                     previous=elapsed
+                    previous_host=host
                     try:sample['database']=database_snapshot(out/'business.sqlite')
                     except sqlite3.Error as exc:sample['database']={'error_type':type(exc).__name__}
                     samples.append(sample);stream.write(json.dumps(sample)+'\n');stream.flush()
