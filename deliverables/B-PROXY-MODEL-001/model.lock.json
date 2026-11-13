@@ -1,0 +1,68 @@
+{
+  "schema": "b-trained-model-lock-v1",
+  "task": "proxy approximation only; no true-occupancy accuracy or ML benefit claim",
+  "plan_sha256": "ba15975f6abbecda1690ddb017585647bbcad92d42661d3caf30d01ef3abe0dc",
+  "model_sha256": "567a3d496f72721cc56d161e26c477f7d6ca3bd4b7a1353618438b0ef74a2132",
+  "selected": {
+    "hyperparameters": {
+      "max_depth": 1,
+      "min_samples_leaf": 2,
+      "criterion": "gini",
+      "tie_break": "positive"
+    },
+    "validation_error": 0.0,
+    "validation_error_fraction": "0",
+    "validation_scored_trials": 15
+  },
+  "candidates": [
+    {
+      "hyperparameters": {
+        "max_depth": 1,
+        "min_samples_leaf": 2,
+        "criterion": "gini",
+        "tie_break": "positive"
+      },
+      "validation_error": 0.0,
+      "validation_error_fraction": "0",
+      "validation_scored_trials": 15
+    },
+    {
+      "hyperparameters": {
+        "max_depth": 2,
+        "min_samples_leaf": 2,
+        "criterion": "gini",
+        "tie_break": "positive"
+      },
+      "validation_error": 0.0,
+      "validation_error_fraction": "0",
+      "validation_scored_trials": 15
+    }
+  ],
+  "window_accounting": {
+    "train": {
+      "total": 108,
+      "eligible": 75,
+      "rejected": 33
+    },
+    "test": {
+      "total": 54,
+      "eligible": 45,
+      "rejected": 9
+    },
+    "validation": {
+      "total": 54,
+      "eligible": 40,
+      "rejected": 14
+    }
+  },
+  "test_evaluated": false,
+  "limitation": "validation excludes UNKNOWN labels; full window accounting retained; proxy consistency only",
+  "input_checks": {
+    "source_manifest_sha256": "a3ff1c65ca3ef2776f53a5e1ef768127feb1375f1f9a34a8b3bf25a4468c51e2",
+    "split_sha256": "9b3ee2162b89bf50b50e5ae0effe31b5b706c731cd73681fc5943ffbc5889653",
+    "cohort_validation": "PASS"
+  },
+  "model_roundtrip": "PASS",
+  "runner_sha256": "dce39ac64e421f7d9140a87cdb0b891581da5df8b5b1a6327bc65a87d60e4a88",
+  "input_validator_sha256": "236f63db7e19ef8cc98f049ceb758130ce7f7f0d0072b5b825ee99261a7b3616"
+}

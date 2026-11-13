@@ -1,0 +1,22 @@
+{
+  "schema": "b-phase-closeout-manifest-v1",
+  "parent_delivery_manifest_sha256": "b8ff37958fe46e8910e31fd65b02189f76277433171aaae9bd8e480d7e386a3d",
+  "files": [
+    {
+      "path": "B_STAGE_VALIDATION_REPORT_20261113.md",
+      "sha256": "628f431d896288607312e77af496fc122f607f6e133365c3e56e1e00568b3a42"
+    },
+    {
+      "path": "scripts/verify_b_phase_delivery.py",
+      "sha256": "31c2b69c7d71db0c25b3dc33998885a202861d105383aa7e5223a730d25a4cb1"
+    },
+    {
+      "path": "deliverables/B-PROXY-FALLBACK-001/final_verification.json",
+      "sha256": "a9b15a73da87126709de4720d1179fcb5e294b954675aec0c469ddb53764c63f"
+    },
+    {
+      "path": "deliverables/B-PROXY-FALLBACK-001/unittest.log",
+      "sha256": "30acc51652b4bcd0f795d4a11dc6cbce779b288f28d604628a0e8909c35e4029"
+    }
+  ]
+}

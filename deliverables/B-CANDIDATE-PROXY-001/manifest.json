@@ -1,0 +1,14 @@
+{
+  "dataset_id": "b-proxy-v1-6436dd24164e06f5",
+  "label_sha256": "6436dd24164e06f584176813bb13e888ed080cae362ac681af3b11a0ca8135cc",
+  "parent_features_sha256": "e091ea1f3c0aa74e6ae4ed88efe748b605e56143d4ca40bfc8bf920db31eb805",
+  "contract_sha256": "a0607aef3e7ca09764c8c2a901f5e1d503c0b5102bc505c5ef5065501c853401",
+  "generator_sha256": "97aeb107888d3021816875ae370aac4840468810deeedae6557ab1cbe2c48335",
+  "counts": {
+    "false": 96,
+    "true": 64,
+    "unknown": 56
+  },
+  "use": "engineering proxy experiment only",
+  "human_signed": false
+}

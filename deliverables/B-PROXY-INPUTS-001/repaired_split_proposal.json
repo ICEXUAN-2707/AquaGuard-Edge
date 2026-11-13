@@ -1,0 +1,118 @@
+{
+  "schema": "b-split-repair-v1",
+  "parent_manifest_sha256": "a3ff1c65ca3ef2776f53a5e1ef768127feb1375f1f9a34a8b3bf25a4468c51e2",
+  "status": "proposal-not-independent-test",
+  "training_ready": false,
+  "reason": "old test was already exposed; causal labels remain unresolved",
+  "moved_trials": 12,
+  "components": [
+    [
+      "cohort-000",
+      "cohort-008"
+    ],
+    [
+      "cohort-001"
+    ],
+    [
+      "cohort-002"
+    ],
+    [
+      "cohort-003",
+      "cohort-004"
+    ],
+    [
+      "cohort-005"
+    ],
+    [
+      "cohort-006"
+    ],
+    [
+      "cohort-007",
+      "cohort-009"
+    ],
+    [
+      "cohort-010",
+      "cohort-011"
+    ]
+  ],
+  "trials": {
+    "train": [
+      "bsim1-s20261110-cohort-000-idle",
+      "bsim1-s20261110-cohort-000-attended",
+      "bsim1-s20261110-cohort-000-brief_leave",
+      "bsim1-s20261110-cohort-000-unattended",
+      "bsim1-s20261110-cohort-000-hidden_present",
+      "bsim1-s20261110-cohort-000-presence_dropout",
+      "bsim1-s20261110-cohort-001-idle",
+      "bsim1-s20261110-cohort-001-attended",
+      "bsim1-s20261110-cohort-001-brief_leave",
+      "bsim1-s20261110-cohort-001-unattended",
+      "bsim1-s20261110-cohort-001-hidden_present",
+      "bsim1-s20261110-cohort-001-presence_dropout",
+      "bsim1-s20261110-cohort-006-idle",
+      "bsim1-s20261110-cohort-006-attended",
+      "bsim1-s20261110-cohort-006-brief_leave",
+      "bsim1-s20261110-cohort-006-unattended",
+      "bsim1-s20261110-cohort-006-hidden_present",
+      "bsim1-s20261110-cohort-006-presence_dropout",
+      "bsim1-s20261110-cohort-008-idle",
+      "bsim1-s20261110-cohort-008-attended",
+      "bsim1-s20261110-cohort-008-brief_leave",
+      "bsim1-s20261110-cohort-008-unattended",
+      "bsim1-s20261110-cohort-008-hidden_present",
+      "bsim1-s20261110-cohort-008-presence_dropout",
+      "bsim1-s20261110-cohort-010-idle",
+      "bsim1-s20261110-cohort-010-attended",
+      "bsim1-s20261110-cohort-010-brief_leave",
+      "bsim1-s20261110-cohort-010-unattended",
+      "bsim1-s20261110-cohort-010-hidden_present",
+      "bsim1-s20261110-cohort-010-presence_dropout",
+      "bsim1-s20261110-cohort-011-idle",
+      "bsim1-s20261110-cohort-011-attended",
+      "bsim1-s20261110-cohort-011-brief_leave",
+      "bsim1-s20261110-cohort-011-unattended",
+      "bsim1-s20261110-cohort-011-hidden_present",
+      "bsim1-s20261110-cohort-011-presence_dropout"
+    ],
+    "validation": [
+      "bsim1-s20261110-cohort-005-idle",
+      "bsim1-s20261110-cohort-005-attended",
+      "bsim1-s20261110-cohort-005-brief_leave",
+      "bsim1-s20261110-cohort-005-unattended",
+      "bsim1-s20261110-cohort-005-hidden_present",
+      "bsim1-s20261110-cohort-005-presence_dropout",
+      "bsim1-s20261110-cohort-007-idle",
+      "bsim1-s20261110-cohort-007-attended",
+      "bsim1-s20261110-cohort-007-brief_leave",
+      "bsim1-s20261110-cohort-007-unattended",
+      "bsim1-s20261110-cohort-007-hidden_present",
+      "bsim1-s20261110-cohort-007-presence_dropout",
+      "bsim1-s20261110-cohort-009-idle",
+      "bsim1-s20261110-cohort-009-attended",
+      "bsim1-s20261110-cohort-009-brief_leave",
+      "bsim1-s20261110-cohort-009-unattended",
+      "bsim1-s20261110-cohort-009-hidden_present",
+      "bsim1-s20261110-cohort-009-presence_dropout"
+    ],
+    "test": [
+      "bsim1-s20261110-cohort-002-idle",
+      "bsim1-s20261110-cohort-002-attended",
+      "bsim1-s20261110-cohort-002-brief_leave",
+      "bsim1-s20261110-cohort-002-unattended",
+      "bsim1-s20261110-cohort-002-hidden_present",
+      "bsim1-s20261110-cohort-002-presence_dropout",
+      "bsim1-s20261110-cohort-003-idle",
+      "bsim1-s20261110-cohort-003-attended",
+      "bsim1-s20261110-cohort-003-brief_leave",
+      "bsim1-s20261110-cohort-003-unattended",
+      "bsim1-s20261110-cohort-003-hidden_present",
+      "bsim1-s20261110-cohort-003-presence_dropout",
+      "bsim1-s20261110-cohort-004-idle",
+      "bsim1-s20261110-cohort-004-attended",
+      "bsim1-s20261110-cohort-004-brief_leave",
+      "bsim1-s20261110-cohort-004-unattended",
+      "bsim1-s20261110-cohort-004-hidden_present",
+      "bsim1-s20261110-cohort-004-presence_dropout"
+    ]
+  }
+}

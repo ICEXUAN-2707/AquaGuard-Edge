@@ -1,0 +1,14 @@
+﻿{
+  "schema": "b-proxy-p3-protocol-v1",
+  "scope": "exposed development holdout; proxy consistency only",
+  "primary_unit": "one trial at fixed window_end=40 seconds, published at 42 seconds",
+  "secondary_unit": "all three windows, descriptive; overlapping windows are not independent trials",
+  "methods": "existing experiment.methods C0/C1/C2/C3, unchanged native quality gates",
+  "quality": "same observations and clock; method-specific refusal retained, no common-decided filtering",
+  "truth": "versioned candidate proxy; UNKNOWN kept separate; episode labels shown as counterexamples only",
+  "recall": "TP / all label-positive trials including refused positives",
+  "false_positive_rate": "FP / all label-negative trials including refused negatives",
+  "delay": "null: no independent event onset in proxy annotations",
+  "selection": "no tuning or refitting; locked P2 model only",
+  "comparison": "paired counts on same trial set; no real-world efficacy or ML benefit inference"
+}

@@ -1,0 +1,22 @@
+test_reject_duplicate_missing_and_cohort_leakage (test_b_feature_audit.SplitProtectionTest.test_reject_duplicate_missing_and_cohort_leakage) ... ok
+test_allowlist_and_invalid_values (test_b_feature_contract.FeatureContractTest.test_allowlist_and_invalid_values) ... ok
+test_fixed_proximity (test_b_feature_contract.FeatureContractTest.test_fixed_proximity) ... ok
+test_missing_corrupt_wrong_version (test_b_model_loading.ModelLoadTest.test_missing_corrupt_wrong_version) ... ok
+test_all_refused_known (test_b_p3_metrics.MetricsTest.test_all_refused_known) ... ok
+test_empty_no_positive_no_negative_all_unknown (test_b_p3_metrics.MetricsTest.test_empty_no_positive_no_negative_all_unknown) ... ok
+test_refused_positive_stays_in_recall_denominator (test_b_p3_metrics.MetricsTest.test_refused_positive_stays_in_recall_denominator) ... ok
+test_paired_sign_and_refused_positive (test_b_paired.PairedTest.test_paired_sign_and_refused_positive) ... ok
+test_planning_monotone (test_b_paired.PairedTest.test_planning_monotone) ... ok
+test_ties_and_empty (test_b_paired.PairedTest.test_ties_and_empty) ... ok
+test_causal_proxy_and_unknown (test_b_proxy_labels.ProxyLabelTest.test_causal_proxy_and_unknown) ... ok
+test_split_and_immutable_parent (test_b_split_repair.RepairTest.test_split_and_immutable_parent) ... ok
+test_digest_rejection (test_b_training.TrainingTest.test_digest_rejection) ... ok
+test_reproducible_model_and_no_test_evaluation (test_b_training.TrainingTest.test_reproducible_model_and_no_test_evaluation) ... ok
+test_delayed_endpoint_and_future_filter (test_b_window_policy.WindowPolicyTest.test_delayed_endpoint_and_future_filter) ... ok
+test_missing_cadence_endpoint_remains_unknown (test_b_window_policy.WindowPolicyTest.test_missing_cadence_endpoint_remains_unknown) ... ok
+test_future_and_identity_invariance (test_b_window_prefixes.PrefixTest.test_future_and_identity_invariance) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 1.249s
+
+OK

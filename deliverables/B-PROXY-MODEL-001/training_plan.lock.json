@@ -1,0 +1,32 @@
+{
+  "schema": "b-training-plan-v1",
+  "status": "pre-registered-no-training-run",
+  "label_manifest_sha256": "b6b006076a7b5410c97e7916a15ea40a69b874497a49eb2998eded6c6759260c",
+  "parent_features_sha256": "e091ea1f3c0aa74e6ae4ed88efe748b605e56143d4ca40bfc8bf920db31eb805",
+  "split_sha256": "9b3ee2162b89bf50b50e5ae0effe31b5b706c731cd73681fc5943ffbc5889653",
+  "task": "proxy approximation only; no true-occupancy accuracy or ML benefit claim",
+  "candidates": [
+    {
+      "max_depth": 1,
+      "min_samples_leaf": 2,
+      "criterion": "gini",
+      "tie_break": "positive"
+    },
+    {
+      "max_depth": 2,
+      "min_samples_leaf": 2,
+      "criterion": "gini",
+      "tie_break": "positive"
+    }
+  ],
+  "fitting": "train only; non-UNKNOWN labels and eligible complete vectors; no imputation, scaling or class reweighting",
+  "selection": "validation only: minimize per-trial mean window 0/1 error; equal trial weight; ties choose smaller depth",
+  "prediction": "existing ml.predict positive-majority rule; no threshold search",
+  "validation_rejections": "report separately with full denominator; never silently drop in report",
+  "final_refit": false,
+  "test_policy": "development test evaluated only after model/config lock; no tuning on test; no independent-test claim",
+  "random_seed": null,
+  "determinism": "existing deterministic CART",
+  "methods": "C0-C3 same publication, quality accounting and proxy target; original episode truth separate",
+  "remaining_gate": "P2 loader must verify all hashes and feature allowlist; persist chosen model hash before development-test evaluation"
+}

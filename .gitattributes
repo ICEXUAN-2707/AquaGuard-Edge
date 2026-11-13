@@ -3,11 +3,41 @@ reference/** -text whitespace=cr-at-eol
 *.md text eol=lf
 *.py text eol=lf
 
-spikes/SP-03-features/evidence/checkpoints/*.json -text
-spikes/SP-04/evidence/r05/checkpoints/*.json -text
+spikes/SP-03-features/evidence/checkpoints/*.json -text whitespace=cr-at-eol
+spikes/SP-04/evidence/r05/checkpoints/*.json -text whitespace=cr-at-eol
 
 # This handoff package has byte-level checksums; preserve all artifact bytes.
 deliverables/B-EVAL-001/** -text whitespace=cr-at-eol
 deliverables/B-SIM-001/** -text whitespace=cr-at-eol
 spikes/SP-04/evidence/r07/** -text whitespace=cr-at-eol
 audit/b-independent-20261112/r07/** -text whitespace=cr-at-eol
+scripts/audit_b_feature_proximity.py -text whitespace=cr-at-eol
+scripts/audit_b_sim_labels.py -text whitespace=cr-at-eol
+scripts/audit_b_window_prefixes.py -text whitespace=cr-at-eol
+scripts/b_feature_audit.py -text whitespace=cr-at-eol
+scripts/b_training_inputs.py -text whitespace=cr-at-eol
+scripts/compare_b_paired.py -text whitespace=cr-at-eol
+scripts/evaluate_b_proxy.py -text whitespace=cr-at-eol
+scripts/extract_b_expanded_features.py -text whitespace=cr-at-eol
+scripts/publish_b_proxy_labels.py -text whitespace=cr-at-eol
+scripts/repair_b_sim_split.py -text whitespace=cr-at-eol
+scripts/test_b_feature_audit.py -text whitespace=cr-at-eol
+scripts/test_b_feature_contract.py -text whitespace=cr-at-eol
+scripts/test_b_model_loading.py -text whitespace=cr-at-eol
+scripts/test_b_p3_metrics.py -text whitespace=cr-at-eol
+scripts/test_b_paired.py -text whitespace=cr-at-eol
+scripts/test_b_proxy_labels.py -text whitespace=cr-at-eol
+scripts/test_b_split_repair.py -text whitespace=cr-at-eol
+scripts/test_b_training.py -text whitespace=cr-at-eol
+scripts/test_b_window_policy.py -text whitespace=cr-at-eol
+scripts/test_b_window_prefixes.py -text whitespace=cr-at-eol
+scripts/train_b_proxy.py -text whitespace=cr-at-eol
+scripts/verify_b_phase_delivery.py -text whitespace=cr-at-eol
+scripts/verify_b_proxy_fallback.py -text whitespace=cr-at-eol
+deliverables/B-CANDIDATE-PROXY-001/** -text whitespace=cr-at-eol
+deliverables/B-PROXY-MODEL-001/** -text whitespace=cr-at-eol
+deliverables/B-PROXY-EVAL-001/** -text whitespace=cr-at-eol
+deliverables/B-PROXY-FALLBACK-001/** -text whitespace=cr-at-eol
+deliverables/B-PROXY-INPUTS-001/** -text whitespace=cr-at-eol
+B_*.md -text whitespace=cr-at-eol
+B_*.json -text whitespace=cr-at-eol

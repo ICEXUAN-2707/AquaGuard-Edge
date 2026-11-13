@@ -1,0 +1,15 @@
+{
+  "version": "b-candidate-proxy-label-v1",
+  "target": "observable evidence candidate, not true unoccupied water use",
+  "publication": "window_end+2 seconds; events <= window_end",
+  "positive": "active flow ratio > 0 and absence_after_flow_sec >= 10",
+  "negative": "eligible evidence not meeting positive definition",
+  "unknown": "any P1 quality rejection or incomplete nine-feature vector",
+  "annotation_basis": "deterministic feature-derived engineering proxy; no independent human annotation",
+  "limitations": [
+    "rule-derived target may favor C2; cannot establish ML efficacy or superiority",
+    "hidden-present and unattended may both be candidate-positive despite different true occupancy",
+    "future return never revises an earlier window label",
+    "development holdout has been exposed"
+  ]
+}

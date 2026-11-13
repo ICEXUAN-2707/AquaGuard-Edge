@@ -1,0 +1,119 @@
+{
+  "schema": "b-posthoc-paired-audit-v1",
+  "predictions_sha256": "4e38dfa5ff56c8d82794eceab90c9c4fca8068d60366388e25c61b7134005a0a",
+  "status": "post-hoc analysis; no retrospective pre-registration",
+  "primary": {
+    "false_positive": {
+      "n": 9,
+      "c2_events": 0,
+      "c3_events": 0,
+      "benefit": 0.0,
+      "c3_better": 0,
+      "c3_worse": 0,
+      "paired_effect_ci": null,
+      "ci_reason": "exposed synthetic convenience sample with clustered dependence; no population CI justified"
+    },
+    "miss_including_refusal": {
+      "n": 6,
+      "c2_events": 0,
+      "c3_events": 0,
+      "benefit": 0.0,
+      "c3_better": 0,
+      "c3_worse": 0,
+      "paired_effect_ci": null,
+      "ci_reason": "exposed synthetic convenience sample with clustered dependence; no population CI justified"
+    },
+    "refusal_all": {
+      "n": 18,
+      "c2_events": 3,
+      "c3_events": 3,
+      "benefit": 0.0,
+      "c3_better": 0,
+      "c3_worse": 0,
+      "paired_effect_ci": null,
+      "ci_reason": "exposed synthetic convenience sample with clustered dependence; no population CI justified"
+    }
+  },
+  "secondary_overlapping_windows": {
+    "false_positive": {
+      "n": 27,
+      "c2_events": 0,
+      "c3_events": 0,
+      "benefit": 0.0,
+      "c3_better": 0,
+      "c3_worse": 0,
+      "paired_effect_ci": null,
+      "ci_reason": "exposed synthetic convenience sample with clustered dependence; no population CI justified"
+    },
+    "miss_including_refusal": {
+      "n": 18,
+      "c2_events": 0,
+      "c3_events": 0,
+      "benefit": 0.0,
+      "c3_better": 0,
+      "c3_worse": 0,
+      "paired_effect_ci": null,
+      "ci_reason": "exposed synthetic convenience sample with clustered dependence; no population CI justified"
+    },
+    "refusal_all": {
+      "n": 54,
+      "c2_events": 10,
+      "c3_events": 9,
+      "benefit": 0.018518518518518517,
+      "c3_better": 1,
+      "c3_worse": 0,
+      "paired_effect_ci": null,
+      "ci_reason": "exposed synthetic convenience sample with clustered dependence; no population CI justified"
+    }
+  },
+  "uncertainty": {
+    "primary_discordant_trials": 0,
+    "nominal_cohorts": 3,
+    "source_linked_components": 2,
+    "explanation": "cohort-003 and cohort-004 linked by identical source observations; not 18 independent trials",
+    "conditional_zero_discordance_upper95": 0.7763932022500211,
+    "conditional_bound_scope": "illustration only: assumes 2 independent identically distributed random source groups, not established here; bounds group-level any disagreement, not FPR or causal benefit",
+    "conclusion": "no demonstrated improvement; zero observed difference does not establish equivalence"
+  },
+  "future_planning": {
+    "status": "proposal for new data only; not applied to current results",
+    "primary": "C2 FPR minus C3 FPR; require lower one-sided 97.5% paired CI > 0.05",
+    "safeguards": "upper one-sided 97.5% bounds on extra missed-positive rate (including refusals) and extra refusal rate <= 0.02; hierarchical pre-specified conjunction",
+    "delay": "secondary descriptive until independently annotated onset and censoring policy fixed",
+    "design": "one eligible negative pair per independent group for approximation; plan positive and quality strata separately",
+    "scenarios": [
+      {
+        "expected_gain": 0.1,
+        "required_gain": 0.05,
+        "discordance": 0.12,
+        "power": 0.8,
+        "alpha": 0.025,
+        "approx_independent_negative_pairs": 362
+      },
+      {
+        "expected_gain": 0.1,
+        "required_gain": 0.05,
+        "discordance": 0.2,
+        "power": 0.8,
+        "alpha": 0.025,
+        "approx_independent_negative_pairs": 613
+      },
+      {
+        "expected_gain": 0.1,
+        "required_gain": 0.05,
+        "discordance": 0.3,
+        "power": 0.8,
+        "alpha": 0.025,
+        "approx_independent_negative_pairs": 927
+      }
+    ],
+    "formula": "normal approximation for paired {-1,0,1} outcome; N=(z(1-alpha)*sqrt(q-margin^2)+z(power)*sqrt(q-delta^2))^2/(delta-margin)^2",
+    "caveats": "planning approximation only; q and baseline FPR need independent pilot; cluster design effects/positive-stratum power/attrition require separate simulation before final recruitment",
+    "zero_event_example": {
+      "rate_upper": 0.05,
+      "alpha": 0.05,
+      "independent_units": 59,
+      "interpretation": "zero-event rate precision only; not proof of paired superiority"
+    }
+  }
+}

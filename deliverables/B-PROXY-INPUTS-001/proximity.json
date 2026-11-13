@@ -1,0 +1,4534 @@
+{
+  "schema": "b-proximity-audit-v1",
+  "features_sha256": "e091ea1f3c0aa74e6ae4ed88efe748b605e56143d4ca40bfc8bf920db31eb805",
+  "scales": {
+    "flow_mean_lpm": 1.0,
+    "flow_max_lpm": 1.0,
+    "flow_active_ratio": 1.0,
+    "flow_streak_sec": 30.0,
+    "flow_change_count": 1.0,
+    "presence_occupied_ratio": 1.0,
+    "presence_transition_count": 1.0,
+    "absence_after_flow_sec": 30.0,
+    "data_coverage_ratio": 1.0
+  },
+  "metric": "max absolute scaled coordinate difference",
+  "threshold": 0.05,
+  "compared_pairs": 8175,
+  "incomplete_pairs_excluded": 6405,
+  "pairs": [
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-000-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-003-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-unattended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-unattended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.03333333333333333,
+      "kind": "near",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-unattended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-hidden_present",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.03333333333333333,
+      "kind": "near",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-unattended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-unattended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.033333333333333354,
+      "kind": "near",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-unattended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-hidden_present",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.033333333333333354,
+      "kind": "near",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-hidden_present",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-unattended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.03333333333333333,
+      "kind": "near",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-hidden_present",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-hidden_present",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.03333333333333333,
+      "kind": "near",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-hidden_present",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-unattended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.033333333333333354,
+      "kind": "near",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-001-hidden_present",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-hidden_present",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.033333333333333354,
+      "kind": "near",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-002-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-attended",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-attended",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-003-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-attended",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-attended",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-attended",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-005-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-004-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-attended",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-005-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-006-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-007-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-008-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:35+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-010-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:30+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    },
+    {
+      "left": [
+        "bsim1-s20261110-cohort-009-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "right": [
+        "bsim1-s20261110-cohort-011-idle",
+        "2026-11-10T00:00:40+00:00"
+      ],
+      "distance": 0.0,
+      "kind": "exact",
+      "eligible": true
+    }
+  ],
+  "limitation": "descriptive feature-space similarity, not proof of raw-source independence; no automatic split edits",
+  "training_ready": false
+}
