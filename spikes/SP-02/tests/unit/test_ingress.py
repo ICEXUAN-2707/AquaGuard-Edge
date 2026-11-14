@@ -98,3 +98,40 @@ def test_rejects_are_durable_and_acknowledged(tmp_path,payload,retained):
     assert journal.db.execute('SELECT count(*) FROM rejected').fetchone()[0] == 1
     assert not journal.export()
     journal.close()
+
+
+def test_timing_observes_committed_record_before_ack(tmp_path):
+    journal=Journal(tmp_path/'timing.sqlite');timing={}
+    ticks=iter([10,11,13,14,15])
+    def ack(*args):
+        with sqlite3.connect(tmp_path/'timing.sqlite') as other:
+            assert other.execute('SELECT count(*) FROM attempts').fetchone()[0]==1
+        assert timing['commit_returned'] and not timing['ack_submitted']
+    process_message(message(json.dumps(sample()).encode()),journal,ack,timing=timing,clock=lambda:next(ticks))
+    assert timing['storage_seconds']==2 and timing['receive_to_commit_seconds']==3
+    assert timing['commit_to_ack_submit_seconds']==2 and timing['receive_to_ack_submit_seconds']==5
+    assert timing['ack_submitted'] and timing['broker_ack_confirmed'] is None
+    assert timing['observation_id']==sample()['observation_id']
+    journal.close()
+
+
+@pytest.mark.parametrize('boundary',['storage','after_commit','ack'])
+def test_timing_preserves_failure_boundary_without_false_ack(tmp_path,boundary):
+    journal=Journal(tmp_path/'failure.sqlite');timing={};acks=[]
+    if boundary=='storage':journal.db.execute('PRAGMA query_only=ON')
+    def after():
+        if boundary=='after_commit':raise OSError('interrupted after commit')
+    def ack(*args):
+        if boundary=='ack':raise OSError('ack submission failed')
+        acks.append(args)
+    with pytest.raises((OSError,sqlite3.OperationalError)):
+        process_message(message(json.dumps(sample()).encode()),journal,ack,after,timing=timing)
+    assert timing['commit_returned']==(boundary!='storage')
+    assert not timing['ack_submitted'] and not acks
+    journal.close()
+
+
+def test_timing_is_opt_in_and_does_not_call_clock(tmp_path):
+    journal=Journal(tmp_path/'old.sqlite')
+    process_message(message(b'not-json'),journal,lambda *args:None,clock=lambda:pytest.fail('clock must remain unused'))
+    journal.close()
