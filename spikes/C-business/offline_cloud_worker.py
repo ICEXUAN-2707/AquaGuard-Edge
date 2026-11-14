@@ -38,7 +38,9 @@ def validate_business_database(path):
             index=indexes.get('unique_open')
             index_sql=db.execute("SELECT sql FROM sqlite_master WHERE type='index' AND name='unique_open'").fetchone()
             index_columns=[row[2] for row in db.execute('PRAGMA index_info(unique_open)')]
-            if not index or not index[2] or not index[4] or index_columns!=['device_id','event_type'] or not index_sql or "WHERELIFECYCLE='OPEN'" not in ''.join(index_sql[0].upper().split()):
+            sql='' if not index_sql or index_sql[0] is None else ''.join(index_sql[0].upper().split()).replace('IFNOTEXISTS','').rstrip(';')
+            expected_index="CREATEUNIQUEINDEXUNIQUE_OPENONEVENTS(DEVICE_ID,EVENT_TYPE)WHERELIFECYCLE='OPEN'"
+            if not index or not index[2] or not index[4] or index_columns!=['device_id','event_type'] or sql!=expected_index:
                 raise ValueError('required unique OPEN index missing or incompatible')
             rows=db.execute('SELECT singleton,body FROM delivery_policy').fetchall()
             expected=canonical(dict(version='mock-r05-v1',base=1,cap=60,lease=10,maximum=5))
@@ -71,7 +73,10 @@ def assemble(path,config,*,mode='retry',clock=utcnow):
     if mode not in ('retry','permanent') or not callable(clock):raise ValueError('valid offline mode and clock required')
     path=validate_business_database(path)
     transport=OfflineTransport(mode)
-    return DeliveryService(Worker(path),IoTDAAdapter(config,transport),finish_clock=clock)
+    try:return DeliveryService(Worker(path),IoTDAAdapter(config,transport),finish_clock=clock)
+    except BaseException:
+        transport.close()
+        raise
 
 
 def main():

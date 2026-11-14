@@ -1,5 +1,7 @@
 # MQTT长时验收协议候选（执行暂停）
 
+2026-11-14 工具增量：`scripts/observe_mqtt_capacity.py` 可定时调用只读库存快照，输出独立目录内的 `samples.jsonl`（UTC/单调耗时）和 `result.json`。默认仅采一次；计划超过 60 秒须显式 `--allow-long-run`，当前暂停期间不执行该选项。错误或中断记录 INCOMPLETE，COMPLETED 也始终为 `long_run_acceptance=false`。单次使用：`python scripts/observe_mqtt_capacity.py --journal <journal.sqlite> --db <business.sqlite> --output <新的输出目录>`。它不启动 broker/发布器/worker，不测 ACK、资源、WAL/SHM，不替代下述完整编排与验收。
+
 用户暂停实验期间，只准备代码与协议；本文没有产生长时PASS，也不自动注册或启动任务。
 
 ## 恢复执行前

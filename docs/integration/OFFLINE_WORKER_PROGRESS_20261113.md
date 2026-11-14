@@ -1,5 +1,7 @@
 # 暂停长时实验后的离线装配
 
+2026-11-14 复审增量：严格匹配完整 unique_open 谓词，拒绝缩窄索引；装配异常关闭传输。补充默认单次的 MQTT 只读库存采集器（非完整长时编排）。相关短测 47/47 通过，见 docs/audit/offline-worker-20261114/offline-review-20261114.xml。PR #12 拆分范围、B 冻结源冲突与暂停验收见 PR12_PR13_MERGE_SCOPE_20261114.md；未合并 main、未运行长时实验、未连接真实云。
+
 基线main=5f5bc94，已包含B PR #11。新分支feat/offline-worker-closeout-20261113不修改B冻结输入、规则或模型工件。
 
 新增spikes/C-business/offline_cloud_worker.py：显式加载既有测试配置、仅接受simulation_test绑定及已有隔离数据库，使用IoTDAAdapter执行真实消息映射，但只装配OfflineTransport。该传输没有网络客户端或socket构造，仅支持retry/permanent，不提供accept模式、不写假云回执。CLI steps为1..100，不持续调度，不开启真实云。

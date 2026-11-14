@@ -9,15 +9,17 @@ import pytest
 import sqlite3
 from pathlib import Path
 
-@pytest.mark.parametrize('kind',['empty_file','empty_sqlite','journal','unrelated','missing_columns','missing_policy','wrong_policy','missing_index'])
+@pytest.mark.parametrize('kind',['empty_file','empty_sqlite','journal','unrelated','missing_columns','missing_policy','wrong_policy','missing_index','narrow_index'])
 def test_wrong_database_is_rejected_without_any_write(tmp_path,environment,kind):
     path=tmp_path/'wrong.sqlite'
-    if kind in ('missing_policy','wrong_policy','missing_index'):
+    if kind in ('missing_policy','wrong_policy','missing_index','narrow_index'):
         worker,event=seeded(tmp_path);path=Path(worker.path)
         with sqlite3.connect(path) as db:
             if kind=='missing_policy':db.execute('DELETE FROM delivery_policy')
             elif kind=='wrong_policy':db.execute("UPDATE delivery_policy SET body='{}'")
-            else:db.execute('DROP INDEX unique_open')
+            else:
+                db.execute('DROP INDEX unique_open')
+                if kind=='narrow_index':db.execute("CREATE UNIQUE INDEX unique_open ON events(device_id,event_type) WHERE lifecycle='OPEN' AND event_type='WATER_CONTACT'")
     elif kind=='empty_file':path.touch()
     else:
         with sqlite3.connect(path) as db:
