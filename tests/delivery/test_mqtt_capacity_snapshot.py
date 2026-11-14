@@ -20,3 +20,11 @@ def test_backlog_counts_only_unconsumed_eligible_attempts(tmp_path):
     assert module.snapshot(journal,business)['pending_eligible_attempts']==2
     with sqlite3.connect(business) as db:db.execute('UPDATE mqtt_consumer SET cursor=100')
     with pytest.raises(ValueError,match='outside journal inventory'):module.snapshot(journal,business)
+
+
+def test_sidecar_inventory_preserves_main_and_sidecar_bytes(tmp_path):
+    path=tmp_path/'database.sqlite';path.write_bytes(b'main')
+    Path(str(path)+'-wal').write_bytes(b'wal-bytes')
+    before=path.read_bytes()
+    assert module.file_inventory(path)=={'main':4,'wal':9,'shm':0}
+    assert path.read_bytes()==before
