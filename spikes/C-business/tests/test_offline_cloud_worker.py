@@ -6,6 +6,39 @@ from offline_cloud_worker import assemble
 from delivery import DeliveryService
 from adapters.mock import MockAdapter
 import pytest
+import sqlite3
+from pathlib import Path
+
+@pytest.mark.parametrize('kind',['empty_file','empty_sqlite','journal','unrelated','missing_columns','missing_policy','wrong_policy','missing_index'])
+def test_wrong_database_is_rejected_without_any_write(tmp_path,environment,kind):
+    path=tmp_path/'wrong.sqlite'
+    if kind in ('missing_policy','wrong_policy','missing_index'):
+        worker,event=seeded(tmp_path);path=Path(worker.path)
+        with sqlite3.connect(path) as db:
+            if kind=='missing_policy':db.execute('DELETE FROM delivery_policy')
+            elif kind=='wrong_policy':db.execute("UPDATE delivery_policy SET body='{}'")
+            else:db.execute('DROP INDEX unique_open')
+    elif kind=='empty_file':path.touch()
+    else:
+        with sqlite3.connect(path) as db:
+            if kind=='journal':db.execute('CREATE TABLE observations(id TEXT PRIMARY KEY,body TEXT)')
+            elif kind=='unrelated':db.execute('CREATE TABLE unrelated(value TEXT)')
+            elif kind=='missing_columns':
+                for table in ('events','transitions','outbox','operations','outbox_payloads','delivery_attempts','delivery_policy'):
+                    db.execute('CREATE TABLE '+table+'(unrelated TEXT)')
+            else:db.execute('PRAGMA user_version=1')
+    before=path.read_bytes()
+    with sqlite3.connect(path.as_uri()+'?mode=ro',uri=True) as db:
+        schema=db.execute('SELECT type,name,sql FROM sqlite_master ORDER BY name').fetchall()
+    with pytest.raises(ValueError):assemble(path,load_config(environment))
+    assert path.read_bytes()==before
+    with sqlite3.connect(path.as_uri()+'?mode=ro',uri=True) as db:
+        assert db.execute('SELECT type,name,sql FROM sqlite_master ORDER BY name').fetchall()==schema
+
+def test_missing_database_is_not_created(tmp_path,environment):
+    path=tmp_path/'absent.sqlite'
+    with pytest.raises(ValueError):assemble(path,load_config(environment))
+    assert not path.exists()
 
 def test_mapping_worker_is_offline_and_schedules_retry_at_finish(tmp_path,environment):
     worker,event=seeded(tmp_path)

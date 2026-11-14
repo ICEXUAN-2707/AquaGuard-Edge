@@ -19,3 +19,7 @@ DeliveryService新增可选finish_clock；本入口以发送结束时刻finish�
 第二批短程验证：交付/Outbox/离线装配/快照34项通过。发送完成恰达租约边界返回STALE，之后仅由claim恢复过期租约；再次发送保持原message_id，并按第二次完成时间计算退避。完成时间倒退保留可恢复SENDING，非法finish_clock在claim前拒绝。非默认旧持久策略明确要求评审迁移，不自动改写。MQTT消费cursor超过Journal库存时拒绝，不报告假零积压。
 
 长时协议候选见MQTT_LONG_RUN_PROTOCOL_20261113.md，列明准备、连续输入、停报、重复、重启、新boot和退出阶段及采集缺口；本批没有执行该协议。
+
+PR复审P2修复（2026-11-14）：assemble不再将“文件存在”视为业务库凭据。构造Worker前用mode=ro打开并显式关闭连接，核对业务/Outbox/attempt/policy表和列、唯一OPEN索引与既有默认mock-r05-v1策略。空文件、空SQLite、Journal、无关库、缺列/策略/索引及不兼容策略均拒绝；不会借Worker初始化补表或策略。缺失文件不创建。该校验不能证明数据库是隔离副本，调用者仍须提供专用、不被并发替换的库。
+
+入口现在要求“已初始化过现有Worker、策略兼容的隔离业务数据库”；尚无delivery_attempts/delivery_policy的纯业务库也拒绝，必须另走显式初始化/迁移流程，不能在本入口自动升级。负向回归比较文件完整字节与sqlite_master，确保拒绝后不变。初轮相关回归42项通过，随后补充缺失文件与显式连接释放专项；证据见docs/audit/offline-worker-20261114/。

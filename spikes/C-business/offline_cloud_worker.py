@@ -4,12 +4,49 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import sys
+import sqlite3
+from contextlib import closing
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from adapters.base import RetryableFailure, PermanentFailure
 from adapters.iotda import IoTDAAdapter
 from cloud_config import load_config, ConfigError
 from delivery import DeliveryService
 from outbox import Worker
+from store import canonical
+
+
+def validate_business_database(path):
+    path=Path(path).resolve()
+    required={
+        'events':{'event_id','device_id','event_type','lifecycle','body'},
+        'transitions':{'transition_id','event_id','version','body'},
+        'outbox':{'transition_id','message_id','body'},
+        'operations':{'event_id','key','request','response'},
+        'outbox_payloads':{'transition_id','body'},
+        'delivery_attempts':{'token','message_id','number','claimed_at','lease_until','result'},
+        'delivery_policy':{'singleton','body'},
+    }
+    try:
+        with closing(sqlite3.connect(path.as_uri()+'?mode=ro',uri=True,timeout=2)) as db:
+            db.execute('BEGIN')
+            tables={row[0] for row in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+            if not set(required)<=tables:raise ValueError('existing initialized business worker database required')
+            for table,columns in required.items():
+                actual={row[1] for row in db.execute('PRAGMA table_info('+table+')')}
+                if not columns<=actual:raise ValueError('incompatible business database structure')
+            indexes={row[1]:row for row in db.execute('PRAGMA index_list(events)')}
+            index=indexes.get('unique_open')
+            index_sql=db.execute("SELECT sql FROM sqlite_master WHERE type='index' AND name='unique_open'").fetchone()
+            index_columns=[row[2] for row in db.execute('PRAGMA index_info(unique_open)')]
+            if not index or not index[2] or not index[4] or index_columns!=['device_id','event_type'] or not index_sql or "WHERELIFECYCLE='OPEN'" not in ''.join(index_sql[0].upper().split()):
+                raise ValueError('required unique OPEN index missing or incompatible')
+            rows=db.execute('SELECT singleton,body FROM delivery_policy').fetchall()
+            expected=canonical(dict(version='mock-r05-v1',base=1,cap=60,lease=10,maximum=5))
+            if rows!=[(1,expected)]:raise ValueError('worker policy changed or missing; reviewed initialization/migration required')
+            db.rollback()
+    except sqlite3.Error:
+        raise ValueError('existing initialized business worker database required') from None
+    return path
 
 
 class OfflineTransport:
@@ -31,6 +68,8 @@ def assemble(path,config,*,mode='retry',clock=utcnow):
     if not Path(path).is_file():raise ValueError('existing isolated business database required')
     if not config.bindings or any(b.authorization_class!='simulation_test' or b.allowed_origins!=('simulation',) for b in config.bindings):
         raise ConfigError('offline worker requires simulation-only test bindings')
+    if mode not in ('retry','permanent') or not callable(clock):raise ValueError('valid offline mode and clock required')
+    path=validate_business_database(path)
     transport=OfflineTransport(mode)
     return DeliveryService(Worker(path),IoTDAAdapter(config,transport),finish_clock=clock)
 
