@@ -46,3 +46,6 @@ scripts/test_b_frozen_sources.py -text whitespace=cr-at-eol
 scripts/b_bundle_checks.py -text whitespace=cr-at-eol
 scripts/b_evidence_checks.py -text whitespace=cr-at-eol
 scripts/test_b_cross_integrity.py -text whitespace=cr-at-eol
+
+# Preserve raw closeout receipts, including pytest traceback trailing spaces.
+docs/audit/offline-worker-closeout-20261117/** -text whitespace=cr-at-eol,-blank-at-eol
