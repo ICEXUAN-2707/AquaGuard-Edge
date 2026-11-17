@@ -19,3 +19,5 @@
 
 复现：应用环境执行 pytest spikes/C-business/tests/test_runtime_diagnostics.py spikes/C-business/tests/test_pause_recovery_decoupled.py spikes/C-business/tests/test_runtime.py spikes/C-business/tests/test_mqtt_journal.py -q。
 实际源差异需与独立集成基线比较，不将旧 PR #12 中相对 main 的 B 文件差异误当成诊断依赖。
+
+更新基线至集成代码候选 ec08881 后，诊断/恢复/正式入口/Journal 与监督/证据交叉组合 37 项通过；B 工件 67 项完整性与 38 项测试通过。证据 docs/audit/pr12-diagnostics-review-20261117/tests.xml。此分支仍单独保留，不纳入主集成候选。
