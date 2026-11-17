@@ -24,3 +24,10 @@ def test_partial_timing_fields_remain_unknown():
     result=module.analyze([{'elapsed_sec':60,'runtime':{'diagnostics':{'timing':{'max_advance_seconds':0}}}}])
     assert result['max_advance_seconds']==0
     assert result['max_runtime_gap_seconds'] is None and result['max_timer_failures'] is None
+
+def test_protocol_samples_use_declared_phase_and_new_elapsed_key():
+    report=module.analyze([{'elapsed_seconds':60,'phase':'continuous','live':{'status':200}},
+                           {'elapsed_seconds':100,'phase':'publisher_stop','live':{'status':503}},
+                           {'elapsed_seconds':120,'phase':'shutdown','live':None}])
+    assert report['steady_samples']==1 and report['steady_live_status_counts']=={'200':1}
+    assert report['max_advance_seconds'] is None

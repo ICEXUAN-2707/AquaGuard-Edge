@@ -6,21 +6,24 @@ from pathlib import Path
 
 
 def analyze(samples):
-    steady=[row for row in samples if row['elapsed_sec']>=45]
+    samples=[dict(row,elapsed_sec=row.get('elapsed_sec',row.get('elapsed_seconds'))) for row in samples]
+    if any(type(row['elapsed_sec']) not in (int,float) for row in samples):raise ValueError('elapsed_sec or elapsed_seconds required')
+    phase_tagged=any('phase' in row for row in samples)
+    steady=[row for row in samples if row.get('phase')=='continuous'] if phase_tagged else [row for row in samples if row['elapsed_sec']>=45]
     timings=[row.get('runtime',{}).get('diagnostics',{}).get('timing') for row in samples]
     timings=[row for row in timings if row]
     bad=[]
     for row in steady:
-        if row.get('live',{}).get('status')==200:continue
+        if (row.get('live') or {}).get('status')==200:continue
         diagnostic=row.get('runtime',{}).get('diagnostics',{})
         bad.append({'elapsed_sec':row['elapsed_sec'],'utc':row.get('utc'),
-                    'status':row.get('live',{}).get('status'),
+                    'status':(row.get('live') or {}).get('status'),
                     'estimated_suspend_seconds':row.get('estimated_suspend_seconds'),
                     'sample_gap_seconds':row.get('sample_gap_seconds'),
                     'projections':diagnostic.get('projections',[]),
                     'timing':diagnostic.get('timing')})
     return {'samples':len(samples),'steady_samples':len(steady),
-            'steady_live_status_counts':dict(Counter(str(row.get('live',{}).get('status')) for row in steady)),
+            'steady_live_status_counts':dict(Counter(str((row.get('live') or {}).get('status')) for row in steady)),
             'max_sample_gap_seconds':max((row['sample_gap_seconds'] for row in samples if row.get('sample_gap_seconds') is not None),default=None),
             'max_estimated_suspend_seconds':max((row['estimated_suspend_seconds'] for row in samples if row.get('estimated_suspend_seconds') is not None),default=None),
             'max_advance_seconds':max((row['max_advance_seconds'] for row in timings if row.get('max_advance_seconds') is not None),default=None),
