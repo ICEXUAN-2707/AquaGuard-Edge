@@ -1,0 +1,9 @@
+{
+  "baseline": "5f5bc942db8acf1532a2b180e0e6248290309c14",
+  "integration_code_sha": "ec08881e84fc840f8aa044b1c34d140bfd68fb88",
+  "frozen_sources": 39,
+  "changed_frozen_sources": [],
+  "diagnostic_branch": "review/pr12-diagnostics-decoupled-20261117",
+  "diagnostic_sha": "cc63638fbb14cd5b7ee71ec2798bf116d6b7a9a4",
+  "pr12_checkpoint_optimization_included": false
+}

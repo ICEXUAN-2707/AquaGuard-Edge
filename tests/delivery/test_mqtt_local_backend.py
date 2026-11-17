@@ -108,3 +108,32 @@ def test_exit_ports_must_close_without_touching_other_processes(tmp_path,monkeyp
     value=backend.exit_checks()
     assert value['ok']==(not listening)
     assert value['ports_closed']=={'mqtt':not listening,'http':not listening}
+
+@pytest.mark.parametrize('latency_status,ack_status,records,pending,expected',[
+    ('AVAILABLE','AVAILABLE',3,0,True),
+    ('AVAILABLE','AVAILABLE',2,0,False),
+    ('AVAILABLE','AVAILABLE',3,1,False),
+    ('INCOMPLETE','AVAILABLE',3,0,False),
+    ('AVAILABLE','INCOMPLETE',3,0,False),
+])
+def test_drain_requires_ack_latency_and_empty_queue(tmp_path,monkeypatch,latency_status,ack_status,records,pending,expected):
+    import mqtt_closeout_evidence,mqtt_ack_summary,mqtt_capacity_snapshot
+    backend=LocalBackend(tmp_path/'broker',18887,8051);backend.output=tmp_path
+    monkeypatch.setattr(mqtt_closeout_evidence,'consumption_latency',lambda *args:{'status':latency_status,'valid_publications':3})
+    monkeypatch.setattr(mqtt_ack_summary,'summarize',lambda *args:{'status':ack_status,'records':records})
+    monkeypatch.setattr(mqtt_capacity_snapshot,'snapshot',lambda *args:{'pending_eligible_attempts':pending})
+    assert backend.drained() is expected
+
+
+def test_publisher_gets_stop_request_before_forced_shutdown(tmp_path):
+    backend=LocalBackend(tmp_path/'broker',18887,8051)
+    backend.publisher_stop_file=tmp_path/'stop.request'
+    class Publisher:
+        code=None
+        def poll(self):return self.code
+        def wait(self,timeout):
+            assert backend.publisher_stop_file.exists();self.code=0;return self.code
+        def terminate(self):pytest.fail('graceful child must not be terminated')
+    backend.active['publisher']=Publisher()
+    backend.stop_one('publisher')
+    assert not backend.active and backend.publisher_stop_file.exists()
