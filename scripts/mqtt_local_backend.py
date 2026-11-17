@@ -65,7 +65,8 @@ class LocalBackend:
     def __init__(self,broker,mqtt_port,http_port):
         self.broker=Path(broker).resolve();self.mqtt_port=mqtt_port;self.http_port=http_port
         self.active={};self.history=[];self.logs=[];self.seq=0;self.last_rows=[];self.job=None
-        self.token=uuid4().hex
+        self.publisher_stop_file=None;self.runtime_versions=None
+        self.token=uuid4().hex;self.runtime_versions=None;self.publisher_stop_file=None
         # Ignore system proxy configuration for both loopback APIs.
         self.http=urllib.request.build_opener(urllib.request.ProxyHandler({}))
 
@@ -77,6 +78,11 @@ class LocalBackend:
         revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
         dirty=subprocess.run(['git','diff','--quiet','HEAD','--'],cwd=ROOT).returncode
         if revision!=plan['revision'] or dirty:raise ValueError('clean tracked source at planned revision required')
+        from mqtt_closeout_evidence import runtime_lock
+        expected=plan.get('runtime_lock')
+        if not isinstance(expected,dict):raise ValueError('offline prepared runtime lock required')
+        self.runtime_versions=runtime_lock(ROOT,self.broker,expected.get('broker_version'))
+        if self.runtime_versions!=expected:raise ValueError('runtime or broker differs from prepared lock')
         tree=ast.parse((ROOT/'spikes/C-business/online.py').read_text(encoding='utf-8'))
         ttls=[node.value.value for node in ast.walk(tree) if isinstance(node,ast.keyword) and node.arg=='ttl' and isinstance(node.value,ast.Constant)]
         if ttls!=[plan['ttl_seconds']]:raise ValueError('plan TTL does not match frozen runtime configuration')
@@ -116,19 +122,28 @@ class LocalBackend:
         log=(self.output/'broker-0.log').read_text(encoding='utf-8',errors='replace').lower()
         owned_ready=f'opening ipv4 listen socket on port {self.mqtt_port}.' in log and 'mosquitto version' in log and ' running' in log and 'error:' not in log
         if not owned_ready:return False
+        import re
+        version=re.search(r'mosquitto version (\S+) running',log)
+        if self.runtime_versions and (not version or version[1]!=self.runtime_versions['broker_version']):raise ValueError('broker self-reported version differs from lock')
         with socket.socket() as sock:return sock.connect_ex(('127.0.0.1',self.mqtt_port))==0
 
     def start(self,output,plan):
+        from mqtt_closeout_evidence import runtime_lock
+        if not self.runtime_versions or runtime_lock(ROOT,self.broker,self.runtime_versions['broker_version'])!=self.runtime_versions:
+            raise ValueError('runtime changed since preflight')
         self.output=Path(output).resolve();self.plan=plan;self.job=create_job()
         receipt=dict(revision=plan['revision'],broker_sha256=hashlib.sha256(self.broker.read_bytes()).hexdigest(),
                      broker_version=None,python=sys.version,paho_mqtt=importlib.metadata.version('paho-mqtt'),
                      mqtt_port=self.mqtt_port,http_port=self.http_port,
                      origin='simulation',job_owned=True)
         (self.output/'runtime.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')
+        (self.output/'runtime-lock.json').write_text(json.dumps(self.runtime_versions,indent=2),encoding='utf-8')
         config=self.output/'broker.conf'
         config.write_text(f'listener {self.mqtt_port} 127.0.0.1\nallow_anonymous true\npersistence false\n',encoding='utf-8')
         self.launch('broker',[str(self.broker),'-c',str(config)])
         self.wait_ready(self.broker_ready)
+        receipt['broker_version']=self.runtime_versions['broker_version']
+        (self.output/'runtime.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')
         self.cli=ROOT/'spikes/SP-02/src/cli.py'
         self.launch('subscriber',[sys.executable,str(self.cli),'subscribe','--device-id','demo01','--directory',str(self.output),
                                   '--port',str(self.mqtt_port),'--seconds',str(plan['total_planned_seconds']+180),'--timing-evidence'])
@@ -140,6 +155,7 @@ class LocalBackend:
         self.env=os.environ.copy()
         self.env.update(AQUAGUARD_RUNTIME='mqtt',AQUAGUARD_HOST='127.0.0.1',AQUAGUARD_DEVICE_ID='demo01',AQUAGUARD_PORT=str(self.http_port),
                         AQUAGUARD_DB=str(self.output/'business.sqlite'),AQUAGUARD_MQTT_JOURNAL=str(self.output/'journal.sqlite'),
+                        AQUAGUARD_MQTT_TIMING=str(self.output/'consumer-timings.jsonl'),
                         AQUAGUARD_C_TOKEN=self.token,AQUAGUARD_C_CURSOR_KEY=uuid4().hex+uuid4().hex)
         self.launch('edge',[sys.executable,'-m','edge'],self.env)
         self.wait_ready(lambda:(self.api('/health').get('body') or {}).get('status')=='ok')
@@ -162,8 +178,9 @@ class LocalBackend:
         # Replay the first batch, not an unsent tail from the prebuilt manifest.
         self.seq+=math.ceil(duration)+1;self.last_rows=rows[:3]
         (directory/'manifest.jsonl').write_text(''.join(json.dumps(row)+'\n' for row in rows),encoding='utf-8')
+        self.publisher_stop_file=directory/'stop.request'
         self.launch('publisher',[sys.executable,str(self.cli),'publish','--device-id','demo01','--directory',str(directory),
-                                 '--port',str(self.mqtt_port),'--interval',str(1/3)])
+                                 '--port',str(self.mqtt_port),'--interval',str(1/3),'--timing-evidence','--stop-file',str(self.publisher_stop_file)])
 
     def enter(self,stage):
         from mqtt_phase_evidence import capture
@@ -183,7 +200,10 @@ class LocalBackend:
             self.wait_ready(lambda:self.api('/health')['status']==200)
             return {'ready':True,'checks':['restarted_edge_health_200']}
         elif name=='new_boot':self.publisher(stage,retired=True)
-        elif name=='shutdown':self.stop()
+        elif name=='shutdown':
+            self.stop_one('publisher')
+            self.wait_ready(self.drained)
+            self.stop()
 
     def ensure_alive(self,stage):
         if stage['name']=='shutdown':return
@@ -193,10 +213,21 @@ class LocalBackend:
     def observe(self,stage):
         from mqtt_capacity_snapshot import snapshot
         from mqtt_runtime_observation import process_resources,os_clocks
+        from mqtt_closeout_evidence import checkpoint_sizes
         return dict(live=None if stage['name']=='shutdown' else self.api('/api/devices/demo01/live'),
                     capacity=snapshot(self.output/'journal.sqlite',self.output/'business.sqlite'),
+                    checkpoints=checkpoint_sizes(self.output/'business.sqlite.checkpoints'),
                     resources=[dict(name=name,pid=process.pid,**process_resources(process)) for name,process in self.active.items()],
                     os_clock=os_clocks())
+
+    def drained(self):
+        from mqtt_closeout_evidence import consumption_latency
+        from mqtt_ack_summary import summarize
+        from mqtt_capacity_snapshot import snapshot
+        latency=consumption_latency(list(self.output.glob('*-publisher/publisher-timings.jsonl')),self.output/'consumer-timings.jsonl')
+        ack=summarize(self.output/'subscriber-timings.jsonl')
+        return (latency['status']=='AVAILABLE' and ack['status']=='AVAILABLE' and ack['records']>=latency['valid_publications']
+                and snapshot(self.output/'journal.sqlite',self.output/'business.sqlite')['pending_eligible_attempts']==0)
 
     def assert_phase(self,stage,samples):
         from mqtt_phase_evidence import capture,evaluate
@@ -209,6 +240,10 @@ class LocalBackend:
     def stop_one(self,name):
         process=self.active.get(name)
         if process is None:return
+        if name=='publisher' and self.publisher_stop_file is not None and process.poll() is None:
+            self.publisher_stop_file.touch(exist_ok=True)
+            try:process.wait(timeout=12)
+            except subprocess.TimeoutExpired:pass
         if process.poll() is None:
             process.terminate()
             try:process.wait(timeout=5)
@@ -235,5 +270,9 @@ class LocalBackend:
         checks['ports_closed']=ports
         from mqtt_ack_summary import summarize
         checks['ack_evidence']=summarize(self.output/'subscriber-timings.jsonl')
-        checks['ok']=checks['ok'] and all(ports.values()) and checks['ack_evidence']['status']=='AVAILABLE'
+        from mqtt_closeout_evidence import checkpoint_inventory,consumption_latency
+        checks['checkpoints']=checkpoint_inventory(self.output/'business.sqlite',self.output/'business.sqlite.checkpoints')
+        checks['consumption_latency']=consumption_latency(list(self.output.glob('*-publisher/publisher-timings.jsonl')),self.output/'consumer-timings.jsonl')
+        checks['ok']=(checks['ok'] and all(ports.values()) and checks['ack_evidence']['status']=='AVAILABLE'
+                      and checks['checkpoints']['ok'] and checks['consumption_latency']['status']=='AVAILABLE')
         return checks

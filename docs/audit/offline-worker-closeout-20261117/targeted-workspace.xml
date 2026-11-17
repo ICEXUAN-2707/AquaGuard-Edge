@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="38" failures="0" skipped="0" tests="38" time="2.642" timestamp="2026-11-17T21:03:27.796820+08:00" hostname="LAPTOP-709760PF"><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_checkpoint_inventory_is_read_only_and_fail_closed[valid]" time="0.003"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_checkpoint_inventory_is_read_only_and_fail_closed[missing]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_checkpoint_inventory_is_read_only_and_fail_closed[outside]" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_checkpoint_inventory_is_read_only_and_fail_closed[invalid_json]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_version_lock_tracks_dependency_files_and_binary_without_execution" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[valid]" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[missing_consumer]" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[failed_publish]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[negative]" time="0.003"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[wrong_scope]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[invalid]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_broker_self_report_must_match_locked_version" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_manifests_repeat_published_prefix_and_inject_unique_retired_identity" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_cleanup_touches_only_retained_process_objects" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_checks_read_only_and_detect_duplicate_open[False]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_checks_read_only_and_detect_duplicate_open[True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_checks_do_not_create_missing_database" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_broker_readiness_requires_owned_success_log_before_socket_probe[]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_broker_readiness_requires_owned_success_log_before_socket_probe[mosquitto version 2.0 running]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_broker_readiness_requires_owned_success_log_before_socket_probe[Opening ipv4 listen socket on port 18887.\nmosquitto version 2.0 running\nError: Address already in use]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_broker_ready_checks_loopback_socket_after_owned_log" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_ports_must_close_without_touching_other_processes[True]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_ports_must_close_without_touching_other_processes[False]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_journal_drives_live_events_and_restart" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_stale_backlog_cannot_refresh_state" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_late_water_is_recorded_without_blocking_consumer_restart" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_batch_receipts_and_concurrent_future_commit" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_optional_consumer_receipt_is_after_durable_cursor_commit" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_failed_receipt_does_not_rollback_committed_state" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_unapproved_boot_and_source_fail_closed[source]" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_boot_switch_resets_history_and_rejects_retired_boot_after_restart" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_runtime" name="test_seed_is_explicit_and_never_overwrites" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_runtime" name="test_lifespan_expires_on_startup_and_stops" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_runtime" name="test_real_loopback_ack_timer_and_restart" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_runtime" name="test_missing_credentials_fail_before_creating_database" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="spikes.C-business.tests.test_runtime" name="test_timer_failure_is_visible_and_shutdown_finishes" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.smoke.test_simulation_runtime" name="test_public_simulation_runtime" time="0.002"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.smoke.test_simulation_runtime" name="test_simulation_validates_before_database_creation" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'&quot;">self = WindowsPath('D:/高ice（大学版）/2026-2027 大二/10月华为ICT实践赛/.offline-worker/.local/closeout-20261117-01')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\高ice（大学版）\\2026-2027 大二\\10月华为ICT实践赛\\.offline-worker\\.local\\closeout-20261117-01'
+
+C:\Program Files\Python312\Lib\pathlib.py:1311: FileNotFoundError</error></testcase></testsuite></testsuites>

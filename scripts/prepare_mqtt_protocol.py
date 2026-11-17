@@ -7,7 +7,7 @@ import re
 from uuid import uuid4
 
 
-def prepare(output,*,revision,ttl,stop_seconds,continuous_seconds=3600,interval=15,thresholds=None):
+def prepare(output,*,revision,ttl,stop_seconds,continuous_seconds=3600,interval=15,thresholds=None,runtime_lock=None):
     from mqtt_runtime_observation import validate_thresholds
     thresholds=validate_thresholds(thresholds)
     if not isinstance(revision,str) or not re.fullmatch(r'[0-9a-f]{40}',revision):
@@ -37,11 +37,12 @@ def prepare(output,*,revision,ttl,stop_seconds,continuous_seconds=3600,interval=
               run_id=run_id,revision=revision,origin='simulation',device_id='demo01',host='127.0.0.1',
               ttl_seconds=ttl,sample_interval_seconds=interval,stages=stages,
               observation_thresholds=thresholds,
+              runtime_lock=runtime_lock,
               total_planned_seconds=offset,
               unresolved=['Resolve and record loopback ports, broker path/hash/version and dependency lock before execution.',
                           'Verify TTL against the frozen runtime configuration; this plan does not inspect runtime config.',
-                          'Implement owned-process backend, readiness gates, phase receipts and failure cleanup.',
-                          'Collect per-process resources, OS pause evidence, business consumption lag and exit invariants.',
+                          'Validate existing owned-process backend and phase assertions against actual local MQTT after authorization.',
+                          'Review captured resources, OS clocks, consumption latency and exit invariants against explicit budgets.',
                           'Define final coverage/latency/capacity thresholds before execution; no thresholds imply no PASS.'],
               note='Offsets are a predeclared plan, not observed timestamps. A phase failure must remain in evidence; do not shift normal/fault denominators after failure.')
     output=Path(output);output.mkdir(parents=True,exist_ok=False)
@@ -58,7 +59,9 @@ if __name__=='__main__':
     parser.add_argument('--continuous-seconds',type=float,default=3600)
     parser.add_argument('--interval',type=float,default=15)
     parser.add_argument('--thresholds',type=Path,help='predeclared JSON budgets; no performance defaults are invented')
+    parser.add_argument('--runtime-lock',type=Path,help='offline prepared environment/broker lock required by real backend')
     args=parser.parse_args()
     print(json.dumps(prepare(args.output,revision=args.revision,ttl=args.ttl,stop_seconds=args.stop_seconds,
                              continuous_seconds=args.continuous_seconds,interval=args.interval,
-                             thresholds=json.loads(args.thresholds.read_text(encoding='utf-8')) if args.thresholds else None),indent=2))
+                             thresholds=json.loads(args.thresholds.read_text(encoding='utf-8')) if args.thresholds else None,
+                             runtime_lock=json.loads(args.runtime_lock.read_text(encoding='utf-8')) if args.runtime_lock else None),indent=2))

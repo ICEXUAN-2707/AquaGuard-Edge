@@ -69,7 +69,7 @@ def tick(service,now):
         raise ValueError("one or more water timers failed")
 
 
-def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False,journal=None):
+def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False,journal=None,mqtt_timing=None):
     if not isinstance(interval,(int,float)) or isinstance(interval,bool) or not 0.05<=interval<=60:
         raise ValueError("timer interval must be 0.05..60 seconds")
     if not Path(path).is_file():
@@ -81,9 +81,10 @@ def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False,jour
     if simulate and journal is not None:
         raise ValueError('choose generated simulation or MQTT journal')
     if journal is not None:
-        from mqtt_journal import JournalRuntime
+        from mqtt_journal import JournalRuntime,jsonl_receipts
         simulation=JournalRuntime(path,Path(path).parent/(Path(path).name+'.checkpoints'),
-                                  datetime.fromisoformat(clock().replace('Z','+00:00')),journal)
+                                  datetime.fromisoformat(clock().replace('Z','+00:00')),journal,
+                                  timing_sink=jsonl_receipts(mqtt_timing) if mqtt_timing else None)
     if simulate:
         from online import Simulation
         simulation=Simulation(path,Path(path).parent/(Path(path).name+'.checkpoints'),

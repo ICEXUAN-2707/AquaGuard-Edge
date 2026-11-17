@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="13" skipped="0" tests="38" time="62.560" timestamp="2026-11-17T21:01:59.654505+08:00" hostname="LAPTOP-709760PF"><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_checkpoint_inventory_is_read_only_and_fail_closed[valid]" time="0.069" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_checkpoint_inventory_is_read_only_and_fail_closed[missing]" time="0.045" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_checkpoint_inventory_is_read_only_and_fail_closed[outside]" time="0.045" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_checkpoint_inventory_is_read_only_and_fail_closed[invalid_json]" time="0.049" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_version_lock_tracks_dependency_files_and_binary_without_execution" time="0.293" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[valid]" time="0.063" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[missing_consumer]" time="0.040" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[failed_publish]" time="0.039" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[negative]" time="0.142" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[wrong_scope]" time="0.045" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_latency_join_preserves_missing_or_invalid_evidence[invalid]" time="0.036" /><testcase classname="tests.delivery.test_mqtt_closeout_evidence" name="test_broker_self_report_must_match_locked_version" time="0.613" /><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_manifests_repeat_published_prefix_and_inject_unique_retired_identity" time="0.749"><failure message="OSError: [Errno 28] No space left on device">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_manifests_repeat_publishe0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x0000013350C977A0&gt;
+
+    def test_manifests_repeat_published_prefix_and_inject_unique_retired_identity(tmp_path,monkeypatch):
+        backend=LocalBackend(tmp_path/'broker.exe',18887,8051)
+        backend.output=tmp_path;backend.cli=ROOT/'spikes/SP-02/src/cli.py'
+        backend.plan=prepare(tmp_path/'plan',revision='a'*40,ttl=10,stop_seconds=18,continuous_seconds=30)
+        launched=[]
+        monkeypatch.setattr(backend,'launch',lambda *args,**kwargs:launched.append(args))
+        stages={row['name']:row for row in backend.plan['stages']}
+        def rows(name):return [json.loads(line) for line in (tmp_path/(name+'-publisher')/'manifest.jsonl').read_text().splitlines()]
+        backend.publisher(stages['startup']);original=rows('startup')
+        backend.publisher(stages['resume_duplicate'],duplicate=True);resumed=rows('resume_duplicate')
+        assert resumed[3:6]==original[:3]
+        assert resumed[3:6]!=original[-3:]
+&gt;       backend.publisher(stages['new_boot'],retired=True);new=rows('new_boot')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\delivery\test_mqtt_local_backend.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\mqtt_local_backend.py:180: in publisher
+    (directory/'manifest.jsonl').write_text(''.join(json.dumps(row)+'\n' for row in rows),encoding='utf-8')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_manifests_repeat_publishe0/new_boot-publisher/manifest.jsonl')
+data = '{"schema_version": "1.1", "device_id": "demo01", "sensor_type": "flow", "boot_id": "b4f2d965b50c459aaf001a0be0deba19"...alid", "source": "simulation", "observation_id": "1eed9545b35cf45b16ec7ffd9eb14c246c49ec66b91343b84a5bff75d374e411"}\n'
+encoding = 'utf-8', errors = None, newline = None
+
+    def write_text(self, data, encoding=None, errors=None, newline=None):
+        """
+        Open the file in text mode, write to it, and close the file.
+        """
+        if not isinstance(data, str):
+            raise TypeError('data must be str, not %s' %
+                            data.__class__.__name__)
+        encoding = io.text_encoding(encoding)
+        with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+&gt;           return f.write(data)
+                   ^^^^^^^^^^^^^
+E           OSError: [Errno 28] No space left on device
+
+C:\Program Files\Python312\Lib\pathlib.py:1048: OSError</failure></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_cleanup_touches_only_retained_process_objects" time="0.392" /><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_checks_read_only_and_detect_duplicate_open[False]" time="0.052"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_exit_checks_read_only_and0')
+duplicate = False
+
+    @pytest.mark.parametrize('duplicate',[False,True])
+    def test_exit_checks_read_only_and_detect_duplicate_open(tmp_path,duplicate):
+        journal=tmp_path/'journal.sqlite';business=tmp_path/'business.sqlite'
+        with sqlite3.connect(journal) as db:
+&gt;           db.executescript('CREATE TABLE observations(id);CREATE TABLE rejected(id);CREATE TABLE attempts(number,classification);')
+E           sqlite3.OperationalError: database or disk is full
+
+tests\delivery\test_mqtt_local_backend.py:52: OperationalError</failure></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_checks_read_only_and_detect_duplicate_open[True]" time="0.019"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_exit_checks_read_only_and1')
+duplicate = True
+
+    @pytest.mark.parametrize('duplicate',[False,True])
+    def test_exit_checks_read_only_and_detect_duplicate_open(tmp_path,duplicate):
+        journal=tmp_path/'journal.sqlite';business=tmp_path/'business.sqlite'
+        with sqlite3.connect(journal) as db:
+&gt;           db.executescript('CREATE TABLE observations(id);CREATE TABLE rejected(id);CREATE TABLE attempts(number,classification);')
+E           sqlite3.OperationalError: database or disk is full
+
+tests\delivery\test_mqtt_local_backend.py:52: OperationalError</failure></testcase><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_checks_do_not_create_missing_database" time="0.009" /><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_broker_readiness_requires_owned_success_log_before_socket_probe[]" time="0.358" /><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_broker_readiness_requires_owned_success_log_before_socket_probe[mosquitto version 2.0 running]" time="0.382" /><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_broker_readiness_requires_owned_success_log_before_socket_probe[Opening ipv4 listen socket on port 18887.\nmosquitto version 2.0 running\nError: Address already in use]" time="0.383" /><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_broker_ready_checks_loopback_socket_after_owned_log" time="0.361" /><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_ports_must_close_without_touching_other_processes[True]" time="0.358" /><testcase classname="tests.delivery.test_mqtt_local_backend" name="test_exit_ports_must_close_without_touching_other_processes[False]" time="0.401" /><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_journal_drives_live_events_and_restart" time="0.060"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_journal_drives_live_event0')
+
+    def test_journal_drives_live_events_and_restart(tmp_path):
+        start=datetime(2026,11,10,tzinfo=timezone.utc)
+        source=tmp_path/'journal.sqlite'; journal(source)
+&gt;       runtime=JournalRuntime(tmp_path/'business',tmp_path/'checkpoints',start,source)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_mqtt_journal.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+spikes\C-business\mqtt_journal.py:34: in __init__
+    super().__init__(path, checkpoints, start, trial='mqtt-trial', initialize_trial=False)
+spikes\C-business\online.py:25: in __init__
+    self.water = WaterService(path)
+                 ^^^^^^^^^^^^^^^^^^
+spikes\C-business\water.py:17: in __init__
+    super().__init__(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;water.WaterService object at 0x000001335282A4B0&gt;
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_journal_drives_live_event0/business')
+
+    def __init__(self, path):
+        self.path = str(path)
+        with self.connection() as db:
+&gt;           db.executescript("""
+                CREATE TABLE IF NOT EXISTS events (
+                    event_id TEXT PRIMARY KEY, device_id TEXT NOT NULL,
+                    event_type TEXT NOT NULL, lifecycle TEXT NOT NULL,
+                    body TEXT NOT NULL);
+                CREATE UNIQUE INDEX IF NOT EXISTS unique_open
+                    ON events(device_id,event_type) WHERE lifecycle='OPEN';
+                CREATE TABLE IF NOT EXISTS transitions (
+                    transition_id TEXT PRIMARY KEY,
+                    event_id TEXT NOT NULL REFERENCES events(event_id),
+                    version INTEGER NOT NULL, body TEXT NOT NULL,
+                    UNIQUE(event_id,version));
+                CREATE TABLE IF NOT EXISTS outbox (
+                    transition_id TEXT PRIMARY KEY REFERENCES transitions(transition_id),
+                    message_id TEXT NOT NULL UNIQUE, body TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS operations (
+                    event_id TEXT NOT NULL REFERENCES events(event_id),
+                    key TEXT NOT NULL, request TEXT NOT NULL, response TEXT NOT NULL,
+                    PRIMARY KEY(event_id,key));
+                CREATE TABLE IF NOT EXISTS outbox_payloads (
+                    transition_id TEXT PRIMARY KEY REFERENCES outbox(transition_id),
+                    body TEXT NOT NULL);
+            """)
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\store.py:42: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_stale_backlog_cannot_refresh_state" time="0.025"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_stale_backlog_cannot_refr0')
+
+    def test_stale_backlog_cannot_refresh_state(tmp_path):
+        start=datetime(2026,11,10,tzinfo=timezone.utc)
+&gt;       source=tmp_path/'journal'; journal(source); append(source,start,40)
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_mqtt_journal.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_stale_backlog_cannot_refr0/journal')
+start = datetime.datetime(2026, 11, 10, 0, 0, tzinfo=datetime.timezone.utc)
+second = 40, boot = 'mqtt-boot', source = 'simulation'
+
+    def append(path, start, second, *, boot='mqtt-boot', source='simulation'):
+        values={'flow':dict(pulse_count=8,interval_ms=1000,estimated_lpm=1.,calibration_id='simulation-only'),
+                'water':dict(wet=second&gt;=35),'presence':dict(present=True,moving=True,still=False)}
+        with sqlite3.connect(path) as db:
+            for sensor,value in values.items():
+                row=dict(schema_version='1.1',observation_id=f'{boot}:{sensor}:{second}',device_id='demo01',
+                    sensor_type=sensor,boot_id=boot,seq=second,uptime_ms=second*1000,event_time=None,
+                    received_at=(start+timedelta(seconds=second)).isoformat(),time_basis='RECEIVED_FALLBACK',
+                    value=value,quality='valid',source=source)
+&gt;               db.execute("INSERT INTO attempts(classification,body) VALUES('new',?)",(json.dumps(row),))
+E               sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\tests\test_mqtt_journal.py:26: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_late_water_is_recorded_without_blocking_consumer_restart" time="0.018"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_late_water_is_recorded_wi0')
+
+    def test_late_water_is_recorded_without_blocking_consumer_restart(tmp_path):
+        start=datetime(2026,11,10,tzinfo=timezone.utc)
+&gt;       source=tmp_path/'journal'; journal(source)
+                                   ^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_mqtt_journal.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_late_water_is_recorded_wi0/journal')
+
+    def journal(path):
+        with sqlite3.connect(path) as db:
+&gt;           db.execute('CREATE TABLE attempts(number INTEGER PRIMARY KEY,classification TEXT,body TEXT)')
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\tests\test_mqtt_journal.py:14: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_batch_receipts_and_concurrent_future_commit" time="0.016"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_batch_receipts_and_concur0')
+
+    def test_batch_receipts_and_concurrent_future_commit(tmp_path):
+        start=datetime(2026,11,10,tzinfo=timezone.utc)
+&gt;       source=tmp_path/'journal'; journal(source)
+                                   ^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_mqtt_journal.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_batch_receipts_and_concur0/journal')
+
+    def journal(path):
+        with sqlite3.connect(path) as db:
+&gt;           db.execute('CREATE TABLE attempts(number INTEGER PRIMARY KEY,classification TEXT,body TEXT)')
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\tests\test_mqtt_journal.py:14: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_optional_consumer_receipt_is_after_durable_cursor_commit" time="0.020"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_optional_consumer_receipt0')
+
+    def test_optional_consumer_receipt_is_after_durable_cursor_commit(tmp_path):
+&gt;       start=datetime(2026,11,10,tzinfo=timezone.utc);source=tmp_path/'journal';journal(source);append(source,start,35)
+                                                                                 ^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_mqtt_journal.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_optional_consumer_receipt0/journal')
+
+    def journal(path):
+        with sqlite3.connect(path) as db:
+&gt;           db.execute('CREATE TABLE attempts(number INTEGER PRIMARY KEY,classification TEXT,body TEXT)')
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\tests\test_mqtt_journal.py:14: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_failed_receipt_does_not_rollback_committed_state" time="0.018"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_failed_receipt_does_not_r0')
+
+    def test_failed_receipt_does_not_rollback_committed_state(tmp_path):
+&gt;       start=datetime(2026,11,10,tzinfo=timezone.utc);source=tmp_path/'journal';journal(source);append(source,start,35)
+                                                                                 ^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_mqtt_journal.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_failed_receipt_does_not_r0/journal')
+
+    def journal(path):
+        with sqlite3.connect(path) as db:
+&gt;           db.execute('CREATE TABLE attempts(number INTEGER PRIMARY KEY,classification TEXT,body TEXT)')
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\tests\test_mqtt_journal.py:14: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_unapproved_boot_and_source_fail_closed[source]" time="0.023"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_unapproved_boot_and_sourc0')
+change = 'source'
+
+    @pytest.mark.parametrize('change',['source'])
+    def test_unapproved_boot_and_source_fail_closed(tmp_path,change):
+        start=datetime(2026,11,10,tzinfo=timezone.utc)
+&gt;       source=tmp_path/'journal'; journal(source); append(source,start,0)
+                                   ^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_mqtt_journal.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_unapproved_boot_and_sourc0/journal')
+
+    def journal(path):
+        with sqlite3.connect(path) as db:
+&gt;           db.execute('CREATE TABLE attempts(number INTEGER PRIMARY KEY,classification TEXT,body TEXT)')
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\tests\test_mqtt_journal.py:14: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_mqtt_journal" name="test_boot_switch_resets_history_and_rejects_retired_boot_after_restart" time="0.021"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_boot_switch_resets_histor0')
+
+    def test_boot_switch_resets_history_and_rejects_retired_boot_after_restart(tmp_path):
+        start=datetime(2026,11,10,tzinfo=timezone.utc)
+&gt;       source=tmp_path/'journal';journal(source)
+                                  ^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_mqtt_journal.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_boot_switch_resets_histor0/journal')
+
+    def journal(path):
+        with sqlite3.connect(path) as db:
+&gt;           db.execute('CREATE TABLE attempts(number INTEGER PRIMARY KEY,classification TEXT,body TEXT)')
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\tests\test_mqtt_journal.py:14: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_runtime" name="test_seed_is_explicit_and_never_overwrites" time="0.019"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_seed_is_explicit_and_neve0')
+
+    def test_seed_is_explicit_and_never_overwrites(tmp_path):
+        path=tmp_path/"demo.sqlite"
+&gt;       event=runtime.seed(path,ttl_seconds=10,clear_seconds=2)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_runtime.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+spikes\C-business\run.py:33: in seed
+    service=WaterService(path)
+            ^^^^^^^^^^^^^^^^^^
+spikes\C-business\water.py:17: in __init__
+    super().__init__(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;water.WaterService object at 0x0000013351065E20&gt;
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_seed_is_explicit_and_neve0/demo.sqlite')
+
+    def __init__(self, path):
+        self.path = str(path)
+        with self.connection() as db:
+&gt;           db.executescript("""
+                CREATE TABLE IF NOT EXISTS events (
+                    event_id TEXT PRIMARY KEY, device_id TEXT NOT NULL,
+                    event_type TEXT NOT NULL, lifecycle TEXT NOT NULL,
+                    body TEXT NOT NULL);
+                CREATE UNIQUE INDEX IF NOT EXISTS unique_open
+                    ON events(device_id,event_type) WHERE lifecycle='OPEN';
+                CREATE TABLE IF NOT EXISTS transitions (
+                    transition_id TEXT PRIMARY KEY,
+                    event_id TEXT NOT NULL REFERENCES events(event_id),
+                    version INTEGER NOT NULL, body TEXT NOT NULL,
+                    UNIQUE(event_id,version));
+                CREATE TABLE IF NOT EXISTS outbox (
+                    transition_id TEXT PRIMARY KEY REFERENCES transitions(transition_id),
+                    message_id TEXT NOT NULL UNIQUE, body TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS operations (
+                    event_id TEXT NOT NULL REFERENCES events(event_id),
+                    key TEXT NOT NULL, request TEXT NOT NULL, response TEXT NOT NULL,
+                    PRIMARY KEY(event_id,key));
+                CREATE TABLE IF NOT EXISTS outbox_payloads (
+                    transition_id TEXT PRIMARY KEY REFERENCES outbox(transition_id),
+                    body TEXT NOT NULL);
+            """)
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\store.py:42: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_runtime" name="test_lifespan_expires_on_startup_and_stops" time="0.032"><failure message="sqlite3.OperationalError: database or disk is full">tmp_path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_lifespan_expires_on_start0')
+
+    def test_lifespan_expires_on_startup_and_stops(tmp_path):
+        path=tmp_path/"demo.sqlite"
+&gt;       event=runtime.seed(path,ttl_seconds=1,clear_seconds=2)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+spikes\C-business\tests\test_runtime.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+spikes\C-business\run.py:33: in seed
+    service=WaterService(path)
+            ^^^^^^^^^^^^^^^^^^
+spikes\C-business\water.py:17: in __init__
+    super().__init__(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;water.WaterService object at 0x0000013351083DA0&gt;
+path = WindowsPath('C:/Users/PC/AppData/Local/Temp/pytest-of-PC/pytest-63/test_lifespan_expires_on_start0/demo.sqlite')
+
+    def __init__(self, path):
+        self.path = str(path)
+        with self.connection() as db:
+&gt;           db.executescript("""
+                CREATE TABLE IF NOT EXISTS events (
+                    event_id TEXT PRIMARY KEY, device_id TEXT NOT NULL,
+                    event_type TEXT NOT NULL, lifecycle TEXT NOT NULL,
+                    body TEXT NOT NULL);
+                CREATE UNIQUE INDEX IF NOT EXISTS unique_open
+                    ON events(device_id,event_type) WHERE lifecycle='OPEN';
+                CREATE TABLE IF NOT EXISTS transitions (
+                    transition_id TEXT PRIMARY KEY,
+                    event_id TEXT NOT NULL REFERENCES events(event_id),
+                    version INTEGER NOT NULL, body TEXT NOT NULL,
+                    UNIQUE(event_id,version));
+                CREATE TABLE IF NOT EXISTS outbox (
+                    transition_id TEXT PRIMARY KEY REFERENCES transitions(transition_id),
+                    message_id TEXT NOT NULL UNIQUE, body TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS operations (
+                    event_id TEXT NOT NULL REFERENCES events(event_id),
+                    key TEXT NOT NULL, request TEXT NOT NULL, response TEXT NOT NULL,
+                    PRIMARY KEY(event_id,key));
+                CREATE TABLE IF NOT EXISTS outbox_payloads (
+                    transition_id TEXT PRIMARY KEY REFERENCES outbox(transition_id),
+                    body TEXT NOT NULL);
+            """)
+E           sqlite3.OperationalError: database or disk is full
+
+spikes\C-business\store.py:42: OperationalError</failure></testcase><testcase classname="spikes.C-business.tests.test_runtime" name="test_real_loopback_ack_timer_and_restart" time="6.736" /><testcase classname="spikes.C-business.tests.test_runtime" name="test_missing_credentials_fail_before_creating_database" time="2.370" /><testcase classname="spikes.C-business.tests.test_runtime" name="test_timer_failure_is_visible_and_shutdown_finishes" time="1.408" /><testcase classname="tests.smoke.test_simulation_runtime" name="test_public_simulation_runtime" time="41.985" /><testcase classname="tests.smoke.test_simulation_runtime" name="test_simulation_validates_before_database_creation" time="0.046" /></testsuite></testsuites>
