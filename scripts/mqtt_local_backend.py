@@ -166,6 +166,8 @@ class LocalBackend:
                                  '--port',str(self.mqtt_port),'--interval',str(1/3)])
 
     def enter(self,stage):
+        from mqtt_phase_evidence import capture
+        self.phase_before=capture(self.output/'business.sqlite',self.output/'journal.sqlite')
         name=stage['name']
         if name=='startup':
             self.publisher(stage)
@@ -194,6 +196,14 @@ class LocalBackend:
                     capacity=snapshot(self.output/'journal.sqlite',self.output/'business.sqlite'),
                     os_suspend_seconds=None)
 
+    def assert_phase(self,stage,samples):
+        from mqtt_phase_evidence import capture,evaluate
+        after=capture(self.output/'business.sqlite',self.output/'journal.sqlite')
+        evidence=dict(before=self.phase_before,after=after)
+        value=evaluate(stage,self.phase_before,after,samples)
+        value['evidence']=evidence
+        return value
+
     def stop_one(self,name):
         process=self.active.get(name)
         if process is None:return
@@ -221,5 +231,7 @@ class LocalBackend:
                 probe.settimeout(.5)
                 ports[name]=probe.connect_ex(('127.0.0.1',port))!=0
         checks['ports_closed']=ports
-        checks['ok']=checks['ok'] and all(ports.values())
+        from mqtt_ack_summary import summarize
+        checks['ack_evidence']=summarize(self.output/'subscriber-timings.jsonl')
+        checks['ok']=checks['ok'] and all(ports.values()) and checks['ack_evidence']['status']=='AVAILABLE'
         return checks

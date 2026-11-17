@@ -93,6 +93,8 @@ def test_broker_ready_checks_loopback_socket_after_owned_log(tmp_path,monkeypatc
 @pytest.mark.parametrize('listening',[True,False])
 def test_exit_ports_must_close_without_touching_other_processes(tmp_path,monkeypatch,listening):
     backend=LocalBackend(tmp_path/'broker',18887,8051);backend.output=tmp_path
+    import mqtt_ack_summary
+    monkeypatch.setattr(mqtt_ack_summary,'summarize',lambda path:{'status':'AVAILABLE'})
     monkeypatch.setattr(backend_module,'database_exit_checks',lambda *args:{'ok':True})
     class Probe:
         def __enter__(self):return self

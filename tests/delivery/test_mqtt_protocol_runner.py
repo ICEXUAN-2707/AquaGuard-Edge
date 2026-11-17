@@ -22,6 +22,7 @@ class Backend:
     def ensure_alive(self,stage):
         if self.fail=='dead':raise RuntimeError('early child exit')
     def observe(self,stage):return {'live':{'status':503 if stage['name']=='publisher_stop' else 200}}
+    def assert_phase(self,stage,samples):return {'status':'VIOLATED' if self.fail=='assertion' else 'INCOMPLETE' if self.fail=='evidence' else 'SATISFIED','checks':[]}
     def stop(self):self.calls.append('stop');return {'all_exited':self.fail!='cleanup'}
     def exit_checks(self):self.calls.append('exit_checks');return {'ok':self.fail!='integrity'}
 
@@ -46,15 +47,15 @@ def test_fake_phases_are_recorded_without_promoting_fault_503_to_pass(tmp_path):
     backend=Backend();result=run(tmp_path,backend)
     assert result['execution_status']=='COMPLETED' and not result['acceptance_passed'] and not result['long_run_acceptance']
     phases=[json.loads(line) for line in (tmp_path/'run/phases.jsonl').read_text().splitlines()]
-    assert [row['state'] for row in phases if row['state']!='READY']==['ENTERED','FINISHED']*7
+    assert [row['state'] for row in phases if row['state'] not in ('READY','ASSERTED')]==['ENTERED','FINISHED']*7
     assert [row['phase'] for row in phases if row['state']=='READY']==['startup','edge_restart']
-    assert all(row['assertions_status']=='NOT_EVALUATED' for row in phases if row['state']=='FINISHED')
+    assert all(row['assertions_status']=='SATISFIED' for row in phases if row['state']=='FINISHED')
     samples=[json.loads(line) for line in (tmp_path/'run/samples.jsonl').read_text().splitlines()]
     assert any(row['phase']=='publisher_stop' and row['live']['status']==503 for row in samples)
     assert backend.calls[-2:]==['stop','exit_checks']
 
 
-@pytest.mark.parametrize('failure',['ready','missing_ready','dead','cleanup','integrity'])
+@pytest.mark.parametrize('failure',['ready','missing_ready','dead','cleanup','integrity','assertion','evidence'])
 def test_failures_retain_receipts_and_run_owned_cleanup(tmp_path,failure):
     backend=Backend(failure);result=run(tmp_path,backend)
     assert result['execution_status']=='FAILED' and not result['acceptance_passed']

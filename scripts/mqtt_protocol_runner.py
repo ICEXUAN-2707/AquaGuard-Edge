@@ -26,7 +26,7 @@ def validate_plan(plan):
         offset=end
     interval=plan.get('sample_interval_seconds')
     ttl=plan.get('ttl_seconds')
-    if any(type(value) not in (int,float) or not math.isfinite(value) or not 0<value<=3600 for value in (interval,ttl)):
+    if any(type(value) not in (int,float) or not math.isfinite(value) or not 0<value<=3600 for value in (interval,ttl)) or interval<1:
         raise ValueError('bounded interval and TTL required')
     if stages[2]['planned_end_seconds']-stages[2]['planned_start_seconds']<=ttl:
         raise ValueError('stop phase must exceed TTL')
@@ -47,7 +47,7 @@ def execute(plan,backend,output,*,allow_execution=False,allow_long_run=False,clo
     output=Path(output).resolve();output.mkdir(parents=True,exist_ok=False)
     (output/'plan.json').write_text(json.dumps(plan,indent=2),encoding='utf-8')
     result=dict(execution_status='FAILED',acceptance_passed=False,long_run_acceptance=False,
-                completed_phases=[],error_type=None,cleanup=None,exit_checks=None,
+                completed_phases=[],phase_assertions={},error_type=None,cleanup=None,exit_checks=None,
                 note='Execution completion is not availability, fault assertions, latency or capacity acceptance.')
     started=clock()
     with (output/'phases.jsonl').open('x',encoding='utf-8') as phases, (output/'samples.jsonl').open('x',encoding='utf-8') as samples:
@@ -66,11 +66,12 @@ def execute(plan,backend,output,*,allow_execution=False,allow_long_run=False,clo
                     if not readiness or not readiness.get('ready'):raise RuntimeError('explicit READY evidence required')
                     event(stage,'READY',checks=readiness.get('checks',[]))
                 if clock()-phase_start>=duration:raise TimeoutError('phase actions exceeded planned window')
-                sample_count=0
+                sample_count=0;phase_samples=[]
                 while clock()-phase_start<duration:
                     backend.ensure_alive(stage)
                     observed=clock()
                     observation=backend.observe(stage)
+                    phase_samples.append(observation)
                     samples.write(json.dumps(dict(phase=stage['name'],elapsed_seconds=observed-started,
                                                   collection_seconds=clock()-observed,**observation))+'\n');samples.flush()
                     sample_count+=1
@@ -78,7 +79,11 @@ def execute(plan,backend,output,*,allow_execution=False,allow_long_run=False,clo
                     remaining=duration-(clock()-phase_start)
                     if remaining>0:sleep(min(plan['sample_interval_seconds'],remaining))
                 actual=clock()-phase_start
-                event(stage,'FINISHED',actual_duration_seconds=actual,samples=sample_count,assertions_status='NOT_EVALUATED')
+                assertions=backend.assert_phase(stage,phase_samples)
+                result['phase_assertions'][stage['name']]=assertions
+                event(stage,'ASSERTED',assertions=assertions)
+                if assertions.get('status')!='SATISFIED':raise RuntimeError('phase assertions violated or incomplete')
+                event(stage,'FINISHED',actual_duration_seconds=actual,samples=sample_count,assertions_status=assertions['status'])
                 result['completed_phases'].append(stage['name'])
             result['execution_status']='COMPLETED'
         except BaseException as exc:
