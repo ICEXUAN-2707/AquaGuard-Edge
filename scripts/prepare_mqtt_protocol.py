@@ -7,7 +7,9 @@ import re
 from uuid import uuid4
 
 
-def prepare(output,*,revision,ttl,stop_seconds,continuous_seconds=3600,interval=15):
+def prepare(output,*,revision,ttl,stop_seconds,continuous_seconds=3600,interval=15,thresholds=None):
+    from mqtt_runtime_observation import validate_thresholds
+    thresholds=validate_thresholds(thresholds)
     if not isinstance(revision,str) or not re.fullmatch(r'[0-9a-f]{40}',revision):
         raise ValueError('fixed full Git commit SHA required')
     for value in (ttl,stop_seconds,continuous_seconds,interval):
@@ -34,6 +36,7 @@ def prepare(output,*,revision,ttl,stop_seconds,continuous_seconds=3600,interval=
     plan=dict(schema_version=1,status='PREPARED',execution_enabled=False,acceptance_passed=False,
               run_id=run_id,revision=revision,origin='simulation',device_id='demo01',host='127.0.0.1',
               ttl_seconds=ttl,sample_interval_seconds=interval,stages=stages,
+              observation_thresholds=thresholds,
               total_planned_seconds=offset,
               unresolved=['Resolve and record loopback ports, broker path/hash/version and dependency lock before execution.',
                           'Verify TTL against the frozen runtime configuration; this plan does not inspect runtime config.',
@@ -54,6 +57,8 @@ if __name__=='__main__':
     parser.add_argument('--stop-seconds',required=True,type=float)
     parser.add_argument('--continuous-seconds',type=float,default=3600)
     parser.add_argument('--interval',type=float,default=15)
+    parser.add_argument('--thresholds',type=Path,help='predeclared JSON budgets; no performance defaults are invented')
     args=parser.parse_args()
     print(json.dumps(prepare(args.output,revision=args.revision,ttl=args.ttl,stop_seconds=args.stop_seconds,
-                             continuous_seconds=args.continuous_seconds,interval=args.interval),indent=2))
+                             continuous_seconds=args.continuous_seconds,interval=args.interval,
+                             thresholds=json.loads(args.thresholds.read_text(encoding='utf-8')) if args.thresholds else None),indent=2))

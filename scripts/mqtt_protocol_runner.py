@@ -11,6 +11,8 @@ PHASES=('startup','continuous','publisher_stop','resume_duplicate','edge_restart
 
 
 def validate_plan(plan):
+    from mqtt_runtime_observation import validate_thresholds
+    validate_thresholds(plan.get('observation_thresholds'))
     if plan.get('schema_version')!=1 or plan.get('status')!='PREPARED':raise ValueError('prepared v1 plan required')
     if plan.get('host')!='127.0.0.1' or plan.get('origin')!='simulation' or plan.get('device_id')!='demo01':
         raise ValueError('loopback simulation demo01 only')
@@ -39,7 +41,7 @@ def validate_plan(plan):
     return offset
 
 
-def execute(plan,backend,output,*,allow_execution=False,allow_long_run=False,clock=time.monotonic,sleep=time.sleep):
+def execute(plan,backend,output,*,allow_execution=False,allow_long_run=False,clock=time.monotonic,sleep=time.sleep,os_clock_reader=None):
     total=validate_plan(plan)
     if not allow_execution:raise ValueError('execution is disabled without explicit --execute')
     if total>60 and not allow_long_run:raise ValueError('long execution requires --allow-long-run')
@@ -47,7 +49,7 @@ def execute(plan,backend,output,*,allow_execution=False,allow_long_run=False,clo
     output=Path(output).resolve();output.mkdir(parents=True,exist_ok=False)
     (output/'plan.json').write_text(json.dumps(plan,indent=2),encoding='utf-8')
     result=dict(execution_status='FAILED',acceptance_passed=False,long_run_acceptance=False,
-                completed_phases=[],phase_assertions={},error_type=None,cleanup=None,exit_checks=None,
+                completed_phases=[],phase_assertions={},observation_checks={},error_type=None,cleanup=None,exit_checks=None,
                 note='Execution completion is not availability, fault assertions, latency or capacity acceptance.')
     started=clock()
     with (output/'phases.jsonl').open('x',encoding='utf-8') as phases, (output/'samples.jsonl').open('x',encoding='utf-8') as samples:
@@ -71,14 +73,24 @@ def execute(plan,backend,output,*,allow_execution=False,allow_long_run=False,clo
                     backend.ensure_alive(stage)
                     observed=clock()
                     observation=backend.observe(stage)
-                    phase_samples.append(observation)
-                    samples.write(json.dumps(dict(phase=stage['name'],elapsed_seconds=observed-started,
-                                                  collection_seconds=clock()-observed,**observation))+'\n');samples.flush()
+                    sample=dict(phase=stage['name'],elapsed_seconds=observed-started,phase_elapsed_seconds=observed-phase_start,
+                                collection_seconds=clock()-observed,**observation)
+                    phase_samples.append(sample)
+                    samples.write(json.dumps(sample)+'\n');samples.flush()
                     sample_count+=1
                     # No historical backfill after an observer/host gap.
                     remaining=duration-(clock()-phase_start)
-                    if remaining>0:sleep(min(plan['sample_interval_seconds'],remaining))
+                    if remaining>0:
+                        delay=min(max(0,observed+plan['sample_interval_seconds']-clock()),remaining)
+                        if delay>0:sleep(delay)
                 actual=clock()-phase_start
+                from mqtt_runtime_observation import assess,os_clocks
+                observation_check=assess(phase_samples,duration=duration,actual_duration=actual,interval=plan['sample_interval_seconds'],
+                                         thresholds=plan.get('observation_thresholds'),end_clock=os_clock_reader() if os_clock_reader else os_clocks())
+                result['observation_checks'][stage['name']]=observation_check
+                event(stage,'OBSERVED',observation_check=observation_check)
+                if stage['name']=='continuous' and plan.get('observation_thresholds') is not None and observation_check['status']!='SATISFIED':
+                    raise RuntimeError('normal-phase observation budget violated or incomplete')
                 assertions=backend.assert_phase(stage,phase_samples)
                 result['phase_assertions'][stage['name']]=assertions
                 event(stage,'ASSERTED',assertions=assertions)

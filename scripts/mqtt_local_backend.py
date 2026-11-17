@@ -192,9 +192,11 @@ class LocalBackend:
 
     def observe(self,stage):
         from mqtt_capacity_snapshot import snapshot
+        from mqtt_runtime_observation import process_resources,os_clocks
         return dict(live=None if stage['name']=='shutdown' else self.api('/api/devices/demo01/live'),
                     capacity=snapshot(self.output/'journal.sqlite',self.output/'business.sqlite'),
-                    os_suspend_seconds=None)
+                    resources=[dict(name=name,pid=process.pid,**process_resources(process)) for name,process in self.active.items()],
+                    os_clock=os_clocks())
 
     def assert_phase(self,stage,samples):
         from mqtt_phase_evidence import capture,evaluate

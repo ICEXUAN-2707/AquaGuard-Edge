@@ -2,6 +2,8 @@ import importlib.util
 import json
 from pathlib import Path
 import pytest
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'scripts'))
 
 spec=importlib.util.spec_from_file_location('mqtt_plan',Path(__file__).resolve().parents[2]/'scripts/prepare_mqtt_protocol.py')
 module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
@@ -9,7 +11,7 @@ module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 
 @pytest.mark.parametrize('overrides',[
     {'stop_seconds':10},{'ttl':float('nan')},{'interval':False},
-    {'revision':'main'},{'continuous_seconds':1,'interval':15},
+    {'revision':'main'},{'continuous_seconds':1,'interval':15},{'thresholds':{'min_coverage_ratio':1}},
 ])
 def test_invalid_plan_leaves_no_output(tmp_path,overrides):
     config=dict(revision='a'*40,ttl=10,stop_seconds=18);config.update(overrides)
