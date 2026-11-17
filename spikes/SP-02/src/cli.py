@@ -25,6 +25,8 @@ def main():
     parser.add_argument('--interval', type=float, default=0, help='seconds between publications; flow feature experiments need compatible measured intervals')
     parser.add_argument('--persistent-session', action='store_true')
     parser.add_argument('--crash-after-commit', action='store_true', help='prototype fault injection: exit before MQTT ACK')
+    parser.add_argument('--timing-evidence',action='store_true',help='record subscriber commit and ACK submission timings; not broker confirmation')
+    parser.add_argument('--stop-file',type=Path,help='publisher exits between messages after this owned control file appears')
     args = parser.parse_args()
     try:
         topic = observation_topic(args.device_id)
@@ -75,6 +77,7 @@ def main():
         event('disconnected', reason=str(reason))
 
     def message(c, userdata, msg):
+        timing={} if args.timing_evidence else None
         try:
             journal = Journal(args.directory / 'journal.sqlite')
             try:
@@ -84,7 +87,7 @@ def main():
                 def acknowledge(mid, qos):
                     if c.ack(mid, qos) != mqtt.MQTT_ERR_SUCCESS:
                         raise RuntimeError('ack submission failed')
-                record = process_message(msg, journal, acknowledge, after_commit, device_id=args.device_id)
+                record = process_message(msg, journal, acknowledge, after_commit, device_id=args.device_id,timing=timing)
             finally:
                 journal.close()
             with (args.directory / 'received.jsonl').open('a', encoding='utf-8') as log:
@@ -95,6 +98,15 @@ def main():
         except Exception as exc:
             errors.append('processing/storage failure: ' + repr(exc))
             c.disconnect()  # Do not ACK on storage failure; persistent session can retry.
+        finally:
+            if timing is not None:
+                timing['utc']=datetime.now(timezone.utc).isoformat()
+                try:
+                    with (args.directory/'subscriber-timings.jsonl').open('a',encoding='utf-8') as log:
+                        log.write(json.dumps(timing)+'\n');log.flush();os.fsync(log.fileno())
+                except OSError as exc:
+                    errors.append('timing evidence failure: '+type(exc).__name__)
+                    c.disconnect()
 
     client.on_connect, client.on_subscribe, client.on_message = connected, subscribed, message
     client.on_disconnect = disconnected
@@ -106,10 +118,20 @@ def main():
         print('READY', flush=True)
         if args.mode == 'publish':
             for line in data.read_text(encoding='utf-8').splitlines():
-                info = client.publish(topic, line, qos=1, retain=False)
-                info.wait_for_publish(timeout=10)
-                if not info.is_published():
-                    raise TimeoutError('publish confirmation timeout')
+                if args.stop_file and args.stop_file.exists():break
+                timing=None
+                if args.timing_evidence:
+                    row=json.loads(line)
+                    timing=dict(scope='publish_attempt',observation_id=row.get('observation_id'),publish_start=time.perf_counter(),puback_returned=False)
+                try:
+                    info = client.publish(topic, line, qos=1, retain=False)
+                    info.wait_for_publish(timeout=10)
+                    if not info.is_published():raise TimeoutError('publish confirmation timeout')
+                    if timing is not None:timing['puback_returned']=True
+                finally:
+                    if timing is not None:
+                        with (args.directory/'publisher-timings.jsonl').open('a',encoding='utf-8') as stream:
+                            stream.write(json.dumps(timing)+'\n');stream.flush();os.fsync(stream.fileno())
                 if args.interval:
                     time.sleep(args.interval)
         else:
