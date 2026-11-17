@@ -70,14 +70,17 @@ class LocalBackend:
         # Ignore system proxy configuration for both loopback APIs.
         self.http=urllib.request.build_opener(urllib.request.ProxyHandler({}))
 
+    def verify_revision(self,plan):
+        revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+        dirty=subprocess.run(['git','diff','--quiet','HEAD','--'],cwd=ROOT).returncode
+        if revision!=plan['revision'] or dirty:raise ValueError('clean tracked source at planned revision required')
+
     def preflight(self,plan):
         if os.name!='nt':raise ValueError('this backend requires Windows Job Objects')
         if not self.broker.is_file():raise ValueError('existing local broker executable required')
         if any(type(port) is not int or not 1<=port<=65535 for port in (self.mqtt_port,self.http_port)) or self.mqtt_port==self.http_port:
             raise ValueError('distinct valid loopback ports required')
-        revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-        dirty=subprocess.run(['git','diff','--quiet','HEAD','--'],cwd=ROOT).returncode
-        if revision!=plan['revision'] or dirty:raise ValueError('clean tracked source at planned revision required')
+        self.verify_revision(plan)
         from mqtt_closeout_evidence import runtime_lock
         expected=plan.get('runtime_lock')
         if not isinstance(expected,dict):raise ValueError('offline prepared runtime lock required')
@@ -128,6 +131,7 @@ class LocalBackend:
         with socket.socket() as sock:return sock.connect_ex(('127.0.0.1',self.mqtt_port))==0
 
     def start(self,output,plan):
+        self.verify_revision(plan)
         from mqtt_closeout_evidence import runtime_lock
         if not self.runtime_versions or runtime_lock(ROOT,self.broker,self.runtime_versions['broker_version'])!=self.runtime_versions:
             raise ValueError('runtime changed since preflight')

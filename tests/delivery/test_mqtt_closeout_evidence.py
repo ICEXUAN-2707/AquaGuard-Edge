@@ -73,3 +73,12 @@ def test_all_checkpoint_reference_channels_fail_closed(tmp_path,change):
     assert not result['ok']
     if change=='broken_checkpoint':assert result['invalid_referenced_json']==1
     else:assert result['outside_checkpoint_refs']==1
+
+def test_start_rechecks_revision_before_process_or_output(tmp_path,monkeypatch):
+    backend=LocalBackend(tmp_path/'broker',18887,8051)
+    def changed(plan):raise ValueError('source changed after preflight')
+    monkeypatch.setattr(backend,'verify_revision',changed)
+    monkeypatch.setattr(backend,'launch',lambda *args,**kwargs:pytest.fail('must not launch'))
+    output=tmp_path/'not-created'
+    with pytest.raises(ValueError,match='after preflight'):backend.start(output,{'revision':'a'*40})
+    assert not output.exists()
