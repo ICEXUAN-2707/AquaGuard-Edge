@@ -50,7 +50,9 @@ def checkpoint_inventory(database,folder):
             for key,item in value.items():
                 if key=='asset_refs' and isinstance(item,list):
                     for ref in item:
-                        if isinstance(ref,str) and Path(ref).is_absolute() and Path(ref).resolve().parent==folder:refs.add(Path(ref).resolve())
+                        if isinstance(ref,str) and ref.endswith('.json'):
+                            if Path(ref).is_absolute() and Path(ref).resolve().parent==folder:refs.add(Path(ref).resolve())
+                            else:outside+=1
                 visit(item)
         elif isinstance(value,list):
             for item in value:visit(item)
@@ -66,9 +68,14 @@ def checkpoint_inventory(database,folder):
                     except ValueError:unparsed+=1
         db.rollback()
     missing=sum(not path.is_file() for path in refs)
+    invalid_files=0
+    for path in refs:
+        if path.is_file():
+            try:json.loads(path.read_text(encoding='utf-8'))
+            except (ValueError,UnicodeError):invalid_files+=1
     return dict(**sizes,referenced_checkpoints=len(refs),missing_referenced=missing,outside_checkpoint_refs=outside,
                 unreferenced_observed=max(0,sizes['files']-(len(refs)-missing)),deletion_authorized=False,
-                unparsed_json_cells=unparsed,ok=sizes['directory_exists'] and bool(refs) and missing==0 and outside==0 and unparsed==0,
+                unparsed_json_cells=unparsed,invalid_referenced_json=invalid_files,ok=sizes['directory_exists'] and bool(refs) and missing==0 and outside==0 and unparsed==0 and invalid_files==0,
                 note='Read-only explicit references; filesystem/DB are non-atomic. No observed reference never authorizes deletion. New owned run starts with zero files; final count/bytes are its observed growth.')
 
 

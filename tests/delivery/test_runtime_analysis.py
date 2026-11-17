@@ -19,3 +19,8 @@ def test_measured_zero_is_distinct_from_unknown_suspend():
     report=module.analyze([{'elapsed_sec':60,'estimated_suspend_seconds':0,'sample_gap_seconds':15}])
     assert report['max_estimated_suspend_seconds']==0
     assert report['max_sample_gap_seconds']==15
+
+def test_partial_timing_fields_remain_unknown():
+    result=module.analyze([{'elapsed_sec':60,'runtime':{'diagnostics':{'timing':{'max_advance_seconds':0}}}}])
+    assert result['max_advance_seconds']==0
+    assert result['max_runtime_gap_seconds'] is None and result['max_timer_failures'] is None

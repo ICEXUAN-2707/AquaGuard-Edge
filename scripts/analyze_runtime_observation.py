@@ -23,9 +23,9 @@ def analyze(samples):
             'steady_live_status_counts':dict(Counter(str(row.get('live',{}).get('status')) for row in steady)),
             'max_sample_gap_seconds':max((row['sample_gap_seconds'] for row in samples if row.get('sample_gap_seconds') is not None),default=None),
             'max_estimated_suspend_seconds':max((row['estimated_suspend_seconds'] for row in samples if row.get('estimated_suspend_seconds') is not None),default=None),
-            'max_advance_seconds':max((row['max_advance_seconds'] for row in timings),default=None),
-            'max_runtime_gap_seconds':max((row['max_gap_seconds'] for row in timings),default=None),
-            'max_timer_failures':max((row['failures'] for row in timings),default=None),
+            'max_advance_seconds':max((row['max_advance_seconds'] for row in timings if row.get('max_advance_seconds') is not None),default=None),
+            'max_runtime_gap_seconds':max((row['max_gap_seconds'] for row in timings if row.get('max_gap_seconds') is not None),default=None),
+            'max_timer_failures':max((row['failures'] for row in timings if row.get('failures') is not None),default=None),
             'unavailable_samples':bad,
             'note':'Diagnostics follow the live request and may reflect a later state. Missing suspend metrics are unknown, not proof of awake operation. Tiny clock differences are quantization noise; no automatic root-cause verdict.'}
 

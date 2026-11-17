@@ -59,3 +59,17 @@ def test_broker_self_report_must_match_locked_version(tmp_path):
     backend.runtime_versions={'broker_version':'2.0.99'}
     (tmp_path/'broker-0.log').write_text('Opening ipv4 listen socket on port 18887.\nmosquitto version 2.0.21 running')
     with pytest.raises(ValueError,match='self-reported'):backend.broker_ready()
+
+@pytest.mark.parametrize('change',['outside_asset','relative_asset','broken_checkpoint'])
+def test_all_checkpoint_reference_channels_fail_closed(tmp_path,change):
+    folder=tmp_path/'cp';folder.mkdir();cp=folder/'used.json';cp.write_text('{broken' if change=='broken_checkpoint' else '{}')
+    ref=str((tmp_path/'outside.json').resolve()) if change=='outside_asset' else 'relative.json'
+    payload={'state_checkpoint_ref':str(cp.resolve())}
+    if change!='broken_checkpoint':payload['asset_refs']=[ref]
+    database=tmp_path/'business'
+    with sqlite3.connect(database) as db:
+        db.execute('CREATE TABLE state(body TEXT)');db.execute('INSERT INTO state VALUES(?)',(json.dumps(payload),))
+    result=module.checkpoint_inventory(database,folder)
+    assert not result['ok']
+    if change=='broken_checkpoint':assert result['invalid_referenced_json']==1
+    else:assert result['outside_checkpoint_refs']==1
