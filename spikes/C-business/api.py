@@ -40,6 +40,17 @@ def create_app(store: Store, *, token: str, cursor_key: bytes, clock=None):
 
     from starlette.exceptions import HTTPException
 
+    @app.get('/api/runtime/diagnostics',dependencies=[Depends(authorize)])
+    async def runtime_diagnostics(device_id: str='demo01'):
+        diagnostic=getattr(app.state,'runtime_diagnostics',None)
+        timing=None if diagnostic is None else diagnostic.value.copy()
+        now=_aware(clock())
+        with store.connection() as db:
+            rows=db.execute("SELECT kind,captured_at,ttl FROM query_projections WHERE identity=? AND kind IN ('live','assessment')",(device_id,)).fetchall()
+        return dict(scope='local_runtime_diagnostics',timing=timing,
+                    projections=[dict(kind=row[0],captured_at=row[1],ttl_seconds=row[2],age_seconds=(now-_aware(row[1])).total_seconds()) for row in rows],
+                    note='Scheduling gaps can include host suspend or resource contention; these timings do not prove a cause. Health is liveness, not freshness.')
+
     @app.exception_handler(HTTPException)
     async def http_error(request,exc):
         return error(exc.status_code,"UNAUTHORIZED" if exc.status_code==401 else "NOT_FOUND" if exc.status_code==404 else "BAD_REQUEST")

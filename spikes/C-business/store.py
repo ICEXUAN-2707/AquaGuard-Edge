@@ -7,6 +7,7 @@ from contextlib import contextmanager
 import json
 import math
 import sqlite3
+from runtime_diagnostics import phase
 from uuid import uuid4
 
 from edge.contracts.models import SafetySignal, SafetyEvent, EventTransition, CloudSyncRecord, _aware
@@ -33,6 +34,11 @@ class VersionConflict(Conflict):
 
 def canonical(value):
     return json.dumps(value, sort_keys=True, separators=(",", ":"))
+
+
+def begin_immediate(db):
+    with phase('sqlite_begin_immediate'):
+        db.execute('BEGIN IMMEDIATE')
 
 
 class Store:
@@ -65,17 +71,20 @@ class Store:
 
     @contextmanager
     def connection(self):
-        db = sqlite3.connect(self.path, timeout=5)
+        with phase('sqlite_connect'):
+            db = sqlite3.connect(self.path, timeout=5)
         db.row_factory = sqlite3.Row
         db.execute("PRAGMA foreign_keys=ON")
         try:
             yield db
-            db.commit()
+            with phase('sqlite_commit'):
+                db.commit()
         except BaseException:
             db.rollback()
             raise
         finally:
-            db.close()
+            with phase('sqlite_close'):
+                db.close()
 
     def _write(self, db, event, *, kind, now, actor, refs, fault_at=None):
         event = SafetyEvent.model_validate(event).model_dump(mode="json")
