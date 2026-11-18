@@ -4,7 +4,7 @@
 
 1. 只读分析/存储盘点：由 #14 独立审查并装配，不重复提取原 #12 旧版本。
 2. 调度/进程监督：由 #15 独立审查并装配，保持默认 preview；未注册/启动任务。
-3. 诊断：在 .review-pr12-diagnostics-20261117，分支 review/pr12-diagnostics-decoupled-20261117 单独提取。当前提交 cc63638fbb14cd5b7ee71ec2798bf116d6b7a9a4，基于集成代码 ec08881；不在主候选里。
+3. 诊断：从 .review-pr12-diagnostics-20261117 单独提取，基于 ec08881；2026-11-18 补修栈日志P2（ef63a67）后已合入集成候选11ecbb8，合并后235项回归通过。详见 DIAGNOSTICS_INTEGRATED_20261118.md。此前独立切分cc63638记录保留为历史。
 4. checkpoint 优化：从诊断批次移除 verification_scope 导入/包装，不修改 SP-03-features/src/checkpoint.py。原 save/restore 保持每次验证；新测试确认单次发布 5 次独立计算，没有缓存。若以后确要该优化，另行版本化来源清单、标签/模型/报告绑定，重建复验 B 工件与差异，不可关闭 REQUIRED_SOURCES 校验。
 5. runtime_endurance.py、benchmark_journal.py 和长时执行用例：不纳入本批；还需要预算、授权、接口及清理单独审查。
 6. 历史 docs/audit 和失败记录：保留历史，不把它当成拆分代码的当前 PASS。PR #12 里其他历史 B 代码/工件差异不迁入。
