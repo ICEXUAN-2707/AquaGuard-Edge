@@ -35,6 +35,7 @@ def simulation_app(settings):
     path.parent.mkdir(parents=True,exist_ok=True)
     if not path.exists():
         module.WaterService(path)
-    app=module.build(path,token=token,cursor_key=key,simulate=not mqtt,journal=journal if mqtt else None)
+    app=module.build(path,token=token,cursor_key=key,simulate=not mqtt,journal=journal if mqtt else None,
+                     mqtt_timing=os.environ.get('AQUAGUARD_MQTT_TIMING') if mqtt else None)
     app.state.settings=settings
     return app

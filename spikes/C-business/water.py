@@ -9,7 +9,7 @@ from uuid import uuid4
 
 from edge.contracts.models import SafetySignal, validate_raw_observation, _aware
 from policy import Policy, evaluate
-from store import Store, Conflict, canonical
+from store import Store, Conflict, canonical, begin_immediate
 
 
 class WaterService(Store):
@@ -59,7 +59,7 @@ class WaterService(Store):
         content.pop("received_at")
         fingerprint=canonical(content)
         with self.connection() as db:
-            db.execute("BEGIN IMMEDIATE")
+            begin_immediate(db)
             prior=db.execute("SELECT body FROM water_inputs WHERE observation_id=? OR (device_id=? AND boot_id=? AND seq=?)",
                              (observation.observation_id,observation.device_id,observation.boot_id,observation.seq)).fetchall()
             if prior:
@@ -117,7 +117,7 @@ class WaterService(Store):
         clock=_aware(now)
         config=self.config(policy,policy_version)
         with self.connection() as db:
-            db.execute("BEGIN IMMEDIATE")
+            begin_immediate(db)
             row=db.execute("SELECT body FROM water_state WHERE device_id=?",(device_id,)).fetchone()
             if row is None:
                 raise ValueError("no water state")

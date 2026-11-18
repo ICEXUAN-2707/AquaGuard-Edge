@@ -1,0 +1,43 @@
+"""Summarize diagnostic signals without assigning an unsupported root cause."""
+import argparse
+from collections import Counter
+import json
+from pathlib import Path
+
+
+def analyze(samples):
+    samples=[dict(row,elapsed_sec=row.get('elapsed_sec',row.get('elapsed_seconds'))) for row in samples]
+    if any(type(row['elapsed_sec']) not in (int,float) for row in samples):raise ValueError('elapsed_sec or elapsed_seconds required')
+    phase_tagged=any('phase' in row for row in samples)
+    steady=[row for row in samples if row.get('phase')=='continuous'] if phase_tagged else [row for row in samples if row['elapsed_sec']>=45]
+    timings=[row.get('runtime',{}).get('diagnostics',{}).get('timing') for row in samples]
+    timings=[row for row in timings if row]
+    bad=[]
+    for row in steady:
+        if (row.get('live') or {}).get('status')==200:continue
+        diagnostic=row.get('runtime',{}).get('diagnostics',{})
+        bad.append({'elapsed_sec':row['elapsed_sec'],'utc':row.get('utc'),
+                    'status':(row.get('live') or {}).get('status'),
+                    'estimated_suspend_seconds':row.get('estimated_suspend_seconds'),
+                    'sample_gap_seconds':row.get('sample_gap_seconds'),
+                    'projections':diagnostic.get('projections',[]),
+                    'timing':diagnostic.get('timing')})
+    return {'samples':len(samples),'steady_samples':len(steady),
+            'steady_live_status_counts':dict(Counter(str((row.get('live') or {}).get('status')) for row in steady)),
+            'max_sample_gap_seconds':max((row['sample_gap_seconds'] for row in samples if row.get('sample_gap_seconds') is not None),default=None),
+            'max_estimated_suspend_seconds':max((row['estimated_suspend_seconds'] for row in samples if row.get('estimated_suspend_seconds') is not None),default=None),
+            'max_advance_seconds':max((row['max_advance_seconds'] for row in timings if row.get('max_advance_seconds') is not None),default=None),
+            'max_runtime_gap_seconds':max((row['max_gap_seconds'] for row in timings if row.get('max_gap_seconds') is not None),default=None),
+            'max_timer_failures':max((row['failures'] for row in timings if row.get('failures') is not None),default=None),
+            'unavailable_samples':bad,
+            'note':'Diagnostics follow the live request and may reflect a later state. Missing suspend metrics are unknown, not proof of awake operation. Tiny clock differences are quantization noise; no automatic root-cause verdict.'}
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('samples',type=Path)
+    args=parser.parse_args()
+    print(json.dumps(analyze([json.loads(line) for line in args.samples.read_text(encoding='utf-8').splitlines()]),indent=2))
+
+
+if __name__=='__main__':main()

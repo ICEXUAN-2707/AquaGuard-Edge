@@ -5,6 +5,8 @@ The bounded batch and original timestamps keep backlog from becoming fresh data.
 """
 import json
 import sqlite3
+import os
+import time
 from contextlib import contextmanager
 from datetime import timedelta
 from pathlib import Path
@@ -14,8 +16,18 @@ from policy import Policy
 from edge.contracts.models import validate_raw_observation, _aware
 
 
+def jsonl_receipts(path):
+    def record(value):
+        with Path(path).open('a',encoding='utf-8') as stream:
+            stream.write(json.dumps(value)+'\n');stream.flush();os.fsync(stream.fileno())
+    return record
+
+
 class JournalRuntime(Simulation):
-    def __init__(self, path, checkpoints, start, journal):
+    def __init__(self, path, checkpoints, start, journal, *, timing_sink=None,timing_clock=time.perf_counter):
+        if timing_sink is not None and (not callable(timing_sink) or not callable(timing_clock)):
+            raise ValueError('callable timing sink and clock required')
+        self.timing_sink=timing_sink;self.timing_clock=timing_clock
         self.journal = Path(journal).resolve()
         if not self.journal.is_file() or self.journal == Path(path).resolve():
             raise ValueError('separate existing MQTT journal required')
@@ -53,6 +65,11 @@ class JournalRuntime(Simulation):
         finally:
             db.close()
 
+    def receipt(self,row,number,disposition):
+        if self.timing_sink is not None:
+            self.timing_sink(dict(scope='consumer_cursor_commit',observation_id=row['observation_id'],number=number,
+                                  disposition=disposition,cursor_commit=self.timing_clock()))
+
     def step(self, now):
         if now.tzinfo is None or now < self.last:
             raise ValueError('aware monotonic clock required')
@@ -77,6 +94,7 @@ class JournalRuntime(Simulation):
                                    (number,row['observation_id'],boot,'RETIRED_BOOT'))
                         db.execute('UPDATE mqtt_consumer SET cursor=? WHERE singleton=1',(number,))
                     self.cursor=number
+                    self.receipt(row,number,'RETIRED_BOOT')
                     continue
             age = (now-_aware(row['received_at'])).total_seconds()
             if age < 0:
@@ -113,4 +131,5 @@ class JournalRuntime(Simulation):
                 self.start = _aware(row['received_at'])
                 self.next_end = self.start+timedelta(seconds=30)
             self.rows.append(row)
+            self.receipt(row,number,disposition or 'CONSUMED')
         return self.publish(now)

@@ -90,6 +90,27 @@ def test_batch_receipts_and_concurrent_future_commit(tmp_path):
     assert [r['received_at'] for r in runtime.rows][-1]==(start+timedelta(seconds=2)).isoformat()
 
 
+def test_optional_consumer_receipt_is_after_durable_cursor_commit(tmp_path):
+    start=datetime(2026,11,10,tzinfo=timezone.utc);source=tmp_path/'journal';journal(source);append(source,start,35)
+    database=tmp_path/'business';records=[]
+    def sink(value):
+        with sqlite3.connect(database) as db:cursor=db.execute('SELECT cursor FROM mqtt_consumer').fetchone()[0]
+        assert cursor==value['number'];records.append(value)
+    runtime=JournalRuntime(database,tmp_path/'cp',start,source,timing_sink=sink,timing_clock=lambda:123)
+    runtime.step(start+timedelta(seconds=35))
+    assert len(records)==3 and all(row['cursor_commit']==123 for row in records)
+    assert all(row['scope']=='consumer_cursor_commit' for row in records)
+
+
+def test_failed_receipt_does_not_rollback_committed_state(tmp_path):
+    start=datetime(2026,11,10,tzinfo=timezone.utc);source=tmp_path/'journal';journal(source);append(source,start,35)
+    def fail(value):raise OSError('evidence disk unavailable')
+    runtime=JournalRuntime(tmp_path/'business',tmp_path/'cp',start,source,timing_sink=fail)
+    with pytest.raises(OSError):runtime.step(start+timedelta(seconds=35))
+    with runtime.water.connection() as db:assert db.execute('SELECT cursor FROM mqtt_consumer').fetchone()[0]==1
+    assert runtime.cursor==1 and len(runtime.rows)==1
+
+
 @pytest.mark.parametrize('change',['source'])
 def test_unapproved_boot_and_source_fail_closed(tmp_path,change):
     start=datetime(2026,11,10,tzinfo=timezone.utc)

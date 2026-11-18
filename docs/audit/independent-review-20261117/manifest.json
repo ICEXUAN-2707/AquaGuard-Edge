@@ -1,0 +1,50 @@
+{
+  "scope": "independent offline review; historical failures retained",
+  "files": [
+    {
+      "path": "b-frozen-verification.json",
+      "bytes": 719,
+      "sha256": "a49d99bd58e1daaf8982487c0b4880bed79d40c273dfee7c6a2b6044409f4ed0"
+    },
+    {
+      "path": "broad-survey-494.xml",
+      "bytes": 72281,
+      "sha256": "8e6e8e8582041b532622b88f4a8962c794c70a4eae3b4cac24acef61fbc55494"
+    },
+    {
+      "path": "cross-interfaces.xml",
+      "bytes": 3401,
+      "sha256": "9aef02a39a92d7fbe69f9ce95a87927bf7e1b61fc48b916b67ac1837700f22da"
+    },
+    {
+      "path": "final-combination-first-failure.xml",
+      "bytes": 36117,
+      "sha256": "9b81c2a6aff92d19fc2847be0fadc03b59d0b1d0e960faa7807296ada0a4afeb"
+    },
+    {
+      "path": "final-serial-227.xml",
+      "bytes": 33546,
+      "sha256": "09550f98f22595b3d53ba91ff84b02cb083a804209a9c3b2808087afdce24da3"
+    },
+    {
+      "path": "low-coverage-incident.json",
+      "bytes": 1153,
+      "sha256": "6a9c303a66ff2bae8b5d9acb47cf06591ef14c0c2a3859918d5bf0ff14c3fbfb"
+    },
+    {
+      "path": "review-fixes.xml",
+      "bytes": 5964,
+      "sha256": "c60a84aff541ea5400e20063ac549be45d0dce5a129d2ce0c4a96fb5b1f1dfef"
+    },
+    {
+      "path": "simulation-isolated-recheck.xml",
+      "bytes": 495,
+      "sha256": "1c89d7057d6f5da5ee3586c5b712fd9c3ae3f00ba483f64575fcfb0efd92866f"
+    },
+    {
+      "path": "source-boundaries.json",
+      "bytes": 379,
+      "sha256": "076b8f0d1160ac1a16cde9038ede8a00ce57b994ca23e29596106437127d3265"
+    }
+  ]
+}
