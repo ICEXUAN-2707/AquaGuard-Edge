@@ -9,6 +9,33 @@ import time as timing
 from store import begin_immediate
 
 
+def test_restarts_append_native_stacks_without_truncating_prior_evidence(tmp_path,monkeypatch):
+    import asyncio
+    import faulthandler
+    import run
+    from pathlib import Path
+    database=tmp_path/'business.sqlite';WaterService(database)
+    log=Path(str(database)+'.service-stacks.log')
+    prior='EARLIER_CRASH_STACK_EVIDENCE\n';log.write_text(prior,encoding='utf-8')
+    prior_bytes=log.read_bytes()
+    registrations=[]
+    def immediate_dump(timeout,*,repeat,file):
+        registrations.append(1)
+        faulthandler.dump_traceback(file=file,all_threads=False)
+    monkeypatch.setattr(run.faulthandler,'dump_traceback_later',immediate_dump)
+    async def start_stop():
+        app=run.build(database,token=TOKEN,cursor_key=b'x'*32,clock=lambda:NOW)
+        async with app.router.lifespan_context(app):pass
+        assert app.state.diagnostic_stack_log is None
+    asyncio.run(start_stop())
+    first=log.read_bytes()
+    assert first.startswith(prior_bytes) and b'--- service start ' in first
+    asyncio.run(start_stop())
+    second=log.read_bytes()
+    assert second.startswith(first) and len(second)>len(first)
+    assert second.count(b'--- service start ')==2 and len(registrations)==2
+
+
 def test_real_database_writer_wait_is_attributed_and_nested_phase_restores(tmp_path):
     service=WaterService(tmp_path/'db')
     monitor=RuntimeDiagnostics();started=threading.Event();errors=[]

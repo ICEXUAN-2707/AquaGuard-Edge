@@ -134,7 +134,9 @@ def build(path,*,token,cursor_key,interval=0.25,clock=utcnow,simulate=False,jour
                 except asyncio.TimeoutError:
                     await advance()
         task=None
-        with Path(str(path)+'.service-stacks.log').open('w',encoding='utf-8') as stacks:
+        with Path(str(path)+'.service-stacks.log').open('a',encoding='utf-8') as stacks:
+            stacks.write(f'\n--- service start {datetime.now(timezone.utc).isoformat()} pid={os.getpid()} ---\n')
+            stacks.flush()
             app.state.diagnostic_stack_log=stacks
             try:
                 await advance()
