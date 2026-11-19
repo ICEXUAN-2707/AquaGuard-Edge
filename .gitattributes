@@ -52,4 +52,5 @@ docs/audit/offline-worker-closeout-20261117/** -text whitespace=cr-at-eol,-blank
 docs/audit/independent-review-20261117/** -text whitespace=cr-at-eol,-blank-at-eol
 docs/audit/p2-stack-preservation-20261118/** -text whitespace=cr-at-eol,-blank-at-eol
 docs/audit/pr12-diagnostics-review-20261117/** -text whitespace=cr-at-eol
+docs/audit/checkpoint-cache-v1-20261119/** -text whitespace=cr-at-eol
 docs/audit/pr12-tools-20261119/** -text whitespace=cr-at-eol
