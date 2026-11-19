@@ -75,6 +75,7 @@ def test_benchmark_default_does_not_run(tmp_path):
 def test_allowed_observer_start_failure_is_incomplete_and_never_acceptance(tmp_path,monkeypatch):
     import sys
     from types import SimpleNamespace
+    monkeypatch.syspath_prepend(str(Path(__file__).resolve().parents[2]/'scripts'))
     import supervise_endurance
     monkeypatch.setattr(supervise_endurance,'owned_process_job',lambda:None)
     monkeypatch.setattr(module.faulthandler,'dump_traceback_later',lambda *args,**kwargs:None)
