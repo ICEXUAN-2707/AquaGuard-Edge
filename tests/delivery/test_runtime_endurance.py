@@ -71,3 +71,37 @@ def test_benchmark_default_does_not_run(tmp_path):
     entry=Path(__file__).resolve().parents[2]/'scripts/benchmark_journal.py'
     result=subprocess.run([sys.executable,str(entry),'--directory',str(tmp_path/'probe')],capture_output=True,text=True)
     assert result.returncode!=0 and not (tmp_path/'probe').exists()
+
+def test_allowed_observer_start_failure_is_incomplete_and_never_acceptance(tmp_path,monkeypatch):
+    import sys
+    from types import SimpleNamespace
+    import supervise_endurance
+    monkeypatch.setattr(supervise_endurance,'owned_process_job',lambda:None)
+    monkeypatch.setattr(module.faulthandler,'dump_traceback_later',lambda *args,**kwargs:None)
+    monkeypatch.setattr(module.faulthandler,'cancel_dump_traceback_later',lambda:None)
+    class Socket:
+        def __enter__(self):return self
+        def __exit__(self,*args):pass
+        def bind(self,*args):pass
+        def settimeout(self,*args):pass
+        def connect_ex(self,*args):return 1
+    monkeypatch.setattr(module.socket,'socket',Socket)
+    def failure(*args,**kwargs):raise OSError('injected child launch failure')
+    monkeypatch.setattr(module,'subprocess',SimpleNamespace(check_output=lambda *args,**kwargs:'a'*40,Popen=failure))
+    output=tmp_path/'observation'
+    monkeypatch.setattr(sys,'argv',['observer','--directory',str(output),'--execute','--seconds','45'])
+    assert module.main()==1
+    import json
+    result=json.loads((output/'result.json').read_text())
+    assert result['status']=='INCOMPLETE' and result['failure_type']=='OSError'
+    assert result['acceptance_passed'] is False and result['long_run_acceptance'] is False
+
+
+def test_tiny_benchmark_is_separate_from_mqtt_acceptance(tmp_path):
+    spec=importlib.util.spec_from_file_location('tiny_probe',Path(__file__).resolve().parents[2]/'scripts/benchmark_journal.py')
+    probe=importlib.util.module_from_spec(spec);spec.loader.exec_module(probe)
+    report=probe.run(tmp_path/'tiny',[3])
+    assert report['results'][0]['observations']==3
+    assert report['scope']=='offline_single_process_journal_insertion'
+    with pytest.raises(ValueError):probe.run(tmp_path/'over-budget',[10001])
+    assert not (tmp_path/'over-budget').exists()
