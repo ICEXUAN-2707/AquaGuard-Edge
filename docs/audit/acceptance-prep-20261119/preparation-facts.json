@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-19T01:13:43.293259+00:00",
+  "kind": "offline_preparation_only",
+  "broker_version": "2.1.2",
+  "broker_sha256": "daa688dbc3685890999084da72f98ea0fae9557f7544a2cb96b44ef46563f2a2",
+  "python": "3.12.10",
+  "installed_distributions": 22,
+  "app_lock_sha256": "da3a06ed8ca8a2f3fa9184f3f2354f77cc69f11edd151fd0d0648ffbc44552ec",
+  "app_lock_has_utf8_bom": true,
+  "C_free_bytes": 0,
+  "D_free_bytes": 482357731328,
+  "host_gate": "BLOCKED_SYSTEM_DISK",
+  "experiment_started": false,
+  "observation_thresholds_status": "UNCONFIGURED_BASELINE_PILOT_ONLY"
+}

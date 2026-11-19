@@ -26,15 +26,22 @@ def test_checkpoint_inventory_is_read_only_and_fail_closed(tmp_path,change):
     assert database.read_bytes()==before and (folder/'other.json').exists()
 
 
-def test_version_lock_tracks_dependency_files_and_binary_without_execution(tmp_path,monkeypatch):
+@pytest.mark.parametrize('prefix',['','\ufeff'])
+@pytest.mark.parametrize('newline',['\n','\r\n'])
+def test_version_lock_tracks_dependency_files_and_binary_without_execution(tmp_path,monkeypatch,prefix,newline):
     (tmp_path/'web').mkdir();(tmp_path/'web/package-lock.json').write_text('{}')
-    (tmp_path/'requirements-app.lock.txt').write_text('example==1.0\n')
+    dependency_file=tmp_path/'requirements-app.lock.txt'
+    dependency_file.write_bytes((prefix+'example==1.0'+newline).encode('utf-8'))
+    original=dependency_file.read_bytes()
     broker=tmp_path/'broker.exe';broker.write_bytes(b'not an executable')
     monkeypatch.setattr(module.importlib.metadata,'distributions',lambda:[SimpleNamespace(metadata={'Name':'example'},version='1.0')])
     first=module.runtime_lock(tmp_path,broker,'2.0.21')
+    import hashlib
+    assert dependency_file.read_bytes()==original
+    assert first['lock_files']['requirements-app.lock.txt']==hashlib.sha256(original).hexdigest()
     broker.write_bytes(b'changed')
     assert module.runtime_lock(tmp_path,broker,'2.0.21')['broker_sha256']!=first['broker_sha256']
-    (tmp_path/'requirements-app.lock.txt').write_text('example==2.0\n')
+    dependency_file.write_bytes((prefix+'example==2.0'+newline).encode('utf-8'))
     with pytest.raises(ValueError,match='dependency'):module.runtime_lock(tmp_path,broker,'2.0.21')
 
 

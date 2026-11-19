@@ -22,7 +22,7 @@ def runtime_lock(root,broker,broker_version):
     files={name:digest(root/name) for name in ('requirements-app.lock.txt','web/package-lock.json')}
     canonical=lambda name:re.sub(r'[-_.]+','-',name).lower()
     installed={canonical(dist.metadata['Name']):dist.version for dist in importlib.metadata.distributions()}
-    for line in (root/'requirements-app.lock.txt').read_text(encoding='utf-8').splitlines():
+    for line in (root/'requirements-app.lock.txt').read_text(encoding='utf-8-sig').splitlines():
         if not line.strip() or line.lstrip().startswith('#'):continue
         name,separator,version=line.partition('==')
         if not separator or installed.get(canonical(name))!=version.strip():raise ValueError('installed dependency differs from application lock: '+name)
