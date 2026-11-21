@@ -6,6 +6,7 @@ A/B/C个人文档移至[统一入口](../../spikes/docs/README.md)。本目录�
 - [AB_第二轮交叉核对](AB_第二轮交叉核对.md)
 - [DEVELOPMENT_PLAN](DEVELOPMENT_PLAN.md)
 - [PROJECT_STATUS](PROJECT_STATUS.md)
+- [前端合并后进度与下一步（2026-11-21）](POST_FRONTEND_PROGRESS_20261121.md)
 - [S1-S3_逐人操作卡](S1-S3_逐人操作卡.md)
 - [UPSTREAM_REVIEW](UPSTREAM_REVIEW.md)
 - [新人分步推进手册](新人分步推进手册.md)

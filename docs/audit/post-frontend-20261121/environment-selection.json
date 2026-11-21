@@ -1,0 +1,11 @@
+{
+  "scope": "offline preparation; no experiment started",
+  "rejected": [
+    {"interpreter": "system python", "error": "installed dependency differs from application lock: annotated-doc"},
+    {"interpreter": "project .venv/Scripts/python.exe", "error": "installed dependency differs from application lock: annotated-doc"}
+  ],
+  "selected": "project root .venv-app/Scripts/python.exe",
+  "runtime_lock_verification": "SATISFIED",
+  "broker_version_basis": "2.1.2 from previous verified lock; executable SHA256 unchanged",
+  "dependencies_installed_or_modified": false
+}
