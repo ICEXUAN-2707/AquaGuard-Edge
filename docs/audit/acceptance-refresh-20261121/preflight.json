@@ -1,0 +1,20 @@
+{
+  "utc": "2026-11-21T03:55:59.130785+00:00",
+  "revision": "0db5e605c3677a18c5be461b6ec5ec74f51e5577",
+  "C_free_bytes": 2824421376,
+  "D_free_bytes": 479590846464,
+  "ports": {
+    "18893": "AVAILABLE_AT_CHECK",
+    "8055": "AVAILABLE_AT_CHECK",
+    "8061": "AVAILABLE_AT_CHECK"
+  },
+  "preflight": "SATISFIED",
+  "pilot_seconds": 273,
+  "observation_thresholds": "UNCONFIGURED_BASELINE_ONLY",
+  "experiment_started": false,
+  "broker_service_started": false,
+  "cloud_started": false,
+  "PR12": "CLOSED_SUPERSEDED_NOT_MERGED",
+  "PR19": "MERGED",
+  "PR20": "MERGED_OPTIONAL_CACHE_NOT_ACTIVATED"
+}
