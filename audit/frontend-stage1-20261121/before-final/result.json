@@ -1,0 +1,66 @@
+{
+  "scope": "frozen_simulation_visual_fixture",
+  "rows": [
+    {
+      "page": "overview",
+      "width": 1280,
+      "noOverflow": true
+    },
+    {
+      "page": "overview",
+      "width": 768,
+      "noOverflow": true
+    },
+    {
+      "page": "overview",
+      "width": 390,
+      "noOverflow": true
+    },
+    {
+      "page": "analytics",
+      "width": 1280,
+      "noOverflow": true
+    },
+    {
+      "page": "analytics",
+      "width": 768,
+      "noOverflow": true
+    },
+    {
+      "page": "analytics",
+      "width": 390,
+      "noOverflow": true
+    },
+    {
+      "page": "events",
+      "width": 1280,
+      "noOverflow": true
+    },
+    {
+      "page": "events",
+      "width": 768,
+      "noOverflow": true
+    },
+    {
+      "page": "events",
+      "width": 390,
+      "noOverflow": true
+    },
+    {
+      "page": "experiment",
+      "width": 1280,
+      "noOverflow": true
+    },
+    {
+      "page": "experiment",
+      "width": 768,
+      "noOverflow": true
+    },
+    {
+      "page": "experiment",
+      "width": 390,
+      "noOverflow": true
+    }
+  ],
+  "errors": []
+}

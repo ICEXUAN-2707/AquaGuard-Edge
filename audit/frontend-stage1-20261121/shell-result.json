@@ -1,0 +1,13 @@
+{
+  "scope": "isolated visual fixture; no experiment acceptance",
+  "checks": [
+    "disconnected state and keyboard skip link",
+    "credentials wait for API response",
+    "all four APIs respond",
+    "partial",
+    "unavailable",
+    "unauthorized",
+    "disconnect clears availability"
+  ],
+  "pageErrors": []
+}

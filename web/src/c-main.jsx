@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './c.css'
 import './c-workbench.css'
+import './c-shell.css'
+import { connectionStatus } from './c-connection.js'
 import { AckIntent, ResponseOrder, CloseIntent } from './c-state.js'
 import { Overview } from './c-overview.jsx'
 import { Events } from './c-events.jsx'
 import { Experiment } from './c-experiment.jsx'
-import { label } from './c-display.js'
+import { label, localTime } from './c-display.js'
 import { requestJSON } from './c-request.js'
 import { WorkspaceNavigation } from './c-navigation.jsx'
 import { Analytics } from './c-analytics.jsx'
@@ -78,7 +80,7 @@ function App() {
     const routes={live:`/api/devices/${encodeURIComponent(device)}/live`, assessment:`/api/devices/${encodeURIComponent(device)}/assessment`,sync:`/api/sync/status?device_id=${encodeURIComponent(device)}`,events:`/api/events?device_id=${encodeURIComponent(device)}&limit=100`}
     Promise.all(Object.entries(routes).map(async([key,path])=>{
       try{return [key,{value:await request(path,{signal:controller.signal})}]}catch(error){return [key,{error:message(error)}]}
-    })).then(entries=>{if(!controller.signal.aborted) setData(Object.fromEntries(entries))})
+    })).then(entries=>{if(!controller.signal.aborted) setData({...Object.fromEntries(entries),checkedAt:new Date().toISOString()})})
     return ()=>controller.abort()
   },[token,device,epoch])
   useEffect(()=>{
@@ -118,9 +120,11 @@ function App() {
       else setNotice(`${message(error)}。再次点击会重放原关闭请求。`)
     }finally{setBusy(false)}
   }
-  return <div className="workbench-shell"><WorkspaceNavigation tab={tab} onTab={setTab}/><main>
+  const connection=connectionStatus(Boolean(token),data)
+  return <div className="workbench-shell"><a className="skip-link" href="#workspace-main">跳转到主要内容</a><WorkspaceNavigation tab={tab} onTab={setTab}/><main id="workspace-main" tabIndex={-1}>
     <header className="workspace-topbar"><div className="breadcrumb"><span>工作区</span><span aria-hidden="true">›</span><span>AquaGuard Edge</span><span aria-hidden="true">›</span><b>{tab}</b></div><span className="badge">实验环境 · 不发送真实通知</span></header>
-    <div className="workspace-bar"><div><span className={`connection-dot ${token?'loaded':''}`}/><b>{token?'已装入访问凭据':'尚未连接'}</b><span className="bar-divider">/</span><span>设备 {device || '未选择'}</span><span className="source-chip">{data.live?.value?`${label(data.live.value.origin)}数据`:'来源待确认'}</span></div><button type="button" onClick={()=>setSettingsOpen(x=>!x)} aria-expanded={!token||settingsOpen}>{settingsOpen?'收起设置':'连接设置'}</button></div>
+    <div className="workspace-bar"><div><span aria-hidden="true" className={`connection-dot ${connection.kind}`}/><b>{token?'已装入访问凭据':'尚未连接'}</b>{token&&<span role="status" aria-live="polite" className={`interface-state ${connection.kind}`}>{connection.label}</span>}<span className="bar-divider">/</span><span>设备 {device || '未选择'}</span><span className="source-chip">{data.live?.value?`${label(data.live.value.origin)}数据`:'来源待确认'}</span></div><button type="button" onClick={()=>setSettingsOpen(x=>!x)} aria-expanded={!token||settingsOpen}>{settingsOpen?'收起设置':'连接设置'}</button></div>
+    <p className="connection-explanation"><span>{connection.detail}</span>{data.checkedAt&&<time dateTime={data.checkedAt} title="浏览器完成本轮查询的时间，不是传感器观测时间">最近查询完成：{localTime(data.checkedAt)}</time>}</p>
     <form hidden={Boolean(token)&&!settingsOpen} className="connection" onSubmit={e=>{e.preventDefault();setToken(draft);setDraft('');setSettingsOpen(false)}}>
       <label>设备<input value={device} onChange={e=>setDevice(e.target.value)} disabled={busy}/></label>
       <label>实验访问凭据<input type="password" autoComplete="off" value={draft} onChange={e=>setDraft(e.target.value)} placeholder={token?'凭据已装入内存':'输入启动时保存的 token'} disabled={busy}/></label>
