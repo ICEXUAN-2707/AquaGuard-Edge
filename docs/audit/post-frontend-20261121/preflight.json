@@ -1,0 +1,21 @@
+{
+  "utc": "2026-11-21T11:12:40.776341+00:00",
+  "revision": "300fa6f7b5c345f2056df2985fbac0fd5598153c",
+  "C_free_bytes": 2880020480,
+  "D_free_bytes": 479077416960,
+  "ports": {
+    "18893": "AVAILABLE_AT_CHECK",
+    "8055": "AVAILABLE_AT_CHECK",
+    "8061": "IN_USE_AT_CHECK"
+  },
+  "preflight": "SATISFIED",
+  "pilot_seconds": 273,
+  "observation_thresholds": "UNCONFIGURED_BASELINE_ONLY",
+  "experiment_started": false,
+  "broker_started": false,
+  "cloud_started": false,
+  "execution_enabled": false,
+  "acceptance_passed": false,
+  "PR22": "MERGED_MANUAL_UI_ACCEPTED",
+  "manual_ui_service": "SEPARATE_SIMULATION_ON_8061"
+}
