@@ -1,0 +1,12 @@
+[
+  {
+    "verbose": false,
+    "alive_before_cleanup": true,
+    "log": ""
+  },
+  {
+    "verbose": true,
+    "alive_before_cleanup": true,
+    "log": "1795260140: mosquitto version 2.1.2 starting\n1795260140: Config loaded from D:\\\ufffd\ufffdice\ufffd\ufffd\ufffd\ufffd\u0467\ufffd\u68e9\\2026-2027 \ufffd\ufffd\ufffd\\10\ufffd\u00bb\ufffd\u03aaICT\u02b5\ufffd\ufffd\ufffd\ufffd\\.mqtt-validation-20261121\\.local\\pilot-20261121\\broker.conf.\n1795260140: Bridge support available.\n1795260140: Persistence support available.\n1795260140: TLS support available.\n1795260140: TLS-PSK support available.\n1795260140: Websockets support available.\n1795260140: Opening ipv4 listen socket on port 18893.\n1795260140: mosquitto version 2.1.2 running\n"
+  }
+]
