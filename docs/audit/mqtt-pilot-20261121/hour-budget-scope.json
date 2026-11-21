@@ -1,0 +1,29 @@
+{
+  "kind": "temporary engineering budget; same-host MQTT simulation only",
+  "frozen_at_utc": "2026-11-21T11:40:20.858271+00:00",
+  "pilot": "pilot-v3",
+  "revision": "0f943b5101be9ec4bfe321d44f9aafa4d741b75a",
+  "thresholds": {
+    "max_sample_gap_seconds": 7.5,
+    "min_coverage_ratio": 0.99,
+    "max_os_excluded_seconds": 1,
+    "max_collection_seconds": 1,
+    "max_process_rss_bytes": 268435456
+  },
+  "scope_excludes": [
+    "physical sensor acceptance",
+    "real cloud acceptance",
+    "overall product acceptance"
+  ],
+  "normal_seconds": 3600,
+  "total_planned_seconds": 3813,
+  "additional_review": [
+    "all seven phase assertions",
+    "cleanup and port closure",
+    "SQLite and OPEN uniqueness",
+    "ACK, consumption and checkpoint evidence",
+    "no unplanned OS exclusion above 1.05 seconds in non-startup/non-shutdown phases",
+    "power request restored"
+  ],
+  "launcher_sha256": "25e05e339d2397afd1c434c85bdc4e55818742a820309cd1977af47988eaac00"
+}

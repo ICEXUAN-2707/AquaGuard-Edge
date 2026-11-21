@@ -144,7 +144,9 @@ class LocalBackend:
         (self.output/'runtime-lock.json').write_text(json.dumps(self.runtime_versions,indent=2),encoding='utf-8')
         config=self.output/'broker.conf'
         config.write_text(f'listener {self.mqtt_port} 127.0.0.1\nallow_anonymous true\npersistence false\n',encoding='utf-8')
-        self.launch('broker',[str(self.broker),'-c',str(config)])
+        # Windows background mode may otherwise emit no startup log. Readiness
+        # deliberately requires this owned log as well as the loopback socket.
+        self.launch('broker',[str(self.broker),'-c',str(config),'-v'])
         self.wait_ready(self.broker_ready)
         receipt['broker_version']=self.runtime_versions['broker_version']
         (self.output/'runtime.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')

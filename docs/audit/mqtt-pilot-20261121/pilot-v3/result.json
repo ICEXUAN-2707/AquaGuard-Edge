@@ -1,0 +1,977 @@
+{
+  "execution_status": "COMPLETED",
+  "acceptance_passed": false,
+  "long_run_acceptance": false,
+  "completed_phases": [
+    "startup",
+    "continuous",
+    "publisher_stop",
+    "resume_duplicate",
+    "edge_restart",
+    "new_boot",
+    "shutdown"
+  ],
+  "phase_assertions": {
+    "startup": {
+      "status": "SATISFIED",
+      "checks": [
+        {
+          "name": "one_open_water_event",
+          "satisfied": true
+        },
+        {
+          "name": "simulation_origin",
+          "satisfied": true
+        },
+        {
+          "name": "expected_consumer_boot",
+          "satisfied": true
+        },
+        {
+          "name": "water_active",
+          "satisfied": true
+        }
+      ],
+      "evidence": {
+        "before": {
+          "water_events": [],
+          "water_transitions": 0,
+          "boot": null,
+          "cursor": 0,
+          "quarantine": 0,
+          "duplicates": 0,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        },
+        "after": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 1
+            }
+          ],
+          "water_transitions": 1,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 116,
+          "quarantine": 0,
+          "duplicates": 0,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        }
+      }
+    },
+    "continuous": {
+      "status": "SATISFIED",
+      "checks": [
+        {
+          "name": "one_open_water_event",
+          "satisfied": true
+        },
+        {
+          "name": "simulation_origin",
+          "satisfied": true
+        },
+        {
+          "name": "expected_consumer_boot",
+          "satisfied": true
+        },
+        {
+          "name": "water_active",
+          "satisfied": true
+        },
+        {
+          "name": "normal_samples_present",
+          "satisfied": true
+        },
+        {
+          "name": "normal_live_available",
+          "satisfied": true
+        }
+      ],
+      "evidence": {
+        "before": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 1
+            }
+          ],
+          "water_transitions": 1,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 116,
+          "quarantine": 0,
+          "duplicates": 0,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        },
+        "after": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 1
+            }
+          ],
+          "water_transitions": 1,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 290,
+          "quarantine": 0,
+          "duplicates": 0,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        }
+      }
+    },
+    "publisher_stop": {
+      "status": "SATISFIED",
+      "checks": [
+        {
+          "name": "one_open_water_event",
+          "satisfied": true
+        },
+        {
+          "name": "simulation_origin",
+          "satisfied": true
+        },
+        {
+          "name": "expected_consumer_boot",
+          "satisfied": true
+        },
+        {
+          "name": "water_unknown_after_ttl",
+          "satisfied": true
+        },
+        {
+          "name": "same_event_after_expiry",
+          "satisfied": true
+        }
+      ],
+      "evidence": {
+        "before": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 1
+            }
+          ],
+          "water_transitions": 1,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 290,
+          "quarantine": 0,
+          "duplicates": 0,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        },
+        "after": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "UNKNOWN",
+              "schema_version": "1.1",
+              "version": 2
+            }
+          ],
+          "water_transitions": 2,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 290,
+          "quarantine": 0,
+          "duplicates": 0,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        }
+      }
+    },
+    "resume_duplicate": {
+      "status": "SATISFIED",
+      "checks": [
+        {
+          "name": "one_open_water_event",
+          "satisfied": true
+        },
+        {
+          "name": "simulation_origin",
+          "satisfied": true
+        },
+        {
+          "name": "expected_consumer_boot",
+          "satisfied": true
+        },
+        {
+          "name": "water_active",
+          "satisfied": true
+        },
+        {
+          "name": "event_identity_preserved",
+          "satisfied": true
+        },
+        {
+          "name": "ack_state_preserved",
+          "satisfied": true
+        },
+        {
+          "name": "cursor_non_decreasing",
+          "satisfied": true
+        },
+        {
+          "name": "duplicates_observed",
+          "satisfied": true
+        },
+        {
+          "name": "only_expected_restore_transition",
+          "satisfied": true
+        }
+      ],
+      "evidence": {
+        "before": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "UNKNOWN",
+              "schema_version": "1.1",
+              "version": 2
+            }
+          ],
+          "water_transitions": 2,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 290,
+          "quarantine": 0,
+          "duplicates": 0,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        },
+        "after": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 3
+            }
+          ],
+          "water_transitions": 3,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 416,
+          "quarantine": 0,
+          "duplicates": 3,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        }
+      }
+    },
+    "edge_restart": {
+      "status": "SATISFIED",
+      "checks": [
+        {
+          "name": "one_open_water_event",
+          "satisfied": true
+        },
+        {
+          "name": "simulation_origin",
+          "satisfied": true
+        },
+        {
+          "name": "expected_consumer_boot",
+          "satisfied": true
+        },
+        {
+          "name": "water_active",
+          "satisfied": true
+        },
+        {
+          "name": "event_identity_preserved",
+          "satisfied": true
+        },
+        {
+          "name": "ack_state_preserved",
+          "satisfied": true
+        },
+        {
+          "name": "cursor_non_decreasing",
+          "satisfied": true
+        }
+      ],
+      "evidence": {
+        "before": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 3
+            }
+          ],
+          "water_transitions": 3,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 416,
+          "quarantine": 0,
+          "duplicates": 3,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        },
+        "after": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 3
+            }
+          ],
+          "water_transitions": 3,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 546,
+          "quarantine": 0,
+          "duplicates": 3,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        }
+      }
+    },
+    "new_boot": {
+      "status": "SATISFIED",
+      "checks": [
+        {
+          "name": "one_open_water_event",
+          "satisfied": true
+        },
+        {
+          "name": "simulation_origin",
+          "satisfied": true
+        },
+        {
+          "name": "expected_consumer_boot",
+          "satisfied": true
+        },
+        {
+          "name": "water_active",
+          "satisfied": true
+        },
+        {
+          "name": "event_identity_preserved",
+          "satisfied": true
+        },
+        {
+          "name": "ack_state_preserved",
+          "satisfied": true
+        },
+        {
+          "name": "cursor_non_decreasing",
+          "satisfied": true
+        },
+        {
+          "name": "retired_boot_batch_quarantined",
+          "satisfied": true
+        }
+      ],
+      "evidence": {
+        "before": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 3
+            }
+          ],
+          "water_transitions": 3,
+          "boot": "10f3cb4f6cbd472ab6bce437200b91e2",
+          "cursor": 546,
+          "quarantine": 0,
+          "duplicates": 3,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        },
+        "after": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 3
+            }
+          ],
+          "water_transitions": 3,
+          "boot": "3e4ebf6871b74455bb96b3fa7709244a",
+          "cursor": 671,
+          "quarantine": 3,
+          "duplicates": 3,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        }
+      }
+    },
+    "shutdown": {
+      "status": "SATISFIED",
+      "checks": [
+        {
+          "name": "one_open_water_event",
+          "satisfied": true
+        },
+        {
+          "name": "simulation_origin",
+          "satisfied": true
+        }
+      ],
+      "evidence": {
+        "before": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 3
+            }
+          ],
+          "water_transitions": 3,
+          "boot": "3e4ebf6871b74455bb96b3fa7709244a",
+          "cursor": 671,
+          "quarantine": 3,
+          "duplicates": 3,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        },
+        "after": {
+          "water_events": [
+            {
+              "ack_status": "UNACKNOWLEDGED",
+              "created_at": "2026-11-21T11:35:14.620332Z",
+              "device_id": "demo01",
+              "escalation_level": "L2",
+              "event_id": "5b4bb659-57c4-443a-8e08-0b1f5fd8c52a",
+              "event_type": "WATER_CONTACT",
+              "lifecycle": "OPEN",
+              "origin": "simulation",
+              "physical_status": "ACTIVE",
+              "schema_version": "1.1",
+              "version": 3
+            }
+          ],
+          "water_transitions": 3,
+          "boot": "3e4ebf6871b74455bb96b3fa7709244a",
+          "cursor": 673,
+          "quarantine": 3,
+          "duplicates": 3,
+          "note": "Business transaction and Journal count are separate observational snapshots."
+        }
+      }
+    }
+  },
+  "observation_checks": {
+    "startup": {
+      "samples": 8,
+      "expected_samples": 9,
+      "planned_duration_seconds": 45,
+      "actual_duration_seconds": 45.0,
+      "coverage_ratio": 0.8888888888888888,
+      "clock_quantization_allowance_seconds": 0.05,
+      "max_sample_gap_seconds": 5.234000000054948,
+      "os_excluded_seconds": 0.002622599946334958,
+      "max_collection_seconds": 0.0470000000204891,
+      "resources_complete": true,
+      "os_clock_complete": true,
+      "processes": [
+        {
+          "name": "broker",
+          "pid": 54268,
+          "creation_filetime": 134397345093711587,
+          "max_rss_bytes": 9400320,
+          "max_cpu_seconds": 0.125
+        },
+        {
+          "name": "subscriber",
+          "pid": 24516,
+          "creation_filetime": 134397345095094523,
+          "max_rss_bytes": 4562944,
+          "max_cpu_seconds": 0.03125
+        },
+        {
+          "name": "edge",
+          "pid": 43128,
+          "creation_filetime": 134397345109745637,
+          "max_rss_bytes": 4567040,
+          "max_cpu_seconds": 0
+        },
+        {
+          "name": "publisher",
+          "pid": 51444,
+          "creation_filetime": 134397345132172150,
+          "max_rss_bytes": 4562944,
+          "max_cpu_seconds": 0.03125
+        }
+      ],
+      "thresholds": null,
+      "status": "UNCONFIGURED",
+      "note": "OS clock difference is low-power excluded time evidence, not a root-cause verdict. Bounds cover observed direct children only. Not overall acceptance."
+    },
+    "continuous": {
+      "samples": 12,
+      "expected_samples": 12,
+      "planned_duration_seconds": 60.0,
+      "actual_duration_seconds": 60.0,
+      "coverage_ratio": 1,
+      "clock_quantization_allowance_seconds": 0.05,
+      "max_sample_gap_seconds": 5.016000000061467,
+      "os_excluded_seconds": 0,
+      "max_collection_seconds": 0.07900000002700835,
+      "resources_complete": true,
+      "os_clock_complete": true,
+      "processes": [
+        {
+          "name": "broker",
+          "pid": 54268,
+          "creation_filetime": 134397345093711587,
+          "max_rss_bytes": 9334784,
+          "max_cpu_seconds": 0.203125
+        },
+        {
+          "name": "subscriber",
+          "pid": 24516,
+          "creation_filetime": 134397345095094523,
+          "max_rss_bytes": 4534272,
+          "max_cpu_seconds": 0.03125
+        },
+        {
+          "name": "edge",
+          "pid": 43128,
+          "creation_filetime": 134397345109745637,
+          "max_rss_bytes": 4538368,
+          "max_cpu_seconds": 0
+        },
+        {
+          "name": "publisher",
+          "pid": 51444,
+          "creation_filetime": 134397345132172150,
+          "max_rss_bytes": 4538368,
+          "max_cpu_seconds": 0.03125
+        }
+      ],
+      "thresholds": null,
+      "status": "UNCONFIGURED",
+      "note": "OS clock difference is low-power excluded time evidence, not a root-cause verdict. Bounds cover observed direct children only. Not overall acceptance."
+    },
+    "publisher_stop": {
+      "samples": 4,
+      "expected_samples": 4,
+      "planned_duration_seconds": 18.0,
+      "actual_duration_seconds": 18.0,
+      "coverage_ratio": 1,
+      "clock_quantization_allowance_seconds": 0.05,
+      "max_sample_gap_seconds": 5.0,
+      "os_excluded_seconds": 0,
+      "max_collection_seconds": 0.030999999959021807,
+      "resources_complete": true,
+      "os_clock_complete": true,
+      "processes": [
+        {
+          "name": "broker",
+          "pid": 54268,
+          "creation_filetime": 134397345093711587,
+          "max_rss_bytes": 9334784,
+          "max_cpu_seconds": 0.203125
+        },
+        {
+          "name": "subscriber",
+          "pid": 24516,
+          "creation_filetime": 134397345095094523,
+          "max_rss_bytes": 4534272,
+          "max_cpu_seconds": 0.03125
+        },
+        {
+          "name": "edge",
+          "pid": 43128,
+          "creation_filetime": 134397345109745637,
+          "max_rss_bytes": 4538368,
+          "max_cpu_seconds": 0
+        }
+      ],
+      "thresholds": null,
+      "status": "UNCONFIGURED",
+      "note": "OS clock difference is low-power excluded time evidence, not a root-cause verdict. Bounds cover observed direct children only. Not overall acceptance."
+    },
+    "resume_duplicate": {
+      "samples": 9,
+      "expected_samples": 9,
+      "planned_duration_seconds": 45.0,
+      "actual_duration_seconds": 45.01500000001397,
+      "coverage_ratio": 1,
+      "clock_quantization_allowance_seconds": 0.05,
+      "max_sample_gap_seconds": 5.0,
+      "os_excluded_seconds": 0.010887299984460697,
+      "max_collection_seconds": 0.1410000000614673,
+      "resources_complete": true,
+      "os_clock_complete": true,
+      "processes": [
+        {
+          "name": "broker",
+          "pid": 54268,
+          "creation_filetime": 134397345093711587,
+          "max_rss_bytes": 9342976,
+          "max_cpu_seconds": 0.28125
+        },
+        {
+          "name": "subscriber",
+          "pid": 24516,
+          "creation_filetime": 134397345095094523,
+          "max_rss_bytes": 4534272,
+          "max_cpu_seconds": 0.03125
+        },
+        {
+          "name": "edge",
+          "pid": 43128,
+          "creation_filetime": 134397345109745637,
+          "max_rss_bytes": 4538368,
+          "max_cpu_seconds": 0
+        },
+        {
+          "name": "publisher",
+          "pid": 26444,
+          "creation_filetime": 134397346322536241,
+          "max_rss_bytes": 4567040,
+          "max_cpu_seconds": 0
+        }
+      ],
+      "thresholds": null,
+      "status": "UNCONFIGURED",
+      "note": "OS clock difference is low-power excluded time evidence, not a root-cause verdict. Bounds cover observed direct children only. Not overall acceptance."
+    },
+    "edge_restart": {
+      "samples": 9,
+      "expected_samples": 9,
+      "planned_duration_seconds": 45.0,
+      "actual_duration_seconds": 45.0,
+      "coverage_ratio": 1,
+      "clock_quantization_allowance_seconds": 0.05,
+      "max_sample_gap_seconds": 5.015999999945052,
+      "os_excluded_seconds": 0.006539000023622066,
+      "max_collection_seconds": 0.1559999999590218,
+      "resources_complete": true,
+      "os_clock_complete": true,
+      "processes": [
+        {
+          "name": "broker",
+          "pid": 54268,
+          "creation_filetime": 134397345093711587,
+          "max_rss_bytes": 9342976,
+          "max_cpu_seconds": 0.375
+        },
+        {
+          "name": "subscriber",
+          "pid": 24516,
+          "creation_filetime": 134397345095094523,
+          "max_rss_bytes": 4534272,
+          "max_cpu_seconds": 0.03125
+        },
+        {
+          "name": "publisher",
+          "pid": 26444,
+          "creation_filetime": 134397346322536241,
+          "max_rss_bytes": 4538368,
+          "max_cpu_seconds": 0
+        },
+        {
+          "name": "edge",
+          "pid": 12364,
+          "creation_filetime": 134397346772596838,
+          "max_rss_bytes": 4567040,
+          "max_cpu_seconds": 0.03125
+        }
+      ],
+      "thresholds": null,
+      "status": "UNCONFIGURED",
+      "note": "OS clock difference is low-power excluded time evidence, not a root-cause verdict. Bounds cover observed direct children only. Not overall acceptance."
+    },
+    "new_boot": {
+      "samples": 9,
+      "expected_samples": 9,
+      "planned_duration_seconds": 45.0,
+      "actual_duration_seconds": 45.0,
+      "coverage_ratio": 1,
+      "clock_quantization_allowance_seconds": 0.05,
+      "max_sample_gap_seconds": 5.0,
+      "os_excluded_seconds": 0,
+      "max_collection_seconds": 0.09299999999348074,
+      "resources_complete": true,
+      "os_clock_complete": true,
+      "processes": [
+        {
+          "name": "broker",
+          "pid": 54268,
+          "creation_filetime": 134397345093711587,
+          "max_rss_bytes": 9342976,
+          "max_cpu_seconds": 0.53125
+        },
+        {
+          "name": "subscriber",
+          "pid": 24516,
+          "creation_filetime": 134397345095094523,
+          "max_rss_bytes": 4534272,
+          "max_cpu_seconds": 0.03125
+        },
+        {
+          "name": "edge",
+          "pid": 12364,
+          "creation_filetime": 134397346772596838,
+          "max_rss_bytes": 4538368,
+          "max_cpu_seconds": 0.03125
+        },
+        {
+          "name": "publisher",
+          "pid": 50628,
+          "creation_filetime": 134397347226266871,
+          "max_rss_bytes": 4558848,
+          "max_cpu_seconds": 0.03125
+        }
+      ],
+      "thresholds": null,
+      "status": "UNCONFIGURED",
+      "note": "OS clock difference is low-power excluded time evidence, not a root-cause verdict. Bounds cover observed direct children only. Not overall acceptance."
+    },
+    "shutdown": {
+      "samples": 3,
+      "expected_samples": 3,
+      "planned_duration_seconds": 15.0,
+      "actual_duration_seconds": 15.0,
+      "coverage_ratio": 1,
+      "clock_quantization_allowance_seconds": 0.05,
+      "max_sample_gap_seconds": 5.0,
+      "os_excluded_seconds": 0,
+      "max_collection_seconds": 0.045999999972991645,
+      "resources_complete": false,
+      "os_clock_complete": true,
+      "processes": [],
+      "thresholds": null,
+      "status": "UNCONFIGURED",
+      "note": "OS clock difference is low-power excluded time evidence, not a root-cause verdict. Bounds cover observed direct children only. Not overall acceptance."
+    }
+  },
+  "error_type": null,
+  "cleanup": {
+    "all_exited": true,
+    "children": [
+      {
+        "name": "broker",
+        "pid": 54268,
+        "exit_code": 1,
+        "exit_confirmed": true
+      },
+      {
+        "name": "subscriber",
+        "pid": 24516,
+        "exit_code": 1,
+        "exit_confirmed": true
+      },
+      {
+        "name": "edge",
+        "pid": 43128,
+        "exit_code": 1,
+        "exit_confirmed": true
+      },
+      {
+        "name": "publisher",
+        "pid": 51444,
+        "exit_code": 0,
+        "exit_confirmed": true
+      },
+      {
+        "name": "publisher",
+        "pid": 26444,
+        "exit_code": 0,
+        "exit_confirmed": true
+      },
+      {
+        "name": "edge",
+        "pid": 12364,
+        "exit_code": 1,
+        "exit_confirmed": true
+      },
+      {
+        "name": "publisher",
+        "pid": 50628,
+        "exit_code": 0,
+        "exit_confirmed": true
+      }
+    ],
+    "failures": []
+  },
+  "exit_checks": {
+    "business_quick_check": [
+      "ok"
+    ],
+    "duplicate_open_groups": 0,
+    "journal_quick_check": [
+      "ok"
+    ],
+    "capacity": {
+      "scope": "read_only_mqtt_capacity",
+      "counts": {
+        "observations": 670,
+        "attempts": 673,
+        "rejected": 0
+      },
+      "consumer_cursor": 673,
+      "journal_latest_attempt": 673,
+      "pending_eligible_attempts": 0,
+      "journal_bytes": 831488,
+      "business_bytes": 286720,
+      "file_bytes": {
+        "journal": {
+          "main": 831488,
+          "wal": 0,
+          "shm": 0
+        },
+        "business": {
+          "main": 286720,
+          "wal": 0,
+          "shm": 0
+        }
+      },
+      "note": "Separate databases and file sizes are not atomic snapshots; backlog is observational. Legacy byte fields are main files only; file_bytes includes WAL/SHM. No performance or long-duration acceptance."
+    },
+    "ok": true,
+    "ports_closed": {
+      "mqtt": true,
+      "http": true
+    },
+    "ack_evidence": {
+      "scope": "subscriber_local_commit_ack_submission",
+      "records": 673,
+      "completed": 673,
+      "incomplete": 0,
+      "invalid": 0,
+      "broker_confirmation": "NOT_MEASURED",
+      "acceptance_passed": false,
+      "note": "Latency describes completed valid records only; all incomplete/invalid records remain counted. Not publisher-to-business or cloud latency.",
+      "receive_to_commit_seconds": {
+        "samples": 673,
+        "p50": 0.012194800074212253,
+        "p95": 0.03373569995164871,
+        "max": 0.14364989998284727
+      },
+      "commit_to_ack_submit_seconds": {
+        "samples": 673,
+        "p50": 0.00021269998978823423,
+        "p95": 0.00029880006331950426,
+        "max": 0.0005794999888166785
+      },
+      "receive_to_ack_submit_seconds": {
+        "samples": 673,
+        "p50": 0.012407600064761937,
+        "p95": 0.03395339997950941,
+        "max": 0.1438819000031799
+      },
+      "status": "AVAILABLE"
+    },
+    "checkpoints": {
+      "directory_exists": true,
+      "files": 35,
+      "bytes": 4541477,
+      "referenced_checkpoints": 1,
+      "missing_referenced": 0,
+      "outside_checkpoint_refs": 0,
+      "unreferenced_observed": 34,
+      "deletion_authorized": false,
+      "unparsed_json_cells": 0,
+      "invalid_referenced_json": 0,
+      "ok": true,
+      "note": "Read-only explicit references; filesystem/DB are non-atomic. No observed reference never authorizes deletion. New owned run starts with zero files; final count/bytes are its observed growth."
+    },
+    "consumption_latency": {
+      "scope": "same_host_publish_start_to_consumer_cursor_commit",
+      "publications": 673,
+      "consumptions": 670,
+      "valid_publications": 673,
+      "invalid": 0,
+      "failed_publications": 0,
+      "matched_unique": 670,
+      "acceptance_passed": false,
+      "unmatched_publications": 0,
+      "unmatched_consumptions": 0,
+      "duplicate_publications": 3,
+      "p50_seconds": 0.23528369993437082,
+      "p95_seconds": 0.5664997000712901,
+      "max_seconds": 2.2574731999775395,
+      "note": "Same Windows host perf_counter domain, includes instrumentation. Unique IDs use first successful emission/commit; duplicate publications remain counted. Cursor commit is not event/window/UI/cloud completion; quarantine also commits a cursor.",
+      "status": "AVAILABLE"
+    }
+  },
+  "note": "Execution completion is not availability, fault assertions, latency or capacity acceptance.",
+  "elapsed_seconds": 274.3429999999935
+}

@@ -1,0 +1,7 @@
+{
+  "requested": true,
+  "restored": true,
+  "previous_state": 2147483648,
+  "scope": "thread lifetime; no display or persistent power-plan change",
+  "runner_sha256": "76c632ebee4f16059f45f575741709c23d5b29863816e1895d227edaf29a66f3"
+}

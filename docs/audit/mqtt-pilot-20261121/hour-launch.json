@@ -1,0 +1,9 @@
+{
+  "pid": 33076,
+  "started_utc": "2026-11-21T11:40:20.858271+00:00",
+  "estimated_end_utc": "2026-11-21T12:43:53.858271+00:00",
+  "revision": "0f943b5101be9ec4bfe321d44f9aafa4d741b75a",
+  "result": "D:\\\u9ad8ice\uff08\u5927\u5b66\u7248\uff09\\2026-2027 \u5927\u4e8c\\10\u6708\u534e\u4e3aICT\u5b9e\u8df5\u8d5b\\.mqtt-validation-20261121\\.local\\hour-run\\result.json",
+  "budget_scope": "D:\\\u9ad8ice\uff08\u5927\u5b66\u7248\uff09\\2026-2027 \u5927\u4e8c\\10\u6708\u534e\u4e3aICT\u5b9e\u8df5\u8d5b\\.mqtt-validation-20261121\\.local\\hour-budget-scope.json",
+  "status": "STARTED_NOT_ACCEPTED"
+}

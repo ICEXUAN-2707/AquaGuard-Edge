@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "status": "PREPARED",
+  "execution_enabled": false,
+  "acceptance_passed": false,
+  "run_id": "22e8f7a4a40f4789a46f77860fc767a0",
+  "revision": "379149ac7f5e52bd42a6c3363b814b1f82f29167",
+  "origin": "simulation",
+  "device_id": "demo01",
+  "host": "127.0.0.1",
+  "ttl_seconds": 10.0,
+  "sample_interval_seconds": 5.0,
+  "stages": [
+    {
+      "name": "startup",
+      "planned_start_seconds": 0,
+      "planned_end_seconds": 45,
+      "boot": "b0f5b8bb33b345eda0d7950000559c0a",
+      "expectation": "subscriber READY and public health ready; establish first feature window"
+    },
+    {
+      "name": "continuous",
+      "planned_start_seconds": 45,
+      "planned_end_seconds": 105.0,
+      "boot": "b0f5b8bb33b345eda0d7950000559c0a",
+      "expectation": "wall-clock simulation input; normal availability denominator"
+    },
+    {
+      "name": "publisher_stop",
+      "planned_start_seconds": 105.0,
+      "planned_end_seconds": 123.0,
+      "boot": "b0f5b8bb33b345eda0d7950000559c0a",
+      "expectation": "no publisher; observe TTL expiry and UNKNOWN/rejection"
+    },
+    {
+      "name": "resume_duplicate",
+      "planned_start_seconds": 123.0,
+      "planned_end_seconds": 168.0,
+      "boot": "b0f5b8bb33b345eda0d7950000559c0a",
+      "expectation": "resume same boot with controlled repeated identities; no repeated business side effects"
+    },
+    {
+      "name": "edge_restart",
+      "planned_start_seconds": 168.0,
+      "planned_end_seconds": 213.0,
+      "boot": "b0f5b8bb33b345eda0d7950000559c0a",
+      "expectation": "restart owned edge only, preserve Journal/business DB and event identity"
+    },
+    {
+      "name": "new_boot",
+      "planned_start_seconds": 213.0,
+      "planned_end_seconds": 258.0,
+      "boot": "73cfda8f41054c478f8b3af15d8ae375",
+      "expectation": "new analysis window; inject a marked old-boot sample to check isolation"
+    },
+    {
+      "name": "shutdown",
+      "planned_start_seconds": 258.0,
+      "planned_end_seconds": 273.0,
+      "boot": null,
+      "expectation": "stop owned input/processes; collect DB integrity, OPEN uniqueness and exit evidence"
+    }
+  ],
+  "observation_thresholds": null,
+  "runtime_lock": {
+    "schema_version": 1,
+    "python": "3.12.10",
+    "implementation": "CPython",
+    "platform": "win32",
+    "machine": "AMD64",
+    "lock_files": {
+      "requirements-app.lock.txt": "da3a06ed8ca8a2f3fa9184f3f2354f77cc69f11edd151fd0d0648ffbc44552ec",
+      "web/package-lock.json": "5857da4e91fbc33c7a6b0923a5e3ddad52397abc66273c857186bd901dc46876"
+    },
+    "installed": {
+      "annotated-doc": "0.0.5",
+      "annotated-types": "0.8.0",
+      "anyio": "4.15.1",
+      "click": "8.5.0",
+      "colorama": "0.4.6",
+      "fastapi": "0.162.0",
+      "h11": "0.16.0",
+      "idna": "3.20",
+      "iniconfig": "2.3.1",
+      "opentelemetry-api": "1.45.1",
+      "packaging": "26.3",
+      "paho-mqtt": "2.1.0",
+      "pip": "25.0.1",
+      "pluggy": "1.7.0",
+      "pydantic": "2.14.1",
+      "pydantic-core": "2.50.1",
+      "pygments": "2.21.0",
+      "pytest": "9.1.1",
+      "starlette": "1.10.0",
+      "typing-extensions": "4.16.0",
+      "typing-inspection": "0.4.4",
+      "uvicorn": "0.53.0"
+    },
+    "broker_sha256": "daa688dbc3685890999084da72f98ea0fae9557f7544a2cb96b44ef46563f2a2",
+    "broker_version": "2.1.2"
+  },
+  "total_planned_seconds": 273.0,
+  "unresolved": [
+    "Resolve and record loopback ports, broker path/hash/version and dependency lock before execution.",
+    "Verify TTL against the frozen runtime configuration; this plan does not inspect runtime config.",
+    "Validate existing owned-process backend and phase assertions against actual local MQTT after authorization.",
+    "Review captured resources, OS clocks, consumption latency and exit invariants against explicit budgets.",
+    "Define final coverage/latency/capacity thresholds before execution; no thresholds imply no PASS."
+  ],
+  "note": "Offsets are a predeclared plan, not observed timestamps. A phase failure must remain in evidence; do not shift normal/fault denominators after failure."
+}

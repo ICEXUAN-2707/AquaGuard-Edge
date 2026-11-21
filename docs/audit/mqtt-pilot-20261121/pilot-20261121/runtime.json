@@ -1,0 +1,11 @@
+{
+  "revision": "300fa6f7b5c345f2056df2985fbac0fd5598153c",
+  "broker_sha256": "daa688dbc3685890999084da72f98ea0fae9557f7544a2cb96b44ef46563f2a2",
+  "broker_version": null,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "paho_mqtt": "2.1.0",
+  "mqtt_port": 18893,
+  "http_port": 8055,
+  "origin": "simulation",
+  "job_owned": true
+}

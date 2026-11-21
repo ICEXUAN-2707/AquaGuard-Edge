@@ -1,0 +1,2 @@
+{"phase": "startup", "state": "ENTERED", "utc": "2026-11-21T11:19:05.280600+00:00", "elapsed_seconds": 0.030999999959021807, "planned_start_seconds": 0}
+{"phase": "startup", "state": "FAILED", "utc": "2026-11-21T11:19:20.704276+00:00", "elapsed_seconds": 15.452999999979511, "error_type": "TimeoutError"}

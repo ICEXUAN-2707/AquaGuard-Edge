@@ -1,0 +1,25 @@
+{
+  "execution_status": "FAILED",
+  "acceptance_passed": false,
+  "long_run_acceptance": false,
+  "completed_phases": [],
+  "phase_assertions": {},
+  "observation_checks": {},
+  "error_type": "TimeoutError",
+  "cleanup": {
+    "all_exited": true,
+    "children": [
+      {
+        "name": "broker",
+        "pid": 39336,
+        "exit_code": 1,
+        "exit_confirmed": true
+      }
+    ],
+    "failures": []
+  },
+  "exit_checks": null,
+  "note": "Execution completion is not availability, fault assertions, latency or capacity acceptance.",
+  "exit_check_error_type": "OperationalError",
+  "elapsed_seconds": 15.5
+}

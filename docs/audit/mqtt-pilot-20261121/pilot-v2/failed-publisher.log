@@ -1,0 +1,9 @@
+READY
+Traceback (most recent call last):
+  File "D:\高ice（大学版）\2026-2027 大二\10月华为ICT实践赛\.mqtt-validation-20261121\spikes\SP-02\src\cli.py", line 147, in <module>
+    main()
+  File "D:\高ice（大学版）\2026-2027 大二\10月华为ICT实践赛\.mqtt-validation-20261121\spikes\SP-02\src\cli.py", line 128, in main
+    info.wait_for_publish(timeout=10)
+  File "D:\高ice（大学版）\2026-2027 大二\10月华为ICT实践赛\.venv-app\Lib\site-packages\paho\mqtt\client.py", line 554, in wait_for_publish
+    raise RuntimeError(f'Message publish failed: {error_string(self.rc)}')
+RuntimeError: Message publish failed: The client is not currently connected.
