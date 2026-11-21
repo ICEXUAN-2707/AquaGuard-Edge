@@ -1,0 +1,18 @@
+{
+  "scope": "isolated fixture with synthetic UI clock and missing-value injection",
+  "checks": [
+    "invalid coverage stays unknown",
+    "two snapshots render chart",
+    "scope explanation",
+    "range selection",
+    "JSON export metadata",
+    "three viewport widths",
+    "503 hides old trend and disables export"
+  ],
+  "widths": [
+    1280,
+    768,
+    390
+  ],
+  "pageErrors": []
+}

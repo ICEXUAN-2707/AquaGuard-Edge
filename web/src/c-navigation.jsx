@@ -6,7 +6,7 @@ export function WorkspaceNavigation({tab,onTab}) {
     <div className="workspace-project"><b>水知安项目</b><span>EDGE</span></div>
     <p className="navigation-caption">监测工作区</p>
     <nav aria-label="工作台页面">{['实时总览','数据可视化','事件确认','实验诊断'].map((name,index)=><button key={name} aria-label={name} aria-current={tab===name?'page':undefined} onClick={()=>onTab(name)}><span className="nav-index" aria-hidden="true">0{index+1}</span>{name}</button>)}</nav>
-    <div className="sidebar-note"><span className="connection-dot"/>本地运行 · 证据可追溯<p>实时状态、人工确认与实验记录，来自同一业务系统。</p></div>
+    <div className="sidebar-note"><span className="sidebar-emblem" aria-hidden="true">↗</span>本地工作台 · 证据可追溯<p>实时状态、人工确认与实验记录，来自同一业务系统。</p></div>
   </aside>
 }
 

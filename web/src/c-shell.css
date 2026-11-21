@@ -1,0 +1,55 @@
+/* Shared workbench polish; no page-specific business controls are changed. */
+.workbench-shell{--ink:#183e35;--muted:#526b62;--line:#dbe5df;--accent:#1c6550;color:var(--ink);background:#f4f7f5}
+.workbench-shell>main{padding-inline:32px}
+.workspace-sidebar{padding-top:28px;border-color:var(--line)}
+.workspace-sidebar h1 span{font-size:11px;color:var(--muted)}
+.workspace-project{margin-block:28px 22px;border:1px solid #e1e9e3}
+.navigation-caption{color:#667b70;font-size:12px}
+.workspace-sidebar nav button{min-height:46px;font-size:14px;color:#496558;transition:background .15s,color .15s}
+.workspace-sidebar nav button[aria-current='page']{background:#e5f0e9;color:#16513e;box-shadow:inset 3px 0 var(--accent);font-weight:600}
+.sidebar-note,.sidebar-note p{color:#60776b;font-size:12px}
+.sidebar-emblem{margin-right:7px;color:var(--accent)}
+.workspace-topbar{min-height:72px}.breadcrumb{font-size:12px;color:#63796b;gap:10px}.breadcrumb b{color:#2a5341}
+.workspace-topbar .badge{font-size:11px;color:#536d5d;background:#fff;border-radius:7px;line-height:1.6}
+.workspace-bar{padding:14px 16px;margin-bottom:0;gap:14px;border-color:#d2dfd6;box-shadow:0 2px 5px #183e3504}
+.workspace-bar>div{font-size:13px;gap:10px}.workspace-bar button{min-height:40px;white-space:nowrap}
+.workbench-shell .connection-dot{width:8px;height:8px;background:#8a9991}
+.workbench-shell .connection-dot.available{background:#267653}
+.workbench-shell .connection-dot.partial{background:#a0691b}
+.workbench-shell .connection-dot.unavailable{background:#ae4840}
+.workbench-shell .connection-dot.checking{background:#718793}
+.interface-state{border:1px solid #dbe5df;border-radius:6px;padding:4px 8px;font-size:12px;font-weight:500;line-height:1.5;background:#f4f7f5;color:#526b62}
+.interface-state.available{background:#edf6ef;border-color:#c8ddcf;color:#276044}
+.interface-state.partial{background:#fff5e5;border-color:#e8d4af;color:#805419}
+.interface-state.unavailable{background:#fff0ed;border-color:#e9cac4;color:#914238}
+.connection-explanation{margin:9px 2px 26px;color:#526b62;font-size:12px;line-height:1.8;display:flex;gap:6px 18px;flex-wrap:wrap}
+.connection-explanation time{color:#61786c;font-variant-numeric:tabular-nums}
+.workbench-shell .source-chip,.workbench-shell .small-tag{font-size:12px;color:#4f685a}
+.workbench-shell h2{font-size:28px;line-height:1.4;letter-spacing:-.02em}
+.workbench-shell .muted{color:var(--muted);font-size:13px;line-height:1.85}
+.workbench-shell .eyebrow{font-size:11px;letter-spacing:.12em;color:#5c7866}
+.workbench-shell .snapshot-meta{font-size:12px;line-height:1.8;color:#536d5d}
+.workbench-shell button{min-height:40px;line-height:1.5}
+.workbench-shell input,.workbench-shell select{min-height:42px}
+.workbench-shell .connection{margin:0 0 24px;padding:20px;background:#fff}
+.workbench-shell .connection label{font-size:13px;color:#3f5e4d}
+.workbench-shell .connection input{border-color:#b9cfc0}
+.workbench-shell :focus-visible{outline:3px solid #a36e20;outline-offset:3px}
+.skip-link{position:fixed;left:16px;top:12px;z-index:1000;transform:translateY(-200%);padding:12px 16px;background:#174e3c;color:#fff;border-radius:8px}
+.skip-link:focus{transform:translateY(0)}
+#workspace-main:focus{outline:none}
+@media(max-width:800px){
+ .workspace-sidebar{padding:20px 20px 0}.workspace-sidebar nav button{padding:12px 5px;min-height:46px;font-size:13px}
+ .workspace-sidebar nav button[aria-current='page']{box-shadow:inset 0 -3px var(--accent)}
+ .workbench-shell>main{padding-inline:20px}.workspace-topbar{align-items:flex-start;gap:12px;padding-block:16px;min-height:64px}
+ .breadcrumb{font-size:11px;gap:7px}.workspace-topbar .badge{max-width:150px;font-size:10px;flex-shrink:0}
+ .connection-explanation{margin-bottom:22px}.workbench-shell h2{font-size:25px}
+}
+@media(max-width:440px){
+ .workbench-shell>main{padding-inline:16px}.workspace-sidebar{padding-inline:16px}
+ .workspace-sidebar h1 span{font-size:10px}.workspace-topbar{flex-wrap:wrap;gap:8px}
+ .workspace-topbar .badge{max-width:none}.workspace-bar{align-items:flex-start;padding:13px;flex-wrap:wrap}
+ .workspace-bar>div{gap:8px;font-size:12px}.workspace-bar button{margin-left:auto}
+ .interface-state{font-size:11px}.workbench-shell .source-chip{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.workspace-sidebar nav button,.workbench-shell button{transition:none}}

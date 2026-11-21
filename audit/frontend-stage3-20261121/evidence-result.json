@@ -1,0 +1,20 @@
+{
+  "scope": "isolated fixture with read-only response overrides; no lifecycle mutation",
+  "checks": [
+    "active unacknowledged event cannot close",
+    "unknown is not recovery",
+    "acknowledged recovered event may request server validation",
+    "closed event disables both operations",
+    "timeline evidence disclosure",
+    "run and evidence do not imply evaluation acceptance",
+    "evaluation failure remains distinct from missing report",
+    "changed trial clears previous diagnostic summary"
+  ],
+  "widths": [
+    1280,
+    768,
+    390
+  ],
+  "writes": 0,
+  "pageErrors": []
+}
