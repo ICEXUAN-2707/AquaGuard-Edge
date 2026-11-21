@@ -1,6 +1,7 @@
 import React from 'react'
 import { Evaluation } from './c-evaluation.jsx'
 import { label, localTime } from './c-display.js'
+import './c-evidence.css'
 
 export function Experiment({trial,onTrial,onQuery,result,onEvaluation,onDownload}) {
   const value=result?.value
@@ -10,6 +11,7 @@ export function Experiment({trial,onTrial,onQuery,result,onEvaluation,onDownload
     {result?.loading&&<p className="empty-state" role="status">正在查询实验记录…</p>}
     {result?.error&&<p role="status" className="warning">实验查询：{result.error}。请核对实验 ID 与当前运行模式。</p>}
     {value?<>
+      <section className="diagnostic-summary" aria-label="诊断证据概览"><h3>诊断证据概览</h3><div className="diagnostic-cards"><div><span>运行记录</span><b>已读取 · {label(value.source)}</b><small>记录状态：{label(value.status)}；不等于验收通过。</small></div><div><span>证据引用</span><b>{value.asset_refs.length} 项</b><small>接口返回引用，不代表文件已在浏览器核验。</small></div><div><span>关联评估</span><b>{result.evaluationLoading?'读取中':result.evaluationError?'查询未完成':result.evaluation?'已读取参考报告':'尚无报告'}</b><small>关联报告的适用范围以下方说明为准。</small></div></div><p>本页查询不会启动实验。真实硬件、长时运行和云端验收需各自提供证据。</p></section>
       <section><div className="section-title"><h3>实验概况</h3><span className="small-tag">{label(value.status)}</span></div><h4 className="trial-name">{value.trial_id}</h4><p className="trial-source">来源：{label(value.source)} · 状态：{label(value.status)}</p><div className="experiment-facts"><div><span>开始时间</span><b>{localTime(value.started_at)}</b></div><div><span>结束时间</span><b>{value.ended_at?localTime(value.ended_at):'尚无结束时间'}</b></div><div><span>证据引用</span><b>{value.asset_refs.length} 项</b></div></div><p className="muted">运行记录和检查点用于追溯，不等于算法评估已完成。</p></section>
       <section><div className="section-title"><h3>关联评估报告</h3><span className="small-tag">参考关联</span></div>
         {result.evaluationLoading?<p role="status">正在读取评估报告…</p>:result.evaluationError?<p role="status" className="warning">评估查询：{result.evaluationError}</p>:result.evaluations?.length?<label>选择评估报告<select value={result.selectedEvaluation} onChange={e=>onEvaluation(e.target.value)}>{result.evaluations.map(item=><option key={item.evaluation_id} value={item.evaluation_id}>{item.evaluation_id} · {item.relation_type}</option>)}</select></label>:<p className="muted">当前实验尚未关联评估报告；不会根据文件名或路径猜测结果。</p>}
